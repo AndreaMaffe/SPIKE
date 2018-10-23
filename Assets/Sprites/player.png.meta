@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 279091a5e829c5747bed4d6cd9e1fc7c
+guid: 4a31b0b3835910043af5526c7b36b7d7
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -93,72 +93,12 @@ TextureImporter:
       - {x: -2, y: 2}
       - {x: 2, y: 2}
       - {x: 2, y: -2}
-    bones:
-    - name: root
-      position: {x: 1.888889, y: 0.21111128, z: 0}
-      rotation: {x: 0, y: 0, z: 0.550491, w: 0.8348411}
-      length: 1.0154364
-      parentId: -1
-    - name: bone_1
-      position: {x: 1.0154365, y: 0.00000013357112, z: 0}
-      rotation: {x: 0, y: 0, z: 0.4124087, w: 0.91099894}
-      length: 1.0834333
-      parentId: 0
-    - name: bone_2
-      position: {x: 1.0834391, y: 0.000012033197, z: 0}
-      rotation: {x: 0, y: 0, z: -0.3192868, w: 0.9476581}
-      length: 1.20288
-      parentId: 1
-    - name: bone_3
-      position: {x: 1.2246388, y: 0.0045157867, z: 0}
-      rotation: {x: 0, y: 0, z: -0.44563565, w: 0.89521444}
-      length: 0.9343936
-      parentId: 2
-    spriteID: 0204dd8f366c5cd4892dfc94173ca6ce
-    vertices:
-    - {x: 0, y: 4}
-    - {x: 0, y: 0}
-    - {x: 4, y: 0}
-    - {x: 4, y: 4}
-    indices: 020000000100000000000000000000000300000002000000
-    edges:
-    - {x: 0, y: 1}
-    - {x: 1, y: 2}
-    - {x: 2, y: 3}
-    - {x: 3, y: 0}
-    weights:
-    - weight[0]: 0.6938136
-      weight[1]: 0.30618632
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 2
-      boneIndex[1]: 3
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.80047226
-      weight[1]: 0.19952774
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 0
-      boneIndex[1]: 2
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.7201099
-      weight[1]: 0.2798901
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 3
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
+    bones: []
+    spriteID: 897f374d59bc0784db2d5f27bfb24420
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
