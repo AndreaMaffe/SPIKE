@@ -8,15 +8,21 @@ public class Bomb : MonoBehaviour {
     public float explosionInnerRadius;
     public float explosionOuterRadius;
 
+    public Transform innerRadius;
+    public Transform outerRadius;
+
     public float timer;
 
 	// Use this for initialization
 	void Start () {
 
+        innerRadius.localScale = new Vector3(innerRadius.localScale.x /2 * explosionInnerRadius, innerRadius.localScale.y /2 * explosionInnerRadius, 1);
+        outerRadius.localScale = new Vector3(outerRadius.localScale.x /4 * explosionOuterRadius, outerRadius.localScale.y /4 * explosionOuterRadius, 1);
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 
         timer -= Time.deltaTime;
         if (timer <= 0)
