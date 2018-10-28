@@ -52,6 +52,9 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Platform")
             onGround = true;
+
+        if (collision.gameObject.tag == "Deadly")
+            Destroy(this.gameObject);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
