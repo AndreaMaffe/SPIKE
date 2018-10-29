@@ -7,11 +7,13 @@ public class PlayerMovement : MonoBehaviour {
 
     public Rigidbody2D rb;
 
-    public float horizVelocity;
+    public float acceleration;
     public float maxVelocity;
     public float jumpStrenght;
 
     public bool onGround;
+    //state puo' essere run, jump o stop e adatta animazioni e velocita' di conseguenza
+    public string state;
 
     //variabile che contiene lo scriptable object del livello attuale chiesto al level manager
     private Level currentLevel;
@@ -24,17 +26,32 @@ public class PlayerMovement : MonoBehaviour {
         timerManager = FindObjectOfType<TimerManager>();
         //currentLevel = levelManager.GetActualLevel();
         StartTimersForJumpingAndStopping();
+
+        //StartMovement();
+
     }
     // Update is called once per frame
     void Update () {
-        rb.AddForce(new Vector3(horizVelocity, 0, 0), ForceMode2D.Force);
-        if (rb.velocity.x >= maxVelocity)
-            rb.velocity = new Vector2(maxVelocity, rb.velocity.y);
+        if (state == "run") {
+            rb.AddForce(new Vector3(acceleration, 0, 0), ForceMode2D.Force);
+            if (rb.velocity.x >= maxVelocity)
+                rb.velocity = new Vector2(maxVelocity, rb.velocity.y);
+        }
+       
 	}
+
+    public void StartMovement()
+    {
+        rb.velocity = new Vector2(maxVelocity, rb.velocity.y);
+    }
+
+    public void StopMovement() {
+        rb.velocity = new Vector2(0, rb.velocity.y);
+    }
 
     public void Jump() {
         if (onGround)
-            rb.AddForce(Vector2.up * jumpStrenght, ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(1,1).normalized * jumpStrenght, ForceMode2D.Impulse);
     }
 
 

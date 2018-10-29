@@ -13,6 +13,9 @@ public class Laser : MonoBehaviour {
     [Header("Period of inactivity after shooting") ]
     public float timeToRecover;
 
+    public Transform shootingPoint;
+    public LineRenderer laser;
+
 	// Use this for initialization
 	void Start () {
 
@@ -20,6 +23,7 @@ public class Laser : MonoBehaviour {
 
         //crea il timer nel TimerManager
         timer = FindObjectOfType<TimerManager>().AddTimer(rateOfFire);
+        objectToFollow = GameObject.FindGameObjectWithTag("Player");
 
         //associa lo scadere del timer al metodo Shoot()
         timer.triggeredEvent += Shoot;
@@ -55,8 +59,10 @@ public class Laser : MonoBehaviour {
 
         RaycastHit2D objectHit = Physics2D.Raycast(this.transform.position, new Vector2(0, -1), 10);
 
-        Debug.DrawLine(this.transform.position, objectHit.transform.position, Color.yellow, 1);
-        Debug.Log(objectHit.collider.gameObject.name);
+        DrawLaser(objectHit.point);
+        
+        //Debug.DrawLine(this.transform.position, objectHit.transform.position, Color.yellow, 1);
+        //Debug.Log(objectHit.collider.gameObject.name);
 
         //if (objectHit.collider.gameObject.tag == "Player")
             //Destroy(objectHit.collider.gameObject);
@@ -66,8 +72,20 @@ public class Laser : MonoBehaviour {
         //fa partire un timer al termine del quale readyToFire è rimesso a true e il timer può muoversi di nuovo
         Timer timerToRecover = FindObjectOfType<TimerManager>().AddTimer(timeToRecover);
         timerToRecover.triggeredEvent += Restart;
+        timerToRecover.triggeredEvent += ClearLaser;
         timerToRecover.Start();
 
+    }
+
+    //Metodo che riempie i vertici del line renderer
+    void DrawLaser(Vector3 hitPoint) {
+        laser.positionCount = 2;
+        laser.SetPosition(0, shootingPoint.position);
+        laser.SetPosition(1, hitPoint);
+    }
+
+    void ClearLaser() {
+        laser.positionCount = 0;
     }
 
     void Restart() {

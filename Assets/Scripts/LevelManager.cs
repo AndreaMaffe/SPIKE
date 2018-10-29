@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
@@ -20,6 +21,7 @@ public class LevelManager : MonoBehaviour {
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
         LoadLevel();
     }
 
@@ -32,6 +34,12 @@ public class LevelManager : MonoBehaviour {
         return allLevels[currentLevel - 1];
     }
 
+    public void RestartLevel()
+    {
+        SceneManager.LoadSceneAsync("SampleScene");
+    }
+
+    //TODO: questo metodo andra' messo nello UIManager
     void CreateUIObstacleButtons() {
 
         for (int i = 0; i < testObstacle.Length; i++) {
