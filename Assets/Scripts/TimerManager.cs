@@ -2,35 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimerManager : MonoBehaviour {
+public class TimerManager : MonoBehaviour
+{
 
     public List<Timer> allTimers = new List<Timer>();
     public float updateRate;
-  
-	// Use this for initialization
-	void Start () {
-        InvokeRepeating("UpdateTimers", 0, updateRate);
-	}
 
-    void UpdateTimers() {
-        for (int i = 0; i < allTimers.Count; i++) {
-            allTimers[i].UpdateTimer(updateRate);
+    // Use this for initialization
+    void Start()
+    {
+        InvokeRepeating("UpdateTimers", 0, updateRate);
+    }
+
+    void UpdateTimers()
+    {
+        for (int i = 0; i < allTimers.Count; i++)
+        {
+            allTimers[i].Update(updateRate);
         }
     }
 
-    public void AddTimer(Timer timer) {
+    public Timer AddTimer(float time)
+    {
+
+        Timer timer = new Timer(time);
         allTimers.Add(timer);
+
+        return timer;
     }
 
-    public void RemoveTimer(Timer timer) {
+    public void RemoveTimer(Timer timer)
+    {
         allTimers.Remove(timer);
     }
 }
 
-public class Timer {
+public class Timer
+{
 
-    bool stopped;
-    bool started;
+    bool running;
     public float actualTime;
     public float maxTime;
 
@@ -38,47 +48,70 @@ public class Timer {
     private string type;
 
     public delegate void OnTimerEnd();
-    public event OnTimerEnd TimerEnded;
+    public event OnTimerEnd triggeredEvent;
 
 
-    public Timer(float maxTime, string type) {
-        this.type = type;
+    public Timer(float maxTime)
+    {
         this.maxTime = maxTime;
     }
 
-    public void StartTimer() {
-        started = true;
-        stopped = false;
-        actualTime = 0;
+    public void Start()
+    {
+        if (!running)
+        {
+            running = true;
+            actualTime = maxTime;
+        }
     }
 
-    public void ReassignTimer(float newMaxvalue) {
-        started = true;
-        stopped = false;
+    public void Stop()
+    {
+        actualTime = 0;
+        running = false;
+        triggeredEvent();
+    }
+
+    public void Pause()
+    {
+        running = false;
+    }
+
+    public void Resume()
+    {
+        running = true;
+    }
+
+    public void Reassign(float newMaxvalue)
+    {
+        running = true;
         actualTime = 0;
         maxTime = newMaxvalue;
     }
 
-    public void UpdateTimer(float updateTime) {
-        if (!stopped) {
-            actualTime += updateTime;
-            if (actualTime >= maxTime && !stopped)
+    public void Update(float updateTime)
+    {
+        if (running)
+        {
+            actualTime -= updateTime;
+            if (actualTime <= 0)
             {
-                EndTimer();
+                Stop();
             }
-        }        
+        }
     }
 
-    public void StopTimer() {
-        stopped = true;
+    public bool isEnded()
+    {
+
+        if (actualTime == 0)
+            return true;
+
+        return false;
     }
 
-    public void EndTimer() {      
-        StopTimer();
-        TimerEnded();
-    }
-
-    public float GetTimer() {
+    public float GetTime()
+    {
         return actualTime;
     }
 

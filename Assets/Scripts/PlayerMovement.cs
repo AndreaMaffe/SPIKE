@@ -41,10 +41,9 @@ public class PlayerMovement : MonoBehaviour {
     void StartTimersForJumpingAndStopping() {
         //per ogni timer contenuto nello scriptable Object del livello corrente    
         // per ora crea un solo timer che salta dopo un secondo
-        Timer jumpTimer = new Timer(1, "jump");
-        jumpTimer.TimerEnded += Jump;
-        timerManager.AddTimer(jumpTimer);
-        jumpTimer.StartTimer();
+        Timer jumpTimer = timerManager.AddTimer(1);
+        jumpTimer.triggeredEvent+= Jump;
+        jumpTimer.Start();
     }
 
     //da cambiare e da fare con raycast per evitare collisioni laterali ma per ora va bene anche cosi'
