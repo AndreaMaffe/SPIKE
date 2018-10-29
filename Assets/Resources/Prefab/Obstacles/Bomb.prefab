@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4549167352771426}
   - component: {fileID: 212582151138544360}
   m_Layer: 0
-  m_Name: OuterRadius
+  m_Name: InnerRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4094407001567790}
   - component: {fileID: 212198715697276732}
   m_Layer: 0
-  m_Name: InnerRadius
+  m_Name: OuterRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ Transform:
   m_GameObject: {fileID: 1378322954529358}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10.078125, y: 10.078125, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4102267467419640}
   m_RootOrder: 0
@@ -82,8 +82,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1814910225214746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4, y: -1.85, z: 0}
-  m_LocalScale: {x: 0.08, y: 0.08, z: 1}
+  m_LocalPosition: {x: -0.56061214, y: -1.5157719, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4094407001567790}
   - {fileID: 4549167352771426}
@@ -98,7 +98,7 @@ Transform:
   m_GameObject: {fileID: 1326582652803278}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 32.5, y: 32.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4102267467419640}
   m_RootOrder: 1
@@ -135,9 +135,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.97800195, y: -0.37237704}
+  m_Offset: {x: -0.06, y: -0.11}
   serializedVersion: 2
-  m_Radius: 4.5193763
+  m_Radius: 0.3
 --- !u!114 &114935129837873810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,8 +152,8 @@ MonoBehaviour:
   explosionForce: 80
   explosionInnerRadius: 2
   explosionOuterRadius: 4
-  innerRadius: {fileID: 4094407001567790}
-  outerRadius: {fileID: 4549167352771426}
+  innerRadius: {fileID: 4549167352771426}
+  outerRadius: {fileID: 4094407001567790}
   timer: 4
 --- !u!212 &212198715697276732
 SpriteRenderer:
@@ -236,12 +236,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 86251f2927a42814099f39a02329fc02, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4affae5645fa25e4e84a6799ed377e40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 9.99, y: 10.25}
+  m_Size: {x: 0.97, y: 1.11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
