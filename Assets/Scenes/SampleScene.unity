@@ -896,7 +896,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 721235835}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.46689948, y: 3.0522206, z: 0}
+  m_LocalPosition: {x: 4.46, y: 2.65, z: 0}
   m_LocalScale: {x: 1.0858132, y: 1.0858132, z: 1.0858132}
   m_Children: []
   m_Father: {fileID: 1457146258}
@@ -1337,7 +1337,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1044417022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.531, y: -1.861, z: 0}
+  m_LocalPosition: {x: -5.62, y: -1.58, z: 0}
   m_LocalScale: {x: 0.8940002, y: 0.8940002, z: 0.8940002}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1726,7 +1726,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1588238022}
-        m_MethodName: RestartLevel
+        m_MethodName: StartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1874,7 +1874,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83742731e350ecd488e90b6ba09d9e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels: []
+  levels:
+  - {fileID: 11400000, guid: f797705af24349d49b4ca9d3f4774c7d, type: 2}
   obstacleButton: {fileID: 1352755739588244, guid: 9a5925cccbb7d214395c4fee17475e2e,
     type: 2}
   buttonInBetweenSpace: 30
@@ -1916,7 +1917,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1603847916}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.370567, y: 3.0522206, z: 0}
+  m_LocalPosition: {x: -4.4436674, y: 2.65, z: 0}
   m_LocalScale: {x: 1.0858132, y: 1.0858132, z: 1.0858132}
   m_Children: []
   m_Father: {fileID: 1457146258}
@@ -2192,7 +2193,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1692389192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.05, y: -0.65, z: 0}
+  m_LocalPosition: {x: -2.03, y: -0.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1534450869}
