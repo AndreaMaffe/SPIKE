@@ -113,16 +113,3 @@ public class LevelManager : MonoBehaviour
     }
 }
 
-[System.Serializable]
-public struct ObstacleData
-{
-    public string obstacleName;
-    public int obstacleMaxAmount;
-}
-
-[System.Serializable]
-public struct platformData
-{
-    public GameObject platformType;
-    public Vector3 platformPos;
-}
