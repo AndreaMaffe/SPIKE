@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour
     //Metodo che posiziona le piattaforme del livello a partire dallo scriptable object
     private void CreatePlatforms(Level currentLevel)
     {
-        foreach (platformData platform in currentLevel.platformDatas)
+        foreach (PlatformData platform in currentLevel.platformDatas)
         {
             Instantiate(platform.platformType, platform.platformPos, Quaternion.identity);
         }
@@ -53,7 +53,8 @@ public class LevelManager : MonoBehaviour
     public Level GetActualLevel()
     {
         //i livelli partono da 1
-        return levels[indexLevel - 1];
+        //return levels[indexLevel - 1];
+        return levels[0]; //!!!!!Roba HARDCODED, devo trovare una soluzione per rendere visibile currentLevel (inizializzato) anche agli altri script
     }
 
     public void StartLevel()
@@ -93,7 +94,6 @@ public class LevelManager : MonoBehaviour
     void CreateUIObstacleButtons(Level currentLevel)
     {
         ObstacleData[] obstacleData = currentLevel.obstacleDatas;
-        Debug.Log(obstacleData.Length);
         for (int i = 0; i < obstacleData.Length; i++)
         {
 
@@ -108,7 +108,7 @@ public class LevelManager : MonoBehaviour
             GameObject button = Instantiate(obstacleButton, buttonPanel, false);
             //posiziona il bottone
             button.GetComponent<RectTransform>().localPosition = buttonLocalPosition;
-            button.GetComponent<ObstacleButton>().AssignObstacleTypeAndAmount(obstacleData[i].obstacleName, obstacleData[i].obstacleMaxAmount);
+            button.GetComponent<ObstacleButton>().AssignObstacleTypeAndAmount(obstacleData[i].type.ToString(), obstacleData[i].obstacleMaxAmount);
         }
     }
 }

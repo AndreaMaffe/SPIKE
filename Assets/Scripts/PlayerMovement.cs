@@ -19,12 +19,15 @@ public class PlayerMovement : MonoBehaviour {
     private Level currentLevel;
     private LevelManager levelManager;
     private TimerManager timerManager;
+    //Lista che contiene tutti i timer per i movimenti del giocatore
+    Timer[] movemententTimers;
 
     private void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
         timerManager = FindObjectOfType<TimerManager>();
-        //currentLevel = levelManager.GetActualLevel();
+        currentLevel = levelManager.GetActualLevel(); //!!!!!! Attualmente questo metodo viene chiamato troppo presto: prima di LevelManager
+        movemententTimers = new Timer[currentLevel.movementDatas.Length];
         StartTimersForJumpingAndStopping();
 
         //StartMovement();
@@ -58,9 +61,39 @@ public class PlayerMovement : MonoBehaviour {
     void StartTimersForJumpingAndStopping() {
         //per ogni timer contenuto nello scriptable Object del livello corrente    
         // per ora crea un solo timer che salta dopo un secondo
+        /*
         Timer jumpTimer = timerManager.AddTimer(1);
         jumpTimer.triggeredEvent+= Jump;
         jumpTimer.Start();
+        */
+        int i = 0;
+        foreach(MovementData movementData in currentLevel.movementDatas)
+        {
+            Timer timer = timerManager.AddTimer(movementData.startTime);
+            switch (movementData.type.ToString())
+            {
+                case "Jump":
+                    timer.triggeredEvent += Jump;
+                    break;
+                case "Move":
+                    timer.triggeredEvent += StartMovement;
+                    break;
+                case "Stop":
+                    timer.triggeredEvent += StopMovement;
+                    break;
+                default:
+                    Debug.Log("ERROR: action name not valid, check scriptable object of the level " + currentLevel + " or PlayerMovement.cs");
+                    break;
+            }
+            movemententTimers[i] = timer;
+            i += 1;
+        }
+        //Da spostare all'interno di un metodo che viene chiamato nel momento in cui si preme il tasto play
+        foreach(Timer timer in movemententTimers)
+        {
+            timer.Start();
+        }
+
     }
 
     //da cambiare e da fare con raycast per evitare collisioni laterali ma per ora va bene anche cosi'
