@@ -30,7 +30,7 @@ public class Laser : Obstacle {
 	}
 
     //update apposito per gli ostacoli, usare questo anziché Update().
-    void UpdateObstacle () {
+    protected override void UpdateObstacle () {
 
         if (readyToFire)
         {
@@ -91,5 +91,10 @@ public class Laser : Obstacle {
     void Restart() {
 
         readyToFire = true;
+    }
+
+    public override void WakeUp()
+    {
+        throw new System.NotImplementedException();
     }
 }

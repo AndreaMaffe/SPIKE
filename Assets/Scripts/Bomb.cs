@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bomb : Obstacle {
 
+    private Timer timer;
+
     public float explosionForce;
     public float explosionInnerRadius;
     public float explosionOuterRadius;
@@ -11,7 +13,9 @@ public class Bomb : Obstacle {
     public Transform innerRadius;
     public Transform outerRadius;
 
-    public float timer;
+    [Tooltip("Time before exploding")]
+    public float time;
+
 
 	// Use this for initialization
 	void Start () {
@@ -19,15 +23,13 @@ public class Bomb : Obstacle {
         innerRadius.localScale = new Vector3(innerRadius.localScale.x /2 * explosionInnerRadius, innerRadius.localScale.y /2 * explosionInnerRadius, 1);
         outerRadius.localScale = new Vector3(outerRadius.localScale.x /4 * explosionOuterRadius, outerRadius.localScale.y /4 * explosionOuterRadius, 1);
 
+        timer = FindObjectOfType<TimerManager>().AddTimer(time);
     }
 
-    //update apposito per gli ostacoli, usare questo anziché Update().
-    void UpdateObstacle () {
+    public override void WakeUp() {
 
-        timer -= Time.deltaTime;
-        if (timer <= 0)
-            Explode();
-	}
+
+    }
 
     void Explode() {
 
@@ -60,5 +62,8 @@ public class Bomb : Obstacle {
         Destroy(this.gameObject);
     }
 
-    
+    //update apposito per gli ostacoli, usare questo anziché Update().
+    protected override void UpdateObstacle()
+    {
+    }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TimerManager : MonoBehaviour
 {
-
     public List<Timer> allTimers = new List<Timer>();
     public float updateRate;
 

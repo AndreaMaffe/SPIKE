@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour {
+public abstract class Obstacle : MonoBehaviour {
 
     private bool active;
 
@@ -17,13 +17,9 @@ public class Obstacle : MonoBehaviour {
             UpdateObstacle();
     }
 
-    void UpdateObstacle() { 
+    protected abstract void UpdateObstacle();
 
-    }
-
-    public void WakeUp() {
-
-    }
+    public abstract void WakeUp();
 
     public void SetActive() {
         active = true;

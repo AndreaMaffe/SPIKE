@@ -14,7 +14,7 @@ public class Spring : Obstacle {
 	}
 	
 	//update apposito per gli ostacoli, usare questo anziché Update().
-	void UpdateObstacle () {
+	protected override void UpdateObstacle () {
 		
 	}
 
@@ -31,5 +31,8 @@ public class Spring : Obstacle {
         }
 
 
+    }
+
+    public override void WakeUp() {
     }
 }

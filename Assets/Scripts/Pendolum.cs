@@ -16,7 +16,11 @@ public class Pendolum : Obstacle {
 	}
 
     //update apposito per gli ostacoli, usare questo anziché Update().
-    void UpdateObstacle () {
-		
-	}
+    protected override void UpdateObstacle()
+    {
+    }
+
+    public override void WakeUp()
+    {
+    }
 }

@@ -7,23 +7,27 @@ public class Cannon : Obstacle {
     public float rateOfFire;
     public GameObject bullet;
 
-    private float timer;
+    private Timer timer;
 
 	// Use this for initialization
 	void Start () {
 
-        timer = rateOfFire;
-	}
+        timer = FindObjectOfType<TimerManager>().AddTimer(rateOfFire);
+        timer.triggeredEvent += Shoot;
+     
+    }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
-    void UpdateObstacle () {
+    protected override void UpdateObstacle () {
 
-        timer -= Time.deltaTime;
-
-        if (timer <= 0)
-        {
-            Instantiate(bullet, this.transform.position, this.transform.rotation);
-            timer = rateOfFire;
-        }
 	}
+
+    public override void WakeUp() {
+
+    }
+
+    void Shoot() {
+        Instantiate(bullet, this.transform.position, this.transform.rotation);
+        timer.Start();
+    }
 }
