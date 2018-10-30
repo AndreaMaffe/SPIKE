@@ -13,9 +13,6 @@ public class LevelManager : MonoBehaviour
     private int indexLevel;
     private Level currentLevel;
 
-
-    private List<Obstacle> obstacles;
-
     private bool levelStarted { get; set; } //true se il giocatore ha premuto il tasto play
 
     //[SerializeField]
@@ -25,6 +22,9 @@ public class LevelManager : MonoBehaviour
     public int buttonInBetweenSpace;
     public int buttonWidth;
     public Transform buttonPanel;
+
+    public delegate void OnStartLevel();
+    public event OnStartLevel triggeredEvent;
 
     private void Start()
     {
@@ -58,12 +58,7 @@ public class LevelManager : MonoBehaviour
 
     public void StartLevel()
     {
-
-        foreach (Obstacle obstacle in obstacles)
-        {
-            obstacle.WakeUp();
-            obstacle.SetActive();
-        }
+        triggeredEvent();
     }
 
     public void RestartLevel()
