@@ -2,30 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour {
+public abstract class Obstacle : MonoBehaviour {
 
     private bool active;
 
 	// Use this for initialization
-	void Start () {
+	protected void Start () {
         active = false;
-	}
+        FindObjectOfType<LevelManager>().triggeredEvent += WakeUp;
+        FindObjectOfType<LevelManager>().triggeredEvent += SetActive;
+        StartObstacle();
+    }
 
     // Update is called once per frame
-    void Update() {
+    protected void Update() {
         if (active)
             UpdateObstacle();
     }
 
-    void UpdateObstacle() { 
+    protected abstract void UpdateObstacle();
+    protected abstract void StartObstacle();
+    protected abstract void WakeUp();
 
-    }
-
-    public void WakeUp() {
-
-    }
-
-    public void SetActive() {
+    protected void SetActive() {
         active = true;
     }
 

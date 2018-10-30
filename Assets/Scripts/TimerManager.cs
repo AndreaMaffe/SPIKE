@@ -4,93 +4,75 @@ using UnityEngine;
 
 public class TimerManager : MonoBehaviour
 {
-
     public List<Timer> allTimers = new List<Timer>();
     public float updateRate;
 
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
         InvokeRepeating("UpdateTimers", 0, updateRate);
     }
 
-    void UpdateTimers()
-    {
+    void UpdateTimers() {
         for (int i = 0; i < allTimers.Count; i++)
         {
             allTimers[i].Update(updateRate);
         }
     }
 
-    public Timer AddTimer(float time)
-    {
-
+    public Timer AddTimer(float time) {
         Timer timer = new Timer(time);
         allTimers.Add(timer);
 
         return timer;
     }
 
-    public void RemoveTimer(Timer timer)
-    {
+    public void RemoveTimer(Timer timer) {
         allTimers.Remove(timer);
     }
 }
 
 public class Timer
-{
-
+{ 
     bool running;
     public float actualTime;
     public float maxTime;
 
-    //se e' un timer del salto o un timer che deve stare fermo
-    private string type;
-
     public delegate void OnTimerEnd();
     public event OnTimerEnd triggeredEvent;
 
-
-    public Timer(float maxTime)
-    {
+    public Timer(float maxTime) {
         this.maxTime = maxTime;
     }
 
-    public void Start()
-    {
+    public void Start() {
         if (!running)
         {
             running = true;
-            actualTime = maxTime;
         }
     }
 
-    public void Stop()
-    {
+    public void Stop() {
         actualTime = 0;
         running = false;
         triggeredEvent();
     }
 
-    public void Pause()
-    {
+    public void Pause() {
         running = false;
     }
 
-    public void Resume()
-    {
+    public void Resume() {
         running = true;
     }
 
-    public void Reassign(float newMaxvalue)
-    {
+    public void Reassign(float newMaxvalue) {
         running = true;
         actualTime = 0;
         maxTime = newMaxvalue;
     }
 
-    public void Update(float updateTime)
-    {
+    public void Update(float updateTime) {
+
         if (running)
         {
             actualTime -= updateTime;
@@ -101,8 +83,7 @@ public class Timer
         }
     }
 
-    public bool isEnded()
-    {
+    public bool isEnded() {
 
         if (actualTime == 0)
             return true;
@@ -110,13 +91,11 @@ public class Timer
         return false;
     }
 
-    public float GetTime()
-    {
+    public float GetTime() {
         return actualTime;
     }
 
-    public float GetMaxTimer()
-    {
+    public float GetMaxTimer() {
         return maxTime;
     }
 

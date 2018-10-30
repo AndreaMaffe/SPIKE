@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pendolum : MonoBehaviour {
+public class Pendolum : Obstacle {
 
     private Rigidbody2D rb;
 
     public float oscillation;
 
-	// Use this for initialization
-	void Start () {
+    //start apposito per gli ostacoli, usare questo anziché Start().
+    protected override void StartObstacle() {
 
+	}
+
+    //update apposito per gli ostacoli, usare questo anziché Update().
+    protected override void UpdateObstacle()
+    {
+    }
+
+    protected override void WakeUp()
+    {
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(new Vector3(oscillation, 0, 0));
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
 }

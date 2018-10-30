@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : MonoBehaviour {
+public class Bomb : Obstacle {
+
+    private Timer timer;
 
     public float explosionForce;
     public float explosionInnerRadius;
@@ -11,23 +13,27 @@ public class Bomb : MonoBehaviour {
     public Transform innerRadius;
     public Transform outerRadius;
 
-    public float timer;
+    public float timeBeforeExplosion;
 
-	// Use this for initialization
-	void Start () {
 
+    //start apposito per gli ostacoli, usare questo anziché Start().
+    protected override void StartObstacle() {
+
+        //scala le sprite dei cerchi
         innerRadius.localScale = new Vector3(innerRadius.localScale.x /2 * explosionInnerRadius, innerRadius.localScale.y /2 * explosionInnerRadius, 1);
         outerRadius.localScale = new Vector3(outerRadius.localScale.x /4 * explosionOuterRadius, outerRadius.localScale.y /4 * explosionOuterRadius, 1);
 
+        //crea il timer e lo associa al metodo Explode()
+        timer = FindObjectOfType<TimerManager>().AddTimer(timeBeforeExplosion);
+        timer.triggeredEvent += Explode;
+
     }
 
-    // Update is called once per frame
-    void Update () {
+    protected override void WakeUp() {
 
-        timer -= Time.deltaTime;
-        if (timer <= 0)
-            Explode();
-	}
+        //avvia il timer
+        timer.Start();
+    }
 
     void Explode() {
 
@@ -60,5 +66,8 @@ public class Bomb : MonoBehaviour {
         Destroy(this.gameObject);
     }
 
-    
+    //update apposito per gli ostacoli, usare questo anziché Update().
+    protected override void UpdateObstacle()
+    {
+    }
 }

@@ -2,28 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cannon : MonoBehaviour {
+public class Cannon : Obstacle {
 
     public float rateOfFire;
     public GameObject bullet;
 
-    private float timer;
+    private Timer timer;
 
-	// Use this for initialization
-	void Start () {
+    //start apposito per gli ostacoli, usare questo anziché Start().
+    protected override void StartObstacle() {
 
-        timer = rateOfFire;
+        //crea il timer e lo associa al metodo Shoot()
+        timer = FindObjectOfType<TimerManager>().AddTimer(rateOfFire);
+        timer.triggeredEvent += Shoot;
+     
+    }
+
+    //update apposito per gli ostacoli, usare questo anziché Update().
+    protected override void UpdateObstacle () {
+
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-        timer -= Time.deltaTime;
+    protected override void WakeUp() {
 
-        if (timer <= 0)
-        {
-            Instantiate(bullet, this.transform.position, this.transform.rotation);
-            timer = rateOfFire;
-        }
-	}
+        //avvia il timer
+        timer.Start();
+    }
+
+    void Shoot() {
+
+        //spara un colpo e riavvia il timer
+        Instantiate(bullet, this.transform.position, this.transform.rotation);
+        timer.Start();
+    }
 }
