@@ -1874,8 +1874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83742731e350ecd488e90b6ba09d9e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels:
-  - {fileID: 11400000, guid: f797705af24349d49b4ca9d3f4774c7d, type: 2}
+  levels: []
   obstacleButton: {fileID: 1352755739588244, guid: 9a5925cccbb7d214395c4fee17475e2e,
     type: 2}
   buttonInBetweenSpace: 30
@@ -2114,7 +2113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1692389193
 BoxCollider2D:
   m_ObjectHideFlags: 0
