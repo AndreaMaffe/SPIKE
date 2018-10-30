@@ -13,22 +13,26 @@ public class Bomb : Obstacle {
     public Transform innerRadius;
     public Transform outerRadius;
 
-    [Tooltip("Time before exploding")]
-    public float time;
+    public float timeBeforeExplosion;
 
 
-	// Use this for initialization
-	void Start () {
+    //start apposito per gli ostacoli, usare questo anziché Start().
+    protected override void StartObstacle() {
 
+        //scala le sprite dei cerchi
         innerRadius.localScale = new Vector3(innerRadius.localScale.x /2 * explosionInnerRadius, innerRadius.localScale.y /2 * explosionInnerRadius, 1);
         outerRadius.localScale = new Vector3(outerRadius.localScale.x /4 * explosionOuterRadius, outerRadius.localScale.y /4 * explosionOuterRadius, 1);
 
-        timer = FindObjectOfType<TimerManager>().AddTimer(time);
+        //crea il timer e lo associa al metodo Explode()
+        timer = FindObjectOfType<TimerManager>().AddTimer(timeBeforeExplosion);
+        timer.triggeredEvent += Explode;
+
     }
 
-    public override void WakeUp() {
+    protected override void WakeUp() {
 
-
+        //avvia il timer
+        timer.Start();
     }
 
     void Explode() {

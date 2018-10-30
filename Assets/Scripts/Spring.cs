@@ -9,7 +9,8 @@ public class Spring : Obstacle {
     [Tooltip("Intensity of the push")]
     public float push;
 
-	void Start () {
+    //start apposito per gli ostacoli, usare questo anziché Start().
+    protected override void StartObstacle () {
         triggered = false;
 	}
 	
@@ -22,9 +23,10 @@ public class Spring : Obstacle {
     {
         if (!triggered)
         {
-            //apply vertical force with intensity equal to "push"
+            //applica una forza verticale di intensità pari a "push"
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, push, 0));
 
+            //muovi la sprite
             this.transform.position += new Vector3(0, 1, 0);
 
             triggered = true;
@@ -33,6 +35,6 @@ public class Spring : Obstacle {
 
     }
 
-    public override void WakeUp() {
+    protected override void WakeUp() {
     }
 }
