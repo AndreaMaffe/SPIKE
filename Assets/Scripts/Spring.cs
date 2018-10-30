@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spring : MonoBehaviour {
+public class Spring : Obstacle {
 
     private bool triggered;
 
     [Tooltip("Intensity of the push")]
     public float push;
 
-	// Use this for initialization
 	void Start () {
         triggered = false;
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	//update apposito per gli ostacoli, usare questo anziché Update().
+	void UpdateObstacle () {
 		
 	}
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser : MonoBehaviour {
+public class Laser : Obstacle {
 
     private Timer timer;
     private bool readyToFire;
@@ -28,9 +28,9 @@ public class Laser : MonoBehaviour {
         //associa lo scadere del timer al metodo Shoot()
         timer.triggeredEvent += Shoot;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    //update apposito per gli ostacoli, usare questo anziché Update().
+    void UpdateObstacle () {
 
         if (readyToFire)
         {

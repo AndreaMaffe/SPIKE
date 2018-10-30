@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : MonoBehaviour {
+public class Bomb : Obstacle {
 
     public float explosionForce;
     public float explosionInnerRadius;
@@ -21,8 +21,8 @@ public class Bomb : MonoBehaviour {
 
     }
 
-    // Update is called once per frame
-    void Update () {
+    //update apposito per gli ostacoli, usare questo anziché Update().
+    void UpdateObstacle () {
 
         timer -= Time.deltaTime;
         if (timer <= 0)

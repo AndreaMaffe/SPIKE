@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pendolum : MonoBehaviour {
+public class Pendolum : Obstacle {
 
     private Rigidbody2D rb;
 
@@ -14,9 +14,9 @@ public class Pendolum : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(new Vector3(oscillation, 0, 0));
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    //update apposito per gli ostacoli, usare questo anziché Update().
+    void UpdateObstacle () {
 		
 	}
 }

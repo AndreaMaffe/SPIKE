@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cannon : MonoBehaviour {
+public class Cannon : Obstacle {
 
     public float rateOfFire;
     public GameObject bullet;
@@ -14,9 +14,9 @@ public class Cannon : MonoBehaviour {
 
         timer = rateOfFire;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    //update apposito per gli ostacoli, usare questo anziché Update().
+    void UpdateObstacle () {
 
         timer -= Time.deltaTime;
 
