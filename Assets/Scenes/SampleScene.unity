@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 349784336}
   m_Layer: 5
   m_Name: Panel
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1735,7 +1735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1692389193
 BoxCollider2D:
   m_ObjectHideFlags: 0
