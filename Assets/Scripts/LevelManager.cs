@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour {
+public class LevelManager : MonoBehaviour
+{
 
-    //array che contiene gli scruptable object di tutti i livelli
-    Level[] allLevels;
+    private Level[] levels;
+    private List<Obstacle> obstacles;
+
     //numero del livello attuale partendo da 1
     private int currentLevel;
+    private bool levelStarted { get; set; } //true se il giocatore ha premuto il tasto play
 
     [SerializeField]
     public ObstacleData[] testObstacle;
@@ -17,7 +20,7 @@ public class LevelManager : MonoBehaviour {
     public GameObject obstacleButton;
     public int buttonInBetweenSpace;
     public int buttonWidth;
-    public Transform buttonPanel; 
+    public Transform buttonPanel;
 
     private void Start()
     {
@@ -25,13 +28,25 @@ public class LevelManager : MonoBehaviour {
         LoadLevel();
     }
 
-    void LoadLevel() {
+    void LoadLevel()
+    {
         CreateUIObstacleButtons();
     }
 
-    public Level GetActualLevel() {
+    public Level GetActualLevel()
+    {
         //i livelli partono da 1
-        return allLevels[currentLevel - 1];
+        return levels[currentLevel - 1];
+    }
+
+    public void StartLevel()
+    {
+
+        foreach (Obstacle obstacle in obstacles)
+        {
+            obstacle.WakeUp();
+            obstacle.SetActive();
+        }
     }
 
     public void RestartLevel()
@@ -40,16 +55,18 @@ public class LevelManager : MonoBehaviour {
     }
 
     //TODO: questo metodo andra' messo nello UIManager
-    void CreateUIObstacleButtons() {
+    void CreateUIObstacleButtons()
+    {
 
-        for (int i = 0; i < testObstacle.Length; i++) {
+        for (int i = 0; i < testObstacle.Length; i++)
+        {
 
             Vector2 buttonLocalPosition;
             //A seconda se i buttoni sono pari o dispari li posiziona nel modo giusto
             if (testObstacle.Length % 2 == 1)
-                buttonLocalPosition = new Vector2(-(buttonWidth + buttonInBetweenSpace) * (testObstacle.Length / 2)+ i * (buttonWidth + buttonInBetweenSpace), 0);
+                buttonLocalPosition = new Vector2(-(buttonWidth + buttonInBetweenSpace) * (testObstacle.Length / 2) + i * (buttonWidth + buttonInBetweenSpace), 0);
             else
-                buttonLocalPosition = new Vector2(-((buttonWidth + buttonInBetweenSpace)/2 + (testObstacle.Length / 2 - 1) * (buttonWidth + buttonInBetweenSpace)) + i * (buttonWidth + buttonInBetweenSpace), 0);
+                buttonLocalPosition = new Vector2(-((buttonWidth + buttonInBetweenSpace) / 2 + (testObstacle.Length / 2 - 1) * (buttonWidth + buttonInBetweenSpace)) + i * (buttonWidth + buttonInBetweenSpace), 0);
 
             //crea il bottone come figlio del panel giusto
             GameObject button = Instantiate(obstacleButton, buttonPanel, false);
@@ -61,7 +78,8 @@ public class LevelManager : MonoBehaviour {
 }
 
 [System.Serializable]
-public struct ObstacleData {
+public struct ObstacleData
+{
     public string obstacleName;
     public int obstacleMaxAmount;
 }
