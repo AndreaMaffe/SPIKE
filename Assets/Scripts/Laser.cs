@@ -16,8 +16,8 @@ public class Laser : Obstacle {
     public Transform shootingPoint;
     public LineRenderer laser;
 
-	// Use this for initialization
-	void Start () {
+    //start apposito per gli ostacoli, usare questo anziché Start().
+    protected override void StartObstacle() {
 
         readyToFire = true;
 
@@ -93,8 +93,8 @@ public class Laser : Obstacle {
         readyToFire = true;
     }
 
-    public override void WakeUp()
+    protected override void WakeUp()
     {
-        throw new System.NotImplementedException();
+
     }
 }

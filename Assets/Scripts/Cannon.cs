@@ -9,9 +9,10 @@ public class Cannon : Obstacle {
 
     private Timer timer;
 
-	// Use this for initialization
-	void Start () {
+    //start apposito per gli ostacoli, usare questo anziché Start().
+    protected override void StartObstacle() {
 
+        //crea il timer e lo associa al metodo Shoot()
         timer = FindObjectOfType<TimerManager>().AddTimer(rateOfFire);
         timer.triggeredEvent += Shoot;
      
@@ -22,11 +23,15 @@ public class Cannon : Obstacle {
 
 	}
 
-    public override void WakeUp() {
+    protected override void WakeUp() {
 
+        //avvia il timer
+        timer.Start();
     }
 
     void Shoot() {
+
+        //spara un colpo e riavvia il timer
         Instantiate(bullet, this.transform.position, this.transform.rotation);
         timer.Start();
     }

@@ -8,11 +8,9 @@ public class Pendolum : Obstacle {
 
     public float oscillation;
 
-	// Use this for initialization
-	void Start () {
+    //start apposito per gli ostacoli, usare questo anziché Start().
+    protected override void StartObstacle() {
 
-        rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(new Vector3(oscillation, 0, 0));
 	}
 
     //update apposito per gli ostacoli, usare questo anziché Update().
@@ -20,7 +18,9 @@ public class Pendolum : Obstacle {
     {
     }
 
-    public override void WakeUp()
+    protected override void WakeUp()
     {
+        rb = GetComponent<Rigidbody2D>();
+        rb.AddForce(new Vector3(oscillation, 0, 0));
     }
 }
