@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
     public Transform buttonPanel;
 
     public delegate void OnStartLevel();
-    public event OnStartLevel triggeredEvent;
+    public static event OnStartLevel triggeredEvent;
 
     private void Start()
     {

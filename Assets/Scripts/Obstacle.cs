@@ -9,8 +9,8 @@ public abstract class Obstacle : MonoBehaviour {
 	// Use this for initialization
 	protected void Start () {
         active = false;
-        FindObjectOfType<LevelManager>().triggeredEvent += WakeUp;
-        FindObjectOfType<LevelManager>().triggeredEvent += SetActive;
+        LevelManager.triggeredEvent += WakeUp;
+        LevelManager.triggeredEvent += SetActive;
         StartObstacle();
     }
 

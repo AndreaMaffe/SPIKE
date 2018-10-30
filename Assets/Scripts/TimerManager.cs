@@ -48,6 +48,7 @@ public class Timer
         if (!running)
         {
             running = true;
+            actualTime = maxTime;
         }
     }
 
