@@ -24,6 +24,10 @@ public class AnchorPoint : MonoBehaviour {
         this.position = position; 
     }
 
+    public AnchorPointPosition GetPosition() {
+        return position;
+    }
+
     public void SetEdge(bool edge) {
         this.edge = edge;
     }

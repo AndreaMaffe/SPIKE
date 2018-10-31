@@ -15,6 +15,7 @@ public class ObstacleButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
     public GameObject draggableObstaclePrefab;
     GameObject draggableObstacleInstance;
+    DraggableObstacle draggableObstacleCollisionChecker;
     public Vector3 draggableObstacleOffsetFromFinger;
 
     public void AssignObstacleTypeAndAmount(string type, int amount) {
@@ -23,14 +24,10 @@ public class ObstacleButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         AssignUIValues();
     }
 
-    void AssignUIValues() {
+    void AssignUIValues()
+    {
         obstacleImage.sprite = Resources.Load<Sprite>("UIObstacleImages/" + obstacleName);
         obstacleAmountText.text = "x " + obstacleAmount;
-    }
-
-    bool CheckIfPositionIsCorrect()
-    {
-        return true;
     }
 
     //per ora non fa un cazzo 
@@ -42,23 +39,25 @@ public class ObstacleButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     {
         draggableObstacleInstance = Instantiate(draggableObstaclePrefab, Camera.main.ScreenToWorldPoint(eventData.position) +  draggableObstacleOffsetFromFinger, Quaternion.identity);
         draggableObstacleInstance.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("UIObstacleImages/" + obstacleName);
+        draggableObstacleCollisionChecker = draggableObstacleInstance.GetComponent<DraggableObstacle>();
+        //draggableObstacleCollisionChecker.SetPosition()
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (CheckIfPositionIsCorrect())
+        if (draggableObstacleCollisionChecker.CheckIfSnapped())
         {
-            Destroy(draggableObstacleInstance.gameObject);
             GameObject obstaclePrefab = Instantiate(Resources.Load<GameObject>("Prefab/Obstacles/" + obstacleName));
-            //obstaclePrefab.transform.position = SnapObstacleToGrid();
-            obstaclePrefab.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(eventData.position).x, Camera.main.ScreenToWorldPoint(eventData.position).y, 0) + draggableObstacleOffsetFromFinger;
+            //obstaclePrefab.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(eventData.position).x, Camera.main.ScreenToWorldPoint(eventData.position).y, 0) + draggableObstacleOffsetFromFinger;
+            obstaclePrefab.transform.position = draggableObstacleInstance.transform.position;
+            Destroy(draggableObstacleInstance.gameObject);
         }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         Vector3 updatedPosition = new Vector3(Camera.main.ScreenToWorldPoint(eventData.position).x, Camera.main.ScreenToWorldPoint(eventData.position).y, 0) + draggableObstacleOffsetFromFinger;
-        draggableObstacleInstance.transform.position = updatedPosition;
+        draggableObstacleCollisionChecker.UpdatePosition(updatedPosition);
     }
 
 
