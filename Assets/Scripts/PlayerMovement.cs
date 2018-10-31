@@ -5,16 +5,18 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour {
 
+    public enum PlayerState { Stop, Run, Jump };
+
     public Rigidbody2D rb;
 
     public float acceleration;
     public float maxVelocity;
     public float jumpStrenght;
+    [SerializeField]
+    private PlayerState state;
 
     public bool onGround;
-    //state puo' essere run, jump o stop e adatta animazioni e velocita' di conseguenza
-    public string state;
-
+    
     //variabile che contiene lo scriptable object del livello attuale chiesto al level manager
     private Level currentLevel;
     private LevelManager levelManager;
@@ -24,6 +26,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         levelManager = FindObjectOfType<LevelManager>();
         timerManager = FindObjectOfType<TimerManager>();
        
@@ -35,10 +38,26 @@ public class PlayerMovement : MonoBehaviour {
     {
         Debug.Log("Movement started");
         currentLevel = levelManager.GetActualLevel();
-        //!!!!!! Attualmente questo metodo viene chiamato troppo presto: prima di LevelManager
         movementTimers = new Timer[currentLevel.movementDatas.Length];
         StartTimersForJumpingAndStopping();
+    }
 
+    private void Update()
+    {
+        if (state == PlayerState.Run) {
+            if (rb.velocity.x <= maxVelocity)
+                rb.AddForce(Vector2.left * acceleration);
+            else
+                rb.velocity = new Vector2(maxVelocity, rb.velocity.y);
+        }
+        if (state == PlayerState.Jump || onGround) {
+            Jump();
+            state = PlayerState.Run;
+        }
+    }
+
+    public void Move()
+    {
         rb.velocity = new Vector2(maxVelocity, 0);
     }
 
@@ -48,7 +67,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public void Jump() {
         if (onGround)
-            rb.AddForce(new Vector2(1,1).normalized * jumpStrenght, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * jumpStrenght, ForceMode2D.Impulse);
     }
 
 
@@ -66,7 +85,7 @@ public class PlayerMovement : MonoBehaviour {
                     timer.triggeredEvent += Jump;
                     break;
                 case "Move":
-                    timer.triggeredEvent += StartMovement;
+                    timer.triggeredEvent += Move;
                     break;
                 case "Stop":
                     timer.triggeredEvent += StopMovement;
