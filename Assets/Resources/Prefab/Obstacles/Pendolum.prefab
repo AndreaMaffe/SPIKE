@@ -212,6 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aeb9d172078f424aade7f017ebf0fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anchorPosition: 0
+  anchorSlotOccupied: 1
   oscillation: 150
 --- !u!212 &212092244832251310
 SpriteRenderer:

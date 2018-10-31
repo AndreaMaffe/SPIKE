@@ -149,6 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7071a436e58380249b735f9a16916cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anchorPosition: 2
+  anchorSlotOccupied: 1
   explosionForce: 80
   explosionInnerRadius: 2
   explosionOuterRadius: 4

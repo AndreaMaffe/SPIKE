@@ -82,6 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce984525abf2287498d95554d12501ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anchorPosition: 0
+  anchorSlotOccupied: 1
   objectToFollow: {fileID: 0}
   deceleration: 2.3
   rateOfFire: 1

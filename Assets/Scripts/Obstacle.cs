@@ -6,6 +6,11 @@ public abstract class Obstacle : MonoBehaviour {
 
     private bool active;
 
+    [Header("The position of the anchor that it can occupy")]
+    public AnchorPointPosition anchorPosition;
+    [Header("How many anchor point needs")]
+    public int anchorSlotOccupied;
+
 	// Use this for initialization
 	protected void Start () {
         active = false;

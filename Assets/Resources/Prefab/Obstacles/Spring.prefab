@@ -78,6 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bc669bd9ee790142862aef1d5d978c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anchorPosition: 2
+  anchorSlotOccupied: 1
   push: 900
 --- !u!212 &212586360638749124
 SpriteRenderer:
