@@ -27,6 +27,7 @@ public class AnchorPoint : MonoBehaviour {
         ObstacleButton.onUpdateAnchorPoint -= UpdateAnchorPointSprite;
     }
 
+    // abilita o disabilita lo sprite renderer a seconda che la posizione sia occupata e che tu stai trascinando un ostacolo del suo tipo
     void UpdateAnchorPointSprite(AnchorPointPosition pos)
     {
         if (pos == position && !occupied)
