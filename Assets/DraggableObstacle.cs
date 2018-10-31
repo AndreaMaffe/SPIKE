@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DraggableObstacle : MonoBehaviour {
+public class DraggableObstacle : MonoBehaviour
+{
 
     public SpriteRenderer spriteRenderer;
-    public List<GameObject> anchorPointsCollider;
+    public GameObject anchorPointSnapped;
     public AnchorPointPosition position;
-    bool snapped;
+    bool snapped = false;
     public float removeSnapDistance;
 
     Vector3 positionBeforeSnapping;
@@ -15,51 +16,59 @@ public class DraggableObstacle : MonoBehaviour {
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        ChangeSpriteOpacity();
     }
 
-    public bool CheckIfSnapped() {
+    public void SetSnappingDesiredPosition(AnchorPointPosition pos)
+    {
+        position = pos;
+    }
+
+    public bool CheckIfSnapped()
+    {
         if (snapped)
             return true;
         else return false;
     }
 
-    
-
-    public void UpdatePosition(Vector3 newPosition) {
+    public void UpdatePosition(Vector3 newPosition)
+    {
         if (!snapped)
             transform.position = newPosition;
         else if (snapped)
-            if (Vector3.Distance(newPosition, positionBeforeSnapping) >= removeSnapDistance) {
+            if (Vector3.Distance(newPosition, positionBeforeSnapping) >= removeSnapDistance)
+            {
+                ChangeSpriteOpacity();
                 snapped = false;
                 transform.position = newPosition;
             }
     }
 
-    /*void ChangeSpriteOpacity() {
+    void ChangeSpriteOpacity()
+    {
         if (snapped)
-            spriteRenderer
-    }*/
+            spriteRenderer.color = new Color32(255, 255, 255, 255);
+        else
+            spriteRenderer.color = new Color32(255, 255, 255, 120);
+    }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "PuntoAncoraggio") {
-            if (position == collision.GetComponent<AnchorPoint>().GetPosition()) {
-                Debug.Log("Ho colliso col punto di ancoraggio giusto");
-                anchorPointsCollider.Add(collision.gameObject);
+        if (collision.gameObject.tag == "PuntoAncoraggio")
+        {
+            if (position == collision.GetComponent<AnchorPoint>().GetPosition() && !collision.GetComponent<AnchorPoint>().GetOccupied())
+            {
+                //aggiungi l'oggetto alla lista di oggetti
+                anchorPointSnapped = collision.gameObject;
+                //salva la posizione di quando hai snappato
                 positionBeforeSnapping = transform.position;
                 snapped = true;
-                //ChangeSpriteOpacity();
+                //cambia l'opacita' della sprite
+                ChangeSpriteOpacity();
                 transform.position = collision.gameObject.transform.position;
             }
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "PuntoAncoraggio") {
-            if (position == collision.GetComponent<AnchorPoint>().GetPosition())
-                anchorPointsCollider.Remove(collision.gameObject);
-        }
-    }
 }

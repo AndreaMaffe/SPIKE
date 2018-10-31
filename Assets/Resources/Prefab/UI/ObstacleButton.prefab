@@ -289,6 +289,17 @@ MonoBehaviour:
   draggableObstaclePrefab: {fileID: 1650495499822084, guid: 3b659681da6f9b448af77d64dff07b94,
     type: 2}
   draggableObstacleOffsetFromFinger: {x: 0, y: 1, z: 0}
+  obstaclePositionData:
+  - obstacle: 0
+    position: 2
+  - obstacle: 1
+    position: 1
+  - obstacle: 2
+    position: 2
+  - obstacle: 3
+    position: 0
+  - obstacle: 4
+    position: 0
 --- !u!222 &222772450789347388
 CanvasRenderer:
   m_ObjectHideFlags: 1

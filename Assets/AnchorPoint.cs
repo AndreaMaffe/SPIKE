@@ -12,8 +12,33 @@ public class AnchorPoint : MonoBehaviour {
     [SerializeField]
     private bool occupied;
 
+    public SpriteRenderer spriteRenderer;
+
+
+    private void Start()
+    {
+        //sottoscrizione all'evento lanciato dai bottoni per aggiornare la visibilita' degli anchor points
+        ObstacleButton.onUpdateAnchorPoint += UpdateAnchorPointSprite;
+        spriteRenderer.enabled = false;
+    }
+
+    private void OnDisable()
+    {
+        ObstacleButton.onUpdateAnchorPoint -= UpdateAnchorPointSprite;
+    }
+
+    void UpdateAnchorPointSprite(AnchorPointPosition pos)
+    {
+        if (pos == position && !occupied)
+            spriteRenderer.enabled = true;
+        else
+            spriteRenderer.enabled = false;
+    }
+
     public void SetOccupied(bool occupied) {
         this.occupied = occupied;
+        if (occupied)
+            spriteRenderer.enabled = false;
     }
 
     public bool GetOccupied() {

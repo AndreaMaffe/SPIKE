@@ -26,6 +26,17 @@ public class LevelManager : MonoBehaviour
     public delegate void OnStartLevel();
     public static event OnStartLevel triggeredEvent;
 
+    //struct che associa ogni ostacolo alla posizione in cui puo' andare
+    [System.Serializable]
+    public struct ObstaclePositionData
+    {
+        public ObstacleType obstacle;
+        public AnchorPointPosition position;
+    }
+    //array di tutte le associazioni ostacolo-posizione. Serve una struttura dati del genere perche' altrimenti non sapresti come dire 
+    //al draggable obstacle in quale posizione puo' andare e in quale no
+    public ObstaclePositionData[] obstaclePositionData;
+
     private void Start()
     {
         Application.targetFrameRate = 60;
@@ -65,6 +76,18 @@ public class LevelManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadSceneAsync("SampleScene");
+    }
+
+    //metodo che serve ai bottoni per associare a ogni ostacolo la posizione in cui deve andare in modo da passare al 
+    //draggable obstacle la posizione giusta dell'ancor point valido a cui agganciarsi
+    public AnchorPointPosition CheckInWhatPositionTheObstacleGoes(ObstacleType obstacleName)
+    {
+        foreach (ObstaclePositionData obstacle in obstaclePositionData)
+        {
+            if (obstacleName == obstacle.obstacle)
+                return obstacle.position;
+        }
+        return AnchorPointPosition.Platform;
     }
 
     //TODO: questo metodo andra' messo nello UIManager
@@ -108,7 +131,7 @@ public class LevelManager : MonoBehaviour
             GameObject button = Instantiate(obstacleButton, buttonPanel, false);
             //posiziona il bottone
             button.GetComponent<RectTransform>().localPosition = buttonLocalPosition;
-            button.GetComponent<ObstacleButton>().AssignObstacleTypeAndAmount(obstacleData[i].type.ToString(), obstacleData[i].obstacleMaxAmount);
+            button.GetComponent<ObstacleButton>().AssignObstacleTypeAndAmount(obstacleData[i].type, obstacleData[i].obstacleMaxAmount);
         }
     }
 }

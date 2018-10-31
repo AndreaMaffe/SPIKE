@@ -89,10 +89,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acae52c3d0f15c14ba6c707c943f9113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  anchorPointsCollider: []
+  spriteRenderer: {fileID: 212907129452563706}
+  anchorPointSnapped: {fileID: 0}
   position: 0
-  removeSnapDistance: 1
+  removeSnapDistance: 0.7
 --- !u!212 &212907129452563706
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -125,8 +125,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 128517145
-  m_SortingLayer: 4
+  m_SortingLayerID: 1025193145
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
