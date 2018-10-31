@@ -92,7 +92,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 212907129452563706}
   anchorPointSnapped: {fileID: 0}
   position: 0
-  removeSnapDistance: 0.7
+  removeSnapDistance: 1
 --- !u!212 &212907129452563706
 SpriteRenderer:
   m_ObjectHideFlags: 1

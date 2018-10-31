@@ -15,6 +15,8 @@ public class Bomb : Obstacle {
 
     public float timeBeforeExplosion;
 
+    public GameObject explosionParticlePrefab;
+
 
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle() {
@@ -61,7 +63,8 @@ public class Bomb : Obstacle {
             }
                 
         }
-
+        GameObject explosionParticleInstance = Instantiate(explosionParticlePrefab, transform.position, Quaternion.identity);
+        Destroy(explosionParticleInstance.gameObject, 1.5f);
         //destroy the bomb
         Destroy(this.gameObject);
     }
