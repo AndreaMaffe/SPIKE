@@ -43,7 +43,7 @@ public class LevelManager : MonoBehaviour
     public Level[] levels;
 
     //tutti gli ostacoli posizionati nel livello
-    public ObstacleInstance[] obstacleInstances;
+    private List<ObstacleInstance> obstacleInstances;
 
     //[SerializeField]
     //public ObstacleData[] obstacleData;
@@ -118,10 +118,15 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void ReloadLevel()
-    {
+    public void ReloadLevel() {
+
         FindObjectOfType<TimerManager>().Clear();
         SceneManager.LoadSceneAsync("SampleScene");
+    }
+
+    public void AddObstacleInstance(Obstacle obstacle, Vector3 position) {
+
+        obstacleInstances.Add(new ObstacleInstance(obstacle, position));
     }
 
     //metodo che serve ai bottoni per associare a ogni ostacolo la posizione in cui deve andare in modo da passare al 
