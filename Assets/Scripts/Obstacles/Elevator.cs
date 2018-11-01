@@ -23,7 +23,9 @@ public class Elevator : Obstacle
         transform.localPosition = new Vector3(pos.x, newY, pos.z);
     }
 
+    //chiamato al RunLevel()
     protected override void WakeUp()
     {
     }
+
 }

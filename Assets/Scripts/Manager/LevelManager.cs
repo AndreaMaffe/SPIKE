@@ -7,31 +7,6 @@ using System;
 
 
 
-public class ObstacleInstance
-{
-    private GameObject obstacle;
-    private Vector3 position;
-
-    public ObstacleInstance(GameObject obstacle, Vector3 position)
-    {
-        this.obstacle = obstacle;
-        this.position = position;
-    }
-
-    public void Reset()
-    {
-        obstacle.SetActive(true);
-        obstacle.transform.position = position;
-    }
-
-    public void Move(Vector3 newPosition)
-    {
-        obstacle.transform.position = newPosition;
-    }
-
-}
-
-
 public class LevelManager : MonoBehaviour
 {
 
@@ -45,9 +20,6 @@ public class LevelManager : MonoBehaviour
     //Tutti gli scriptable objects dei livelli
     public Level[] levels;
 
-    //tutti gli ostacoli posizionati nel livello
-    private List<ObstacleInstance> obstacleInstances;
-
     //[SerializeField]
     //public ObstacleData[] obstacleData;
     public GameObject obstacleButton;
@@ -56,7 +28,10 @@ public class LevelManager : MonoBehaviour
     public Transform buttonPanel;
 
     public delegate void OnRunLevel();
-    public static event OnRunLevel triggeredEvent;
+    public static event OnRunLevel runLevelEvent;
+
+    public delegate void OnRetryLevel();
+    public static event OnRetryLevel retryLevelEvent;
 
     //struct che associa ogni ostacolo alla posizione in cui puo' andare
     [System.Serializable]
@@ -75,7 +50,6 @@ public class LevelManager : MonoBehaviour
         //TODO: adesso allo start viene messo direttamente il primo livello ma in futuro và cambiato nel caso in cui viene selezionato subito un livello successivo dal menù
         indexLevel = 1;
         LoadLevel();
-        obstacleInstances = new List<ObstacleInstance>();
         state = LevelState.UNDER_CONSTRUCTION;
     }
 
@@ -107,30 +81,21 @@ public class LevelManager : MonoBehaviour
         if (state == LevelState.UNDER_CONSTRUCTION)
         {
             state = LevelState.RUNNING;
-            triggeredEvent();
+            runLevelEvent();
         }
 
         else if (state == LevelState.RUNNING)
         {
             state = LevelState.UNDER_CONSTRUCTION;
-
-            //resetta la posizione di tutti gli ostacoli in gioco
-            foreach (ObstacleInstance obstacleInstance in obstacleInstances)
-            {
-                obstacleInstance.Reset();
-            }
+            retryLevelEvent();
         }
+
     }
 
     public void ReloadLevel() {
 
         FindObjectOfType<TimerManager>().Clear();
         SceneManager.LoadSceneAsync("SampleScene");
-    }
-
-    public void AddObstacleInstance(GameObject obstacle, Vector3 position) {
-
-        obstacleInstances.Add(new ObstacleInstance(obstacle, position));
     }
 
     //metodo che serve ai bottoni per associare a ogni ostacolo la posizione in cui deve andare in modo da passare al 

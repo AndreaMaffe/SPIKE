@@ -16,6 +16,7 @@ public class Cannon : ObstacleWithTimer {
 
 	}
 
+    //chiamato al RunLevel()
     protected override void WakeUp() {
         StartTimer();
     }
@@ -32,4 +33,5 @@ public class Cannon : ObstacleWithTimer {
     {
         Shoot();
     }
+
 }

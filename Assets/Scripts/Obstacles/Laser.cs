@@ -87,6 +87,7 @@ public class Laser : ObstacleWithTimer {
 
     }
 
+    //chiamato al RunLevel()
     protected override void WakeUp()
     {
         readyToMove = true;
@@ -96,4 +97,5 @@ public class Laser : ObstacleWithTimer {
     {
         Shoot();
     }
+
 }

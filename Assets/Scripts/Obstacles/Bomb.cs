@@ -23,8 +23,9 @@ public class Bomb : ObstacleWithTimer {
 
     }
 
+    //chiamato al RunLevel()
     protected override void WakeUp() {
-
+ 
         StartTimer();
     }
 

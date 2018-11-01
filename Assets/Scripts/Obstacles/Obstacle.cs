@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Obstacle : MonoBehaviour
 {
     private bool active;
+    private Vector3 originalPosition;
 
     [Header("The position of the anchor that it can occupy")]
     public AnchorPointPosition anchorPosition;
@@ -14,8 +15,10 @@ public abstract class Obstacle : MonoBehaviour
 	// Use this for initialization
 	protected void Start () {
         active = false;
-        LevelManager.triggeredEvent += WakeUp;
-        LevelManager.triggeredEvent += SetActive;
+        originalPosition = this.transform.position;
+        LevelManager.runLevelEvent += WakeUp;
+        LevelManager.runLevelEvent += SetActive;
+        LevelManager.retryLevelEvent += Sleep;
         StartObstacle();
     }
 
@@ -25,6 +28,11 @@ public abstract class Obstacle : MonoBehaviour
             UpdateObstacle();
     }
 
+    public void Sleep()
+    {
+        active = false;
+        this.gameObject.transform.position = originalPosition;
+    }
     protected abstract void UpdateObstacle();
     protected abstract void StartObstacle();
     protected abstract void WakeUp();
