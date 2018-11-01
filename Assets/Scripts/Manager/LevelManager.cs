@@ -6,14 +6,44 @@ using UnityEngine.SceneManagement;
 using System;
 
 
+
+public class ObstacleInstance
+{
+    private Obstacle obstacle;
+    private Vector3 position;
+
+    public ObstacleInstance(Obstacle obstacle, Vector3 position) {
+        this.obstacle = obstacle;
+        this.position = position;
+    }
+
+    public void ResetPosition() {
+
+        obstacle.transform.position = position;
+    }
+
+    public void Move(Vector3 newPosition) {
+        obstacle.transform.position = newPosition;
+    }
+
+}
+
+
 public class LevelManager : MonoBehaviour
 {
+
+    private enum LevelState { RUNNING, UNDER_CONSTRUCTION };
+
     //numero del livello attuale partendo da 1
     private int indexLevel;
     private Level currentLevel;
+    private LevelState state;
 
     //Tutti gli scriptable objects dei livelli
     public Level[] levels;
+
+    //tutti gli ostacoli posizionati nel livello
+    public ObstacleInstance[] obstacleInstances;
 
     //[SerializeField]
     //public ObstacleData[] obstacleData;
@@ -42,6 +72,7 @@ public class LevelManager : MonoBehaviour
         //TODO: adesso allo start viene messo direttamente il primo livello ma in futuro và cambiato nel caso in cui viene selezionato subito un livello successivo dal menù
         indexLevel = 1;
         LoadLevel();
+        state = LevelState.UNDER_CONSTRUCTION;
     }
 
     void LoadLevel()
@@ -69,7 +100,22 @@ public class LevelManager : MonoBehaviour
 
     public void RunLevel()
     {
-        triggeredEvent();
+        if (state == LevelState.UNDER_CONSTRUCTION)
+        {
+            state = LevelState.RUNNING;
+            triggeredEvent();
+        }
+
+        else if (state == LevelState.RUNNING)
+        {
+            state = LevelState.UNDER_CONSTRUCTION;
+
+            //resetta la posizione di tutti gli ostacoli in gioco
+            foreach (ObstacleInstance obstacleInstance in obstacleInstances)
+            {
+                obstacleInstance.ResetPosition();
+            }
+        }
     }
 
     public void ReloadLevel()
