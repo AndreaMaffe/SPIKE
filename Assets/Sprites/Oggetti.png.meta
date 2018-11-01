@@ -1,7 +1,32 @@
 fileFormatVersion: 2
 guid: d23bf3b83eb888645899bf488fa3b5fe
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: AstaMetallo
+    21300002: PaloSx
+    21300004: LaserStart
+    21300006: PendoloCentro
+    21300008: RuotaDentataSupporto
+    21300010: RoutaDentata
+    21300012: Bandierina
+    21300014: PaloDx
+    21300016: Proiettile
+    21300018: Laser
+    21300020: Bomba
+    21300022: PendoloSupporto
+    21300024: Cannone
+    21300026: OmbraBomba
+    21300028: RuotaDentataCentro
+    21300030: Laser2
+    21300032: Player
+    21300034: PendoloTesta
+    21300036: Piattaforma
+    21300038: OmbraPlayer
+    21300040: LaserEnd
+    21300042: SaltoMolla
+    21300044: SaltoPiattaforma
+    21300046: SaltoSupporto
+    21300048: SaltoOmbra
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -40,7 +65,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -69,9 +94,828 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: AstaMetallo
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 890
+        width: 1542
+        height: 199
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 694, y: -99.5}
+        - {x: 771, y: -97.5}
+        - {x: 771, y: -17.5}
+        - {x: 674, y: 3.5}
+        - {x: 676, y: 95.5}
+        - {x: 671, y: 99.5}
+        - {x: 638, y: 99.5}
+        - {x: 638, y: -17.5}
+        - {x: 416, y: -16.5}
+        - {x: 99, y: -16.5}
+        - {x: 93, y: -17.5}
+        - {x: 76, y: -16.5}
+        - {x: -395, y: -15.5}
+        - {x: -637, y: -12.5}
+        - {x: -644, y: 99.5}
+        - {x: -678, y: 96.5}
+        - {x: -682, y: -10.5}
+        - {x: -771, y: -14.5}
+        - {x: -771, y: -96.5}
+        - {x: -770, y: -99.5}
+        - {x: -643, y: -99.5}
+        - {x: -643, y: -97.5}
+        - {x: 638, y: -97.5}
+        - {x: 638, y: -99.5}
+      physicsShape: []
+      tessellationDetail: 0.32
+      bones: []
+      spriteID: c46c68f0bee22eb4c848025f9a79336d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PaloSx
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 232
+        width: 154
+        height: 642
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 67, y: -224}
+        - {x: 61, y: -213}
+        - {x: 67, y: 39}
+        - {x: 70, y: 167}
+        - {x: 77, y: 194}
+        - {x: 77, y: 250}
+        - {x: 71, y: 266}
+        - {x: 42, y: 301}
+        - {x: 20, y: 317}
+        - {x: 10, y: 321}
+        - {x: -76, y: 321}
+        - {x: -77, y: 320}
+        - {x: -77, y: 277}
+        - {x: -76, y: 258}
+        - {x: -16, y: 260}
+        - {x: -1, y: 246}
+        - {x: -3, y: 208}
+        - {x: 7, y: 204}
+        - {x: 6, y: 3}
+        - {x: 4, y: -114}
+        - {x: 2, y: -208}
+        - {x: -10, y: -224}
+        - {x: -20, y: -268}
+        - {x: -77, y: -270}
+        - {x: -77, y: -320}
+        - {x: -76, y: -321}
+        - {x: 28, y: -321}
+        - {x: 49, y: -306}
+        - {x: 67, y: -271}
+        - {x: 69, y: -261}
+      physicsShape: []
+      tessellationDetail: 0.21
+      bones: []
+      spriteID: 3b60205c903596a458d65561bba6f6f2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LaserStart
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 774
+        width: 125
+        height: 75
+      alignment: 9
+      pivot: {x: 0.5425366, y: 0.7835783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 40.5, y: 37.5}
+        - {x: -28.5, y: 37.5}
+        - {x: -50.5, y: 28.5}
+        - {x: -62.5, y: 23.5}
+        - {x: -62.5, y: -11.5}
+        - {x: -58.5, y: -29.5}
+        - {x: -44.5, y: -32.5}
+        - {x: 3.5, y: -29.5}
+        - {x: 12.5, y: -37.5}
+        - {x: 38.5, y: -37.5}
+        - {x: 49.5, y: -16.5}
+        - {x: 62.5, y: -7.5}
+        - {x: 62.5, y: 20.5}
+      physicsShape: []
+      tessellationDetail: 0.19
+      bones: []
+      spriteID: 8253022d2fd8daf44a2c50d24ac612a7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PendoloCentro
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 790
+        width: 59
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07715c19fd2a9244aa8e640589311619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RuotaDentataSupporto
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 578
+        width: 29
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54571e308a2f568449f2fea6cf58f1e3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoutaDentata
+      rect:
+        serializedVersion: 2
+        x: 1361
+        y: 665
+        width: 197
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 98.5, y: 27.5}
+        - {x: 81.5, y: 71.5}
+        - {x: 60.5, y: 95.5}
+        - {x: 24.5, y: 98.5}
+        - {x: -27.5, y: 98.5}
+        - {x: -64.5, y: 81.5}
+        - {x: -84.5, y: 65.5}
+        - {x: -98.5, y: 22.5}
+        - {x: -98.5, y: -12.5}
+        - {x: -82.5, y: -55.5}
+        - {x: -64.5, y: -76.5}
+        - {x: -25.5, y: -98.5}
+        - {x: 27.5, y: -98.5}
+        - {x: 60.5, y: -87.5}
+        - {x: 89.5, y: -62.5}
+        - {x: 98.5, y: -40.5}
+      physicsShape: []
+      tessellationDetail: 0.16
+      bones: []
+      spriteID: fcb2d98f0a18f89469c54bb2f4e39302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bandierina
+      rect:
+        serializedVersion: 2
+        x: 1634
+        y: 677
+        width: 136
+        height: 173
+      alignment: 9
+      pivot: {x: 0.19280109, y: 0.092769556}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34, y: -55.5}
+        - {x: -34, y: 12.5}
+        - {x: -26, y: 13.5}
+        - {x: 34, y: 34.5}
+        - {x: 55, y: 36.5}
+        - {x: 68, y: 42.5}
+        - {x: 68, y: 52.5}
+        - {x: 62, y: 56.5}
+        - {x: -31, y: 86.5}
+        - {x: -50, y: 86.5}
+        - {x: -50, y: -34.5}
+        - {x: -48, y: -57.5}
+        - {x: -68, y: -60.5}
+        - {x: -68, y: -82.5}
+        - {x: -65, y: -84.5}
+        - {x: -61, y: -86.5}
+        - {x: 17, y: -86.5}
+        - {x: 20, y: -68.5}
+        - {x: 12, y: -61.5}
+        - {x: 0, y: -57.5}
+      physicsShape: []
+      tessellationDetail: 0.14
+      bones: []
+      spriteID: c0f442dbe78612e40a451db55b394797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PaloDx
+      rect:
+        serializedVersion: 2
+        x: 1858
+        y: 196
+        width: 154
+        height: 642
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 10, y: -224}
+        - {x: -4, y: -77}
+        - {x: -6, y: 132}
+        - {x: 1, y: 208}
+        - {x: 19, y: 262}
+        - {x: 74, y: 262}
+        - {x: 77, y: 268}
+        - {x: 77, y: 319}
+        - {x: 73, y: 321}
+        - {x: -7, y: 321}
+        - {x: -19, y: 317}
+        - {x: -34, y: 306}
+        - {x: -61, y: 279}
+        - {x: -77, y: 251}
+        - {x: -77, y: 203}
+        - {x: -72, y: 201}
+        - {x: -60, y: -212}
+        - {x: -67, y: -224}
+        - {x: -68, y: -262}
+        - {x: -47, y: -305}
+        - {x: -24, y: -321}
+        - {x: 73, y: -321}
+        - {x: 77, y: -320}
+        - {x: 77, y: -269}
+        - {x: 14, y: -267}
+      physicsShape: []
+      tessellationDetail: 0.19
+      bones: []
+      spriteID: b50fc0275b000c04ca83e77d56ce8338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Proiettile
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 667
+        width: 170
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13, y: 47}
+        - {x: 2, y: 42}
+        - {x: -68, y: 41}
+        - {x: -74, y: 34}
+        - {x: -85, y: 23}
+        - {x: -85, y: -33}
+        - {x: -68, y: -42}
+        - {x: 14, y: -45}
+        - {x: 19, y: -47}
+        - {x: 48, y: -47}
+        - {x: 85, y: -26}
+        - {x: 85, y: 26}
+        - {x: 49, y: 47}
+      physicsShape: []
+      tessellationDetail: 0.23
+      bones: []
+      spriteID: d79e140139e10504ca5b30f67762796a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laser
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 0
+        width: 104
+        height: 760
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 31, z: 0, w: 90}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a33c9ef6720f2048af7fb15b063d1d1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomba
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 635
+        width: 116
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 58, y: 23}
+        - {x: 58, y: 51}
+        - {x: 50, y: 63}
+        - {x: 37, y: 64}
+        - {x: 17, y: 64}
+        - {x: 16, y: 60}
+        - {x: 14, y: 48}
+        - {x: -20, y: 40}
+        - {x: -44, y: 30}
+        - {x: -58, y: 8}
+        - {x: -58, y: -36}
+        - {x: -39, y: -59}
+        - {x: -24, y: -64}
+        - {x: 6, y: -64}
+        - {x: 12, y: -62}
+        - {x: 28, y: -56}
+        - {x: 49, y: -29}
+      physicsShape: []
+      tessellationDetail: 0.2
+      bones: []
+      spriteID: 16ee4d9a1730af8458bb9a459cbd976f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PendoloSupporto
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 512
+        width: 29
+        height: 243
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e912adff958fc74894aa50eb0db8339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannone
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 493
+        width: 179
+        height: 124
+      alignment: 9
+      pivot: {x: 0.50348204, y: 0.4545736}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 30.5, y: 62}
+        - {x: -51.5, y: 51}
+        - {x: -64.5, y: 41}
+        - {x: -80.5, y: 27}
+        - {x: -89.5, y: 16}
+        - {x: -89.5, y: -24}
+        - {x: -64.5, y: -49}
+        - {x: -46.5, y: -57}
+        - {x: 6.5, y: -60}
+        - {x: 30.5, y: -62}
+        - {x: 75.5, y: -62}
+        - {x: 89.5, y: -51}
+        - {x: 89.5, y: 47}
+        - {x: 78.5, y: 62}
+      physicsShape: []
+      tessellationDetail: 0.23
+      bones: []
+      spriteID: e522a4afb5576b64db77a5ceccd595ad
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OmbraBomba
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 583
+        width: 86
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca584c9c646c12c48a9f56ab843e2dec
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RuotaDentataCentro
+      rect:
+        serializedVersion: 2
+        x: 1415
+        y: 547
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a883d4e6f9a584546bbf1fac56f249cd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laser2
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 296
+        width: 110
+        height: 157
+      alignment: 9
+      pivot: {x: 0.48777828, y: 0.8608307}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 45, y: 20}
+        - {x: 28, y: 61}
+        - {x: 14, y: 77}
+        - {x: -19, y: 77}
+        - {x: -24, y: 76}
+        - {x: -27, y: 62}
+        - {x: -35, y: 29}
+        - {x: -55, y: 8}
+        - {x: -55, y: -25}
+        - {x: -40, y: -36}
+        - {x: -15, y: -77}
+        - {x: 16, y: -77}
+        - {x: 46, y: -38}
+        - {x: 55, y: -28}
+        - {x: 55, y: 8}
+      - - {x: -17, y: 40}
+        - {x: -15, y: 37}
+        - {x: -16, y: 36}
+      - - {x: 13, y: 39}
+        - {x: 12, y: 37}
+        - {x: 10, y: 36}
+        - {x: 11, y: 36}
+      physicsShape: []
+      tessellationDetail: 0.25
+      bones: []
+      spriteID: 079468f52b8f24145ab1ffc6c89d2a66
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 385
+        width: 129
+        height: 173
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16.5, y: -76.5}
+        - {x: 21.5, y: -84.5}
+        - {x: 34.5, y: -80.5}
+        - {x: 35.5, y: -71.5}
+        - {x: 42.5, y: -33.5}
+        - {x: 46.5, y: -48.5}
+        - {x: 63.5, y: -49.5}
+        - {x: 64.5, y: -44.5}
+        - {x: 64.5, y: -6.5}
+        - {x: 46.5, y: 25.5}
+        - {x: 52.5, y: 47.5}
+        - {x: 46.5, y: 51.5}
+        - {x: 37.5, y: 77.5}
+        - {x: 27.5, y: 86.5}
+        - {x: -19.5, y: 86.5}
+        - {x: -27.5, y: 85.5}
+        - {x: -34.5, y: 69.5}
+        - {x: -39.5, y: 35.5}
+        - {x: -36.5, y: 14.5}
+        - {x: -57.5, y: 2.5}
+        - {x: -63.5, y: 3.5}
+        - {x: -64.5, y: -0.5}
+        - {x: -64.5, y: -40.5}
+        - {x: -51.5, y: -46.5}
+        - {x: -42.5, y: -47.5}
+        - {x: -18.5, y: -44.5}
+        - {x: -19.5, y: -74.5}
+        - {x: -14.5, y: -86.5}
+        - {x: -1.5, y: -86.5}
+        - {x: 3.5, y: -80.5}
+        - {x: 1.5, y: -47.5}
+        - {x: 18.5, y: -51.5}
+      physicsShape: []
+      tessellationDetail: 0.19
+      bones: []
+      spriteID: e45d2cdec96b4c348b44800758bb5d8c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PendoloTesta
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 362
+        width: 218
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 101, y: 57.5}
+        - {x: 93, y: 64.5}
+        - {x: 72, y: 64.5}
+        - {x: 53, y: 56.5}
+        - {x: 47, y: 53.5}
+        - {x: -42, y: 52.5}
+        - {x: -46, y: 55.5}
+        - {x: -68, y: 55.5}
+        - {x: -109, y: 35.5}
+        - {x: -109, y: -37.5}
+        - {x: -100, y: -41.5}
+        - {x: -63, y: -52.5}
+        - {x: -45, y: -52.5}
+        - {x: 0, y: -50.5}
+        - {x: 16, y: -53.5}
+        - {x: 60, y: -59.5}
+        - {x: 67, y: -64.5}
+        - {x: 93, y: -64.5}
+        - {x: 106, y: -53.5}
+        - {x: 109, y: -44.5}
+        - {x: 109, y: 35.5}
+      physicsShape: []
+      tessellationDetail: 0.16
+      bones: []
+      spriteID: 73930e39f94d34146985b1851727763d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piattaforma
+      rect:
+        serializedVersion: 2
+        x: 1240
+        y: 184
+        width: 392
+        height: 304
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 157, y: -88}
+        - {x: 158, y: 0}
+        - {x: 196, y: 83}
+        - {x: 196, y: 152}
+        - {x: -194, y: 152}
+        - {x: -196, y: 91}
+        - {x: -158, y: 86}
+        - {x: -156, y: -86}
+        - {x: -189, y: -84}
+        - {x: -196, y: -99}
+        - {x: -196, y: -139}
+        - {x: -180, y: -148}
+        - {x: -107, y: -152}
+        - {x: 155, y: -152}
+        - {x: 194, y: -135}
+        - {x: 193, y: -113}
+        - {x: 180, y: -92}
+      physicsShape: []
+      tessellationDetail: 0.19
+      bones: []
+      spriteID: 9f646d118af37934fbbb954cd31e0976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OmbraPlayer
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 340
+        width: 91
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4270edfbd2381764ab18eb5fae0428a1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LaserEnd
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 120
+        width: 220
+        height: 125
+      alignment: 9
+      pivot: {x: 0.5103578, y: 0.24477942}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9dd123d5f542d54084d7953d14a4e78
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaltoMolla
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 180
+        width: 97
+        height: 140
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.5, y: -53}
+        - {x: 12.5, y: -55}
+        - {x: 24.5, y: -46}
+        - {x: 15.5, y: -29}
+        - {x: 1.5, y: -25}
+        - {x: -13.5, y: -21}
+        - {x: -1.5, y: -24}
+        - {x: 4.5, y: -25}
+        - {x: 23.5, y: -27}
+        - {x: 48.5, y: -1}
+        - {x: 48.5, y: 40}
+        - {x: 35.5, y: 56}
+        - {x: 18.5, y: 70}
+        - {x: -13.5, y: 70}
+        - {x: -45.5, y: 34}
+        - {x: -48.5, y: 16}
+        - {x: -48.5, y: -47}
+        - {x: -18.5, y: -70}
+        - {x: -6.5, y: -70}
+        - {x: -3.5, y: -66}
+        - {x: -4.5, y: -61}
+        - {x: -5.5, y: -58}
+      - - {x: -19.5, y: 3}
+        - {x: -20.5, y: 4}
+        - {x: -17.5, y: 4}
+        - {x: -12.5, y: 1}
+        - {x: -8.5, y: 1}
+        - {x: -14.5, y: 3}
+      - - {x: -10.5, y: 24}
+        - {x: 14.5, y: 20}
+        - {x: 16.5, y: 20}
+        - {x: 11.5, y: 21}
+        - {x: 10.5, y: 22}
+      physicsShape: []
+      tessellationDetail: 0.16
+      bones: []
+      spriteID: d5a5840fee98b67468ce4f5830a9a7a2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaltoPiattaforma
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 225
+        width: 282
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7595050fc87b1e4daf705d68b2b7784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaltoSupporto
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 127
+        width: 39
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf654976eeba4f844b98bd3a1c9f0cb8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaltoOmbra
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 86
+        width: 267
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd593ca17fcc2e5459da35cd90ef35bc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
