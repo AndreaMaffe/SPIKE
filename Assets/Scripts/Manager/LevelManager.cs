@@ -5,26 +5,25 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 
+
 public class LevelManager : MonoBehaviour
 {
-    //Tutti gli scriptable objects dei livelli
-    public Level[] levels;
     //numero del livello attuale partendo da 1
     private int indexLevel;
     private Level currentLevel;
 
-    private bool levelStarted { get; set; } //true se il giocatore ha premuto il tasto play
+    //Tutti gli scriptable objects dei livelli
+    public Level[] levels;
 
     //[SerializeField]
     //public ObstacleData[] obstacleData;
-
     public GameObject obstacleButton;
     public int buttonInBetweenSpace;
     public int buttonWidth;
     public Transform buttonPanel;
 
-    public delegate void OnStartLevel();
-    public static event OnStartLevel triggeredEvent;
+    public delegate void OnRunLevel();
+    public static event OnRunLevel triggeredEvent;
 
     //struct che associa ogni ostacolo alla posizione in cui puo' andare
     [System.Serializable]
@@ -68,13 +67,14 @@ public class LevelManager : MonoBehaviour
         return levels[0]; //!!!!!Roba HARDCODED, devo trovare una soluzione per rendere visibile currentLevel (inizializzato) anche agli altri script
     }
 
-    public void StartLevel()
+    public void RunLevel()
     {
         triggeredEvent();
     }
 
-    public void RestartLevel()
+    public void ReloadLevel()
     {
+        FindObjectOfType<TimerManager>().Clear();
         SceneManager.LoadSceneAsync("SampleScene");
     }
 

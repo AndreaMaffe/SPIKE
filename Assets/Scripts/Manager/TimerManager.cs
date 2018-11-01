@@ -26,9 +26,10 @@ public class TimerManager : MonoBehaviour
         return timer;
     }
 
-    public void RemoveTimer(Timer timer) {
-        allTimers.Remove(timer);
+    public void Clear() {
+        allTimers.Clear();
     }
+
 }
 
 public class Timer

@@ -97,4 +97,9 @@ public class Laser : Obstacle {
     {
 
     }
+
+    private void OnDestroy()
+    {
+        timer.triggeredEvent -= Shoot;
+    }
 }

@@ -73,4 +73,8 @@ public class Bomb : Obstacle {
     protected override void UpdateObstacle()
     {
     }
+
+    private void OnDestroy() {
+        timer.triggeredEvent -= Explode;
+    }
 }

@@ -35,4 +35,9 @@ public class Cannon : Obstacle {
         Instantiate(bullet, this.transform.position, this.transform.rotation);
         timer.Start();
     }
+
+    private void OnDestroy()
+    {
+        timer.triggeredEvent -= Shoot;
+    }
 }

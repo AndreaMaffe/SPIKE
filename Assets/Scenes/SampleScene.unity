@@ -1661,7 +1661,7 @@ GameObject:
   - component: {fileID: 1478288963}
   - component: {fileID: 1478288962}
   m_Layer: 5
-  m_Name: PlayLevel
+  m_Name: RunLevelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1725,7 +1725,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1588238022}
-        m_MethodName: StartLevel
+        m_MethodName: RunLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2240,7 +2240,7 @@ GameObject:
   - component: {fileID: 1917601719}
   - component: {fileID: 1917601718}
   m_Layer: 5
-  m_Name: ReloadLevel
+  m_Name: ReloadLevelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2304,7 +2304,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1588238022}
-        m_MethodName: RestartLevel
+        m_MethodName: ReloadLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
