@@ -72,6 +72,7 @@ MonoBehaviour:
   edge: 1
   occupied: 0
   spriteRenderer: {fileID: 212383200616185896}
+  circleCollider: {fileID: 58484170439653422}
 --- !u!212 &212383200616185896
 SpriteRenderer:
   m_ObjectHideFlags: 1

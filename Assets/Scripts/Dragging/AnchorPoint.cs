@@ -13,6 +13,7 @@ public class AnchorPoint : MonoBehaviour {
     private bool occupied;
 
     public SpriteRenderer spriteRenderer;
+    public CircleCollider2D circleCollider;
 
 
     private void Start()
@@ -38,8 +39,13 @@ public class AnchorPoint : MonoBehaviour {
 
     public void SetOccupied(bool occupied) {
         this.occupied = occupied;
-        if (occupied)
+        if (occupied) {
             spriteRenderer.enabled = false;
+            circleCollider.enabled = false;
+        }
+        else
+            circleCollider.enabled = true;
+
     }
 
     public bool GetOccupied() {
