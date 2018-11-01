@@ -13,8 +13,11 @@ public class DraggableObstacle : MonoBehaviour
 
     Vector3 positionBeforeSnapping;
 
+    int layerMask;
+
     private void Start()
     {
+        layerMask = LayerMask.GetMask("PuntoAncoraggio"); ;
         spriteRenderer = GetComponent<SpriteRenderer>();
         ChangeSpriteOpacity();
     }
@@ -33,15 +36,29 @@ public class DraggableObstacle : MonoBehaviour
 
     public void UpdatePosition(Vector3 newPosition)
     {
-        if (!snapped)
-            transform.position = newPosition;
-        else if (snapped)
-            if (Vector3.Distance(newPosition, positionBeforeSnapping) >= removeSnapDistance)
+        //spara un raycast nella posizione leggermente sopra al tocco del dito
+        RaycastHit2D hit = Physics2D.Raycast(newPosition, Vector2.zero, 10000, layerMask);
+
+        //se sono sopra un punto di ancoraggio
+        if (hit.collider != null)
+        {
+            if (position == hit.collider.GetComponent<AnchorPoint>().GetPosition() && !hit.collider.GetComponent<AnchorPoint>().GetOccupied())
             {
+                //aggiungi l'ancor point alla reference
+                anchorPointSnapped = hit.collider.gameObject;
+                snapped = true;
+                //cambia l'opacita' della sprite
                 ChangeSpriteOpacity();
-                snapped = false;
-                transform.position = newPosition;
+                //snappa alla posizione del agmeobject colpito
+                transform.position = hit.collider.gameObject.transform.position;
             }
+        }
+
+        else {
+            snapped = false;
+            ChangeSpriteOpacity();
+            transform.position = newPosition;
+        }
     }
 
     void ChangeSpriteOpacity()
@@ -50,25 +67,6 @@ public class DraggableObstacle : MonoBehaviour
             spriteRenderer.color = new Color32(255, 255, 255, 255);
         else
             spriteRenderer.color = new Color32(255, 255, 255, 120);
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "PuntoAncoraggio")
-        {
-            if (position == collision.GetComponent<AnchorPoint>().GetPosition() && !collision.GetComponent<AnchorPoint>().GetOccupied())
-            {
-                //aggiungi l'oggetto alla lista di oggetti
-                anchorPointSnapped = collision.gameObject;
-                //salva la posizione di quando hai snappato
-                positionBeforeSnapping = transform.position;
-                snapped = true;
-                //cambia l'opacita' della sprite
-                ChangeSpriteOpacity();
-                transform.position = collision.gameObject.transform.position;
-            }
-        }
     }
 
 }
