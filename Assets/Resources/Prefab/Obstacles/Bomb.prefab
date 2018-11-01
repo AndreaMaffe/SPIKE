@@ -151,12 +151,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 2
   anchorSlotOccupied: 1
+  timerTime: 2
   explosionForce: 80
   explosionInnerRadius: 2
   explosionOuterRadius: 4
   innerRadius: {fileID: 4549167352771426}
   outerRadius: {fileID: 4094407001567790}
-  timeBeforeExplosion: 2
   explosionParticlePrefab: {fileID: 1452723846864288, guid: 9f6c10db90382c44f84a7894dae7d0fa,
     type: 2}
 --- !u!212 &212198715697276732

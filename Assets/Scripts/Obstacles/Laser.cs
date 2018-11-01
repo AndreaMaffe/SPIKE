@@ -2,37 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser : Obstacle {
+public class Laser : ObstacleWithTimer {
 
-    private Timer timer;
-    private bool readyToFire;
+    private bool readyToMove; //true se il laser è pronto a muoversi, false se deve "riposarsi" dopo lo sparo precedente
+    private GameObject objectToFollow;
+    private Timer timerToRecover; 
 
-    public GameObject objectToFollow;
     public float deceleration;
-    public float rateOfFire;
-    [Header("Period of inactivity after shooting") ]
+    [Tooltip("Period of inactivity after shooting") ]
     public float timeToRecover;
 
     public Transform shootingPoint;
     public LineRenderer laser;
 
     //start apposito per gli ostacoli, usare questo anziché Start().
-    protected override void StartObstacle() {
+    protected override void StartObstacleWithTimer() {
 
-        readyToFire = true;
-
-        //crea il timer nel TimerManager
-        timer = FindObjectOfType<TimerManager>().AddTimer(rateOfFire);
+        readyToMove = false;
         objectToFollow = GameObject.FindGameObjectWithTag("Player");
+        timerToRecover = FindObjectOfType<TimerManager>().AddTimer(timeToRecover);
 
-        //associa lo scadere del timer al metodo Shoot()
-        timer.triggeredEvent += Shoot;
-	}
+    }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
-    protected override void UpdateObstacle () {
+    protected override void UpdateObstacleWithTimer () {
 
-        if (readyToFire)
+        if (readyToMove)
         {
             //calcola lo spostamento verso il player in base alla distanza da quest'ultimo
             float deltaXPosition = (objectToFollow.transform.position.x - this.transform.position.x) / deceleration;
@@ -48,7 +43,7 @@ public class Laser : Obstacle {
             //se il laser è allineato, avvia il conto alla rovescia per lo sparo
             if (Mathf.Abs(objectToFollow.transform.position.x - this.transform.position.x) < 0.1)
             {
-                timer.Start();
+                StartTimer();
             }
         }
 	}
@@ -67,12 +62,11 @@ public class Laser : Obstacle {
         //if (objectHit.collider.gameObject.tag == "Player")
             //Destroy(objectHit.collider.gameObject);
 
-        readyToFire = false;
+        readyToMove = false;
 
-        //fa partire un timer al termine del quale readyToFire è rimesso a true e il timer può muoversi di nuovo
-        Timer timerToRecover = FindObjectOfType<TimerManager>().AddTimer(timeToRecover);
+        //fa partire un timer al termine del quale readyToMove è rimesso a true e il timer può muoversi di nuovo
+
         timerToRecover.triggeredEvent += Restart;
-        timerToRecover.triggeredEvent += ClearLaser;
         timerToRecover.Start();
 
     }
@@ -84,22 +78,22 @@ public class Laser : Obstacle {
         laser.SetPosition(1, hitPoint);
     }
 
-    void ClearLaser() {
-        laser.positionCount = 0;
-    }
-
+    //chiamato quando il laser si è "riposato" ed è pronto a sparare di nuovo
     void Restart() {
 
-        readyToFire = true;
+        readyToMove = true;
+        laser.positionCount = 0;
+        timerToRecover.triggeredEvent -= Restart; //per evitare bug
+
     }
 
     protected override void WakeUp()
     {
-
+        readyToMove = true;
     }
 
-    private void OnDestroy()
+    protected override void OnTimerEnd()
     {
-        timer.triggeredEvent -= Shoot;
+        Shoot();
     }
 }

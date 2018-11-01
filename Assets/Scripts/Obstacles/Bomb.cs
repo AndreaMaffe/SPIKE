@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : Obstacle {
-
-    private Timer timer;
+public class Bomb : ObstacleWithTimer {
 
     public float explosionForce;
     public float explosionInnerRadius;
@@ -13,28 +11,21 @@ public class Bomb : Obstacle {
     public Transform innerRadius;
     public Transform outerRadius;
 
-    public float timeBeforeExplosion;
-
     public GameObject explosionParticlePrefab;
 
 
     //start apposito per gli ostacoli, usare questo anziché Start().
-    protected override void StartObstacle() {
+    protected override void StartObstacleWithTimer() {
 
         //scala le sprite dei cerchi
         innerRadius.localScale = new Vector3(innerRadius.localScale.x /2 * explosionInnerRadius, innerRadius.localScale.y /2 * explosionInnerRadius, 1);
         outerRadius.localScale = new Vector3(outerRadius.localScale.x /4 * explosionOuterRadius, outerRadius.localScale.y /4 * explosionOuterRadius, 1);
 
-        //crea il timer e lo associa al metodo Explode()
-        timer = FindObjectOfType<TimerManager>().AddTimer(timeBeforeExplosion);
-        timer.triggeredEvent += Explode;
-
     }
 
     protected override void WakeUp() {
 
-        //avvia il timer
-        timer.Start();
+        StartTimer();
     }
 
     void Explode() {
@@ -65,16 +56,19 @@ public class Bomb : Obstacle {
         }
         GameObject explosionParticleInstance = Instantiate(explosionParticlePrefab, transform.position, Quaternion.identity);
         Destroy(explosionParticleInstance.gameObject, 1.5f);
+
         //destroy the bomb
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
-    protected override void UpdateObstacle()
+    protected override void UpdateObstacleWithTimer()
     {
     }
 
-    private void OnDestroy() {
-        timer.triggeredEvent -= Explode;
+    //
+    protected override void OnTimerEnd()
+    {
+        Explode();
     }
 }
