@@ -9,20 +9,23 @@ using System;
 
 public class ObstacleInstance
 {
-    private Obstacle obstacle;
+    private GameObject obstacle;
     private Vector3 position;
 
-    public ObstacleInstance(Obstacle obstacle, Vector3 position) {
+    public ObstacleInstance(GameObject obstacle, Vector3 position)
+    {
         this.obstacle = obstacle;
         this.position = position;
     }
 
-    public void ResetPosition() {
-
+    public void Reset()
+    {
+        obstacle.SetActive(true);
         obstacle.transform.position = position;
     }
 
-    public void Move(Vector3 newPosition) {
+    public void Move(Vector3 newPosition)
+    {
         obstacle.transform.position = newPosition;
     }
 
@@ -72,6 +75,7 @@ public class LevelManager : MonoBehaviour
         //TODO: adesso allo start viene messo direttamente il primo livello ma in futuro và cambiato nel caso in cui viene selezionato subito un livello successivo dal menù
         indexLevel = 1;
         LoadLevel();
+        obstacleInstances = new List<ObstacleInstance>();
         state = LevelState.UNDER_CONSTRUCTION;
     }
 
@@ -113,7 +117,7 @@ public class LevelManager : MonoBehaviour
             //resetta la posizione di tutti gli ostacoli in gioco
             foreach (ObstacleInstance obstacleInstance in obstacleInstances)
             {
-                obstacleInstance.ResetPosition();
+                obstacleInstance.Reset();
             }
         }
     }
@@ -124,7 +128,7 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadSceneAsync("SampleScene");
     }
 
-    public void AddObstacleInstance(Obstacle obstacle, Vector3 position) {
+    public void AddObstacleInstance(GameObject obstacle, Vector3 position) {
 
         obstacleInstances.Add(new ObstacleInstance(obstacle, position));
     }
