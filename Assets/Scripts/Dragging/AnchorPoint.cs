@@ -20,12 +20,15 @@ public class AnchorPoint : MonoBehaviour {
     {
         //sottoscrizione all'evento lanciato dai bottoni per aggiornare la visibilita' degli anchor points
         ObstacleButton.onUpdateAnchorPoint += UpdateAnchorPointSprite;
+        LevelManager.runLevelEvent += HideAnchorPoint;
         spriteRenderer.enabled = false;
     }
 
     private void OnDisable()
     {
         ObstacleButton.onUpdateAnchorPoint -= UpdateAnchorPointSprite;
+        LevelManager.runLevelEvent -= HideAnchorPoint;
+
     }
 
     // abilita o disabilita lo sprite renderer a seconda che la posizione sia occupata e che tu stai trascinando un ostacolo del suo tipo
@@ -35,6 +38,10 @@ public class AnchorPoint : MonoBehaviour {
             spriteRenderer.enabled = true;
         else
             spriteRenderer.enabled = false;
+    }
+
+    void HideAnchorPoint() {
+        spriteRenderer.enabled = false;
     }
 
     public void SetOccupied(bool occupied) {
