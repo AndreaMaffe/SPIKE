@@ -24,6 +24,11 @@ public class ObstacleButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     public delegate void UpdateAnchorPoint(AnchorPointPosition position);
     public static event UpdateAnchorPoint onUpdateAnchorPoint;
 
+    public delegate void DraggingObstacle();
+    public static event DraggingObstacle onDraggingObstacle;
+    public delegate void EndObstacleDrag();
+    public static event EndObstacleDrag onEndDraggingObstacle;
+
     //metodo invocato dal level manager quando crea il bottone per dirgli che tipo di ostacolo sta tenendo
     public void AssignObstacleTypeAndAmount(ObstacleType type, int amount) {
         levelManager = GameObject.FindObjectOfType<LevelManager>();
@@ -51,7 +56,8 @@ public class ObstacleButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         //se ho abbastanza ostacoli da piazzare
         if (obstacleAmount > 0) {       
             SpawnDraggableObjectInstanceAndGetComponents(eventData);
-            AssignPositionWhereDraggableObstacleCanGo();       
+            AssignPositionWhereDraggableObstacleCanGo();
+            onDraggingObstacle();
         }      
     }
 
@@ -75,6 +81,8 @@ public class ObstacleButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
             //altrimenti distruggi il prefab e basta
             else
                 Destroy(draggableObstacleInstance.gameObject);
+
+            onEndDraggingObstacle();
         }
     }
 
