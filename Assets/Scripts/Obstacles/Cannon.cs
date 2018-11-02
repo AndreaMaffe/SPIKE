@@ -12,6 +12,11 @@ public class Cannon : ObstacleWithTimer {
     //lista per tenere traccia dei proiettili sparati e distruggerli al RetryLevel()
     private List<GameObject> bullets;
 
+    public Animator animator;
+    public GameObject particleExplosion;
+    //offset rispetto all'origine dal quale parte il proiettile e le particle del'esplosione
+    public Vector3 shootingOffset;
+
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
@@ -34,8 +39,11 @@ public class Cannon : ObstacleWithTimer {
     {
         if (active)
         {
+            animator.SetTrigger("Shoot");
+            GameObject particle = Instantiate(particleExplosion, transform.position + shootingOffset * direction, Quaternion.identity);
+            Destroy(particle.gameObject, 1f);
             //spara un colpo e aggiungilo alla List bullets
-            bullets.Add(Instantiate(bullet, this.transform.position, this.transform.rotation));
+            bullets.Add(Instantiate(bullet, this.transform.position + shootingOffset * direction, this.transform.rotation));
 
             StartTimer();
         }
