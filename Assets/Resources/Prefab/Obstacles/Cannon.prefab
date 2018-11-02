@@ -54,8 +54,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 1
   anchorSlotOccupied: 1
-  timerTime: 3
   bullet: {fileID: 1318106213304226, guid: a67531d9f8a947148a80a7ea31003933, type: 2}
+  rateOfFire: 2
 --- !u!212 &212952526353875894
 SpriteRenderer:
   m_ObjectHideFlags: 1

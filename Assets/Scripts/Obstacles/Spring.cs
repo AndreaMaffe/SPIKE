@@ -35,6 +35,15 @@ public class Spring : Obstacle {
 
     }
 
-    protected override void WakeUp() {
+    //chiamato al RunLevel()
+    protected override void WakeUp()
+    {
+
+    }
+
+    //chiamato al RetryLevel()
+    protected override void Sleep()
+    {
+
     }
 }

@@ -18,9 +18,19 @@ public class Pendolum : Obstacle {
     {
     }
 
+    //chiamato al RunLevel()
     protected override void WakeUp()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(new Vector3(oscillation, 0, 0));
+    }
+
+    //chiamato al RetryLevel()
+    protected override void Sleep()
+    {
+        ResetPosition();
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0;
+        rb.rotation = 0;
     }
 }

@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 2
   anchorSlotOccupied: 1
-  timerTime: 2
+  timeBeforeExplosion: 2
   explosionForce: 80
   explosionInnerRadius: 2
   explosionOuterRadius: 4

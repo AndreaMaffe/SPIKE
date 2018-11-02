@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour {
         levelManager = FindObjectOfType<LevelManager>();
         timerManager = FindObjectOfType<TimerManager>();
        
-        LevelManager.triggeredEvent += StartMovement;
+        LevelManager.runLevelEvent += StartMovement;
     }
   
 

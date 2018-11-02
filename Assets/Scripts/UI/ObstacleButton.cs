@@ -92,7 +92,6 @@ public class ObstacleButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
         GameObject obstaclePrefab = Instantiate(Resources.Load<GameObject>("Prefab/Obstacles/" + obstacleType.ToString()));
         obstaclePrefab.transform.position = draggableObstacleInstance.transform.position;
-        FindObjectOfType<LevelManager>().AddObstacleInstance(obstaclePrefab, obstaclePrefab.transform.position);
         
     }
 

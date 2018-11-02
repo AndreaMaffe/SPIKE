@@ -9,6 +9,8 @@ public class Elevator : Obstacle
     public float amplitude;
 
 
+
+
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
@@ -23,7 +25,21 @@ public class Elevator : Obstacle
         transform.localPosition = new Vector3(pos.x, newY, pos.z);
     }
 
+    //chiamato al RunLevel()
     protected override void WakeUp()
     {
+        //permette di entrare nell'UpdateObstacle()
+        SetActive(true);
     }
+
+    //chiamato al RetryLevel()
+    protected override void Sleep()
+    {
+        //impedisce di entrare nell'UpdateObstacle()
+        SetActive(false);
+
+        //risetta la posizione iniziale
+        ResetPosition();
+    }
+
 }
