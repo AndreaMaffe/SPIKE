@@ -1628,7 +1628,7 @@ GameObject:
   - component: {fileID: 1478288963}
   - component: {fileID: 1478288962}
   m_Layer: 5
-  m_Name: RunLevelButton
+  m_Name: ChangeLevelStateButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1692,7 +1692,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1588238022}
-        m_MethodName: RunLevel
+        m_MethodName: ChangeLevelState
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
