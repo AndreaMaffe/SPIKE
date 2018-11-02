@@ -448,6 +448,48 @@ MonoBehaviour:
   alignment: 0
   position: 0
   startingPosition: {fileID: 1252683321}
+--- !u!1001 &426788960
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4080695675703508, guid: 63cf44a01a01c0e4bae4af2e517ba5e4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 5.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080695675703508, guid: 63cf44a01a01c0e4bae4af2e517ba5e4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080695675703508, guid: 63cf44a01a01c0e4bae4af2e517ba5e4, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080695675703508, guid: 63cf44a01a01c0e4bae4af2e517ba5e4, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080695675703508, guid: 63cf44a01a01c0e4bae4af2e517ba5e4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080695675703508, guid: 63cf44a01a01c0e4bae4af2e517ba5e4, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080695675703508, guid: 63cf44a01a01c0e4bae4af2e517ba5e4, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080695675703508, guid: 63cf44a01a01c0e4bae4af2e517ba5e4, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 63cf44a01a01c0e4bae4af2e517ba5e4, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &523658732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1727,8 +1769,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f797705af24349d49b4ca9d3f4774c7d, type: 2}
   obstacleButton: {fileID: 1352755739588244, guid: 9a5925cccbb7d214395c4fee17475e2e,
     type: 2}
-  buttonInBetweenSpace: 30
-  buttonWidth: 130
+  buttonInBetweenSpace: 40
+  buttonWidth: 169
   buttonPanel: {fileID: 981310882}
   obstaclePositionData:
   - obstacle: 0
