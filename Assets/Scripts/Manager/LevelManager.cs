@@ -76,17 +76,21 @@ public class LevelManager : MonoBehaviour
         return levels[0]; //!!!!!Roba HARDCODED, devo trovare una soluzione per rendere visibile currentLevel (inizializzato) anche agli altri script
     }
 
-    public void RunLevel()
+    public void ChangeLevelState()
     {
         if (state == LevelState.UNDER_CONSTRUCTION)
         {
             state = LevelState.RUNNING;
+
+            //attiva tutti gli eventi associati al RunLevel() (come i WakeUp() degli ostacoli)
             runLevelEvent();
         }
 
         else if (state == LevelState.RUNNING)
         {
             state = LevelState.UNDER_CONSTRUCTION;
+
+            //attiva tutti gli eventi associati al RetryLevel() (come gli Sleep() degli ostacoli)
             retryLevelEvent();
         }
 
@@ -96,6 +100,7 @@ public class LevelManager : MonoBehaviour
 
         FindObjectOfType<TimerManager>().Clear();
         SceneManager.LoadSceneAsync("SampleScene");
+        state = LevelState.UNDER_CONSTRUCTION;
     }
 
     //metodo che serve ai bottoni per associare a ogni ostacolo la posizione in cui deve andare in modo da passare al 
