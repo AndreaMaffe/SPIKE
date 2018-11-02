@@ -14,7 +14,10 @@ public class Laser : ObstacleWithTimer {
     public float deceleration;
 
     public Transform shootingPoint;
-    public LineRenderer laser;
+    public GameObject laserStartParticle;
+    public GameObject laserLight;
+
+    public LayerMask layer;
 
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle() {
@@ -25,7 +28,7 @@ public class Laser : ObstacleWithTimer {
 
         objectToFollow = GameObject.FindGameObjectWithTag("Player");
         timerToRecover = FindObjectOfType<TimerManager>().AddTimer(timeToRecover);
-
+        timerToRecover.triggeredEvent += Restart;
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
@@ -60,33 +63,35 @@ public class Laser : ObstacleWithTimer {
 
     void Shoot() {
 
-        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, new Vector2(0, -1), 10);
+        readyToMove = false;
+        RaycastHit2D hit = Physics2D.Raycast(shootingPoint.position, Vector2.down, layer);
+        Debug.Log(hit.collider.name);
 
         DrawLaser(hit.point);
 
         if (hit.collider.gameObject.tag == "Player")
-            //Destroy(hit.collider.gameObject, 0.5f);  //CREA BUG
-
+            //Destroy(hit.collider.gameObject, 0.5f); 
+        
         //fa partire un timer al termine del quale readyToMove è rimesso a true e il timer può muoversi di nuovo
-        timerToRecover.triggeredEvent += Restart;
         timerToRecover.Start();
-
     }
 
-    //Metodo che riempie i vertici del line renderer
+    //Metodo fa sparare il laser
     void DrawLaser(Vector3 hitPoint) {
-        laser.positionCount = 2;
-        laser.SetPosition(0, shootingPoint.position);
-        laser.SetPosition(1, hitPoint);
+        laserStartParticle.GetComponent<ParticleSystem>().Play();
+        laserLight.SetActive(true);
+        SpriteRenderer renderer = laserLight.GetComponent<SpriteRenderer>();
+        renderer.size = new Vector2(renderer.size.x, Vector3.Distance(laserLight.transform.position, hitPoint));
+        Debug.Log(hitPoint);
+        
     }
 
     //chiamato quando il laser si è "riposato" ed è pronto a sparare di nuovo
     void Restart()
     {
+        laserStartParticle.GetComponent<ParticleSystem>().Stop();
+        laserLight.SetActive(false);
         readyToMove = true;
-        laser.positionCount = 0;
-        timerToRecover.triggeredEvent -= Restart; //per evitare bug
-
     }
 
     //chiamato al RunLevel()
@@ -107,5 +112,10 @@ public class Laser : ObstacleWithTimer {
 
         //risetta la posizione iniziale
         ResetPosition();
+    }
+
+    private void OnDisable()
+    {
+        timerToRecover.triggeredEvent -= Restart;
     }
 }
