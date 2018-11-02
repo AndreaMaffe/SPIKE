@@ -47,6 +47,7 @@ public class Laser : ObstacleWithTimer {
             //se il laser è allineato, avvia il conto alla rovescia per lo sparo
             if (Mathf.Abs(objectToFollow.transform.position.x - this.transform.position.x) < 0.1)
             {
+
                 StartTimer();
             }
         }
@@ -59,11 +60,12 @@ public class Laser : ObstacleWithTimer {
 
     void Shoot() {
 
-        RaycastHit2D objectHit = Physics2D.Raycast(this.transform.position, new Vector2(0, -1), 10);
+        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, new Vector2(0, -1), 10);
 
-        DrawLaser(objectHit.point);
+        DrawLaser(hit.point);
 
-        readyToMove = false;
+        if (hit.collider.gameObject.tag == "Player")
+            //Destroy(hit.collider.gameObject, 0.5f);  //CREA BUG
 
         //fa partire un timer al termine del quale readyToMove è rimesso a true e il timer può muoversi di nuovo
         timerToRecover.triggeredEvent += Restart;

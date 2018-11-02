@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
 
     public enum PlayerState { Stop, Run, Jump };
 
@@ -16,7 +17,7 @@ public class PlayerMovement : MonoBehaviour {
     private PlayerState state;
 
     public bool onGround;
-    
+
     //variabile che contiene lo scriptable object del livello attuale chiesto al level manager
     private Level currentLevel;
     private LevelManager levelManager;
@@ -29,10 +30,10 @@ public class PlayerMovement : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         levelManager = FindObjectOfType<LevelManager>();
         timerManager = FindObjectOfType<TimerManager>();
-       
+
         LevelManager.runLevelEvent += StartMovement;
     }
-  
+
 
     public void StartMovement()
     {
@@ -44,13 +45,15 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Update()
     {
-        if (state == PlayerState.Run) {
+        if (state == PlayerState.Run)
+        {
             if (rb.velocity.x <= maxVelocity)
                 rb.AddForce(Vector2.left * acceleration);
             else
                 rb.velocity = new Vector2(maxVelocity, rb.velocity.y);
         }
-        if (state == PlayerState.Jump || onGround) {
+        if (state == PlayerState.Jump || onGround)
+        {
             Jump();
             state = PlayerState.Run;
         }
@@ -61,22 +64,25 @@ public class PlayerMovement : MonoBehaviour {
         rb.velocity = new Vector2(maxVelocity, 0);
     }
 
-    public void StopMovement() {
+    public void StopMovement()
+    {
         rb.velocity = new Vector2(0, rb.velocity.y);
     }
 
-    public void Jump() {
+    public void Jump()
+    {
         if (onGround)
             rb.AddForce(Vector2.up * jumpStrenght, ForceMode2D.Impulse);
     }
 
 
-    void StartTimersForJumpingAndStopping() {
+    void StartTimersForJumpingAndStopping()
+    {
         //per ogni timer contenuto nello scriptable Object del livello corrente    
         // per ora crea un solo timer che salta dopo un secondo
 
         int i = 0;
-        foreach(MovementData movementData in currentLevel.movementDatas)
+        foreach (MovementData movementData in currentLevel.movementDatas)
         {
             Timer timer = timerManager.AddTimer(movementData.startTime);
             switch (movementData.type.ToString())
@@ -98,7 +104,7 @@ public class PlayerMovement : MonoBehaviour {
             i += 1;
         }
         //Da spostare all'interno di un metodo che viene chiamato nel momento in cui si preme il tasto play
-        foreach(Timer timer in movementTimers)
+        foreach (Timer timer in movementTimers)
         {
             timer.Start();
         }
