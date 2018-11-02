@@ -42,7 +42,8 @@ public class ObstacleButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     void AssignUIValues()
     {
         obstacleImage.sprite = Resources.Load<Sprite>("UIObstacleImages/" + obstacleType.ToString());
-        obstacleAmountText.text = "x " + obstacleAmount;
+        obstacleImage.SetNativeSize();
+        obstacleAmountText.text = obstacleAmount.ToString();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
