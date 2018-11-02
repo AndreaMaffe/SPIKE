@@ -8,25 +8,29 @@ public class TimerManager : MonoBehaviour
     public float updateRate;
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
         InvokeRepeating("UpdateTimers", 0, updateRate);
     }
 
-    void UpdateTimers() {
-        for (int i = 0; i < allTimers.Count; i++)
+    void UpdateTimers()
+    {
+        foreach(Timer timer in allTimers)
         {
-            allTimers[i].Update(updateRate);
+            timer.Update(updateRate);
         }
     }
 
-    public Timer AddTimer(float time) {
+    public Timer AddTimer(float time)
+    {
         Timer timer = new Timer(time);
         allTimers.Add(timer);
 
         return timer;
     }
 
-    public void Clear() {
+    public void Clear()
+    {
         allTimers.Clear();
     }
 
@@ -45,7 +49,8 @@ public class Timer
         this.maxTime = maxTime;
     }
 
-    public void Start() {
+    public void Start()
+    {
         if (!running)
         {
             running = true;
@@ -53,28 +58,25 @@ public class Timer
         }
     }
 
-    public void Stop() {
+    public void Stop()
+    {
         actualTime = 0;
         running = false;
         triggeredEvent();
     }
 
-    public void Pause() {
+    public void Pause()
+    {
         running = false;
     }
 
-    public void Resume() {
+    public void Resume()
+    {
         running = true;
     }
 
-    public void Reassign(float newMaxvalue) {
-        running = true;
-        actualTime = 0;
-        maxTime = newMaxvalue;
-    }
-
-    public void Update(float updateTime) {
-
+    public void Update(float updateTime)
+    {
         if (running)
         {
             actualTime -= updateTime;
@@ -85,19 +87,21 @@ public class Timer
         }
     }
 
-    public bool isEnded() {
-
+    public bool isEnded()
+    {
         if (actualTime == 0)
             return true;
 
         return false;
     }
 
-    public float GetTime() {
+    public float GetTime()
+    {
         return actualTime;
     }
 
-    public float GetMaxTimer() {
+    public float GetMaxTimer()
+    {
         return maxTime;
     }
 

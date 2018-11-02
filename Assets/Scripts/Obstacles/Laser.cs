@@ -31,7 +31,7 @@ public class Laser : ObstacleWithTimer {
     //update apposito per gli ostacoli, usare questo anziché Update().
     protected override void UpdateObstacle ()
     {
-        if (readyToMove)
+        if (readyToMove && objectToFollow)  //controllo se il Player esiste ancora
         {
             //calcola lo spostamento verso il player in base alla distanza da quest'ultimo
             float deltaXPosition = (objectToFollow.transform.position.x - this.transform.position.x) / deceleration;

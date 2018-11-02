@@ -44,6 +44,12 @@ public abstract class Obstacle : MonoBehaviour
         this.transform.position = this.originalPosition;
     }
 
+    protected virtual void OnDestroy()
+    {
+        LevelManager.runLevelEvent -= WakeUp;
+        LevelManager.retryLevelEvent -= Sleep;
+    }
+
 }
 
 public abstract class ObstacleWithTimer : Obstacle
@@ -64,8 +70,9 @@ public abstract class ObstacleWithTimer : Obstacle
 
     protected abstract void OnTimerEnd();
 
-    protected void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
         timer.triggeredEvent -= OnTimerEnd;
     }
 
