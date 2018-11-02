@@ -84,9 +84,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 0
   anchorSlotOccupied: 1
-  timerTime: 2
-  deceleration: 2.3
   timeToRecover: 1.3
+  rateOfFire: 3
+  deceleration: 2.3
   shootingPoint: {fileID: 4815030268687150}
   laser: {fileID: 120583638971437924}
 --- !u!120 &120583638971437924

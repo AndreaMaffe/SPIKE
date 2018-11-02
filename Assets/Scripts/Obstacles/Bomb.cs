@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bomb : ObstacleWithTimer {
 
+    public float timeBeforeExplosion;
     public float explosionForce;
     public float explosionInnerRadius;
     public float explosionOuterRadius;
@@ -15,7 +16,9 @@ public class Bomb : ObstacleWithTimer {
 
 
     //start apposito per gli ostacoli, usare questo anziché Start().
-    protected override void StartObstacleWithTimer() {
+    protected override void StartObstacle()
+    {
+        SetTimer(timeBeforeExplosion);
 
         //scala le sprite dei cerchi
         innerRadius.localScale = new Vector3(innerRadius.localScale.x /2 * explosionInnerRadius, innerRadius.localScale.y /2 * explosionInnerRadius, 1);
@@ -23,20 +26,50 @@ public class Bomb : ObstacleWithTimer {
 
     }
 
+    protected override void UpdateObstacle()
+    {
+    }
+
+    void Explode()
+    {
+        //genera l'onda d'urto 
+        ShockWave();
+
+        //crea effetti particellari
+        Destroy(Instantiate(explosionParticlePrefab, transform.position, Quaternion.identity), 1.5f);
+
+        //destroy the bomb
+        SetVisible(false);
+    }
+
+    protected override void OnTimerEnd()
+    {
+        Explode();
+    }
+
     //chiamato al RunLevel()
-    protected override void WakeUp() {
- 
+    protected override void WakeUp()
+    {
+        //avvia il timer per l'esplosione
         StartTimer();
     }
 
-    void Explode() {
+    //chiamato al RetryLevel()
+    protected override void Sleep()
+    {
+        //rigenera l'immagine
+        SetVisible(true);
 
-        //DrawCircle(this.transform.position, explosionInnerRadius);
+        //risetta la posizione iniziale
+        ResetPosition();
+    }
 
-        //gets all the colliders within the radius of the explosion
+    void ShockWave()
+    {
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(this.transform.position, explosionOuterRadius);
 
-        for (int i = 0; i < hitColliders.Length; i++) {
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
 
             GameObject objectHit = hitColliders[i].gameObject;
 
@@ -51,25 +84,19 @@ public class Bomb : ObstacleWithTimer {
                 Vector3 direction = objectHit.transform.position - this.transform.position;
 
                 if (objectHit.GetComponent<Rigidbody2D>())
-                objectHit.GetComponent<Rigidbody2D>().AddForce(direction * thrust);
+                    objectHit.GetComponent<Rigidbody2D>().AddForce(direction * thrust);
             }
-                
+
         }
-        GameObject explosionParticleInstance = Instantiate(explosionParticlePrefab, transform.position, Quaternion.identity);
-        Destroy(explosionParticleInstance.gameObject, 1.5f);
 
-        //destroy the bomb
-        gameObject.SetActive(false);
     }
 
-    //update apposito per gli ostacoli, usare questo anziché Update().
-    protected override void UpdateObstacleWithTimer()
+    void SetVisible(bool value)
     {
-    }
-
-    //
-    protected override void OnTimerEnd()
-    {
-        Explode();
+        gameObject.GetComponent<SpriteRenderer>().enabled = value;
+        gameObject.GetComponent<CircleCollider2D>().enabled = value;
     }
 }
+
+
+

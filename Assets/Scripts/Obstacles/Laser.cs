@@ -8,25 +8,29 @@ public class Laser : ObstacleWithTimer {
     private GameObject objectToFollow;
     private Timer timerToRecover; 
 
-    public float deceleration;
     [Tooltip("Period of inactivity after shooting") ]
     public float timeToRecover;
+    public float rateOfFire;
+    public float deceleration;
 
     public Transform shootingPoint;
     public LineRenderer laser;
 
     //start apposito per gli ostacoli, usare questo anziché Start().
-    protected override void StartObstacleWithTimer() {
+    protected override void StartObstacle() {
+
+        SetTimer(rateOfFire);
 
         readyToMove = false;
+
         objectToFollow = GameObject.FindGameObjectWithTag("Player");
         timerToRecover = FindObjectOfType<TimerManager>().AddTimer(timeToRecover);
 
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
-    protected override void UpdateObstacleWithTimer () {
-
+    protected override void UpdateObstacle ()
+    {
         if (readyToMove)
         {
             //calcola lo spostamento verso il player in base alla distanza da quest'ultimo
@@ -48,24 +52,20 @@ public class Laser : ObstacleWithTimer {
         }
 	}
 
-    void Shoot() {
+    protected override void OnTimerEnd()
+    {
+        Shoot();
+    }
 
-        //modifica animazione;
+    void Shoot() {
 
         RaycastHit2D objectHit = Physics2D.Raycast(this.transform.position, new Vector2(0, -1), 10);
 
         DrawLaser(objectHit.point);
-        
-        //Debug.DrawLine(this.transform.position, objectHit.transform.position, Color.yellow, 1);
-        //Debug.Log(objectHit.collider.gameObject.name);
-
-        //if (objectHit.collider.gameObject.tag == "Player")
-            //Destroy(objectHit.collider.gameObject);
 
         readyToMove = false;
 
         //fa partire un timer al termine del quale readyToMove è rimesso a true e il timer può muoversi di nuovo
-
         timerToRecover.triggeredEvent += Restart;
         timerToRecover.Start();
 
@@ -79,8 +79,8 @@ public class Laser : ObstacleWithTimer {
     }
 
     //chiamato quando il laser si è "riposato" ed è pronto a sparare di nuovo
-    void Restart() {
-
+    void Restart()
+    {
         readyToMove = true;
         laser.positionCount = 0;
         timerToRecover.triggeredEvent -= Restart; //per evitare bug
@@ -90,12 +90,20 @@ public class Laser : ObstacleWithTimer {
     //chiamato al RunLevel()
     protected override void WakeUp()
     {
+        //permette di entrare nell'UpdateObstacle()
+        SetActive(true);
+
+        //permette di muoversi
         readyToMove = true;
     }
 
-    protected override void OnTimerEnd()
+    //chiamato al RetryLevel()
+    protected override void Sleep()
     {
-        Shoot();
-    }
+        //impedisce di entrare nell'UpdateObstacle()
+        SetActive(false);
 
+        //risetta la posizione iniziale
+        ResetPosition();
+    }
 }
