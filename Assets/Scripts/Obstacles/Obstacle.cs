@@ -7,9 +7,9 @@ public abstract class Obstacle : MonoBehaviour
     protected bool active;
     private Vector3 originalPosition;
 
-    [Header("The position of the anchor that it can occupy")]
+    [Tooltip("The position of the anchor that it can occupy")]
     public AnchorPointPosition anchorPosition;
-    [Header("How many anchor point needs")]
+    [Tooltip("How many anchor point needs")]
     public int anchorSlotOccupied;
 
 	// Use this for initialization
