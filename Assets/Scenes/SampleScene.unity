@@ -428,7 +428,7 @@ Transform:
   m_Children:
   - {fileID: 1252683321}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &402068815
 MonoBehaviour:
@@ -485,7 +485,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4080695675703508, guid: 63cf44a01a01c0e4bae4af2e517ba5e4, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63cf44a01a01c0e4bae4af2e517ba5e4, type: 2}
@@ -1233,7 +1233,7 @@ GameObject:
   - component: {fileID: 1044417023}
   - component: {fileID: 1044417028}
   - component: {fileID: 1044417027}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1319,7 +1319,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 309232123
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: d76421eee7ef4b046b2a98501046e329, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1338,7 +1338,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1044417022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.47, y: -1.09, z: 0}
+  m_LocalPosition: {x: 2.19, y: -0.99, z: 0}
   m_LocalScale: {x: 0.8940002, y: 0.8940002, z: 0.8940002}
   m_Children:
   - {fileID: 838711157}
@@ -2035,7 +2035,7 @@ GameObject:
   - component: {fileID: 1692389197}
   m_Layer: 10
   m_Name: Piattaforma
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2286,7 +2286,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1811259627}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: AnchorPointStartingPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
