@@ -15,6 +15,9 @@ public class PlayerMovementForce : MonoBehaviour {
     private MovementType state;
 
     public bool onGround;
+    public bool activateMovements = false;
+
+    Timer timerInAria;
 
     //variabile che contiene lo scriptable object del livello attuale chiesto al level manager
     private Level currentLevel;
@@ -30,11 +33,14 @@ public class PlayerMovementForce : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         levelManager = FindObjectOfType<LevelManager>();
         timerManager = FindObjectOfType<TimerManager>();
-        StartMovement();
+        LevelManager.runLevelEvent += StartMovement;
+        state = MovementType.Stop;
+        //StartMovement();
     }
 
     public void StartMovement()
      {
+         activateMovements = true;
          currentLevel = levelManager.GetActualLevel();
          movementTimers = new Timer[currentLevel.movementDatas.Length];
          StartTimersForJumpingAndStopping();
@@ -68,31 +74,33 @@ public class PlayerMovementForce : MonoBehaviour {
             Invoke("ApplyJumpImpulse", jumpDelayTime);
             state = MovementType.Jump;
             Stop();
+            Debug.Log("Waiting to Jump at position: " + transform.position);
         }
         else
             SetMove();
     }
 
     void ApplyJumpImpulse() {
-        if (onGround)
+        if (onGround) {
             rb.AddForce(new Vector2(jumpStrenght * gridUnitDimension * Mathf.Cos(jumpAngle * Mathf.Deg2Rad), jumpStrenght * gridUnitDimension * Mathf.Sin(jumpAngle * Mathf.Deg2Rad)), ForceMode2D.Impulse);
+            timerInAria = timerManager.AddTimer(2);
+            timerInAria.Start();
+            Debug.Log(rb.velocity.x);
+            
+        }
     }
 
     void SetMove() {
         state = MovementType.Move;
-        Debug.Log("Move:" + transform.position);
     }
 
     void SetJump()
     {
         state = MovementType.WaitingForJump;
-        Debug.Log("Jump:" + transform.position);
     }
 
     void SetStop() {
         state = MovementType.Stop;
-        Debug.Log("Stop:" + transform.position);
-
     }
 
 
@@ -135,8 +143,16 @@ public class PlayerMovementForce : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Platform") {
+
             onGround = true;
-            SetMove();
+
+            if (activateMovements)
+            {               
+                SetMove();
+                Debug.Log("Atterrato at position: " + transform.position);
+                if (timerInAria != null)
+                    Debug.Log("Tempo In Aria: " + (2 - timerInAria.GetTime()));
+            }      
         }
 
         if (collision.gameObject.tag == "Deadly")
