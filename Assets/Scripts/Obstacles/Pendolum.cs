@@ -21,7 +21,7 @@ public class Pendolum : Obstacle {
     //chiamato al RunLevel()
     protected override void WakeUp()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = transform.Find("Body").GetComponent<Rigidbody2D>();
         rb.AddForce(new Vector3(oscillation, 0, 0));
     }
 

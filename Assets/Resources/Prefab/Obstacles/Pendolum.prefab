@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4193005088933050}
   - component: {fileID: 212296509713571414}
   - component: {fileID: 61137031165191122}
+  - component: {fileID: 114654621192036732}
   m_Layer: 0
   m_Name: Pendolum
   m_TagString: Untagged
@@ -57,7 +58,6 @@ GameObject:
   - component: {fileID: 61560964412369652}
   - component: {fileID: 50018333103526126}
   - component: {fileID: 233387618195022510}
-  - component: {fileID: 114865973972696092}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -201,12 +201,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.21479326, y: 2.4301383}
   m_EdgeRadius: 0
---- !u!114 &114865973972696092
+--- !u!114 &114654621192036732
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1657429844618582}
+  m_GameObject: {fileID: 1129859790619002}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9aeb9d172078f424aade7f017ebf0fa0, type: 3}
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 0
   anchorSlotOccupied: 1
-  oscillation: 150
+  oscillation: 300
 --- !u!212 &212092244832251310
 SpriteRenderer:
   m_ObjectHideFlags: 1
