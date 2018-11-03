@@ -14,7 +14,13 @@ public class Laser : ObstacleWithTimer {
     public float deceleration;
 
     public Transform shootingPoint;
+
     public GameObject laserStartParticle;
+    public GameObject laserEndParticle;
+    //serve un piccolo offset per far in modo che siano allineate con la fine del laser
+    public Vector3 laserEndParticleOffsetPosition;
+    //quando colpisco il player il laser non deve fermarsi al sopra del player ma attraversarlo (fa un effetto migliore)
+    public Vector3 laserLightHitPlayerOffsetPosition;
     public GameObject laserLight;
 
     public LayerMask layer;
@@ -64,10 +70,10 @@ public class Laser : ObstacleWithTimer {
     void Shoot() {
 
         readyToMove = false;
-        RaycastHit2D hit = Physics2D.Raycast(shootingPoint.position, Vector2.down, layer);
+        RaycastHit2D hit = Physics2D.Raycast(shootingPoint.position, Vector2.down,10 , layer);
         Debug.Log(hit.collider.name);
 
-        DrawLaser(hit.point);
+        DrawLaser(hit.point, hit.collider.gameObject.tag);
 
         if (hit.collider.gameObject.tag == "Player")
             //Destroy(hit.collider.gameObject, 0.5f); 
@@ -77,20 +83,39 @@ public class Laser : ObstacleWithTimer {
     }
 
     //Metodo fa sparare il laser
-    void DrawLaser(Vector3 hitPoint) {
+    void DrawLaser(Vector3 hitPoint, string objectHit) {
+         
+        //il laser arriva fino in fondo al player
+        if (objectHit == "Player") {
+            hitPoint += laserLightHitPlayerOffsetPosition;
+        }
+        ActivateLaserParticle(hitPoint);      
+    }
+
+    void ActivateLaserParticle(Vector3 hitPoint) {
+        SpriteRenderer renderer = laserLight.GetComponent<SpriteRenderer>();
+        renderer.size = new Vector2(renderer.size.x, laserLight.transform.position.y - hitPoint.y);
+        //attiva tutte le particle
+        laserStartParticle.SetActive(true);
+        laserEndParticle.SetActive(true);
         laserStartParticle.GetComponent<ParticleSystem>().Play();
         laserLight.SetActive(true);
-        SpriteRenderer renderer = laserLight.GetComponent<SpriteRenderer>();
-        renderer.size = new Vector2(renderer.size.x, Vector3.Distance(laserLight.transform.position, hitPoint));
-        Debug.Log(hitPoint);
-        
+        laserEndParticle.transform.position = hitPoint + laserEndParticleOffsetPosition;
+        laserEndParticle.GetComponent<ParticleSystem>().Play();
+    }
+
+    void DeactivateLaserParticle() {
+        laserStartParticle.GetComponent<ParticleSystem>().Stop();
+        laserEndParticle.GetComponent<ParticleSystem>().Stop();
+        laserStartParticle.SetActive(false);
+        laserEndParticle.SetActive(false);
+        laserLight.SetActive(false);
     }
 
     //chiamato quando il laser si è "riposato" ed è pronto a sparare di nuovo
     void Restart()
     {
-        laserStartParticle.GetComponent<ParticleSystem>().Stop();
-        laserLight.SetActive(false);
+        DeactivateLaserParticle();   
         readyToMove = true;
     }
 
