@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMovement : MonoBehaviour
-{
-
+public class PlayerMovementForce : MonoBehaviour {
 
     public Rigidbody2D rb;
     public float gridUnitDimension;
 
     public float maxVelocity;
     public float jumpAngle;
+    public float jumpStrenght;
+    public float jumpDelayTime;
     [SerializeField]
-    private PlayerState state;
+    private MovementType state;
 
     public bool onGround;
 
@@ -22,60 +21,35 @@ public class PlayerMovement : MonoBehaviour
     private LevelManager levelManager;
     private TimerManager timerManager;
     //Lista che contiene tutti i timer per i movimenti del giocatore
-    //Timer[] movementTimers;
+    Timer[] movementTimers;
 
-    public List<PlayerPatternMovement> allMovementsOfLevel;
-    [SerializeField]
-    PlayerPatternMovement currentMovement; 
-    Vector2 positionWhenMovementStarted;
-    int movementIndex = 0;
+    Animator animator;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         levelManager = FindObjectOfType<LevelManager>();
         timerManager = FindObjectOfType<TimerManager>();
-        PickNextMovement();
+        StartMovement();
     }
 
-    void PickNextMovement() {
-        if (movementIndex < allMovementsOfLevel.Count) {
-            currentMovement = allMovementsOfLevel[movementIndex];
-            state = currentMovement.movement;
-        }
-    }
-
-
-    /* public void StartMovement()
+    public void StartMovement()
      {
-         Debug.Log("Movement started");
          currentLevel = levelManager.GetActualLevel();
          movementTimers = new Timer[currentLevel.movementDatas.Length];
          StartTimersForJumpingAndStopping();
-     }*/
+     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        // finche' la distanza da percorrere e' ancora piu' piccola della distanza che deve essere fatta vai avanti col movimento 
-        if (currentMovement.lengthInUnit <= Vector2.Distance(positionWhenMovementStarted, transform.position))
-        {
-            if (state == PlayerState.Run)
-                if (rb.velocity.x <= maxVelocity)
-                    Move();
+        if (state == MovementType.Move)
+            Move();
+        else if (state == MovementType.WaitingForJump) {
+            WaitForJump();
+        }
+        else if (state == MovementType.Stop)
+            Stop();
 
-                else if (state == PlayerState.Jump)
-                {
-                    Jump();
-                    state = PlayerState.Run;
-                }
-                else if (state == PlayerState.Stop)
-                    Stop();
-        }
-        else {
-            movementIndex++;
-            PickNextMovement();
-        }
-       
     }
 
     public void Move()
@@ -88,14 +62,40 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(0, rb.velocity.y);
     }
 
-    public void Jump()
+    public void WaitForJump()
     {
+        if (onGround) {
+            Invoke("ApplyJumpImpulse", jumpDelayTime);
+            state = MovementType.Jump;
+            Stop();
+        }
+        else
+            SetMove();
+    }
+
+    void ApplyJumpImpulse() {
         if (onGround)
-            rb.velocity = new Vector2(maxVelocity * Mathf.Cos(jumpAngle), maxVelocity * Mathf.Sin(jumpAngle));
+            rb.AddForce(new Vector2(jumpStrenght * gridUnitDimension * Mathf.Cos(jumpAngle * Mathf.Deg2Rad), jumpStrenght * gridUnitDimension * Mathf.Sin(jumpAngle * Mathf.Deg2Rad)), ForceMode2D.Impulse);
+    }
+
+    void SetMove() {
+        state = MovementType.Move;
+        Debug.Log("Move:" + transform.position);
+    }
+
+    void SetJump()
+    {
+        state = MovementType.WaitingForJump;
+        Debug.Log("Jump:" + transform.position);
+    }
+
+    void SetStop() {
+        state = MovementType.Stop;
+        Debug.Log("Stop:" + transform.position);
+
     }
 
 
-    /*
     void StartTimersForJumpingAndStopping()
     {
         //per ogni timer contenuto nello scriptable Object del livello corrente    
@@ -108,13 +108,13 @@ public class PlayerMovement : MonoBehaviour
             switch (movementData.type.ToString())
             {
                 case "Jump":
-                    timer.triggeredEvent += Jump;
+                    timer.triggeredEvent += SetJump;
                     break;
                 case "Move":
-                    timer.triggeredEvent += Move;
+                    timer.triggeredEvent += SetMove;
                     break;
                 case "Stop":
-                    timer.triggeredEvent += StopMovement;
+                    timer.triggeredEvent += SetStop;
                     break;
                 default:
                     Debug.Log("ERROR: action name not valid, check scriptable object of the level " + currentLevel + " or PlayerMovement.cs");
@@ -129,13 +129,15 @@ public class PlayerMovement : MonoBehaviour
             timer.Start();
         }
 
-    }*/
+    }
 
     //da cambiare e da fare con raycast per evitare collisioni laterali ma per ora va bene anche cosi'
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Platform")
+        if (collision.gameObject.tag == "Platform") {
             onGround = true;
+            SetMove();
+        }
 
         if (collision.gameObject.tag == "Deadly")
             Destroy(this.gameObject);
@@ -148,13 +150,5 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+
 }
-
-public enum PlayerState { Stop, Run, Jump };
-
-[System.Serializable]
-public struct PlayerPatternMovement {
-    public PlayerState movement;
-    public int lengthInUnit;
-}
-

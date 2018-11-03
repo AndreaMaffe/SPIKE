@@ -27,8 +27,8 @@ MonoBehaviour:
   - type: 2
     startTime: 0
   - type: 0
-    startTime: 1
+    startTime: 0.5
   - type: 1
-    startTime: 2
-  - type: 0
     startTime: 3
+  - type: 2
+    startTime: 5

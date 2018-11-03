@@ -49,5 +49,6 @@ public enum MovementType
 {
     Jump,
     Stop,
-    Move
+    Move,
+    WaitingForJump
 }

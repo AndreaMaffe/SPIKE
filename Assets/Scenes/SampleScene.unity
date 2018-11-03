@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1606,6 +1606,7 @@ GameObject:
   - component: {fileID: 1044417023}
   - component: {fileID: 1044417028}
   - component: {fileID: 1044417027}
+  - component: {fileID: 1044417029}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1649,12 +1650,12 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.6
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 5
   m_Material: {fileID: 6200000, guid: 472e98fb30a64c54cae47ac40a5816fa, type: 2}
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -1711,7 +1712,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1044417022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.19, y: -0.99, z: 0}
+  m_LocalPosition: {x: -7, y: -1.03, z: 0}
   m_LocalScale: {x: 0.8940002, y: 0.8940002, z: 0.8940002}
   m_Children:
   - {fileID: 838711157}
@@ -1730,11 +1731,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1044417024}
-  acceleration: 3
-  maxVelocity: 4
-  jumpStrenght: 10
+  gridUnitDimension: 1
+  maxVelocity: 2
+  jumpAngle: 60
   state: 0
   onGround: 0
+  allMovementsOfLevel:
+  - movement: 1
+    lengthInUnit: 3
+  - movement: 2
+    lengthInUnit: 1
+  - movement: 1
+    lengthInUnit: 1
+  - movement: 1
+    lengthInUnit: 1
+  currentMovement:
+    movement: 1
+    lengthInUnit: 4
 --- !u!331 &1044417028
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -1780,6 +1793,24 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1044417029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1044417022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd01da3e5be6bd24d81a54056753db03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1044417024}
+  gridUnitDimension: 1
+  maxVelocity: 2
+  jumpAngle: 50
+  jumpStrenght: 24
+  state: 1
+  onGround: 0
 --- !u!1 &1174366573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2717,7 +2748,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1692389192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.08, y: -0.72, z: 0}
+  m_LocalPosition: {x: -0.59, y: -0.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1811259627}
