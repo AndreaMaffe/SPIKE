@@ -24,13 +24,10 @@ public class TimerManager : MonoBehaviour
     public Timer AddTimer(float time)
     {
         Timer timer = new Timer(time);
-        timer.triggeredEvent += Ciao;
         timers.Add(timer);
 
         return timer;
     }
-
-    public void Ciao() { } //DA TOGLIERE (inizializzare il delegate invece!)
 
     public void Clear()
     {
@@ -65,7 +62,9 @@ public class Timer
     {
         actualTime = 0;
         running = false;
-        triggeredEvent();
+
+        if (triggeredEvent != null)
+            triggeredEvent();
     }
 
     public void Pause()

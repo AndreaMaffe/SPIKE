@@ -256,18 +256,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 0
   anchorSlotOccupied: 1
+  obstacleType: 0
   timeToRecover: 1.3
   rateOfFire: 3
-  deceleration: 2.3
+  deceleration: 15
   shootingPoint: {fileID: 4815030268687150}
   laserStartParticle: {fileID: 1550122647401414}
   laserEndParticle: {fileID: 1124004469913532}
   laserEndParticleOffsetPosition: {x: 0, y: 0.3, z: 0}
   laserLightHitPlayerOffsetPosition: {x: 0, y: -1.5, z: 0}
   laserLight: {fileID: 1779029401480548}
-  layer:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!198 &198201165565568824
 ParticleSystem:
   m_ObjectHideFlags: 1
