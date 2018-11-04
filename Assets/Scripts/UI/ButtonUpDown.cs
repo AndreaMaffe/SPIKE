@@ -9,8 +9,8 @@ public class ButtonUpDown : MonoBehaviour {
 	void Start () {
         animator = GetComponent<Animator>();
         LevelManager.runLevelEvent += HideButtons;
-        ObstacleButton.onDraggingObstacle += HideButtons;
-        ObstacleButton.onEndDraggingObstacle += ShowButtons;
+        ObstacleDragger.onDraggingObstacle += HideButtons;
+        ObstacleDragger.onEndDraggingObstacle += ShowButtons;
         AnchorPoint.onDraggingObstacle += HideButtons;
         AnchorPoint.onEndDraggingObstacle += ShowButtons;
         LevelManager.retryLevelEvent += ShowButtons;

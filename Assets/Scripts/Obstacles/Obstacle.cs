@@ -77,8 +77,10 @@ public abstract class ObstacleWithTimer : Obstacle
 
     protected override void OnDestroy()
     {
+        if (timer != null)
+           timer.triggeredEvent -= OnTimerEnd;
         base.OnDestroy();
-        timer.triggeredEvent -= OnTimerEnd;
+
     }
 }
 
