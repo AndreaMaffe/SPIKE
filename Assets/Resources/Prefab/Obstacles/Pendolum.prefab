@@ -86,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1129859790619002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.3168814, y: 2.5768993, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4012128757438440}
@@ -214,6 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 0
   anchorSlotOccupied: 1
+  obstacleType: 3
   oscillation: 300
 --- !u!212 &212092244832251310
 SpriteRenderer:
@@ -367,7 +368,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.020641327, y: 1.4288628}
-  m_ConnectedAnchor: {x: 0.020641327, y: -0.07113719}
+  m_ConnectedAnchor: {x: -2.29624, y: 2.505762}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 100

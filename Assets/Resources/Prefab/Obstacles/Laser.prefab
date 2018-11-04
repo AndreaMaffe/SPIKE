@@ -135,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1105142238937366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9913943, y: 5.36, z: 5.6373873}
+  m_LocalPosition: {x: -3.5770411, y: 2.350071, z: 5.6373873}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4815030268687150}
@@ -256,6 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 0
   anchorSlotOccupied: 1
+  obstacleType: 4
   timeToRecover: 1.3
   rateOfFire: 3
   deceleration: 2.3

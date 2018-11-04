@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1833116428088568}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4542763, y: -0.03860868, z: 0}
+  m_LocalPosition: {x: -8.191523, y: 2.010983, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,7 +56,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.9
 --- !u!114 &114007149641194478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,6 +73,7 @@ MonoBehaviour:
   occupied: 0
   spriteRenderer: {fileID: 212383200616185896}
   circleCollider: {fileID: 58484170439653422}
+  obstacleAnchored: {fileID: 0}
 --- !u!212 &212383200616185896
 SpriteRenderer:
   m_ObjectHideFlags: 1
