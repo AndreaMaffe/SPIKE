@@ -12,8 +12,10 @@ public abstract class Obstacle : MonoBehaviour
     [Tooltip("How many anchor point needs")]
     public int anchorSlotOccupied;
 
-	// Use this for initialization
-	protected void Start ()
+    public ObstacleType obstacleType;
+
+    // Use this for initialization
+    protected void Start ()
     {
         active = false;
         originalPosition = this.transform.position;
@@ -49,7 +51,6 @@ public abstract class Obstacle : MonoBehaviour
         LevelManager.runLevelEvent -= WakeUp;
         LevelManager.retryLevelEvent -= Sleep;
     }
-
 }
 
 public abstract class ObstacleWithTimer : Obstacle
@@ -75,6 +76,5 @@ public abstract class ObstacleWithTimer : Obstacle
         base.OnDestroy();
         timer.triggeredEvent -= OnTimerEnd;
     }
-
 }
 

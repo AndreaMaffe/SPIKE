@@ -100,7 +100,9 @@ public class ObstacleButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
         GameObject obstaclePrefab = Instantiate(Resources.Load<GameObject>("Prefab/Obstacles/" + obstacleType.ToString()));
         obstaclePrefab.transform.position = draggableObstacleInstance.transform.position;
-        
+        //assegna all'anchor point il gameObject appena spawnato
+        draggableObstacleInstance.GetComponent<DraggableObstacle>().anchorPointSnapped.GetComponent<AnchorPoint>().SetObstacleAnchored(obstaclePrefab);
+
     }
 
     //assegna ad un draggble object una posizione tra TOP, SIDE e PLATFORM
