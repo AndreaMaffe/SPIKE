@@ -57,11 +57,15 @@ public abstract class ObstacleWithTimer : Obstacle
 {
     protected Timer timer;
 
-
     protected void SetTimer(float time)
     {
         timer = FindObjectOfType<TimerManager>().AddTimer(time);
         timer.triggeredEvent += OnTimerEnd;
+    }
+
+    protected void ResetTimer()
+    {
+        timer.triggeredEvent -= OnTimerEnd;
     }
 
     protected void StartTimer()

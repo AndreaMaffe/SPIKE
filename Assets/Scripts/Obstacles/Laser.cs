@@ -23,13 +23,9 @@ public class Laser : ObstacleWithTimer {
     public Vector3 laserLightHitPlayerOffsetPosition;
     public GameObject laserLight;
 
-    public LayerMask layer;
-
     //start apposito per gli ostacoli, usare questo anziché Start().
-    protected override void StartObstacle() {
-
-        SetTimer(rateOfFire);
-
+    protected override void StartObstacle()
+    {
         readyToMove = false;
 
         objectToFollow = GameObject.FindGameObjectWithTag("Player");
@@ -70,7 +66,8 @@ public class Laser : ObstacleWithTimer {
     void Shoot() {
 
         readyToMove = false;
-        RaycastHit2D hit = Physics2D.Raycast(shootingPoint.position, Vector2.down,10 , layer);
+        RaycastHit2D hit = Physics2D.Raycast(shootingPoint.position, Vector2.down);
+
         Debug.Log(hit.collider.name);
 
         DrawLaser(hit.point, hit.collider.gameObject.tag);
@@ -83,8 +80,8 @@ public class Laser : ObstacleWithTimer {
     }
 
     //Metodo fa sparare il laser
-    void DrawLaser(Vector3 hitPoint, string objectHit) {
-         
+    void DrawLaser(Vector3 hitPoint, string objectHit)
+    {         
         //il laser arriva fino in fondo al player
         if (objectHit == "Player") {
             hitPoint += laserLightHitPlayerOffsetPosition;
@@ -92,7 +89,8 @@ public class Laser : ObstacleWithTimer {
         ActivateLaserParticle(hitPoint);      
     }
 
-    void ActivateLaserParticle(Vector3 hitPoint) {
+    void ActivateLaserParticle(Vector3 hitPoint)
+    {
         SpriteRenderer renderer = laserLight.GetComponent<SpriteRenderer>();
         renderer.size = new Vector2(renderer.size.x, laserLight.transform.position.y - hitPoint.y);
         //attiva tutte le particle
@@ -104,7 +102,8 @@ public class Laser : ObstacleWithTimer {
         laserEndParticle.GetComponent<ParticleSystem>().Play();
     }
 
-    void DeactivateLaserParticle() {
+    void DeactivateLaserParticle()
+    {
         laserStartParticle.GetComponent<ParticleSystem>().Stop();
         laserEndParticle.GetComponent<ParticleSystem>().Stop();
         laserStartParticle.SetActive(false);
@@ -127,20 +126,30 @@ public class Laser : ObstacleWithTimer {
 
         //permette di muoversi
         readyToMove = true;
+
+        //risetta il timer
+        SetTimer(rateOfFire);
     }
 
     //chiamato al RetryLevel()
     protected override void Sleep()
     {
+        //cancella la scia del laser in caso stesse sparando
+        DeactivateLaserParticle();
+
         //impedisce di entrare nell'UpdateObstacle()
         SetActive(false);
 
         //risetta la posizione iniziale
         ResetPosition();
+
+        //impedisce di sparare
+        ResetTimer();
     }
 
     private void OnDisable()
     {
         timerToRecover.triggeredEvent -= Restart;
+        ResetTimer();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TimerManager : MonoBehaviour
 {
-    public List<Timer> allTimers = new List<Timer>();
+    public List<Timer> timers = new List<Timer>();
     public float updateRate;
 
     // Use this for initialization
@@ -15,7 +15,7 @@ public class TimerManager : MonoBehaviour
 
     void UpdateTimers()
     {
-        foreach(Timer timer in allTimers)
+        foreach(Timer timer in timers)
         {
             timer.Update(updateRate);
         }
@@ -24,14 +24,17 @@ public class TimerManager : MonoBehaviour
     public Timer AddTimer(float time)
     {
         Timer timer = new Timer(time);
-        allTimers.Add(timer);
+        timer.triggeredEvent += Ciao;
+        timers.Add(timer);
 
         return timer;
     }
 
+    public void Ciao() { } //DA TOGLIERE (inizializzare il delegate invece!)
+
     public void Clear()
     {
-        allTimers.Clear();
+        timers.Clear();
     }
 
 }
