@@ -11,6 +11,8 @@ public class ButtonUpDown : MonoBehaviour {
         LevelManager.runLevelEvent += HideButtons;
         ObstacleButton.onDraggingObstacle += HideButtons;
         ObstacleButton.onEndDraggingObstacle += ShowButtons;
+        AnchorPoint.onDraggingObstacle += HideButtons;
+        AnchorPoint.onEndDraggingObstacle += ShowButtons;
         LevelManager.retryLevelEvent += ShowButtons;
 
     }
@@ -26,6 +28,8 @@ public class ButtonUpDown : MonoBehaviour {
 
     private void OnDisable()
     {
+        AnchorPoint.onDraggingObstacle -= HideButtons;
+        AnchorPoint.onEndDraggingObstacle -= ShowButtons;
         LevelManager.runLevelEvent -= HideButtons;
         ObstacleButton.onDraggingObstacle -= HideButtons;
         ObstacleButton.onEndDraggingObstacle -= ShowButtons;

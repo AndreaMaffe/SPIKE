@@ -18,8 +18,6 @@ public class Bomb : ObstacleWithTimer {
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
-        SetTimer(timeBeforeExplosion);
-
         //scala le sprite dei cerchi
         innerRadius.localScale = new Vector3(innerRadius.localScale.x /2 * explosionInnerRadius, innerRadius.localScale.y /2 * explosionInnerRadius, 1);
         outerRadius.localScale = new Vector3(outerRadius.localScale.x /4 * explosionOuterRadius, outerRadius.localScale.y /4 * explosionOuterRadius, 1);
@@ -50,7 +48,10 @@ public class Bomb : ObstacleWithTimer {
     //chiamato al RunLevel()
     protected override void WakeUp()
     {
-        //avvia il timer per l'esplosione
+        //inizializza il timer per l'esplosione
+        SetTimer(timeBeforeExplosion);
+
+        //avvia il timer
         StartTimer();
     }
 
@@ -62,6 +63,9 @@ public class Bomb : ObstacleWithTimer {
 
         //risetta la posizione iniziale
         ResetPosition();
+
+        //rimette il timer a zero e lo blocca
+        ResetTimer();
     }
 
     void ShockWave()
