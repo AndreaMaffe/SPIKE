@@ -26,7 +26,7 @@ public class PlayerMovementForce : MonoBehaviour {
     //Lista che contiene tutti i timer per i movimenti del giocatore
     Timer[] movementTimers;
 
-    Animator animator;
+    public Animator animator;
 
     private void Start()
     {
@@ -81,7 +81,9 @@ public class PlayerMovementForce : MonoBehaviour {
     }
 
     void ApplyJumpImpulse() {
+
         if (onGround) {
+            animator.SetTrigger("Jump");
             rb.AddForce(new Vector2(jumpStrenght * gridUnitDimension * Mathf.Cos(jumpAngle * Mathf.Deg2Rad), jumpStrenght * gridUnitDimension * Mathf.Sin(jumpAngle * Mathf.Deg2Rad)), ForceMode2D.Impulse);
             timerInAria = timerManager.AddTimer(2);
             timerInAria.Start();
@@ -92,15 +94,20 @@ public class PlayerMovementForce : MonoBehaviour {
 
     void SetMove() {
         state = MovementType.Move;
+        animator.SetTrigger("Move");
     }
 
     void SetJump()
     {
         state = MovementType.WaitingForJump;
+        animator.SetTrigger("WaitingJump");
+
     }
 
     void SetStop() {
         state = MovementType.Stop;
+        animator.SetTrigger("Stop");
+
     }
 
 
@@ -147,9 +154,9 @@ public class PlayerMovementForce : MonoBehaviour {
             onGround = true;
 
             if (activateMovements)
-            {               
-                SetMove();
-                Debug.Log("Atterrato at position: " + transform.position);
+            {    
+                if (state!= MovementType.Move)
+                    SetMove();
                 if (timerInAria != null)
                     Debug.Log("Tempo In Aria: " + (2 - timerInAria.GetTime()));
             }      
