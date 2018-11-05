@@ -85,6 +85,7 @@ public class PlayerMovementForce : MonoBehaviour {
         }
         else if (state == MovementType.Stop)
             Stop();
+       
 
     }
 
