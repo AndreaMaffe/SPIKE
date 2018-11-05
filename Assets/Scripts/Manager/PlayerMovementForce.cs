@@ -20,6 +20,8 @@ public class PlayerMovementForce : MonoBehaviour {
 
     Timer timerInAria;
 
+    PlayerDeath playerDeath;
+
     //variabile che contiene lo scriptable object del livello attuale chiesto al level manager
     private Level currentLevel;
     private LevelManager levelManager;
@@ -33,6 +35,7 @@ public class PlayerMovementForce : MonoBehaviour {
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerDeath = GetComponent<PlayerDeath>();
         levelManager = FindObjectOfType<LevelManager>();
         timerManager = FindObjectOfType<TimerManager>();
         LevelManager.runLevelEvent += WakeUp;
@@ -175,7 +178,7 @@ public class PlayerMovementForce : MonoBehaviour {
         }
 
         if (collision.gameObject.tag == "Deadly")
-            Destroy(this.gameObject);
+            playerDeath.ActivateRagdoll();
     }
 
     private void OnCollisionExit2D(Collision2D collision)
