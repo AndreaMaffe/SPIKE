@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 public class ObstacleDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     //il tipo di ostacolo viene settato nella classe figlio 
+    [SerializeField]
     protected ObstacleType obstacleType;
     public LevelManager levelManager;
 

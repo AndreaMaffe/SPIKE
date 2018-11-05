@@ -57,6 +57,7 @@ public class PlayerMovementForce : MonoBehaviour {
     void Sleep()
     {
         SetStop();
+        playerDeath.ActivateRagdoll(false);
         gameObject.transform.position = originalPosition;
         activateMovements = false;
         foreach (Timer timer in movementTimers)
@@ -178,7 +179,7 @@ public class PlayerMovementForce : MonoBehaviour {
         }
 
         if (collision.gameObject.tag == "Deadly")
-            playerDeath.ActivateRagdoll();
+            playerDeath.ActivateRagdoll(true);
     }
 
     private void OnCollisionExit2D(Collision2D collision)

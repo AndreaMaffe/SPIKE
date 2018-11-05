@@ -43,6 +43,7 @@ public enum ObstacleType
     Spring,
     Pendolum,
     Laser
+   
 }
 
 public enum MovementType

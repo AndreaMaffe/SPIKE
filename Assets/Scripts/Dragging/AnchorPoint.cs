@@ -106,6 +106,7 @@ public class AnchorPoint : ObstacleDragger, IBeginDragHandler, IDragHandler,IEnd
     {
         obstacleAnchored = obstacle;
         obstacleType = obstacleAnchored.GetComponent<Obstacle>().GetObstacleType();
+        Debug.Log(obstacleAnchored.GetComponent<Obstacle>().GetObstacleType());
     }
 
 
