@@ -5,15 +5,14 @@ using UnityEngine;
 public abstract class Obstacle : MonoBehaviour
 {
     protected bool active;
+    protected ObstacleType type;
     private Vector3 originalPosition;
 
     [Tooltip("The position of the anchor that it can occupy")]
     public AnchorPointPosition anchorPosition;
     [Tooltip("How many anchor point needs")]
     public int anchorSlotOccupied;
-
-    public ObstacleType obstacleType;
-
+       
     // Use this for initialization
     protected void Start ()
     {
@@ -35,6 +34,11 @@ public abstract class Obstacle : MonoBehaviour
     protected abstract void UpdateObstacle();
     protected abstract void StartObstacle();
     protected abstract void WakeUp();
+
+    protected new ObstacleType GetType()
+    {
+        return this.type;
+    }
     
     protected void SetActive(bool value)
     {
@@ -65,7 +69,9 @@ public abstract class ObstacleWithTimer : Obstacle
 
     protected void ResetTimer()
     {
-        timer.triggeredEvent -= OnTimerEnd;
+        //il timer potrebbe non esistere se non è stato chiamato il SetTimer()
+        if (timer != null)
+            timer.triggeredEvent -= OnTimerEnd;
     }
 
     protected void StartTimer()
@@ -77,11 +83,9 @@ public abstract class ObstacleWithTimer : Obstacle
 
     protected override void OnDestroy()
     {
-        //il timer potrebbe non esistere
-        if (timer != null)
-            timer.triggeredEvent -= OnTimerEnd;
+        ResetTimer();
         base.OnDestroy();
-
     }
+
 }
 
