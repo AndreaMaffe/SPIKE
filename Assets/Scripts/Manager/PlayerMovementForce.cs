@@ -13,6 +13,7 @@ public class PlayerMovementForce : MonoBehaviour {
     public float jumpDelayTime;
     [SerializeField]
     private MovementType state;
+    private Vector3 originalPosition;
 
     public bool onGround;
     public bool activateMovements = false;
@@ -23,8 +24,9 @@ public class PlayerMovementForce : MonoBehaviour {
     private Level currentLevel;
     private LevelManager levelManager;
     private TimerManager timerManager;
+
     //Lista che contiene tutti i timer per i movimenti del giocatore
-    Timer[] movementTimers;
+    private Timer[] movementTimers;
 
     public Animator animator;
 
@@ -33,18 +35,30 @@ public class PlayerMovementForce : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         levelManager = FindObjectOfType<LevelManager>();
         timerManager = FindObjectOfType<TimerManager>();
-        LevelManager.runLevelEvent += StartMovement;
+        LevelManager.runLevelEvent += WakeUp;
+        LevelManager.retryLevelEvent += Sleep;
         state = MovementType.Stop;
-        //StartMovement();
+        originalPosition = this.transform.position;
+        currentLevel = levelManager.GetActualLevel();
+        movementTimers = new Timer[currentLevel.movementDatas.Length];
     }
 
-    public void StartMovement()
+    //chiamato al RunLevel()
+    void WakeUp()
      {
          activateMovements = true;
-         currentLevel = levelManager.GetActualLevel();
-         movementTimers = new Timer[currentLevel.movementDatas.Length];
          StartTimersForJumpingAndStopping();
      }
+
+    //chiamato al RetryLevel()
+    void Sleep()
+    {
+        SetStop();
+        gameObject.transform.position = originalPosition;
+        activateMovements = false;
+        foreach (Timer timer in movementTimers)
+            timer.Pause(); //in questo modo i timer non arriveranno mai a zero
+    }
 
     private void FixedUpdate()
     {
@@ -101,15 +115,13 @@ public class PlayerMovementForce : MonoBehaviour {
     {
         state = MovementType.WaitingForJump;
         animator.SetTrigger("WaitingJump");
-
     }
 
-    void SetStop() {
+    void SetStop()
+    {
         state = MovementType.Stop;
         animator.SetTrigger("Stop");
-
     }
-
 
     void StartTimersForJumpingAndStopping()
     {
@@ -149,8 +161,8 @@ public class PlayerMovementForce : MonoBehaviour {
     //da cambiare e da fare con raycast per evitare collisioni laterali ma per ora va bene anche cosi'
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Platform") {
-
+        if (collision.gameObject.tag == "Platform")
+        {
             onGround = true;
 
             if (activateMovements)

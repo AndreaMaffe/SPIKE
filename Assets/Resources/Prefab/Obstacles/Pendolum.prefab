@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 1129859790619002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.3168814, y: 2.5768993, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children:
   - {fileID: 4012128757438440}
   m_Father: {fileID: 0}
@@ -215,7 +215,7 @@ MonoBehaviour:
   anchorPosition: 0
   anchorSlotOccupied: 1
   obstacleType: 3
-  oscillation: 300
+  oscillation: 400
 --- !u!212 &212092244832251310
 SpriteRenderer:
   m_ObjectHideFlags: 1
