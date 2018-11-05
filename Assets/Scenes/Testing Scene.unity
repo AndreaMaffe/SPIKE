@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 30873251}
   - component: {fileID: 30873254}
   - component: {fileID: 30873253}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: LeftArmDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 90131916}
   - component: {fileID: 90131918}
   - component: {fileID: 90131917}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: RightArmTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 156723235}
   - component: {fileID: 156723236}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,7 +636,7 @@ GameObject:
   m_Component:
   - component: {fileID: 277069385}
   - component: {fileID: 277069386}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: OmbraPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,7 +713,7 @@ GameObject:
   - component: {fileID: 291413905}
   - component: {fileID: 291413907}
   - component: {fileID: 291413906}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: RightArmDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1442,7 +1442,7 @@ GameObject:
   - component: {fileID: 670330651}
   - component: {fileID: 670330650}
   - component: {fileID: 670330652}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: LeftLegDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1668,7 +1668,7 @@ GameObject:
   - component: {fileID: 713618529}
   - component: {fileID: 713618530}
   - component: {fileID: 713618531}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: LeftLegTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2076,7 +2076,7 @@ GameObject:
   - component: {fileID: 930186134}
   - component: {fileID: 930186133}
   - component: {fileID: 930186135}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: RigthLegDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2718,7 +2718,7 @@ GameObject:
   - component: {fileID: 1329735605}
   - component: {fileID: 1329735607}
   - component: {fileID: 1329735608}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2881,7 +2881,7 @@ GameObject:
   - component: {fileID: 1358470573}
   - component: {fileID: 1358470575}
   - component: {fileID: 1358470574}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: RightLegTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3838,8 +3838,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1692389192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.59, y: -1.51, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.73, y: -1.51, z: 0}
+  m_LocalScale: {x: 1.8125, y: 0.85008, z: 1}
   m_Children:
   - {fileID: 1811259627}
   m_Father: {fileID: 0}
@@ -3983,7 +3983,7 @@ GameObject:
   - component: {fileID: 1742869298}
   - component: {fileID: 1742869297}
   - component: {fileID: 1742869302}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4118,9 +4118,10 @@ MonoBehaviour:
   mainRigidbody: {fileID: 1742869300}
   mainCollider: {fileID: 1742869299}
   bodySprite:
-  - {fileID: 21300000, guid: 43415af25863d84468fc029cbb46c2f1, type: 3}
-  bodyPartsRenderer:
-  - {fileID: 1329735606}
+  - {fileID: 0}
+  faceSprite: []
+  bodyRenderer: {fileID: 0}
+  faceRenderer: {fileID: 0}
 --- !u!1 &1786439550
 GameObject:
   m_ObjectHideFlags: 0
@@ -4256,7 +4257,7 @@ GameObject:
   - component: {fileID: 1813000394}
   - component: {fileID: 1813000396}
   - component: {fileID: 1813000395}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: LeftArmTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4650,7 +4651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1989756384}
   - component: {fileID: 1989756385}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Helmet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4193005088933050}
   - component: {fileID: 212296509713571414}
   - component: {fileID: 61137031165191122}
-  - component: {fileID: 114654621192036732}
+  - component: {fileID: 114985095526969782}
   m_Layer: 22
   m_Name: Pendolum
   m_TagString: Untagged
@@ -201,7 +201,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.21479326, y: 2.4301383}
   m_EdgeRadius: 0
---- !u!114 &114654621192036732
+--- !u!114 &114985095526969782
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
