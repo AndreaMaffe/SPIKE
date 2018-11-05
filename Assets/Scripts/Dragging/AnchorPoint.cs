@@ -16,7 +16,7 @@ public class AnchorPoint : ObstacleDragger, IBeginDragHandler, IDragHandler,IEnd
     //quando il level manager attiva il livello sto bool diventa false e quando e' underconstruction diventa true
     private bool canDragObstacle = true;
 
-    public SpriteRenderer spriteRenderer;
+    SpriteRenderer spriteRenderer;
     public CircleCollider2D circleCollider;
 
     public GameObject obstacleAnchored;
@@ -26,9 +26,9 @@ public class AnchorPoint : ObstacleDragger, IBeginDragHandler, IDragHandler,IEnd
 
     private void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         levelManager = FindObjectOfType<LevelManager>();
         //sottoscrizione all'evento lanciato dai bottoni per aggiornare la visibilita' degli anchor points
-        onUpdateAnchorPoint += UpdateAnchorPointSprite;
         onUpdateAnchorPoint += UpdateAnchorPointSprite;
         LevelManager.runLevelEvent += HideAnchorPoint;
         LevelManager.runLevelEvent += SetCanDragObstacleToFalse;
@@ -49,7 +49,7 @@ public class AnchorPoint : ObstacleDragger, IBeginDragHandler, IDragHandler,IEnd
     //desottoscrivi gli eventi 
     private void OnDisable()
     {
-        ObstacleButton.onUpdateAnchorPoint -= UpdateAnchorPointSprite;
+        onUpdateAnchorPoint -= UpdateAnchorPointSprite;
         LevelManager.runLevelEvent -= HideAnchorPoint;
         LevelManager.runLevelEvent -= SetCanDragObstacleToFalse;
         LevelManager.retryLevelEvent -= SetCanDragObstacleToTrue;
