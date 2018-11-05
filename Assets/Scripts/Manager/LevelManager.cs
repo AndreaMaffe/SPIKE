@@ -98,9 +98,9 @@ public class LevelManager : MonoBehaviour
 
     public void ReloadLevel() {
 
-        FindObjectOfType<TimerManager>().Clear();
+        //FindObjectOfType<TimerManager>().Clear();
         SceneManager.LoadSceneAsync("SampleScene");
-        state = LevelState.UNDER_CONSTRUCTION;
+        //state = LevelState.UNDER_CONSTRUCTION;
     }
 
     //metodo che serve ai bottoni per associare a ogni ostacolo la posizione in cui deve andare in modo da passare al 

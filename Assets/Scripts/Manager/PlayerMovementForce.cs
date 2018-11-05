@@ -30,7 +30,7 @@ public class PlayerMovementForce : MonoBehaviour {
     //Lista che contiene tutti i timer per i movimenti del giocatore
     private Timer[] movementTimers;
 
-    public Animator animator;
+    Animator animator;
 
     private void Start()
     {
@@ -38,6 +38,7 @@ public class PlayerMovementForce : MonoBehaviour {
         playerDeath = GetComponent<PlayerDeath>();
         levelManager = FindObjectOfType<LevelManager>();
         timerManager = FindObjectOfType<TimerManager>();
+        animator = GetComponent<Animator>();
         LevelManager.runLevelEvent += WakeUp;
         LevelManager.retryLevelEvent += Sleep;
         state = MovementType.Stop;
@@ -57,6 +58,7 @@ public class PlayerMovementForce : MonoBehaviour {
     void Sleep()
     {      
         playerDeath.ActivateRagdoll(false);
+       
         SetStop();
         gameObject.transform.position = originalPosition;
         activateMovements = false;
