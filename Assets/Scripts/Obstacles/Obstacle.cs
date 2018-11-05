@@ -6,7 +6,7 @@ public abstract class Obstacle : MonoBehaviour
 {
     protected bool active;
     private Vector3 originalPosition;
-
+    private Quaternion originalRotation;
     [Tooltip("The position of the anchor that it can occupy")]
     public AnchorPointPosition anchorPosition;
     [Tooltip("How many anchor point needs")]
@@ -17,6 +17,7 @@ public abstract class Obstacle : MonoBehaviour
     {
         active = false;
         originalPosition = this.transform.position;
+        originalRotation = this.transform.rotation;
         LevelManager.runLevelEvent += WakeUp;
         LevelManager.retryLevelEvent += Sleep;
         StartObstacle();
@@ -43,6 +44,7 @@ public abstract class Obstacle : MonoBehaviour
     protected void ResetPosition()
     {
         this.transform.position = this.originalPosition;
+        this.transform.rotation = this.originalRotation;
     }
 
     protected virtual void OnDestroy()

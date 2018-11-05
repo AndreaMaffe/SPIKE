@@ -46,9 +46,10 @@ public class Spring : Obstacle {
     protected override void Sleep()
     {
         //torna nella posizione iniziale
-        this.transform.position -= new Vector3(0, 1, 0);
+        if (triggered == true)
+            this.transform.position -= new Vector3(0, 1, 0);
 
-        triggered = false;
+        else triggered = false;
     }
 
     public override ObstacleType GetObstacleType()
