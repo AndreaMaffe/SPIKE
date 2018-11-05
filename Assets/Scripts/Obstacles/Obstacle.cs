@@ -11,7 +11,7 @@ public abstract class Obstacle : MonoBehaviour
     public AnchorPointPosition anchorPosition;
     [Tooltip("How many anchor point needs")]
     public int anchorSlotOccupied;
-       
+
     // Use this for initialization
     protected void Start ()
     {
