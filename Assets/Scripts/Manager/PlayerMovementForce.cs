@@ -55,9 +55,9 @@ public class PlayerMovementForce : MonoBehaviour {
 
     //chiamato al RetryLevel()
     void Sleep()
-    {
-        SetStop();
+    {      
         playerDeath.ActivateRagdoll(false);
+        SetStop();
         gameObject.transform.position = originalPosition;
         activateMovements = false;
         foreach (Timer timer in movementTimers)
