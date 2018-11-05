@@ -35,9 +35,9 @@ public abstract class Obstacle : MonoBehaviour
     protected abstract void StartObstacle();
     protected abstract void WakeUp();
 
-    protected new ObstacleType GetType()
+    public ObstacleType GetObstacleType()
     {
-        return this.type;
+        return type;
     }
     
     protected void SetActive(bool value)
