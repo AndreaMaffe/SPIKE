@@ -496,7 +496,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &246711883
 GameObject:
@@ -2947,12 +2947,12 @@ SpriteMask:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300008, guid: 9297e22aeb333ce4fa43fb32b523527d, type: 3}
-  m_MaskAlphaCutoff: 0.2
+  m_MaskAlphaCutoff: 0.533
   m_FrontSortingLayerID: 309232123
   m_BackSortingLayerID: 309232123
   m_FrontSortingLayer: 3
   m_BackSortingLayer: 3
-  m_FrontSortingOrder: 1
+  m_FrontSortingOrder: 2
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
@@ -4514,7 +4514,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1813000392}
   m_LocalRotation: {x: -0, y: -0, z: 0.044925284, w: -0.9989904}
-  m_LocalPosition: {x: -0.33000013, y: 0.38299996, z: 0}
+  m_LocalPosition: {x: -0.3300001, y: 0.383, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 30873250}
