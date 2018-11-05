@@ -97,6 +97,7 @@ public class Bomb : ObstacleWithTimer {
 
     void SetVisible(bool value)
     {
+        gameObject.GetComponent<Rigidbody2D>().isKinematic = !value;
         gameObject.GetComponent<SpriteRenderer>().enabled = value;
         gameObject.GetComponent<CircleCollider2D>().enabled = value;
     }

@@ -56,6 +56,8 @@ public class Timer
             running = true;
             actualTime = maxTime;
         }
+
+        triggeredEvent += NullEvent;
     }
 
     public void Stop()
@@ -76,6 +78,8 @@ public class Timer
     {
         running = true;
     }
+
+    void NullEvent() { }  //Fa schifo ma per ora lasciatelo così
 
     public void Update(float updateTime)
     {
