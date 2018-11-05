@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class Obstacle : MonoBehaviour
 {
     protected bool active;
-    protected ObstacleType type;
     private Vector3 originalPosition;
 
     [Tooltip("The position of the anchor that it can occupy")]
@@ -34,11 +33,7 @@ public abstract class Obstacle : MonoBehaviour
     protected abstract void UpdateObstacle();
     protected abstract void StartObstacle();
     protected abstract void WakeUp();
-
-    public ObstacleType GetObstacleType()
-    {
-        return type;
-    }
+    public abstract ObstacleType GetObstacleType();
     
     protected void SetActive(bool value)
     {

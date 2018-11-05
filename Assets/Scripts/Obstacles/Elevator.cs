@@ -42,4 +42,8 @@ public class Elevator : Obstacle
         ResetPosition();
     }
 
+    public override ObstacleType GetObstacleType()
+    {
+        return ObstacleType.Spring;
+    }
 }

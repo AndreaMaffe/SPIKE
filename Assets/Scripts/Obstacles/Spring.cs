@@ -46,4 +46,9 @@ public class Spring : Obstacle {
     {
 
     }
+
+    public override ObstacleType GetObstacleType()
+    {
+        return ObstacleType.Spring;
+    }
 }

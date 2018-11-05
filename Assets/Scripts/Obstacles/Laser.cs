@@ -10,7 +10,7 @@ public class Laser : ObstacleWithTimer {
 
     [Tooltip("Period of inactivity after shooting") ]
     public float timeToRecover;
-    public float rateOfFire;
+    public float timeBeforeShooting;
     public float deceleration;
     public float maxVelocity;
 
@@ -130,7 +130,7 @@ public class Laser : ObstacleWithTimer {
         readyToMove = true;
 
         //risetta il timer
-        SetTimer(rateOfFire);
+        SetTimer(timeBeforeShooting);
     }
 
     //chiamato al RetryLevel()
@@ -145,7 +145,7 @@ public class Laser : ObstacleWithTimer {
         //risetta la posizione iniziale
         ResetPosition();
 
-        //impedisce di sparare
+        //rimette il timer a zero e lo blocca
         ResetTimer();
     }
 
@@ -153,5 +153,10 @@ public class Laser : ObstacleWithTimer {
     {
         timerToRecover.triggeredEvent -= Restart;
         ResetTimer();
+    }
+
+    public override ObstacleType GetObstacleType()
+    {
+        return ObstacleType.Laser;
     }
 }

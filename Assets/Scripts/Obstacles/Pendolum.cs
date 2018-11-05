@@ -34,4 +34,9 @@ public class Pendolum : Obstacle {
         rb.angularVelocity = 0;
         rb.rotation = 0;
     }
+
+    public override ObstacleType GetObstacleType()
+    {
+        return ObstacleType.Pendolum;
+    }
 }

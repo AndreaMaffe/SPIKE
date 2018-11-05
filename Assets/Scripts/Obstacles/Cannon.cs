@@ -40,6 +40,11 @@ public class Cannon : ObstacleWithTimer {
 
     protected override void OnTimerEnd()
     {
+        Shoot();
+    }
+
+    void Shoot()
+    {
         if (active)
         {
             animator.SetTrigger("Shoot");
@@ -58,8 +63,8 @@ public class Cannon : ObstacleWithTimer {
         //permette di sparare
         SetActive(true);
 
-        //avvia il timer per sparare
-        StartTimer();
+        //spara il primo colpo e avvia i timer
+        Shoot();
     }
 
     //chiamato al RetryLevel()
@@ -74,6 +79,14 @@ public class Cannon : ObstacleWithTimer {
 
         //svuota la lista dei proiettili
         bullets.Clear();
+
+        //rimette il timer a zero e lo blocca
+        ResetTimer();
+    }
+
+    public override ObstacleType GetObstacleType()
+    {
+        return ObstacleType.Cannon;
     }
 
 

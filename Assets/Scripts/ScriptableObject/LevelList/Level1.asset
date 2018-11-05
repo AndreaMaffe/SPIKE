@@ -28,7 +28,3 @@ MonoBehaviour:
     startTime: 0
   - type: 0
     startTime: 1.5
-  - type: 1
-    startTime: 6
-  - type: 2
-    startTime: 8

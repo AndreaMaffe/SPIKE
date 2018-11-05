@@ -256,9 +256,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 0
   anchorSlotOccupied: 1
-  obstacleType: 4
   timeToRecover: 1.3
-  rateOfFire: 3
+  timeBeforeShooting: 1
   deceleration: 2.3
   maxVelocity: 0.15
   shootingPoint: {fileID: 4815030268687150}

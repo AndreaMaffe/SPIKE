@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4549167352771426}
   - component: {fileID: 212582151138544360}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: InnerRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4094407001567790}
   - component: {fileID: 212198715697276732}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: OuterRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 50228646109537280}
   - component: {fileID: 58000749948952714}
   - component: {fileID: 114935129837873810}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 2
   anchorSlotOccupied: 1
-  obstacleType: 0
   timeBeforeExplosion: 2
   explosionForce: 80
   explosionInnerRadius: 2

@@ -18,8 +18,6 @@ public class Bomb : ObstacleWithTimer {
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
-        this.type = ObstacleType.Bomb;
-
         //scala le sprite dei cerchi
         innerRadius.localScale = new Vector3(innerRadius.localScale.x /2 * explosionInnerRadius, innerRadius.localScale.y /2 * explosionInnerRadius, 1);
         outerRadius.localScale = new Vector3(outerRadius.localScale.x /4 * explosionOuterRadius, outerRadius.localScale.y /4 * explosionOuterRadius, 1);
@@ -102,6 +100,11 @@ public class Bomb : ObstacleWithTimer {
         gameObject.GetComponent<Rigidbody2D>().isKinematic = !value;
         gameObject.GetComponent<SpriteRenderer>().enabled = value;
         gameObject.GetComponent<CircleCollider2D>().enabled = value;
+    }
+
+    public override ObstacleType GetObstacleType()
+    {
+        return ObstacleType.Bomb;
     }
 }
 
