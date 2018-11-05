@@ -45,11 +45,8 @@ public class Spring : Obstacle {
     //chiamato al RetryLevel()
     protected override void Sleep()
     {
-        //torna nella posizione iniziale
-        if (triggered == true)
-            this.transform.position -= new Vector3(0, 1, 0);
-
-        else triggered = false;
+        ResetPosition();
+        triggered = false;
     }
 
     public override ObstacleType GetObstacleType()
