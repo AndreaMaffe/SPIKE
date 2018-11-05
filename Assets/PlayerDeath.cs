@@ -18,8 +18,12 @@ public class PlayerDeath : MonoBehaviour {
     public SpriteRenderer bodyRenderer;
     public SpriteRenderer faceRenderer;
 
+    bool injured = false;
+
     public void ActivateRagdoll(bool active)
     {
+        if (active)
+            injured = true;
         animator.enabled = !active;
         mainRigidbody.simulated = !active;
         mainCollider.enabled = !active;
@@ -31,12 +35,15 @@ public class PlayerDeath : MonoBehaviour {
         {
             col.enabled = active;
         }
-
+        
         UpdateSprite();
     }
 
     void UpdateSprite() {
-        bodyRenderer.sprite = bodySprite[0];
-        faceRenderer.sprite = faceSprite[1];
+        if (injured) {
+            bodyRenderer.sprite = bodySprite[0];
+            faceRenderer.sprite = faceSprite[1];
+        }
+        
     }
 }

@@ -14,6 +14,10 @@ public class Bomb : ObstacleWithTimer {
 
     public GameObject explosionParticlePrefab;
 
+    public override ObstacleType GetObstacleType()
+    {
+        return ObstacleType.Bomb;
+    }
 
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
@@ -79,7 +83,7 @@ public class Bomb : ObstacleWithTimer {
 
             //if the object hit is within the ExplosionInnerRadius, destroy it
             if (Vector3.Distance(objectHit.transform.position, this.transform.position) < explosionInnerRadius && objectHit.tag == "Player")
-                Destroy(objectHit);
+                objectHit.GetComponent<PlayerDeath>().ActivateRagdoll(true);
 
             //otherwise, push it in the opposite direction with a thrust proportional to the distance from the explosion
             else
@@ -100,11 +104,6 @@ public class Bomb : ObstacleWithTimer {
         gameObject.GetComponent<Rigidbody2D>().isKinematic = !value;
         gameObject.GetComponent<SpriteRenderer>().enabled = value;
         gameObject.GetComponent<CircleCollider2D>().enabled = value;
-    }
-
-    public override ObstacleType GetObstacleType()
-    {
-        return ObstacleType.Bomb;
     }
 }
 
