@@ -11,19 +11,28 @@ public class PlayerDeath : MonoBehaviour {
     [Header("Il rigidbody e il collider principali")]
     public Rigidbody2D mainRigidbody;
     public BoxCollider2D mainCollider;
-	
-    public void ActivateRagdoll()
+
+    public Sprite[] bodySprite;
+    public SpriteRenderer[] bodyPartsRenderer;
+
+    public void ActivateRagdoll(bool active)
     {
-        animator.enabled = false;
-        mainRigidbody.simulated = false;
-        mainCollider.enabled = false;
+        animator.enabled = !active;
+        mainRigidbody.simulated = !active;
+        mainCollider.enabled = !active;
         foreach (Rigidbody2D rb in RagdollPieces)
         {
-            rb.simulated = true;
+            rb.simulated = active;
         }
         foreach (Collider2D col in RagdollColliders)
         {
-            col.enabled = true;
+            col.enabled = active;
         }
+
+        UpdateSprite();
+    }
+
+    void UpdateSprite() {
+        bodyPartsRenderer[0].sprite = bodySprite[0];
     }
 }
