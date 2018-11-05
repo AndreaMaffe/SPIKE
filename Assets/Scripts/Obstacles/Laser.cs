@@ -12,6 +12,7 @@ public class Laser : ObstacleWithTimer {
     public float timeToRecover;
     public float rateOfFire;
     public float deceleration;
+    public float maxVelocity;
 
     public Transform shootingPoint;
 
@@ -42,10 +43,10 @@ public class Laser : ObstacleWithTimer {
             float deltaXPosition = (objectToFollow.transform.position.x - this.transform.position.x) / deceleration;
 
             //setta lo spostamento massimo per ogni frame per evitare che il laser sembri muoversi a scatti
-            if (deltaXPosition > 0.4f)
-                deltaXPosition = 0.4f;
-            if (deltaXPosition < -0.4f)
-                deltaXPosition = -0.4f;
+            if (deltaXPosition > maxVelocity)
+                deltaXPosition = maxVelocity;
+            if (deltaXPosition < -maxVelocity)
+                deltaXPosition = -maxVelocity;
 
             this.transform.position = new Vector3(this.transform.position.x + deltaXPosition, this.transform.position.y, this.transform.position.z);
 
