@@ -28,7 +28,7 @@ public class AnchorPoint : ObstacleDragger, IBeginDragHandler, IDragHandler,IEnd
     {
         levelManager = FindObjectOfType<LevelManager>();
         //sottoscrizione all'evento lanciato dai bottoni per aggiornare la visibilita' degli anchor points
-        ObstacleDragger.onUpdateAnchorPoint += UpdateAnchorPointSprite;
+        onUpdateAnchorPoint += UpdateAnchorPointSprite;
         onUpdateAnchorPoint += UpdateAnchorPointSprite;
         LevelManager.runLevelEvent += HideAnchorPoint;
         LevelManager.runLevelEvent += SetCanDragObstacleToFalse;
