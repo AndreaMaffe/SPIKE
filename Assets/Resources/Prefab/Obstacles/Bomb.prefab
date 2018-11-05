@@ -151,8 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 2
   anchorSlotOccupied: 1
-  timeBeforeExplosion: 2
-  explosionForce: 80
+  timeBeforeExplosion: 3.5
+  explosionForce: 2000
   explosionInnerRadius: 2
   explosionOuterRadius: 4
   innerRadius: {fileID: 4549167352771426}

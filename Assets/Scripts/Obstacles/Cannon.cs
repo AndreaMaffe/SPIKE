@@ -28,7 +28,6 @@ public class Cannon : ObstacleWithTimer {
         this.transform.rotation = new Quaternion(0, Mathf.Acos(direction) * Mathf.Rad2Deg, 0, 1);
 
         bullets = new List<GameObject>();
-        SetTimer(rateOfFire);
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
@@ -60,6 +59,9 @@ public class Cannon : ObstacleWithTimer {
     {
         //permette di sparare
         SetActive(true);
+
+        //setta il timer
+        SetTimer(rateOfFire);
 
         //spara il primo colpo e avvia i timer
         Shoot();
