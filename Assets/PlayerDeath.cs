@@ -13,7 +13,10 @@ public class PlayerDeath : MonoBehaviour {
     public BoxCollider2D mainCollider;
 
     public Sprite[] bodySprite;
-    public SpriteRenderer[] bodyPartsRenderer;
+    public Sprite[] faceSprite;
+
+    public SpriteRenderer bodyRenderer;
+    public SpriteRenderer faceRenderer;
 
     public void ActivateRagdoll(bool active)
     {
@@ -33,6 +36,7 @@ public class PlayerDeath : MonoBehaviour {
     }
 
     void UpdateSprite() {
-        bodyPartsRenderer[0].sprite = bodySprite[0];
+        bodyRenderer.sprite = bodySprite[0];
+        faceRenderer.sprite = faceSprite[1];
     }
 }
