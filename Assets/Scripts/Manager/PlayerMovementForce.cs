@@ -47,18 +47,28 @@ public class PlayerMovementForce : MonoBehaviour {
         movementTimers = new Timer[currentLevel.movementDatas.Length];
     }
 
+
+    private void OnDisable()
+    {
+        LevelManager.runLevelEvent -= WakeUp;
+        LevelManager.retryLevelEvent -= Sleep;
+    }
+
     //chiamato al RunLevel()
     void WakeUp()
-     {
-         activateMovements = true;
-         StartTimersForJumpingAndStopping();
-     }
+    {
+        activateMovements = true;
+        StartTimersForJumpingAndStopping();
+        ResetPlayerAnimationToDefault();
+        
+    }
+
 
     //chiamato al RetryLevel()
     void Sleep()
-    {      
+    {
         playerDeath.ActivateRagdoll(false);
-       
+
         SetStop();
         gameObject.transform.position = originalPosition;
         activateMovements = false;
@@ -76,6 +86,13 @@ public class PlayerMovementForce : MonoBehaviour {
         else if (state == MovementType.Stop)
             Stop();
 
+    }
+
+    //Riporta l'animator allo stato di stop
+    void ResetPlayerAnimationToDefault (){
+        animator.ResetTrigger("Jump");
+        animator.ResetTrigger("Move");
+        animator.ResetTrigger("WaitingJump");
     }
 
     public void Move()

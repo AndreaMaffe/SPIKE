@@ -1100,7 +1100,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4080695675703508, guid: 63cf44a01a01c0e4bae4af2e517ba5e4, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63cf44a01a01c0e4bae4af2e517ba5e4, type: 2}
@@ -3297,7 +3297,7 @@ GameObject:
   - component: {fileID: 1405766438}
   m_Layer: 10
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3333,7 +3333,7 @@ Transform:
   - {fileID: 866122266}
   - {fileID: 1657846318}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1457146256
 GameObject:
@@ -4187,7 +4187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd01da3e5be6bd24d81a54056753db03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 1742869300}
   gridUnitDimension: 1
   maxVelocity: 2
   jumpAngle: 75
@@ -4196,7 +4196,6 @@ MonoBehaviour:
   state: 1
   onGround: 0
   activateMovements: 0
-  animator: {fileID: 1742869297}
 --- !u!61 &1742869299
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4268,7 +4267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6accb6dac77ec439779eb57f707486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1742869297}
+  bloodParticle: {fileID: 1279267566704632, guid: d4f72d91ea095c9469506a33a5a7274a,
+    type: 2}
   RagdollPieces:
   - {fileID: 1329735608}
   - {fileID: 1813000396}

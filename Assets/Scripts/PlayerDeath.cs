@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerDeath : MonoBehaviour {
 
     Animator animator;
+    public GameObject bloodParticle;
     public Rigidbody2D[] RagdollPieces;
     public Collider2D[] RagdollColliders;
 
@@ -27,9 +28,12 @@ public class PlayerDeath : MonoBehaviour {
 
     public void ActivateRagdoll(bool active)
     {
-        if (active)
+        if (active) {
             injured = true;
-        
+            GameObject bloodParticleInstance = Instantiate(bloodParticle, transform.position + new Vector3(0,1,0), Quaternion.identity);
+            Destroy(bloodParticleInstance.gameObject, 1f);
+        }
+
         animator.enabled = !active;
         mainRigidbody.simulated = !active;
         mainCollider.enabled = !active;
