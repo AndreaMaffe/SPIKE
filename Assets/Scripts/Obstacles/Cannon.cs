@@ -21,8 +21,6 @@ public class Cannon : ObstacleWithTimer {
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
-        this.type = ObstacleType.Cannon;
-
         //1 se sx-->dx , -1 se sx
         direction = - this.transform.position.x / Mathf.Abs(this.transform.position.x);
 

@@ -27,8 +27,6 @@ public class Laser : ObstacleWithTimer {
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
-        this.type = ObstacleType.Laser;
-
         readyToMove = false;
 
         objectToFollow = GameObject.FindGameObjectWithTag("Player");

@@ -11,7 +11,6 @@ public class Pendolum : Obstacle {
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
-        this.type = ObstacleType.Pendolum;
 	}
 
     //update apposito per gli ostacoli, usare questo anziché Update().
