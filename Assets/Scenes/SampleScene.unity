@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 30873251}
   - component: {fileID: 30873254}
   - component: {fileID: 30873253}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: LeftArmDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 90131916}
   - component: {fileID: 90131918}
   - component: {fileID: 90131917}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: RightArmTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +394,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.29100037, y: 0.38400006}
+  m_ConnectedAnchor: {x: 0.2909999, y: 0.38400006}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -432,7 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 156723235}
   - component: {fileID: 156723236}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,7 +636,7 @@ GameObject:
   m_Component:
   - component: {fileID: 277069385}
   - component: {fileID: 277069386}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: OmbraPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,7 +713,7 @@ GameObject:
   - component: {fileID: 291413905}
   - component: {fileID: 291413907}
   - component: {fileID: 291413906}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: RightArmDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -793,7 +793,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.1619997, y: -0.15400007}
+  m_ConnectedAnchor: {x: 0.16200018, y: -0.15400007}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1442,7 +1442,7 @@ GameObject:
   - component: {fileID: 670330651}
   - component: {fileID: 670330650}
   - component: {fileID: 670330652}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: LeftLegDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1668,7 +1668,7 @@ GameObject:
   - component: {fileID: 713618529}
   - component: {fileID: 713618530}
   - component: {fileID: 713618531}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: LeftLegTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2243,7 +2243,7 @@ GameObject:
   - component: {fileID: 930186134}
   - component: {fileID: 930186133}
   - component: {fileID: 930186135}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: RigthLegDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2885,7 +2885,7 @@ GameObject:
   - component: {fileID: 1329735605}
   - component: {fileID: 1329735607}
   - component: {fileID: 1329735608}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3048,7 +3048,7 @@ GameObject:
   - component: {fileID: 1358470573}
   - component: {fileID: 1358470575}
   - component: {fileID: 1358470574}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: RightLegTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4150,7 +4150,7 @@ GameObject:
   - component: {fileID: 1742869298}
   - component: {fileID: 1742869297}
   - component: {fileID: 1742869302}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4208,7 +4208,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06950307, y: 0.78974944}
+  m_Offset: {x: 0.025688887, y: 0.8028937}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4219,7 +4219,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.08, y: 1.6129361}
+  m_Size: {x: 0.7119584, y: 1.5866476}
   m_EdgeRadius: 0
 --- !u!50 &1742869300
 Rigidbody2D:
@@ -4248,7 +4248,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1742869296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.04, y: -2.3, z: 0}
+  m_LocalPosition: {x: -6.93, y: -2.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1329735604}
@@ -4430,7 +4430,7 @@ GameObject:
   - component: {fileID: 1813000394}
   - component: {fileID: 1813000396}
   - component: {fileID: 1813000395}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: LeftArmTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4824,7 +4824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1989756384}
   - component: {fileID: 1989756385}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Helmet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
