@@ -10,7 +10,8 @@ public class Spring : Obstacle {
     public float push;
 
     //start apposito per gli ostacoli, usare questo anziché Start().
-    protected override void StartObstacle () {
+    protected override void StartObstacle ()
+    {
         triggered = false;
 	}
 	
@@ -24,6 +25,7 @@ public class Spring : Obstacle {
         if (!triggered)
         {
             //applica una forza verticale di intensità pari a "push"
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, push, 0));
 
             //muovi la sprite
@@ -38,13 +40,15 @@ public class Spring : Obstacle {
     //chiamato al RunLevel()
     protected override void WakeUp()
     {
-
     }
 
     //chiamato al RetryLevel()
     protected override void Sleep()
     {
+        //torna nella posizione iniziale
+        this.transform.position -= new Vector3(0, 1, 0);
 
+        triggered = false;
     }
 
     public override ObstacleType GetObstacleType()

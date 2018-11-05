@@ -170,8 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 2
   anchorSlotOccupied: 1
-  obstacleType: 2
-  push: 900
+  push: 1600
 --- !u!212 &212039782133804950
 SpriteRenderer:
   m_ObjectHideFlags: 1
