@@ -5,13 +5,16 @@ using UnityEngine;
 public class Raptor : Obstacle {
 	
 	private GameObject objectToFollow;
+	private Rigidbody2D rb;
 	public float deceleration;
-	public float maxVelocity;
+	public float speed; // velocità del raptor
+	public float positionOffset;
 
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
 	    objectToFollow = GameObject.FindGameObjectWithTag("Player");
+	    rb = GetComponent<Rigidbody2D>();
 	}
 
     //update apposito per gli ostacoli, usare questo anziché Update().
@@ -20,14 +23,18 @@ public class Raptor : Obstacle {
 	    {
 		    //calcola lo spostamento verso il player in base alla distanza da quest'ultimo
 		    float deltaXPosition = (objectToFollow.transform.position.x - this.transform.position.x) / deceleration;
+		    
+		    // evita jitter quando deltaXPosition è vicino a 0
+		    if (deltaXPosition < positionOffset && deltaXPosition > -positionOffset)
+			    deltaXPosition = 0;
 
-		    //setta lo spostamento massimo per ogni frame per evitare che il laser sembri muoversi a scatti
-		    if (deltaXPosition > maxVelocity)
-			    deltaXPosition = maxVelocity;
-		    if (deltaXPosition < -maxVelocity)
-			    deltaXPosition = -maxVelocity;
-
-		    this.transform.position = new Vector3(this.transform.position.x + deltaXPosition, this.transform.position.y, this.transform.position.z);
+		    //spostamento usando rigidbody2d
+		    if (deltaXPosition > 0)
+			    rb.velocity = new Vector2(speed, rb.velocity.y);
+		    else if (deltaXPosition < 0)
+			    rb.velocity = new Vector2(-speed, rb.velocity.y);
+		    else
+			    rb.velocity = new Vector2(0.0f, rb.velocity.y);
 	    }
 	}
 

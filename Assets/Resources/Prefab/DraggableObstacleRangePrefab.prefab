@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4388920464537840}
   - component: {fileID: 212907129452563706}
-  - component: {fileID: 114962695088083272}
+  - component: {fileID: 114364296762635564}
   m_Layer: 0
-  m_Name: DraggableObstaclePrefab
+  m_Name: DraggableObstacleRangePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114962695088083272
+--- !u!114 &114364296762635564
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,13 +49,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1650495499822084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acae52c3d0f15c14ba6c707c943f9113, type: 3}
+  m_Script: {fileID: 11500000, guid: a778adc2937c0d84180c895a3c19853f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 212907129452563706}
   anchorPointSnapped: {fileID: 0}
-  position: 0
-  removeSnapDistance: 1
+  position: 1
+  removeSnapDistance: 0
 --- !u!212 &212907129452563706
 SpriteRenderer:
   m_ObjectHideFlags: 1

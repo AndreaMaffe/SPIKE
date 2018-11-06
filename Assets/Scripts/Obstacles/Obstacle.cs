@@ -11,13 +11,14 @@ public enum ObstacleType
     Pendolum,
     Laser,
     Elevator,
-    Raptor
+    Raptor,
+    FallingSpikes
 }
 
 public abstract class Obstacle : MonoBehaviour
 { 
     protected bool active;
-    private Vector3 originalPosition;
+    protected Vector3 originalPosition;
     private Quaternion originalRotation;
     [Tooltip("The position of the anchor that it can occupy")]
     public AnchorPointPosition anchorPosition;
@@ -42,10 +43,11 @@ public abstract class Obstacle : MonoBehaviour
             UpdateObstacle();
     }
 
-    protected abstract void Sleep();
-    protected abstract void UpdateObstacle();
+
     protected abstract void StartObstacle();
+    protected abstract void UpdateObstacle();
     protected abstract void WakeUp();
+    protected abstract void Sleep();
     public abstract ObstacleType GetObstacleType();
     
     protected void SetActive(bool value)
