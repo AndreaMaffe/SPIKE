@@ -8,12 +8,10 @@ public class Cannon : ObstacleWithTimer {
     public GameObject bullet;
     public float rateOfFire;
 
+    private Animator animator;
+
     private float direction;
 
-    //lista per tenere traccia dei proiettili sparati e distruggerli al RetryLevel()
-    private List<GameObject> bullets;
-
-    public Animator animator;
     public GameObject particleExplosion;
     //offset rispetto all'origine dal quale parte il proiettile e le particle del'esplosione
     public Vector3 shootingOffset;
@@ -27,7 +25,7 @@ public class Cannon : ObstacleWithTimer {
         //inverti specularmente in base alla direzione
         this.transform.rotation = new Quaternion(0, Mathf.Acos(direction) * Mathf.Rad2Deg, 0, 1);
 
-        bullets = new List<GameObject>();
+        animator = GetComponent<Animator>();
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
@@ -47,8 +45,9 @@ public class Cannon : ObstacleWithTimer {
             animator.SetTrigger("Shoot");
             GameObject particle = Instantiate(particleExplosion, transform.position + shootingOffset * direction, Quaternion.identity);
             Destroy(particle.gameObject, 1f);
-            //spara un colpo e aggiungilo alla List bullets
-            bullets.Add(Instantiate(bullet, this.transform.position + shootingOffset * direction, this.transform.rotation));
+
+            //spara un colpo
+            Instantiate(bullet, this.transform.position + shootingOffset * direction, this.transform.rotation);
 
             StartTimer();
         }
@@ -72,13 +71,6 @@ public class Cannon : ObstacleWithTimer {
     {
         //impedisce di sparare
         SetActive(false);
-
-        //distrugge i proiettili ancora in scena
-        foreach (GameObject bullet in bullets)
-            Destroy(bullet);
-
-        //svuota la lista dei proiettili
-        bullets.Clear();
 
         //rimette il timer a zero e lo blocca
         ResetTimer();
