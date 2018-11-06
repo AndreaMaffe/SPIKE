@@ -82,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1814910225214746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1656616, y: 1.4931617, z: 0}
+  m_LocalPosition: {x: -2.1785226, y: 2.23645, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4094407001567790}
@@ -119,9 +119,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &58000749948952714
 CircleCollider2D:
@@ -151,6 +151,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 2
   anchorSlotOccupied: 1
+  rigidbodies:
+  - {fileID: 50228646109537280}
+  allNonDraggableColliders:
+  - {fileID: 58000749948952714}
   timeBeforeExplosion: 3.5
   explosionForce: 2000
   explosionInnerRadius: 2

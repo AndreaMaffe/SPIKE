@@ -25,7 +25,7 @@ public class Bomb : ObstacleWithTimer {
         //scala le sprite dei cerchi
         innerRadius.localScale = new Vector3(innerRadius.localScale.x /2 * explosionInnerRadius, innerRadius.localScale.y /2 * explosionInnerRadius, 1);
         outerRadius.localScale = new Vector3(outerRadius.localScale.x /4 * explosionOuterRadius, outerRadius.localScale.y /4 * explosionOuterRadius, 1);
-
+        DisablePhysics();
     }
 
     protected override void UpdateObstacle()
@@ -57,6 +57,9 @@ public class Bomb : ObstacleWithTimer {
 
         //avvia il timer
         StartTimer();
+        
+        //risveglia i rigidbodies e i collider
+        EnablePhysics();
     }
 
     //chiamato al RetryLevel()
@@ -70,6 +73,9 @@ public class Bomb : ObstacleWithTimer {
 
         //rimette il timer a zero e lo blocca
         ResetTimer();
+
+        //disabilita la fisica legata a quel gameobject
+        DisablePhysics();
     }
 
     void ShockWave()
@@ -101,9 +107,9 @@ public class Bomb : ObstacleWithTimer {
 
     void SetVisible(bool value)
     {
-        gameObject.GetComponent<Rigidbody2D>().isKinematic = !value;
+        innerRadius.gameObject.SetActive(value);
+        outerRadius.gameObject.SetActive(value);
         gameObject.GetComponent<SpriteRenderer>().enabled = value;
-        gameObject.GetComponent<CircleCollider2D>().enabled = value;
     }
 }
 

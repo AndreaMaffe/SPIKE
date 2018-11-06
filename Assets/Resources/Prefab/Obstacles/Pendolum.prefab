@@ -37,8 +37,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4193005088933050}
   - component: {fileID: 212296509713571414}
-  - component: {fileID: 61137031165191122}
   - component: {fileID: 114985095526969782}
+  - component: {fileID: 50053572395007434}
   m_Layer: 22
   m_Name: Pendolum
   m_TagString: Untagged
@@ -86,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1129859790619002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1738434, y: 4.202858, z: 0}
+  m_LocalPosition: {x: 0.12878013, y: 3.5132565, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children:
   - {fileID: 4012128757438440}
@@ -126,31 +126,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61137031165191122
-BoxCollider2D:
+--- !u!50 &50053572395007434
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1129859790619002}
-  m_Enabled: 1
-  m_Density: 1
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0042725354, y: -0.021362543}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.59, y: 0.63}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.49584666, y: 0.5471163}
-  m_EdgeRadius: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 3
 --- !u!61 &61546366567027010
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -214,6 +209,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 0
   anchorSlotOccupied: 1
+  rigidbodies:
+  - {fileID: 50018333103526126}
+  - {fileID: 50053572395007434}
+  allNonDraggableColliders:
+  - {fileID: 61560964412369652}
+  - {fileID: 61546366567027010}
+  - {fileID: 61546366567027010}
+  body: {fileID: 1657429844618582}
   oscillation: 400
 --- !u!212 &212092244832251310
 SpriteRenderer:
@@ -362,12 +365,12 @@ HingeJoint2D:
   m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
+  m_ConnectedRigidBody: {fileID: 50053572395007434}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0.020641327, y: 1.4288628}
-  m_ConnectedAnchor: {x: -1.1552662, y: 4.1388345}
+  m_Anchor: {x: 0.01068491, y: 1.4487754}
+  m_ConnectedAnchor: {x: 0.010684911, y: -0.051224496}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 100

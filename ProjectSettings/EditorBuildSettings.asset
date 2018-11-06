@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/SampleSceneRange.unity
+    guid: 20548af5930ee3b4f89caeec5d2edffb
+  - enabled: 1
+    path: Assets/Scenes/DoubleModeScene.unity
+    guid: f862f641846f8014c80d82e9cbedb902
   m_configObjects: {}

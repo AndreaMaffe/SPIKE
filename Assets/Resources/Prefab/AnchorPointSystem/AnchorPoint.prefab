@@ -68,15 +68,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a9b032e780b8b49b62000b4955bb17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obstacleType: 0
+  levelManager: {fileID: 0}
+  draggableObstaclePrefab: {fileID: 1650495499822084, guid: 3b659681da6f9b448af77d64dff07b94,
+    type: 2}
+  draggableObstacleRangePrefab: {fileID: 0}
+  draggableObstacleOffsetFromFinger: {x: 0, y: 1, z: 0}
   position: 0
   edge: 1
   occupied: 0
-  spriteRenderer: {fileID: 212383200616185896}
   circleCollider: {fileID: 58484170439653422}
   obstacleAnchored: {fileID: 0}
-  draggableObstaclePrefab: {fileID: 1650495499822084, guid: 3b659681da6f9b448af77d64dff07b94,
-    type: 2}
-  draggableObstacleOffsetFromFinger: {x: 0, y: 1, z: 0}
 --- !u!212 &212383200616185896
 SpriteRenderer:
   m_ObjectHideFlags: 1

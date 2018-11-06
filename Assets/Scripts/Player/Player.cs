@@ -36,8 +36,6 @@ public class Player : MonoBehaviour {
 
     bool injured = false;
 
-    Timer timerInAria;
-
     //variabile che contiene lo scriptable object del livello attuale chiesto al level manager
     private Level currentLevel;
     private LevelManager levelManager;
@@ -88,8 +86,8 @@ public class Player : MonoBehaviour {
         gameObject.transform.position = originalPosition;
         activateMovements = false;
         foreach (Timer timer in movementTimers)
-            timer.Pause(); //in questo modo i timer non arriveranno mai a zero
-
+            timerManager.RemoveTimer(timer);
+            //timer.Pause(); //in questo modo i timer non arriveranno mai a zero
     }
 
     private void FixedUpdate()
@@ -107,9 +105,12 @@ public class Player : MonoBehaviour {
 
     //Riporta l'animator allo stato di stop
     void ResetPlayerAnimationToDefault() {
+        animator.Play("Stop",0);
         animator.ResetTrigger("Jump");
         animator.ResetTrigger("Move");
         animator.ResetTrigger("WaitingJump");
+
+
     }
 
     public void Move()
@@ -128,7 +129,6 @@ public class Player : MonoBehaviour {
             Invoke("ApplyJumpImpulse", jumpDelayTime);
             state = MovementType.Jump;
             Stop();
-            Debug.Log("Waiting to Jump at position: " + transform.position);
         }
         else
             SetMove();
@@ -138,11 +138,8 @@ public class Player : MonoBehaviour {
 
         if (onGround) {
             animator.SetTrigger("Jump");
-            rb.AddForce(new Vector2(jumpStrenght * gridUnitDimension * Mathf.Cos(jumpAngle * Mathf.Deg2Rad), jumpStrenght * gridUnitDimension * Mathf.Sin(jumpAngle * Mathf.Deg2Rad)), ForceMode2D.Impulse);
-            timerInAria = timerManager.AddTimer(2);
-            timerInAria.Start();
-            Debug.Log(rb.velocity.x);
-
+            rb.AddForce(new Vector2(jumpStrenght * gridUnitDimension * Mathf.Cos(jumpAngle * Mathf.Deg2Rad), 
+                jumpStrenght * gridUnitDimension * Mathf.Sin(jumpAngle * Mathf.Deg2Rad)), ForceMode2D.Impulse);
         }
     }
 
@@ -201,8 +198,6 @@ public class Player : MonoBehaviour {
     //da cambiare e da fare con raycast per evitare collisioni laterali ma per ora va bene anche cosi'
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.name);
-
         if (collision.gameObject.tag == "Platform")
         {
             onGround = true;
@@ -211,8 +206,6 @@ public class Player : MonoBehaviour {
             {
                 if (state != MovementType.Move)
                     SetMove();
-                if (timerInAria != null)
-                    Debug.Log("Tempo In Aria: " + (2 - timerInAria.GetTime()));
             }
         }
 

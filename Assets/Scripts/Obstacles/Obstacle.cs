@@ -25,6 +25,11 @@ public abstract class Obstacle : MonoBehaviour
     [Tooltip("How many anchor point needs")]
     public int anchorSlotOccupied;
 
+    [Header("All the rigidbodies attached to the prefab")]
+    public Rigidbody2D[] rigidbodies;
+    [Header("Tutti i collider non legati al drag and drop")]
+    public Collider2D[] allNonDraggableColliders;
+
     // Use this for initialization
     protected void Start ()
     {
@@ -49,6 +54,29 @@ public abstract class Obstacle : MonoBehaviour
     protected abstract void WakeUp();
     protected abstract void Sleep();
     public abstract ObstacleType GetObstacleType();
+
+
+    //riabilita tutta la fisica del rigidbody
+    protected virtual void EnablePhysics() {
+        for (int i = 0; i < rigidbodies.Length; i++)
+            rigidbodies[i].simulated = true;
+        for (int i = 0; i < allNonDraggableColliders.Length; i++)
+            allNonDraggableColliders[i].enabled = true;
+    }
+
+    protected virtual void DisablePhysics()
+    {
+        //disabilita i rigidbody e toglie ogni velocita' che avevano residua
+        for (int i = 0; i < rigidbodies.Length; i++) {
+            rigidbodies[i].simulated = false;
+            rigidbodies[i].velocity = Vector2.zero;
+            rigidbodies[i].angularVelocity = 0;
+        }
+
+        //disattiva tutti i collider, questo serve a evitare che il collider fisico interferisca con il drag and drop
+        for (int i = 0; i < allNonDraggableColliders.Length; i++)
+            allNonDraggableColliders[i].enabled = false;
+    }
     
     protected void SetActive(bool value)
     {
