@@ -2559,6 +2559,10 @@ MonoBehaviour:
     position: 0
   - obstacle: 4
     position: 0
+  - obstacle: 7
+    position: 2
+  - obstacle: 8
+    position: 2
 --- !u!4 &1588238023
 Transform:
   m_ObjectHideFlags: 0
