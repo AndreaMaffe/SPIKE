@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1318106213304226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.924538, y: 2.354372, z: 0}
+  m_LocalPosition: {x: -3.04, y: 0.99893343, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4018759121602988}
@@ -158,7 +158,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 4.46, y: -0.0101261735}
@@ -286,9 +286,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c669102658c206549b47cef8d9b12d9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anchorPosition: 0
+  anchorSlotOccupied: 0
   speed: 6
-  explosionParticle: {fileID: 1452723846864288, guid: 9f6c10db90382c44f84a7894dae7d0fa,
-    type: 2}
 --- !u!212 &212285773125297882
 SpriteRenderer:
   m_ObjectHideFlags: 1

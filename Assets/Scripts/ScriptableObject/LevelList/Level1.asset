@@ -15,13 +15,13 @@ MonoBehaviour:
   obstacleDatas:
   - type: 0
     obstacleMaxAmount: 2
-  - type: 1
+  - type: 2
     obstacleMaxAmount: 3
   - type: 3
     obstacleMaxAmount: 3
-  - type: 4
+  - type: 5
     obstacleMaxAmount: 3
-  - type: 2
+  - type: 4
     obstacleMaxAmount: 2
   movementDatas:
   - type: 2

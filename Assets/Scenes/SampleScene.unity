@@ -3840,13 +3840,13 @@ MonoBehaviour:
   obstaclePositionData:
   - obstacle: 0
     position: 2
-  - obstacle: 1
-    position: 1
   - obstacle: 2
-    position: 2
+    position: 1
   - obstacle: 3
-    position: 0
+    position: 2
   - obstacle: 4
+    position: 0
+  - obstacle: 5
     position: 0
 --- !u!4 &1588238023
 Transform:
@@ -3973,7 +3973,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1660458163}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9ced5553e9940242a962a5e5a41c01c, type: 3}
   m_Name: 
@@ -4140,7 +4140,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1692389192}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9ced5553e9940242a962a5e5a41c01c, type: 3}
   m_Name: 
@@ -4436,7 +4436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1793682592
 Transform:
   m_ObjectHideFlags: 0
@@ -4877,7 +4877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1954959524
 Transform:
   m_ObjectHideFlags: 0
@@ -5061,7 +5061,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1954959523}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71267852ffb04cd48a98c6067d78b9dd, type: 3}
   m_Name: 

@@ -55,7 +55,7 @@ public class ObstacleDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler
         {
             Vector3 updatedPosition = new Vector3(Camera.main.ScreenToWorldPoint(eventData.position).x, Camera.main.ScreenToWorldPoint(eventData.position).y, 0) + draggableObstacleOffsetFromFinger;
             draggableObstacleComponent.UpdatePosition(updatedPosition);
-            draggableObstacleRangeComponent.UpdatePosition(updatedPosition);
+            //draggableObstacleRangeComponent.UpdatePosition(updatedPosition);
 
         }
     }

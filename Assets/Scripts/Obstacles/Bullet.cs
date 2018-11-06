@@ -12,6 +12,8 @@ public class Bullet : Obstacle {
     //start apposito per gli ostacoli, usare questo anziché Update().
     protected override void StartObstacle()
     {
+        SetActive(true);
+
         rb = GetComponent<Rigidbody2D>();
 
         // 1 se sx-->dx , -1 se sx<--dx
