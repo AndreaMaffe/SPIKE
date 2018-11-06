@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnchorPointSpawner : MonoBehaviour {
+public enum Alignment { Horizontal, Vertical };
 
-    public enum Alignment { Horizontal, Vertical};
+public class AnchorPointSpawner : MonoBehaviour {   
 
     public GameObject anchorPoint;
-
-
     private List<AnchorPoint> anchorPoints;
     public int anchorPointAmount;
     public float anchorPointDistance;
