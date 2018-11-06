@@ -37,8 +37,12 @@ public class LevelSelectionManager : MonoBehaviour {
                 newButton = Instantiate(Resources.Load<GameObject>("Prefab/UI/LevelButton"));
                 newButton.GetComponentInChildren<Text>().text = (i + 1).ToString();
 
+                //Entra nell'if solo se il livello selezionato è sbloccato
                 if (i < maxUnlockedLevel)
+                {
                     newButton.transform.GetChild(1).gameObject.SetActive(false);
+                    newButton.GetComponent<Button>().onClick.AddListener(ChooseLevel);
+                }
 
             }
             else {
@@ -52,12 +56,12 @@ public class LevelSelectionManager : MonoBehaviour {
         }
     }
 
-    public void ChooseLevel()
+    private void ChooseLevel()
     {
         int levelIndex;
         levelIndex = int.Parse(levelButton.GetComponentInChildren<Text>().text);
         //TODO bisogna tener conto del livello scelto in modo tale da caricare lo scriptable object corretto
-        if (levelIndex < maxUnlockedLevel)
+        if (levelIndex <= maxUnlockedLevel)
         {
             SceneManager.LoadScene("SampleScene");
         }
