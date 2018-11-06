@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class PlayerDeathByBullet : PlayerDeathEvent
 {
-    public GameObject explosionParticle;
+    private GameObject explosionParticle;
 
     public PlayerDeathByBullet(Player player, Vector3 position) : base(player, position) { }
 
     public override void StartDeath()
     {
-        GameObject explosion = Instantiate(explosionParticle, transform.position, Quaternion.identity);
-        Destroy(explosion.gameObject, 1f);
+        //explosionParticle = Resources.Load<GameObject>("Prefab/Particles/BombSmoke.prefab");
+        //GameObject explosion = Instantiate(explosionParticle, transform.position, Quaternion.identity);      //TODO: Sistemare
+        //Destroy(explosion.gameObject, 1f);
         player.SetActiveRagdoll(true);
 
     }
