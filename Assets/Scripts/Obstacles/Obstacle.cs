@@ -2,6 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ObstacleType
+{
+    Bomb,
+    Cannon,
+    Spring,
+    Pendolum,
+    Laser,
+    Elevator,
+    Raptor
+}
+
 public abstract class Obstacle : MonoBehaviour
 {
     protected bool active;

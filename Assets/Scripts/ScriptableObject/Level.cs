@@ -36,16 +36,6 @@ public struct MovementData
     public float startTime;
 }
 
-public enum ObstacleType
-{
-    Bomb,
-    Cannon,
-    Spring,
-    Pendolum,
-    Laser
-   
-}
-
 public enum MovementType
 {
     Jump,

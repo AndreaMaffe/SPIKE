@@ -83,7 +83,7 @@ public class Bomb : ObstacleWithTimer {
 
             //if the object hit is within the ExplosionInnerRadius, destroy it
             if (Vector3.Distance(objectHit.transform.position, this.transform.position) < explosionInnerRadius && objectHit.tag == "Player")
-                objectHit.GetComponent<PlayerDeath>().ActivateRagdoll(true);
+                objectHit.GetComponent<Player>().SetActiveRagdoll(true);
 
             //otherwise, push it in the opposite direction with a thrust proportional to the distance from the explosion
             else
