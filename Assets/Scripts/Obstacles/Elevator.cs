@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class Elevator : Obstacle
 {
-    public float speed = 2f;
-    public float height = 0.5f;
-    public float amplitude;
 
-
-
+    public Animator animator;
 
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
@@ -20,9 +16,10 @@ public class Elevator : Obstacle
     //update apposito per gli ostacoli, usare questo anziché Update().
     protected override void UpdateObstacle()
     {
-        Vector3 pos = transform.localPosition;
-        float newY = amplitude * Mathf.Sin(Time.time * speed);
-        transform.localPosition = new Vector3(pos.x, newY, pos.z);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 10, LayerMask.GetMask("Player"));
+        if (hit.collider != null) {
+            animator.SetTrigger("Down");
+        }
     }
 
     //chiamato al RunLevel()
