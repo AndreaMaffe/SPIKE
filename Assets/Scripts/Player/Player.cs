@@ -215,7 +215,14 @@ public class Player : MonoBehaviour {
         }
 
         if (collision.gameObject.tag == "Deadly")
-            SetActiveRagdoll(true);
+        {
+            //crea l'evento PlayerDeathEvent nel punto corrispondente al contatto (N.B: CONTROLLARE SE L'INDICE 0 E' CORRETTO!!)
+            PlayerDeathEvent playerDeathEvent = collision.gameObject.GetComponent<Obstacle>().CreatePlayerDeathEvent(this, collision.GetContact(0).point);
+
+            playerDeathEvent.StartDeath();
+
+        }
+           
     }
 
     private void OnCollisionExit2D(Collision2D collision)

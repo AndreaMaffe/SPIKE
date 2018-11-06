@@ -2,40 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour {
+public class Bullet : Obstacle {
 
     public float speed;
 
     private Rigidbody2D rb;
     private float direction;
 
-    public GameObject explosionParticle;
-
-    // Use this for initialization
-    void Start ()
-    { 
+    //start apposito per gli ostacoli, usare questo anziché Update().
+    protected override void StartObstacle()
+    {
         rb = GetComponent<Rigidbody2D>();
 
         // 1 se sx-->dx , -1 se sx<--dx
         direction = Mathf.Cos(transform.eulerAngles.y);
-       
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        rb.velocity = new Vector3(speed*direction, 0, 0);
-	}
+    }
 
-    //TODO: Togliere quando si implementa l'evento della morte del player
-    private void OnTriggerEnter2D(Collider2D collision)
+    //update apposito per gli ostacoli, usare questo anziché Update().
+    protected override void UpdateObstacle()
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            GameObject explosion = Instantiate(explosionParticle, transform.position, Quaternion.identity);
-            Destroy(explosion.gameObject, 1f);
-            collision.GetComponent<Player>().SetActiveRagdoll(true);
-        }
+        rb.velocity = new Vector3(speed * direction, 0, 0);
+    }
+
+    //chiamato al RunLevel()
+    protected override void WakeUp()
+    {
+
+    }
+
+    //chiamato al RetryLevel()
+    protected override void Sleep()
+    {
+        Destroy(this.gameObject);
+    }
+
+    public override ObstacleType GetObstacleType()
+    {
+        return ObstacleType.Bullet;
     }
 
 }

@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDeathByBullet : MonoBehaviour
+public class PlayerDeathByBullet : PlayerDeathEvent
 {
+    public GameObject explosionParticle;
 
-    public PlayerDeathByBullet(GameObject player, GameObject obstacle, Vector3 position)
+    public PlayerDeathByBullet(Player player, Vector3 position) : base(player, position) { }
+
+    public override void StartDeath()
     {
+        GameObject explosion = Instantiate(explosionParticle, transform.position, Quaternion.identity);
+        Destroy(explosion.gameObject, 1f);
+        player.SetActiveRagdoll(true);
 
     }
-
-   
 }

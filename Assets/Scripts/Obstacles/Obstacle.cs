@@ -5,6 +5,7 @@ using UnityEngine;
 public enum ObstacleType
 {
     Bomb,
+    Bullet,
     Cannon,
     Spring,
     Pendolum,
@@ -14,7 +15,7 @@ public enum ObstacleType
 }
 
 public abstract class Obstacle : MonoBehaviour
-{
+{ 
     protected bool active;
     private Vector3 originalPosition;
     private Quaternion originalRotation;
@@ -63,6 +64,18 @@ public abstract class Obstacle : MonoBehaviour
         LevelManager.runLevelEvent -= WakeUp;
         LevelManager.retryLevelEvent -= Sleep;
     }
+
+    public PlayerDeathEvent CreatePlayerDeathEvent(Player player, Vector3 position)
+    {
+        switch (GetObstacleType())
+        {
+            case ObstacleType.Bomb: return new PlayerDeathByBullet(player, position);
+            case ObstacleType.Bullet: return new PlayerDeathByBullet(player, position);
+
+            default: return new PlayerDeathByBullet(player, position);
+        }
+    }
+
 }
 
 public abstract class ObstacleWithTimer : Obstacle

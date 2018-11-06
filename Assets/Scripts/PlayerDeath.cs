@@ -4,17 +4,13 @@ using UnityEngine;
 
 public abstract class PlayerDeathEvent : MonoBehaviour
 {
-    private GameObject obstacle;
-    private Vector3 position;
+    protected Player player;
+    protected Vector3 position;
 
-    private Animator playerAnimator;
-
-
-    public PlayerDeathEvent (GameObject player, GameObject obstacle, Vector3 position)
+    public PlayerDeathEvent (Player player, Vector3 position)
     {
-        this.obstacle = obstacle;
+        this.player = player;
         this.position = position;
-        this.playerAnimator = player.GetComponent<Animator>();
     }
 
     public abstract void StartDeath();
