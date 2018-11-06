@@ -28,11 +28,17 @@ public class AnchorRangeSpawner : MonoBehaviour {
             collider.size = new Vector2(endingPoint.transform.localPosition.x , 0.8f );
             collider.offset = new Vector2(collider.size.x / 2, 0);
         }
+
       
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public AnchorPointPosition GetPosition()  {
+        return position;
+    }
+
+    public Alignment GetAlignment() {
+        return alignment;
+    }
+
+
 }

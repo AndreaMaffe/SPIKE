@@ -16,6 +16,7 @@ public class ObstacleDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     public GameObject draggableObstaclePrefab;
     protected GameObject draggableObstacleInstance;
     protected DraggableObstacle draggableObstacleComponent;
+    protected DraggableObstacleRange draggableObstacleRangeComponent;
     public Vector3 draggableObstacleOffsetFromFinger;
 
 
@@ -54,6 +55,8 @@ public class ObstacleDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler
         {
             Vector3 updatedPosition = new Vector3(Camera.main.ScreenToWorldPoint(eventData.position).x, Camera.main.ScreenToWorldPoint(eventData.position).y, 0) + draggableObstacleOffsetFromFinger;
             draggableObstacleComponent.UpdatePosition(updatedPosition);
+            draggableObstacleRangeComponent.UpdatePosition(updatedPosition);
+
         }
     }
 
@@ -105,6 +108,8 @@ public class ObstacleDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler
         AnchorPointPosition positionWhereObstacleGoes = levelManager.CheckInWhatPositionTheObstacleGoes(obstacleType);
         //assegna la posizione in cui puo' andare
         draggableObstacleComponent.SetSnappingDesiredPosition(positionWhereObstacleGoes);
+        draggableObstacleRangeComponent.SetSnappingDesiredPosition(positionWhereObstacleGoes);
+
         //lancia l'evento per tutti gli anchor point in ascolto che si illuminano o spengono a seconda se la posizione e' la loro
         onUpdateAnchorPoint(positionWhereObstacleGoes);
     }
@@ -116,5 +121,7 @@ public class ObstacleDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler
         //assegna l'immagine giusta presa dalla cartella resources
         draggableObstacleInstance.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("UIObstacleImages/" + obstacleType.ToString());
         draggableObstacleComponent = draggableObstacleInstance.GetComponent<DraggableObstacle>();
+        draggableObstacleRangeComponent = draggableObstacleInstance.GetComponent<DraggableObstacleRange>();
+
     }
 }
