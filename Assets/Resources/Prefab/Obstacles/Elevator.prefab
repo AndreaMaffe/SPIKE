@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4610905080585492}
   - component: {fileID: 212565541856271428}
+  - component: {fileID: 95278863635347494}
   m_Layer: 0
   m_Name: Elevator
   m_TagString: Untagged
@@ -65,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1638983760367060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1187512, y: 0.74649787, z: 0}
+  m_LocalPosition: {x: -8.72, y: 0.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4259465760817632}
@@ -97,6 +98,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &95278863635347494
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1638983760367060}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3d897efe24d1c2c43a2e55d2da900446, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114747096149916314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,9 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 2
   anchorSlotOccupied: 1
-  speed: 1
-  height: 0.5
-  amplitude: 2
+  animator: {fileID: 95278863635347494}
 --- !u!212 &212266190364190972
 SpriteRenderer:
   m_ObjectHideFlags: 1
