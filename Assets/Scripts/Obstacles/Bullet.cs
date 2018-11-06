@@ -34,7 +34,7 @@ public class Bullet : MonoBehaviour {
         {
             GameObject explosion = Instantiate(explosionParticle, transform.position, Quaternion.identity);
             Destroy(explosion.gameObject, 1f);
-            collision.GetComponent<PlayerDeath>().ActivateRagdoll(true);
+            collision.GetComponent<Player>().SetActiveRagdoll(true);
         }
     }
 

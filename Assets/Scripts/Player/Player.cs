@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovementForce : MonoBehaviour {
+public class Player : MonoBehaviour {
 
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
+    private Animator animator;
+
     public float gridUnitDimension;
 
     public float maxVelocity;
@@ -18,9 +20,23 @@ public class PlayerMovementForce : MonoBehaviour {
     public bool onGround;
     public bool activateMovements = false;
 
-    Timer timerInAria;
+    public GameObject bloodParticle;
+    public Rigidbody2D[] RagdollPieces;
+    public Collider2D[] RagdollColliders;
 
-    PlayerDeath playerDeath;
+    [Header("Il rigidbody e il collider principali")]
+    public Rigidbody2D mainRigidbody;
+    public BoxCollider2D mainCollider;
+
+    public Sprite[] bodySprite;
+    public Sprite[] faceSprite;
+
+    public SpriteRenderer bodyRenderer;
+    public SpriteRenderer faceRenderer;
+
+    bool injured = false;
+
+    Timer timerInAria;
 
     //variabile che contiene lo scriptable object del livello attuale chiesto al level manager
     private Level currentLevel;
@@ -30,15 +46,14 @@ public class PlayerMovementForce : MonoBehaviour {
     //Lista che contiene tutti i timer per i movimenti del giocatore
     private Timer[] movementTimers;
 
-    Animator animator;
-
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerDeath = GetComponent<PlayerDeath>();
+        animator = GetComponent<Animator>();
+
         levelManager = FindObjectOfType<LevelManager>();
         timerManager = FindObjectOfType<TimerManager>();
-        animator = GetComponent<Animator>();
+
         LevelManager.runLevelEvent += WakeUp;
         LevelManager.retryLevelEvent += Sleep;
         state = MovementType.Stop;
@@ -60,20 +75,21 @@ public class PlayerMovementForce : MonoBehaviour {
         activateMovements = true;
         StartTimersForJumpingAndStopping();
         ResetPlayerAnimationToDefault();
-        
+
     }
 
 
     //chiamato al RetryLevel()
     void Sleep()
     {
-        playerDeath.ActivateRagdoll(false);
+        SetActiveRagdoll(false);
 
         SetStop();
         gameObject.transform.position = originalPosition;
         activateMovements = false;
         foreach (Timer timer in movementTimers)
             timer.Pause(); //in questo modo i timer non arriveranno mai a zero
+
     }
 
     private void FixedUpdate()
@@ -85,12 +101,12 @@ public class PlayerMovementForce : MonoBehaviour {
         }
         else if (state == MovementType.Stop)
             Stop();
-       
+
 
     }
 
     //Riporta l'animator allo stato di stop
-    void ResetPlayerAnimationToDefault (){
+    void ResetPlayerAnimationToDefault() {
         animator.ResetTrigger("Jump");
         animator.ResetTrigger("Move");
         animator.ResetTrigger("WaitingJump");
@@ -126,7 +142,7 @@ public class PlayerMovementForce : MonoBehaviour {
             timerInAria = timerManager.AddTimer(2);
             timerInAria.Start();
             Debug.Log(rb.velocity.x);
-            
+
         }
     }
 
@@ -190,16 +206,16 @@ public class PlayerMovementForce : MonoBehaviour {
             onGround = true;
 
             if (activateMovements)
-            {    
-                if (state!= MovementType.Move)
+            {
+                if (state != MovementType.Move)
                     SetMove();
                 if (timerInAria != null)
                     Debug.Log("Tempo In Aria: " + (2 - timerInAria.GetTime()));
-            }      
+            }
         }
 
         if (collision.gameObject.tag == "Deadly")
-            playerDeath.ActivateRagdoll(true);
+            SetActiveRagdoll(true);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -208,6 +224,39 @@ public class PlayerMovementForce : MonoBehaviour {
             onGround = false;
     }
 
+    public void SetActiveRagdoll(bool active)
+    {
+        if (active)
+        {
+            injured = true;
+            GameObject bloodParticleInstance = Instantiate(bloodParticle, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+            Destroy(bloodParticleInstance.gameObject, 1f);
+        }
+
+        animator.enabled = !active;
+        mainRigidbody.simulated = !active;
+        mainCollider.enabled = !active;
+        foreach (Rigidbody2D rb in RagdollPieces)
+        {
+            rb.simulated = active;
+        }
+        foreach (Collider2D col in RagdollColliders)
+        {
+            col.enabled = active;
+        }
+
+        UpdateSprite();
+    }
+
+    void UpdateSprite()
+    {
+        if (injured)
+        {
+            bodyRenderer.sprite = bodySprite[0];
+            faceRenderer.sprite = faceSprite[1];
+        }
+
+    }
 
 
 }
