@@ -36,8 +36,6 @@ public class DraggableObstacleRange : MonoBehaviour
 
     public void UpdatePosition(Vector3 newPosition)
     {
-        Debug.Log("Ho colpito");
-        Debug.Log(position);
 
         //spara un raycast nella posizione leggermente sopra al tocco del dito
         RaycastHit2D hit = Physics2D.Raycast(newPosition, Vector2.zero, 10000, layerMask);

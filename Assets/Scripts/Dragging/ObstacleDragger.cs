@@ -14,6 +14,8 @@ public class ObstacleDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 
     //Variabili che tengono il prefab del draggable obstacle e vari parametri legati a questo prefab
     public GameObject draggableObstaclePrefab;
+    public GameObject draggableObstacleRangePrefab;
+
     protected GameObject draggableObstacleInstance;
     protected DraggableObstacle draggableObstacleComponent;
     protected DraggableObstacleRange draggableObstacleRangeComponent;
@@ -54,9 +56,14 @@ public class ObstacleDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler
         if (draggableObstacleInstance != null)
         {
             Vector3 updatedPosition = new Vector3(Camera.main.ScreenToWorldPoint(eventData.position).x, Camera.main.ScreenToWorldPoint(eventData.position).y, 0) + draggableObstacleOffsetFromFinger;
-            draggableObstacleComponent.UpdatePosition(updatedPosition);
-            //draggableObstacleRangeComponent.UpdatePosition(updatedPosition);
-
+            if (draggableObstaclePrefab != null)
+            {
+                draggableObstacleComponent.UpdatePosition(updatedPosition);
+            }
+            else if (draggableObstacleRangePrefab != null)
+            {
+                draggableObstacleRangeComponent.UpdatePosition(updatedPosition);
+            }
         }
     }
 
@@ -66,11 +73,14 @@ public class ObstacleDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler
         if (draggableObstacleInstance != null)
         {
             //check se se snappato ad un anchor point 
-            if (draggableObstacleComponent.CheckIfSnapped())
+            if (draggableObstacleRangeComponent.CheckIfSnapped())
             {
                 SpawnPrefabOfObstacle();
                 //brutto modo ma non mi viene in mente altro per settare l'anchor point a occupato
-                draggableObstacleInstance.GetComponent<DraggableObstacle>().anchorPointSnapped.GetComponent<AnchorPoint>().SetOccupied(true);
+                if (draggableObstaclePrefab != null)
+                {
+                    draggableObstacleInstance.GetComponent<DraggableObstacle>().anchorPointSnapped.GetComponent<AnchorPoint>().SetOccupied(true);
+                }
                 //hai usato un ostacolo quindi decrementa il tutto 
                 UpdateObstacleNumber(-1);
                 //distruggi il draggable object che tanto ha finito il suo corso
@@ -88,7 +98,7 @@ public class ObstacleDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 
     //metodo che aggiorna il numero di ostacoli a disposizione, implementato effettivamente nelle classi figlio
     protected virtual void UpdateObstacleNumber(int amount) {
-    
+        
     }
 
     //semplicemente spanwa il prefab dell'ostacolo e lo mette nella posizine dell'anchor point
@@ -97,8 +107,10 @@ public class ObstacleDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler
         GameObject obstaclePrefab = Instantiate(Resources.Load<GameObject>("Prefab/Obstacles/" + obstacleType.ToString()));
         obstaclePrefab.transform.position = draggableObstacleInstance.transform.position;
         //assegna all'anchor point il gameObject appena spawnato
-        draggableObstacleInstance.GetComponent<DraggableObstacle>().anchorPointSnapped.GetComponent<AnchorPoint>().SetObstacleAnchored(obstaclePrefab);
-
+        if (draggableObstaclePrefab != null)
+        {
+            draggableObstacleInstance.GetComponent<DraggableObstacle>().anchorPointSnapped.GetComponent<AnchorPoint>().SetObstacleAnchored(obstaclePrefab);
+        }
     }
 
     //assegna ad un draggble object una posizione tra TOP, SIDE e PLATFORM
@@ -107,8 +119,14 @@ public class ObstacleDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler
         //cerca la posizione in cui il draggable object puo' andare: TOP,SIDE,PLATFORM, uso questa reference perche' serve dopo due volte
         AnchorPointPosition positionWhereObstacleGoes = levelManager.CheckInWhatPositionTheObstacleGoes(obstacleType);
         //assegna la posizione in cui puo' andare
-        draggableObstacleComponent.SetSnappingDesiredPosition(positionWhereObstacleGoes);
-        draggableObstacleRangeComponent.SetSnappingDesiredPosition(positionWhereObstacleGoes);
+        if (draggableObstaclePrefab != null)
+        {
+            draggableObstacleComponent.SetSnappingDesiredPosition(positionWhereObstacleGoes);
+        }
+        else if (draggableObstacleRangePrefab != null)
+        {
+            draggableObstacleRangeComponent.SetSnappingDesiredPosition(positionWhereObstacleGoes);
+        }
 
         //lancia l'evento per tutti gli anchor point in ascolto che si illuminano o spengono a seconda se la posizione e' la loro
         onUpdateAnchorPoint(positionWhereObstacleGoes);
@@ -117,11 +135,21 @@ public class ObstacleDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     protected virtual void SpawnDraggableObjectInstanceAndGetComponents(PointerEventData eventData)
     {
         //crea l'istanza del draggable object
-        draggableObstacleInstance = Instantiate(draggableObstaclePrefab, Camera.main.ScreenToWorldPoint(eventData.position) + draggableObstacleOffsetFromFinger, Quaternion.identity);
         //assegna l'immagine giusta presa dalla cartella resources
-        draggableObstacleInstance.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("UIObstacleImages/" + obstacleType.ToString());
-        draggableObstacleComponent = draggableObstacleInstance.GetComponent<DraggableObstacle>();
-        draggableObstacleRangeComponent = draggableObstacleInstance.GetComponent<DraggableObstacleRange>();
+        if (draggableObstaclePrefab != null)
+        {
+            draggableObstacleInstance = Instantiate(draggableObstaclePrefab, Camera.main.ScreenToWorldPoint(eventData.position) + draggableObstacleOffsetFromFinger, Quaternion.identity);
+            draggableObstacleInstance.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("UIObstacleImages/" + obstacleType.ToString());
+            draggableObstacleComponent = draggableObstacleInstance.GetComponent<DraggableObstacle>();
+        }
+
+        else if (draggableObstacleRangePrefab != null) {
+            draggableObstacleInstance = Instantiate(draggableObstacleRangePrefab, Camera.main.ScreenToWorldPoint(eventData.position) + draggableObstacleOffsetFromFinger, Quaternion.identity);
+            draggableObstacleInstance.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("UIObstacleImages/" + obstacleType.ToString());
+            draggableObstacleRangeComponent = draggableObstacleInstance.GetComponent<DraggableObstacleRange>();
+
+        }
+
 
     }
 }

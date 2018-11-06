@@ -284,12 +284,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975c3f49cc09b4e41b0b2c075db3a025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleImage: {fileID: 114294689174133332}
-  obstacleAmountText: {fileID: 114003342317072570}
+  obstacleType: 0
   levelManager: {fileID: 0}
-  draggableObstaclePrefab: {fileID: 1650495499822084, guid: 3b659681da6f9b448af77d64dff07b94,
+  draggableObstaclePrefab: {fileID: 0}
+  draggableObstacleRangePrefab: {fileID: 1650495499822084, guid: 0775cac59b7537e408f5a06bc97cf2b7,
     type: 2}
   draggableObstacleOffsetFromFinger: {x: 0, y: 1, z: 0}
+  obstacleImage: {fileID: 114294689174133332}
+  obstacleAmountText: {fileID: 114003342317072570}
 --- !u!222 &222772450789347388
 CanvasRenderer:
   m_ObjectHideFlags: 1
