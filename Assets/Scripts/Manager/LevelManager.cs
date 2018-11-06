@@ -6,11 +6,14 @@ using UnityEngine.SceneManagement;
 using System;
 
 
+public enum AnchorPointMode { SINGLE, RANGE };
 
 public class LevelManager : MonoBehaviour
 {
 
     private enum LevelState { RUNNING, UNDER_CONSTRUCTION };
+    [Header ("Modificare questo se si vuole usare una modalita' piuttosto che l'altra")]
+    public AnchorPointMode anchorPointMode;
 
     //numero del livello attuale partendo da 1
     private int indexLevel;
@@ -33,6 +36,10 @@ public class LevelManager : MonoBehaviour
     public delegate void OnRetryLevel();
     public static event OnRetryLevel retryLevelEvent;
 
+    [Header("Serve a disattivare il sistema di anchor point sbagliato")]
+    public AnchorPointSpawner[] anchorPointSpawnerArray;
+    public GameObject[] AnchorRangeObjects;
+
     //struct che associa ogni ostacolo alla posizione in cui puo' andare
     [System.Serializable]
     public struct ObstaclePositionData
@@ -51,6 +58,25 @@ public class LevelManager : MonoBehaviour
         indexLevel = 1;
         LoadLevel();
         state = LevelState.UNDER_CONSTRUCTION;
+
+        DeactivateAnchorRangeOfSingle();
+    }
+
+    void DeactivateAnchorRangeOfSingle() {
+        if (anchorPointMode == AnchorPointMode.SINGLE)
+        {
+            foreach (GameObject g in AnchorRangeObjects)
+                Destroy(g);
+        }
+        else if (anchorPointMode == AnchorPointMode.RANGE) {
+            foreach (AnchorPointSpawner a in anchorPointSpawnerArray) {
+                Destroy(a);
+                AnchorPoint[] allAnchorPoints = FindObjectsOfType<AnchorPoint>();
+                foreach (AnchorPoint an in allAnchorPoints)
+                    Destroy(an.gameObject);
+            }
+        }
+
     }
 
     void LoadLevel()

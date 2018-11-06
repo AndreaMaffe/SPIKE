@@ -3597,13 +3597,13 @@ MonoBehaviour:
   obstaclePositionData:
   - obstacle: 0
     position: 2
-  - obstacle: 1
-    position: 1
   - obstacle: 2
-    position: 2
+    position: 1
   - obstacle: 3
-    position: 0
+    position: 2
   - obstacle: 4
+    position: 0
+  - obstacle: 5
     position: 0
 --- !u!4 &1588238023
 Transform:
@@ -4019,7 +4019,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd01da3e5be6bd24d81a54056753db03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   gridUnitDimension: 1
   maxVelocity: 2
   jumpAngle: 75
@@ -4028,7 +4027,15 @@ MonoBehaviour:
   state: 1
   onGround: 0
   activateMovements: 0
-  animator: {fileID: 1742869297}
+  bloodParticle: {fileID: 0}
+  RagdollPieces: []
+  RagdollColliders: []
+  mainRigidbody: {fileID: 0}
+  mainCollider: {fileID: 0}
+  bodySprite: []
+  faceSprite: []
+  bodyRenderer: {fileID: 0}
+  faceRenderer: {fileID: 0}
 --- !u!61 &1742869299
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4100,28 +4107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6accb6dac77ec439779eb57f707486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1742869297}
-  RagdollPieces:
-  - {fileID: 1329735608}
-  - {fileID: 1813000396}
-  - {fileID: 30873254}
-  - {fileID: 90131918}
-  - {fileID: 291413907}
-  - {fileID: 713618530}
-  - {fileID: 670330651}
-  - {fileID: 1358470575}
-  - {fileID: 930186134}
-  RagdollColliders:
-  - {fileID: 1329735607}
-  - {fileID: 670330652}
-  - {fileID: 930186135}
-  mainRigidbody: {fileID: 1742869300}
-  mainCollider: {fileID: 1742869299}
-  bodySprite:
-  - {fileID: 0}
-  faceSprite: []
-  bodyRenderer: {fileID: 0}
-  faceRenderer: {fileID: 0}
 --- !u!1 &1786439550
 GameObject:
   m_ObjectHideFlags: 0
