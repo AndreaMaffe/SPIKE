@@ -201,6 +201,8 @@ public class Player : MonoBehaviour {
     //da cambiare e da fare con raycast per evitare collisioni laterali ma per ora va bene anche cosi'
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(collision.gameObject.name);
+
         if (collision.gameObject.tag == "Platform")
         {
             onGround = true;
