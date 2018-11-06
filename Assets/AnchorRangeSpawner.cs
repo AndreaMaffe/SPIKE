@@ -13,31 +13,66 @@ public class AnchorRangeSpawner : MonoBehaviour {
     [Header("Top, Side o Platform")]
     public AnchorPointPosition position;
 
+    BoxCollider2D boxCollider;
+    LineRenderer line;
+
     // Use this for initialization
     void Start () {
-        //disegna la linea al punto finale 
-        startingPoint.GetComponent<LineRenderer>().SetPosition(1, endingPoint.localPosition);
+
+        ObstacleDragger.onUpdateAnchorPoint += UpdateAnchorRangeVisual;
+        LevelManager.runLevelEvent += HideAnchorRange;
+       
+
+        boxCollider = startingPoint.GetComponent<BoxCollider2D>();
+        line = startingPoint.GetComponent<LineRenderer>();
+    }
+
+    void UpdateAnchorRangeVisual(AnchorPointPosition pos) {
+        if (pos == position)
+            DrawAnchorRange();
+        else
+            HideAnchorRange();
+    }
+
+    void HideAnchorRange() {
+        line.enabled = false;
+        startingPoint.GetComponent<SpriteRenderer>().enabled = false;
+        endingPoint.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    void DrawAnchorRange()
+    {
+        line.enabled = true;
+        startingPoint.GetComponent<SpriteRenderer>().enabled = true;
+        endingPoint.GetComponent<SpriteRenderer>().enabled = true;
+        line.SetPosition(1, endingPoint.localPosition);
         //adatta il collider 
-        BoxCollider2D collider = startingPoint.GetComponent<BoxCollider2D>();
+        boxCollider.enabled = true;
         if (alignment == Alignment.Vertical)
         {
-            collider.size = new Vector2(0.8f, endingPoint.transform.localPosition.y);
-            collider.offset = new Vector2(0, collider.size.y / 2);
+            boxCollider.size = new Vector2(0.8f, endingPoint.transform.localPosition.y);
+            boxCollider.offset = new Vector2(0, boxCollider.size.y / 2);
         }
-        else if (alignment == Alignment.Horizontal) {
-            collider.size = new Vector2(endingPoint.transform.localPosition.x , 0.8f );
-            collider.offset = new Vector2(collider.size.x / 2, 0);
+        else if (alignment == Alignment.Horizontal)
+        {
+            boxCollider.size = new Vector2(endingPoint.transform.localPosition.x, 0.8f);
+            boxCollider.offset = new Vector2(boxCollider.size.x / 2, 0);
         }
+    }
 
-      
-	}
-	
-	public AnchorPointPosition GetPosition()  {
+    public AnchorPointPosition GetPosition()  {
         return position;
     }
 
     public Alignment GetAlignment() {
         return alignment;
+    }
+
+    private void OnDisable()
+    {
+        ObstacleDragger.onUpdateAnchorPoint -= UpdateAnchorRangeVisual;
+        LevelManager.runLevelEvent -= HideAnchorRange;
+
     }
 
 

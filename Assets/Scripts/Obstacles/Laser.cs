@@ -24,6 +24,8 @@ public class Laser : ObstacleWithTimer {
     public Vector3 laserLightHitPlayerOffsetPosition;
     public GameObject laserLight;
 
+    bool shooting = false;
+
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
@@ -56,26 +58,23 @@ public class Laser : ObstacleWithTimer {
                 StartTimer();
             }
         }
+        if (shooting)
+            Shoot();
+
 	}
 
     protected override void OnTimerEnd()
     {
         Shoot();
+        ActivateLaserParticle();
     }
 
     void Shoot() {
 
+        shooting = true;
         readyToMove = false;
         RaycastHit2D hit = Physics2D.Raycast(shootingPoint.position, Vector2.down);
-
-        Debug.Log(hit.collider.name);
-
         DrawLaser(hit.point, hit.collider.gameObject.tag);
-
-        //if (hit.collider.gameObject.tag == "Player")
-        //     Destroy(hit.collider.gameObject, 0.5f); 
-        
-        //fa partire un timer al termine del quale readyToMove è rimesso a true e il timer può muoversi di nuovo
         timerToRecover.Start();
     }
 
@@ -86,19 +85,22 @@ public class Laser : ObstacleWithTimer {
         if (objectHit == "Player") {
             hitPoint += laserLightHitPlayerOffsetPosition;
         }
-        ActivateLaserParticle(hitPoint);      
+        SetLaserParticlePosition(hitPoint);      
     }
 
-    void ActivateLaserParticle(Vector3 hitPoint)
-    {
+    void SetLaserParticlePosition(Vector3 hitPoint) {
         SpriteRenderer renderer = laserLight.GetComponent<SpriteRenderer>();
         renderer.size = new Vector2(renderer.size.x, laserLight.transform.position.y - hitPoint.y);
+        laserEndParticle.transform.position = hitPoint + laserEndParticleOffsetPosition;
+    }
+
+    void ActivateLaserParticle()
+    {     
         //attiva tutte le particle
         laserStartParticle.SetActive(true);
         laserEndParticle.SetActive(true);
         laserStartParticle.GetComponent<ParticleSystem>().Play();
         laserLight.SetActive(true);
-        laserEndParticle.transform.position = hitPoint + laserEndParticleOffsetPosition;
         laserEndParticle.GetComponent<ParticleSystem>().Play();
     }
 
@@ -116,6 +118,7 @@ public class Laser : ObstacleWithTimer {
     {
         DeactivateLaserParticle();   
         readyToMove = true;
+        shooting = false;
     }
 
     //chiamato al RunLevel()
