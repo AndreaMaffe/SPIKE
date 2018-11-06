@@ -4,20 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class AudioSettings : MonoBehaviour {
+public class AudioManager : MonoBehaviour {
 
     public Slider volumeSlider;
 
     public AudioSource buildLevel;
     public AudioSource playLevel;
 
+    public AudioSource winAudio;
+    public AudioSource failAudio;
+
     public void Start()
     {
         //Adds a listener to the main slider and invokes a method when the value changes.
         volumeSlider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
-
-        //buildLevel = GetComponent<AudioSource>();
-        //playLevel = GetComponent<AudioSource>();
     }
 
     // Invoked when the value of the slider changes.
@@ -31,6 +31,21 @@ public class AudioSettings : MonoBehaviour {
     {
         buildLevel.mute = !buildLevel.mute;
         playLevel.mute = !playLevel.mute;
+    }
 
+    public void PlayWinAudio()
+    {
+        winAudio.Play();
+
+        playLevel.Stop();
+        buildLevel.Stop();
+    }
+
+    public void PlayFailAudio()
+    {
+        failAudio.Play();
+
+        playLevel.Stop();
+        buildLevel.Stop();
     }
 }
