@@ -253,7 +253,7 @@ public class Player : MonoBehaviour {
         if (injured)
         {
             bodyRenderer.sprite = bodySprite[0];
-            faceRenderer.sprite = faceSprite[1];
+            faceRenderer.sprite = faceSprite[0];
         }
 
     }
