@@ -21,7 +21,7 @@ public class AnchorRangeSpawner : MonoBehaviour {
 
         ObstacleDragger.onUpdateAnchorPoint += UpdateAnchorRangeVisual;
         LevelManager.runLevelEvent += HideAnchorRange;
-       
+        ObstacleDragger.onEndDraggingObstacle += HideAnchorRange;       
 
         boxCollider = startingPoint.GetComponent<BoxCollider2D>();
         line = startingPoint.GetComponent<LineRenderer>();
@@ -72,7 +72,7 @@ public class AnchorRangeSpawner : MonoBehaviour {
     {
         ObstacleDragger.onUpdateAnchorPoint -= UpdateAnchorRangeVisual;
         LevelManager.runLevelEvent -= HideAnchorRange;
-
+        ObstacleDragger.onEndDraggingObstacle -= HideAnchorRange;
     }
 
 
