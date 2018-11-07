@@ -54,7 +54,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -101,8 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 0
   anchorSlotOccupied: 0
+  rigidbodies: []
+  allNonDraggableColliders: []
   timeOnGround: 2
-  liftSpeed: 0.2
+  liftSpeed: 0.1
 --- !u!212 &212304730305404548
 SpriteRenderer:
   m_ObjectHideFlags: 1

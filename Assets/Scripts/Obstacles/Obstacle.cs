@@ -20,14 +20,14 @@ public abstract class Obstacle : MonoBehaviour
     protected bool active;
     protected Vector3 originalPosition;
     private Quaternion originalRotation;
+
     [Tooltip("The position of the anchor that it can occupy")]
     public AnchorPointPosition anchorPosition;
     [Tooltip("How many anchor point needs")]
     public int anchorSlotOccupied;
-
-    [Header("All the rigidbodies attached to the prefab")]
+    [Tooltip("All the rigidbodies attached to the prefab")]
     public Rigidbody2D[] rigidbodies;
-    [Header("Tutti i collider non legati al drag and drop")]
+    [Tooltip("Tutti i collider non legati al drag and drop")]
     public Collider2D[] allNonDraggableColliders;
 
     // Use this for initialization
@@ -99,10 +99,10 @@ public abstract class Obstacle : MonoBehaviour
     {
         switch (GetObstacleType())
         {
-            case ObstacleType.Bomb: return new PlayerDeathByBullet(player, position);
-            case ObstacleType.Bullet: return new PlayerDeathByBullet(player, position);
+            case ObstacleType.Bomb: return new PlayerDeathByBullet(player, this, position);
+            case ObstacleType.Bullet: return new PlayerDeathByBullet(player, this, position);
 
-            default: return new PlayerDeathByBullet(player, position);
+            default: return new PlayerDeathByBullet(player, this, position);
         }
     }
 
