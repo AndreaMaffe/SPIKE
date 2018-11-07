@@ -12,7 +12,8 @@ public enum ObstacleType
     Laser,
     Elevator,
     Raptor,
-    FallingSpikes
+    FallingSpikes,
+    Flamethrower
 }
 
 public abstract class Obstacle : MonoBehaviour
