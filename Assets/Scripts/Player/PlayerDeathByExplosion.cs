@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDeathByBullet : PlayerDeathEvent
+public class PlayerDeathByExplosion : PlayerDeathEvent
 {
     private GameObject explosionParticle;
 
-    public PlayerDeathByBullet(Player player, Obstacle obstacle, Vector3 position) : base(player, obstacle, position) { }
+    public PlayerDeathByExplosion(Player player, Obstacle obstacle, Vector3 position) : base(player, obstacle, position) { }
 
     public override void StartDeath()
     {
@@ -14,7 +14,8 @@ public class PlayerDeathByBullet : PlayerDeathEvent
         GameObject explosion = GameObject.Instantiate(explosionParticle, position, Quaternion.identity);      
         GameObject.Destroy(explosion.gameObject, 1f);
         player.SetActiveRagdoll(true);
-        //player.GetComponent<Rigidbody2D>().AddForce(2 * obstacle.gameObject.GetComponent<Rigidbody2D>().velocity);        //TODO: Sistemare
+        Vector2 angleOfImpact = (player.transform.position - obstacle.transform.position).normalized;
+        player.ApplyRagdollImpulse(20, angleOfImpact);       //TODO: Sistemare
 
     }
 }

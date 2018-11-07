@@ -73,9 +73,7 @@ public class Player : MonoBehaviour {
         activateMovements = true;
         StartTimersForJumpingAndStopping();
         ResetPlayerAnimationToDefault();
-
     }
-
 
     //chiamato al RetryLevel()
     void Sleep()
@@ -109,8 +107,6 @@ public class Player : MonoBehaviour {
         animator.ResetTrigger("Jump");
         animator.ResetTrigger("Move");
         animator.ResetTrigger("WaitingJump");
-
-
     }
 
     public void Move()
@@ -230,9 +226,7 @@ public class Player : MonoBehaviour {
     {
         if (active)
         {
-            injured = true;
-            GameObject bloodParticleInstance = Instantiate(bloodParticle, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
-            Destroy(bloodParticleInstance.gameObject, 1f);
+            injured = true;           
         }
 
         animator.enabled = !active;
@@ -246,8 +240,12 @@ public class Player : MonoBehaviour {
         {
             col.enabled = active;
         }
-
         UpdateSprite();
+    }
+
+    //metodo che applica al corpo della ragdoll un impulso in una certa direzione 
+    public void ApplyRagdollImpulse(float amount, Vector2 direction) {
+        RagdollPieces[0].AddForce(direction * amount, ForceMode2D.Impulse);
     }
 
     void UpdateSprite()
@@ -257,8 +255,6 @@ public class Player : MonoBehaviour {
             bodyRenderer.sprite = bodySprite[0];
             faceRenderer.sprite = faceSprite[0];
         }
-
     }
-
 
 }
