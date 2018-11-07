@@ -7,6 +7,8 @@ public class FallingSpikes : ObstacleWithTimer
     private Rigidbody2D rb;
     private bool goingUp;
 
+    public float raycastOffset;
+
     [Tooltip("Time on ground before starting rising up")]
     public float timeOnGround;
     [Tooltip("Speed of the vertical ascent")]
@@ -21,7 +23,7 @@ public class FallingSpikes : ObstacleWithTimer
     protected override void StartObstacle()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.isKinematic = true;
+        DisablePhysics();
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
@@ -29,26 +31,24 @@ public class FallingSpikes : ObstacleWithTimer
     {
         if (!goingUp)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(-1, -10), 10, LayerMask.GetMask("Player"));
-            if (hit)
-            {
-                rb.isKinematic = false;
-            }
+            //lancia 2 raycast dx e sx
+            RaycastHit2D hit1 = Physics2D.Raycast(transform.position - new Vector3(-raycastOffset,0,0), Vector2.down, 10, LayerMask.GetMask("Player"));
+            RaycastHit2D hit2 = Physics2D.Raycast(transform.position + new Vector3(raycastOffset, 0, 0), Vector2.down, 10, LayerMask.GetMask("Player"));
 
-            hit = Physics2D.Raycast(transform.position, new Vector2(1, -10), 10, LayerMask.GetMask("Player"));
-            if (hit)
-            {
-                rb.isKinematic = false;
-            }
+            if (hit1 || hit2)           
+                EnablePhysics();          
         }
 
         if (goingUp)
         {
+            DisablePhysics();
+
+
+
             transform.position += new Vector3(0, liftSpeed, 0);
             if (transform.position.y >= originalPosition.y)
             {
                 transform.position = originalPosition;
-                rb.velocity = Vector2.zero;
                 goingUp = false;
             }
 
@@ -62,6 +62,7 @@ public class FallingSpikes : ObstacleWithTimer
     {
         //permette di entrare nell'UpdateObstacle()
         SetActive(true);
+
     }
 
     //chiamato al RetryLevel()
@@ -71,8 +72,7 @@ public class FallingSpikes : ObstacleWithTimer
         SetActive(false);
 
         //impedisce di cadere
-        rb.velocity = Vector2.zero;
-        rb.isKinematic = true;
+        DisablePhysics();
 
         //risetta la posizione iniziale
         ResetPosition();
@@ -88,7 +88,6 @@ public class FallingSpikes : ObstacleWithTimer
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        rb.isKinematic = true;
 
         if (!goingUp)
         {

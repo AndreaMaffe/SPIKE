@@ -43,6 +43,8 @@ public class Raptor : Obstacle {
 	{
 		//permette di entrare nell'UpdateObstacle()
 		SetActive(true);
+
+        EnablePhysics();
 		
 	}
 
@@ -55,6 +57,9 @@ public class Raptor : Obstacle {
 
 		//risetta la posizione iniziale
 		ResetPosition();
+
+        DisablePhysics();
+
 	}
 
 	public override ObstacleType GetObstacleType()
