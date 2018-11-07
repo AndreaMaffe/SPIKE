@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerDeathEvent : MonoBehaviour
+public abstract class PlayerDeathEvent
 {
     protected Player player;
     protected Vector3 position;
