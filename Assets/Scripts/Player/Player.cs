@@ -208,7 +208,7 @@ public class Player : MonoBehaviour {
         if (collision.gameObject.tag == "Deadly")
         {
             //crea l'evento PlayerDeathEvent nel punto corrispondente al contatto (N.B: CONTROLLARE SE L'INDICE 0 E' CORRETTO!!)
-            PlayerDeathEvent playerDeathEvent = collision.gameObject.GetComponent<Obstacle>().CreatePlayerDeathEvent(this, collision.GetContact(0).point);
+            PlayerDeathEvent playerDeathEvent = collision.transform.root.GetComponent<Obstacle>().CreatePlayerDeathEvent(this, collision.GetContact(0).point);
 
             playerDeathEvent.StartDeath();
 
