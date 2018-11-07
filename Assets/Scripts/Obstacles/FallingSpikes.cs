@@ -8,6 +8,10 @@ public class FallingSpikes : ObstacleWithTimer
     private bool goingUp;
 
     public float raycastOffset;
+    public SpriteRenderer gancio;
+    public GameObject spikes;
+
+    float offsetGancioFromSpikes;
 
     [Tooltip("Time on ground before starting rising up")]
     public float timeOnGround;
@@ -24,6 +28,8 @@ public class FallingSpikes : ObstacleWithTimer
     {
         rb = GetComponent<Rigidbody2D>();
         DisablePhysics();
+        offsetGancioFromSpikes = transform.position.y - spikes.transform.position.y;
+        Debug.Log(offsetGancioFromSpikes);
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
@@ -36,7 +42,9 @@ public class FallingSpikes : ObstacleWithTimer
             RaycastHit2D hit2 = Physics2D.Raycast(transform.position + new Vector3(raycastOffset, 0, 0), Vector2.down, 10, LayerMask.GetMask("Player"));
 
             if (hit1 || hit2)           
-                EnablePhysics();          
+                EnablePhysics();
+
+            UpdateSprite();
         }
 
         if (goingUp)
@@ -49,6 +57,10 @@ public class FallingSpikes : ObstacleWithTimer
                 goingUp = false;
             }
         }
+    }
+    private void UpdateSprite()
+    {
+        //gancio.size = new Vector2(gancio.size.x, )
     }
 
     //chiamato al RunLevel()
