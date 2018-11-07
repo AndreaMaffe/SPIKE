@@ -11,7 +11,7 @@ public class FallingSpikes : ObstacleWithTimer
     public SpriteRenderer gancio;
     public GameObject spikes;
 
-    float offsetGancioFromSpikes;
+    float offsetGancioFromSpikes = 0.27f;
 
     [Tooltip("Time on ground before starting rising up")]
     public float timeOnGround;
@@ -28,8 +28,6 @@ public class FallingSpikes : ObstacleWithTimer
     {
         rb = GetComponent<Rigidbody2D>();
         DisablePhysics();
-        offsetGancioFromSpikes = transform.position.y - spikes.transform.position.y;
-        Debug.Log(offsetGancioFromSpikes);
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
@@ -60,7 +58,7 @@ public class FallingSpikes : ObstacleWithTimer
     }
     private void UpdateSprite()
     {
-        //gancio.size = new Vector2(gancio.size.x, )
+        gancio.size = new Vector2(gancio.size.x, -spikes.transform.localPosition.y - offsetGancioFromSpikes);
     }
 
     //chiamato al RunLevel()
