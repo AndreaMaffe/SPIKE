@@ -31,6 +31,9 @@ public abstract class Obstacle : MonoBehaviour
     [Tooltip("Tutti i collider non legati al drag and drop")]
     public Collider2D[] allNonDraggableColliders;
 
+    [Tooltip("GameObject che causa effettivamente la morte")]
+    public GameObject deadlyGameObject;
+
     // Use this for initialization
     protected void Start ()
     {
@@ -107,6 +110,12 @@ public abstract class Obstacle : MonoBehaviour
 
             default: return new PlayerDeathByExplosion(player, this, position);
         }
+    }
+    
+    //in ostacoli composti da piu' game object mi serve sapere quale di questi ha causato la morte per poter parentarci il player 
+    //per esempio quando muore per vie delle spine
+    public GameObject GetDeadlyGameObject() {
+        return deadlyGameObject;
     }
 
 }

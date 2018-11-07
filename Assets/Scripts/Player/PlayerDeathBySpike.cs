@@ -12,9 +12,11 @@ public class PlayerDeathBySpike : PlayerDeathEvent
     public override void StartDeath()
     {
         bloodParticles = Resources.Load<GameObject>("Prefab/Particles/BloodParticles");
-        GameObject explosion = GameObject.Instantiate(bloodParticles, position, Quaternion.identity);
-        GameObject.Destroy(explosion.gameObject, 1f);
+        GameObject blood = GameObject.Instantiate(bloodParticles, position, Quaternion.identity);
+        GameObject.Destroy(blood.gameObject, 1f);
         player.SetActiveRagdoll(true);
+        //player.transform.parent = obstacle.GetDeadlyGameObject().transform;
+        //player.RagdollPieces[0].isKinematic = true;
 
     }
 }

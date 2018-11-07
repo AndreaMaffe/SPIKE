@@ -42,19 +42,13 @@ public class FallingSpikes : ObstacleWithTimer
         if (goingUp)
         {
             DisablePhysics();
-
-
-
             transform.position += new Vector3(0, liftSpeed, 0);
             if (transform.position.y >= originalPosition.y)
             {
                 transform.position = originalPosition;
                 goingUp = false;
             }
-
         }
-            
-
     }
 
     //chiamato al RunLevel()
