@@ -35,7 +35,7 @@ public abstract class Obstacle : MonoBehaviour
     public GameObject deadlyGameObject;
 
     // Use this for initialization
-    protected void Start ()
+    protected virtual void Start ()
     {
         active = false;
         originalPosition = this.transform.position;
@@ -87,7 +87,7 @@ public abstract class Obstacle : MonoBehaviour
         active = value;
     }
 
-    protected void ResetPosition()
+    protected virtual void ResetPosition()
     {
         this.transform.position = this.originalPosition;
         this.transform.rotation = this.originalRotation;

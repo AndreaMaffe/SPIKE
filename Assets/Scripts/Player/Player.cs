@@ -73,6 +73,8 @@ public class Player : MonoBehaviour {
         activateMovements = true;
         StartTimersForJumpingAndStopping();
         ResetPlayerAnimationToDefault();
+
+        rb.velocity = new Vector2(0, 0);
     }
 
     //chiamato al RetryLevel()
@@ -132,7 +134,7 @@ public class Player : MonoBehaviour {
 
     void ApplyJumpImpulse() {
 
-        if (onGround) {
+        if (onGround && activateMovements) {
             animator.SetTrigger("Jump");
             rb.AddForce(new Vector2(jumpStrenght * gridUnitDimension * Mathf.Cos(jumpAngle * Mathf.Deg2Rad), 
                 jumpStrenght * gridUnitDimension * Mathf.Sin(jumpAngle * Mathf.Deg2Rad)), ForceMode2D.Impulse);
@@ -245,7 +247,8 @@ public class Player : MonoBehaviour {
 
     //metodo che applica al corpo della ragdoll un impulso in una certa direzione 
     public void ApplyRagdollImpulse(float amount, Vector2 direction) {
-        RagdollPieces[0].AddForce(direction * amount, ForceMode2D.Impulse);
+        if (activateMovements)
+            RagdollPieces[0].AddForce(direction * amount, ForceMode2D.Impulse);
     }
 
     void UpdateSprite()

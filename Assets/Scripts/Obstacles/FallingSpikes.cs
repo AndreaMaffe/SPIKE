@@ -5,13 +5,16 @@ using UnityEngine;
 public class FallingSpikes : ObstacleWithTimer
 {
     private Rigidbody2D rb;
+    [SerializeField]
     private bool goingUp;
+    public bool colliso;
 
     public float raycastOffset;
     public SpriteRenderer gancio;
-    public GameObject spikes;
 
-    float offsetGancioFromSpikes = 0.27f;
+    Vector3 originalPernoPosition;
+
+    public float offsetGancioFromSpikes = 1;
 
     [Tooltip("Time on ground before starting rising up")]
     public float timeOnGround;
@@ -26,8 +29,10 @@ public class FallingSpikes : ObstacleWithTimer
     //start apposito per gli ostacoli, usare questo anziché Update().
     protected override void StartObstacle()
     {
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
         DisablePhysics();
+        originalPosition = deadlyGameObject.transform.position;
+        originalPernoPosition = transform.position;
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
@@ -36,29 +41,38 @@ public class FallingSpikes : ObstacleWithTimer
         if (!goingUp)
         {
             //lancia 2 raycast dx e sx
-            RaycastHit2D hit1 = Physics2D.Raycast(transform.position - new Vector3(-raycastOffset,0,0), Vector2.down, 10, LayerMask.GetMask("Player"));
+            RaycastHit2D hit1 = Physics2D.Raycast(transform.position + new Vector3(-raycastOffset,0,0), Vector2.down, 10, LayerMask.GetMask("Player"));
             RaycastHit2D hit2 = Physics2D.Raycast(transform.position + new Vector3(raycastOffset, 0, 0), Vector2.down, 10, LayerMask.GetMask("Player"));
 
             if (hit1 || hit2)           
                 EnablePhysics();
-
-            UpdateSprite();
         }
 
         if (goingUp)
         {
-            DisablePhysics();
-            transform.position += new Vector3(0, liftSpeed, 0);
-            if (transform.position.y >= originalPosition.y)
+            Debug.Log(deadlyGameObject.transform.position.y);
+
+            if (deadlyGameObject.transform.position.y <= originalPosition.y)
             {
-                transform.position = originalPosition;
+                Debug.Log("Sono nel check");
+                rigidbodies[0].velocity = new Vector2(0, liftSpeed);
+
+            }
+            else {
+                rigidbodies[0].velocity = new Vector2(0, 0);
+                rigidbodies[0].gravityScale = 5;
                 goingUp = false;
+                colliso = false;
+
             }
         }
+
+        UpdateSprite();
+
     }
     private void UpdateSprite()
     {
-        gancio.size = new Vector2(gancio.size.x, -spikes.transform.localPosition.y - offsetGancioFromSpikes);
+        gancio.size = new Vector2(gancio.size.x, -deadlyGameObject.transform.localPosition.y - offsetGancioFromSpikes);
     }
 
     //chiamato al RunLevel()
@@ -67,6 +81,9 @@ public class FallingSpikes : ObstacleWithTimer
         //permette di entrare nell'UpdateObstacle()
         SetActive(true);
 
+        goingUp = false;
+        colliso = false;
+        rigidbodies[0].gravityScale = 5;
     }
 
     //chiamato al RetryLevel()
@@ -84,17 +101,27 @@ public class FallingSpikes : ObstacleWithTimer
         ResetTimer();
     }
 
+    protected override void ResetPosition() {
+        this.transform.position = originalPernoPosition;
+        deadlyGameObject.transform.position = originalPosition;
+        this.transform.rotation = Quaternion.Euler(0,0,0);
+        UpdateSprite();
+        goingUp = false;
+        colliso = false;
+    }
+
     protected override void OnTimerEnd()
     {
         //inizia la risalita
         goingUp = true;
+        Debug.Log("TimerScaduto");
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void Collided()
     {
-
-        if (!goingUp)
-        {
+        //colliso viene settato a false nell'altro script
+        if (!colliso && !goingUp) {
+            rigidbodies[0].gravityScale = 0;
             SetTimer(timeOnGround);
             StartTimer();
         }
