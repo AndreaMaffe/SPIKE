@@ -14,16 +14,18 @@ public class LevelSelectionManager : MonoBehaviour {
     public float horizontalSpacing;
     public float verticalSpacing;
 
-    //Variabili di prova
-    private float totalLevels = 11;
-    private float maxUnlockedLevel = 1;
+    private SaveManager saveManager;
 
     public void Start()
     {
+        //Carichiamo l'oggetto SaveManager per ottenere i dati salvati del gioco
+        saveManager = SaveManager.SaveManagerInstance;
+        saveManager = SaveUtility.LoadObject(saveManager, "saveFile");
+
         //Creiamo un bottone per ogni livello creato, adesso il ciclo for è puramente inventato dato che non abbiamo altri livelli oltre il primo
         int x = 0;
         int y = 0;
-        for (int i = 0; i < 18; i++)
+        for (int i = 0; i < saveManager.totalLevels; i++)
         {
             if(x >= 5)
             {
@@ -32,21 +34,14 @@ public class LevelSelectionManager : MonoBehaviour {
             }
 
             GameObject newButton;
-            if (i < totalLevels)
+            newButton = Instantiate(Resources.Load<GameObject>("Prefab/UI/LevelButton"));
+            newButton.GetComponentInChildren<Text>().text = (i + 1).ToString();
+
+            //Entra nell'if solo se il livello selezionato è sbloccato
+            if (i < saveManager.maxUnlockedLevel)
             {
-                newButton = Instantiate(Resources.Load<GameObject>("Prefab/UI/LevelButton"));
-                newButton.GetComponentInChildren<Text>().text = (i + 1).ToString();
-
-                //Entra nell'if solo se il livello selezionato è sbloccato
-                if (i < maxUnlockedLevel)
-                {
-                    newButton.transform.GetChild(1).gameObject.SetActive(false);
-                    newButton.GetComponent<Button>().onClick.AddListener(ChooseLevel);
-                }
-
-            }
-            else {
-                newButton = Instantiate(Resources.Load<GameObject>("Prefab/UI/WIPfakeButton"));
+                newButton.transform.GetChild(1).gameObject.SetActive(false);
+                newButton.GetComponent<Button>().onClick.AddListener(ChooseLevel);
             }
 
             newButton.transform.SetParent(panel.transform, false);
@@ -56,14 +51,18 @@ public class LevelSelectionManager : MonoBehaviour {
         }
     }
 
+    //Metodo da rivedere una volta che iniziamo ad avere qualche livello definitivo
     private void ChooseLevel()
     {
         int levelIndex;
         levelIndex = int.Parse(levelButton.GetComponentInChildren<Text>().text);
-        //TODO bisogna tener conto del livello scelto in modo tale da caricare lo scriptable object corretto
-        if (levelIndex <= maxUnlockedLevel)
+        saveManager.currentLevel = levelIndex;
+        SaveUtility.SaveObject(saveManager, "saveFile");
+        if (levelIndex <= saveManager.maxUnlockedLevel)
         {
             SceneManager.LoadScene("SampleScene");
+            //Non appena la scena viene caricata dobbiamo riprendere da SaveManager l'informazione del livello scelto (currentLevel) 
+            //in modo tale da caricare lo scriptable object relativo
         }
     }
 
