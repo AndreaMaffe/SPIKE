@@ -13,7 +13,7 @@ public class Pendolum : Obstacle {
     protected override void StartObstacle()
     {
         rb = body.GetComponent<Rigidbody2D>();
-        DisablePhysics();
+        //DisablePhysics();
 	}
 
     //update apposito per gli ostacoli, usare questo anziché Update().

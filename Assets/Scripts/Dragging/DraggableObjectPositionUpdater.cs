@@ -2,29 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DraggableObstacleRange : MonoBehaviour
+
+public class DraggableObjectPositionUpdater : MonoBehaviour
 {
-
-    public SpriteRenderer spriteRenderer;
-    public GameObject anchorPointSnapped;
-    public AnchorPointPosition position;
-    bool snapped = false;
-    public float removeSnapDistance;
-
-    Vector3 positionBeforeSnapping;
+    public SpriteRenderer[] spriteRenderer;
+    [SerializeField]
+    bool snapped;
 
     int layerMask;
 
-    private void Start()
+    public void OnEnable()
     {
         layerMask = LayerMask.GetMask("PuntoAncoraggio"); ;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentsInChildren<SpriteRenderer>();
         ChangeSpriteOpacity();
-    }
-
-    public void SetSnappingDesiredPosition(AnchorPointPosition pos)
-    {
-        position = pos;
     }
 
     public bool CheckIfSnapped()
@@ -40,13 +31,15 @@ public class DraggableObstacleRange : MonoBehaviour
         //spara un raycast nella posizione leggermente sopra al tocco del dito
         RaycastHit2D hit = Physics2D.Raycast(newPosition, Vector2.zero, 10000, layerMask);
 
+        //prendo la posizione in cui l'ostacolo puo' andare
+
         //se sono sopra un punto di ancoraggio
         if (hit.collider != null)
         {
-            if (position == hit.collider.GetComponent<AnchorRangeSpawner>().GetPosition())
+            AnchorPointPosition anchorPosition = GetComponent<Obstacle>().anchorPosition;
+
+            if (anchorPosition == hit.collider.GetComponent<AnchorRangeSpawner>().GetPosition())
             {
-                //aggiungi l'ancor point alla reference
-                //anchorPointSnapped = hit.collider.gameObject;
                 snapped = true;
                 //cambia l'opacita' della sprite
                 ChangeSpriteOpacity();
@@ -55,7 +48,6 @@ public class DraggableObstacleRange : MonoBehaviour
                     transform.position = new Vector3(newPosition.x, hit.collider.gameObject.transform.position.y, 0);
                 else
                     transform.position = new Vector3(hit.collider.gameObject.transform.position.x, newPosition.y, 0);
-
             }
         }
 
@@ -70,9 +62,11 @@ public class DraggableObstacleRange : MonoBehaviour
     void ChangeSpriteOpacity()
     {
         if (snapped)
-            spriteRenderer.color = new Color32(255, 255, 255, 255);
+            foreach(SpriteRenderer spr in spriteRenderer )
+                spr.color = new Color32(255, 255, 255, 255);
         else
-            spriteRenderer.color = new Color32(255, 255, 255, 120);
+            foreach (SpriteRenderer spr in spriteRenderer)
+                spr.color = new Color32(255, 255, 255, 120);
     }
 
 }

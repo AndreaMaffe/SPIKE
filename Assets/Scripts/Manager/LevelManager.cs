@@ -5,15 +5,10 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 
-
-public enum AnchorPointMode { SINGLE, RANGE };
-
 public class LevelManager : MonoBehaviour
 {
 
     private enum LevelState { RUNNING, UNDER_CONSTRUCTION };
-    [Header ("Modificare questo se si vuole usare una modalita' piuttosto che l'altra")]
-    public AnchorPointMode anchorPointMode;
 
     //numero del livello attuale partendo da 1
     private int indexLevel;
@@ -36,9 +31,6 @@ public class LevelManager : MonoBehaviour
     public delegate void OnRetryLevel();
     public static event OnRetryLevel retryLevelEvent;
 
-    [Header("Serve a disattivare il sistema di anchor point sbagliato")]
-    public AnchorPointSpawner[] anchorPointSpawnerArray;
-    public GameObject[] AnchorRangeObjects;
 
     //struct che associa ogni ostacolo alla posizione in cui puo' andare
     [System.Serializable]
@@ -47,6 +39,7 @@ public class LevelManager : MonoBehaviour
         public ObstacleType obstacle;
         public AnchorPointPosition position;
     }
+
     //array di tutte le associazioni ostacolo-posizione. Serve una struttura dati del genere perche' altrimenti non sapresti come dire 
     //al draggable obstacle in quale posizione puo' andare e in quale no
     public ObstaclePositionData[] obstaclePositionData;
@@ -58,25 +51,6 @@ public class LevelManager : MonoBehaviour
         indexLevel = 1;
         LoadLevel();
         state = LevelState.UNDER_CONSTRUCTION;
-
-        DeactivateAnchorRangeOfSingle();
-    }
-
-    void DeactivateAnchorRangeOfSingle() {
-        if (anchorPointMode == AnchorPointMode.SINGLE)
-        {
-            foreach (GameObject g in AnchorRangeObjects)
-                Destroy(g);
-        }
-        else if (anchorPointMode == AnchorPointMode.RANGE) {
-            foreach (AnchorPointSpawner a in anchorPointSpawnerArray) {
-                Destroy(a);
-                AnchorPoint[] allAnchorPoints = FindObjectsOfType<AnchorPoint>();
-                foreach (AnchorPoint an in allAnchorPoints)
-                    Destroy(an.gameObject);
-            }
-        }
-
     }
 
     void LoadLevel()
@@ -142,29 +116,6 @@ public class LevelManager : MonoBehaviour
     }
 
     //TODO: questo metodo andra' messo nello UIManager
-    /*
-    void CreateUIObstacleButtons()
-    {
-
-        for (int i = 0; i < testObstacle.Length; i++)
-        {
-
-            Vector2 buttonLocalPosition;
-            //A seconda se i buttoni sono pari o dispari li posiziona nel modo giusto
-            if (testObstacle.Length % 2 == 1)
-                buttonLocalPosition = new Vector2(-(buttonWidth + buttonInBetweenSpace) * (testObstacle.Length / 2) + i * (buttonWidth + buttonInBetweenSpace), 0);
-            else
-                buttonLocalPosition = new Vector2(-((buttonWidth + buttonInBetweenSpace) / 2 + (testObstacle.Length / 2 - 1) * (buttonWidth + buttonInBetweenSpace)) + i * (buttonWidth + buttonInBetweenSpace), 0);
-
-            //crea il bottone come figlio del panel giusto
-            GameObject button = Instantiate(obstacleButton, buttonPanel, false);
-            //posiziona il bottone
-            button.GetComponent<RectTransform>().localPosition = buttonLocalPosition;
-            button.GetComponent<ObstacleButton>().AssignObstacleTypeAndAmount(testObstacle[i].obstacleName, testObstacle[i].obstacleMaxAmount);
-        }
-    }
-    */
-
     void CreateUIObstacleButtons(Level currentLevel)
     {
         ObstacleData[] obstacleData = currentLevel.obstacleDatas;

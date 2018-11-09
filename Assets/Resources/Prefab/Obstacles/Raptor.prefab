@@ -105,6 +105,7 @@ MonoBehaviour:
   - {fileID: 50148712697692244}
   allNonDraggableColliders:
   - {fileID: 61998046783065490}
+  deadlyGameObject: {fileID: 0}
   deceleration: 2.3
   speed: 4
   positionOffset: 0.05
@@ -140,8 +141,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 128517145
-  m_SortingLayer: 4
+  m_SortingLayerID: 309232123
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 279091a5e829c5747bed4d6cd9e1fc7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

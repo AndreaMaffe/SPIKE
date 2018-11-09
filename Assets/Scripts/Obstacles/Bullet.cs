@@ -9,6 +9,8 @@ public class Bullet : Obstacle {
     private Rigidbody2D rb;
     private float direction;
 
+
+    protected override void EnableDraggingSystem() { }
     //start apposito per gli ostacoli, usare questo anziché Update().
     protected override void StartObstacle()
     {

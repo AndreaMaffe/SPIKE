@@ -34,15 +34,24 @@ public abstract class Obstacle : MonoBehaviour
     [Tooltip("GameObject che causa effettivamente la morte")]
     public GameObject deadlyGameObject;
 
-    // Use this for initialization
+    [SerializeField]
+    CircleCollider2D draggingCollider; 
+
+    // Usata per inizializzare il drag dell'ostacolo ma  non per la sua attivazione effettiva
     protected virtual void Start ()
     {
         active = false;
-        originalPosition = this.transform.position;
-        originalRotation = this.transform.rotation;
         LevelManager.runLevelEvent += WakeUp;
         LevelManager.retryLevelEvent += Sleep;
+        LevelManager.runLevelEvent += DisableDraggingSystem;
+        LevelManager.retryLevelEvent += EnableDraggingSystem;
         StartObstacle();
+    }
+
+    //adesso l'ostacolo viene spawnato ma e' come se fosse attivato solo quando raggiunge la posizione indicata
+    public virtual void ActivateObstacle() {
+        originalPosition = this.transform.position;
+        originalRotation = this.transform.rotation;
     }
 
     // Update is called once per frame
@@ -68,11 +77,11 @@ public abstract class Obstacle : MonoBehaviour
             allNonDraggableColliders[i].enabled = true;
     }
 
-    protected virtual void DisablePhysics()
+    public virtual void DisablePhysics()
     {
         //disabilita i rigidbody e toglie ogni velocita' che avevano residua
         for (int i = 0; i < rigidbodies.Length; i++) {
-            rigidbodies[i].simulated = false;
+            rigidbodies[i].isKinematic = true;
             rigidbodies[i].velocity = Vector2.zero;
             rigidbodies[i].angularVelocity = 0;
         }
@@ -81,7 +90,34 @@ public abstract class Obstacle : MonoBehaviour
         for (int i = 0; i < allNonDraggableColliders.Length; i++)
             allNonDraggableColliders[i].enabled = false;
     }
-    
+
+    //metodo che crea un collider per il drag and drop
+    public void CreateCircleDraggingCollider()
+    {
+        draggingCollider = gameObject.AddComponent<CircleCollider2D>();
+        draggingCollider.isTrigger = true;
+        draggingCollider.radius = 0.7f;
+        draggingCollider.offset = Vector2.zero;
+    }
+
+    protected virtual void EnableDraggingSystem()
+    {
+        if (draggingCollider != null)
+            draggingCollider.enabled = true; 
+        GetComponent<DraggableObjectPositionUpdater>().enabled = true;
+        GetComponent<DraggableObjectPositioned>().enabled = true;
+    }
+
+
+    public void DisableDraggingSystem()
+    {
+        draggingCollider.enabled = false;
+        if (GetComponent<DraggableObjectPositionUpdater>() != null)
+            GetComponent<DraggableObjectPositionUpdater>().enabled = false;
+        if (GetComponent<DraggableObjectPositioned>() != null)
+            GetComponent<DraggableObjectPositioned>().enabled = false;
+    }
+
     protected void SetActive(bool value)
     {
         active = value;
@@ -97,6 +133,8 @@ public abstract class Obstacle : MonoBehaviour
     {
         LevelManager.runLevelEvent -= WakeUp;
         LevelManager.retryLevelEvent -= Sleep;
+        LevelManager.runLevelEvent -= DisableDraggingSystem;
+        LevelManager.retryLevelEvent -= EnableDraggingSystem;
     }
 
     public PlayerDeathEvent CreatePlayerDeathEvent(Player player, Vector3 position)

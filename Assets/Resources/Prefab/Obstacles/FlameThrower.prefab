@@ -58,6 +58,7 @@ MonoBehaviour:
   anchorSlotOccupied: 1
   rigidbodies: []
   allNonDraggableColliders: []
+  deadlyGameObject: {fileID: 0}
   timeActive: 4
   timeNotActive: 4
   flameParticles: {fileID: 198211916914756626}
@@ -4740,8 +4741,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1687446043
-  m_SortingLayer: 2
+  m_SortingLayerID: 309232123
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 279091a5e829c5747bed4d6cd9e1fc7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

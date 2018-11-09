@@ -16,8 +16,14 @@ public class Cannon : ObstacleWithTimer {
     //offset rispetto all'origine dal quale parte il proiettile e le particle del'esplosione
     public Vector3 shootingOffset;
 
-    //start apposito per gli ostacoli, usare questo anziché Start().
+
     protected override void StartObstacle()
+    {
+    }
+
+
+    //start apposito per gli ostacoli, usare questo anziché Start().
+    public override void ActivateObstacle()
     {
         //1 se sx-->dx , -1 se sx
         direction = - this.transform.position.x / Mathf.Abs(this.transform.position.x);

@@ -73,10 +73,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 1
   anchorSlotOccupied: 1
-  obstacleType: 1
+  rigidbodies: []
+  allNonDraggableColliders: []
+  deadlyGameObject: {fileID: 0}
   bullet: {fileID: 1318106213304226, guid: a67531d9f8a947148a80a7ea31003933, type: 2}
   rateOfFire: 2
-  animator: {fileID: 95792077006483028}
   particleExplosion: {fileID: 1442350124751086, guid: 88009bdc3b2dbd34dbeff1756892fa7a,
     type: 2}
   shootingOffset: {x: 1, y: 0, z: 0}
@@ -112,8 +113,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1687446043
-  m_SortingLayer: 2
+  m_SortingLayerID: 309232123
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300024, guid: d23bf3b83eb888645899bf488fa3b5fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

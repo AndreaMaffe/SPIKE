@@ -50,14 +50,9 @@ public class FallingSpikes : ObstacleWithTimer
 
         if (goingUp)
         {
-            Debug.Log(deadlyGameObject.transform.position.y);
-
-            if (deadlyGameObject.transform.position.y <= originalPosition.y)
-            {
-                Debug.Log("Sono nel check");
+            if (deadlyGameObject.transform.position.y <= originalPosition.y)           
                 rigidbodies[0].velocity = new Vector2(0, liftSpeed);
-
-            }
+            
             else {
                 rigidbodies[0].velocity = new Vector2(0, 0);
                 rigidbodies[0].gravityScale = 5;
@@ -114,7 +109,6 @@ public class FallingSpikes : ObstacleWithTimer
     {
         //inizia la risalita
         goingUp = true;
-        Debug.Log("TimerScaduto");
     }
 
     public void Collided()

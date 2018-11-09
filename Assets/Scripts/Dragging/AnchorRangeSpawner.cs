@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Alignment { Horizontal, Vertical };
+public enum AnchorPointPosition { Top, Side, Platform };
+
 public class AnchorRangeSpawner : MonoBehaviour {
 
     //lo starting point deve stare sotto o a sinistra 
@@ -18,13 +21,14 @@ public class AnchorRangeSpawner : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
-        ObstacleDragger.onUpdateAnchorPoint += UpdateAnchorRangeVisual;
+        DraggableObject.onUpdateAnchorPoint += UpdateAnchorRangeVisual;
         LevelManager.runLevelEvent += HideAnchorRange;
-        ObstacleDragger.onEndDraggingObstacle += HideAnchorRange;       
+        DraggableObject.onEndDraggingObstacle += HideAnchorRange;       
 
         boxCollider = startingPoint.GetComponent<BoxCollider2D>();
         line = startingPoint.GetComponent<LineRenderer>();
+        HideAnchorRange();
+
     }
 
     void UpdateAnchorRangeVisual(AnchorPointPosition pos) {
@@ -70,9 +74,9 @@ public class AnchorRangeSpawner : MonoBehaviour {
 
     private void OnDisable()
     {
-        ObstacleDragger.onUpdateAnchorPoint -= UpdateAnchorRangeVisual;
+        DraggableObject.onUpdateAnchorPoint -= UpdateAnchorRangeVisual;
         LevelManager.runLevelEvent -= HideAnchorRange;
-        ObstacleDragger.onEndDraggingObstacle -= HideAnchorRange;
+        DraggableObject.onEndDraggingObstacle -= HideAnchorRange;
     }
 
 

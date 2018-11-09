@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4549167352771426}
   - component: {fileID: 212582151138544360}
-  m_Layer: 21
+  m_Layer: 0
   m_Name: InnerRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4094407001567790}
   - component: {fileID: 212198715697276732}
-  m_Layer: 21
+  m_Layer: 0
   m_Name: OuterRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 50228646109537280}
   - component: {fileID: 58000749948952714}
   - component: {fileID: 114935129837873810}
-  m_Layer: 21
+  m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1814910225214746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1785226, y: 2.23645, z: 0}
+  m_LocalPosition: {x: 1.7697952, y: 1.4197006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4094407001567790}
@@ -155,8 +155,10 @@ MonoBehaviour:
   - {fileID: 50228646109537280}
   allNonDraggableColliders:
   - {fileID: 58000749948952714}
+  deadlyGameObject: {fileID: 0}
+  draggingCollider: {fileID: 0}
   timeBeforeExplosion: 3.5
-  explosionForce: 2000
+  explosionForce: 100
   explosionInnerRadius: 2
   explosionOuterRadius: 4
   innerRadius: {fileID: 4549167352771426}
@@ -202,8 +204,8 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 5.04, y: 5.04}
+  m_DrawMode: 1
+  m_Size: {x: 8, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -241,8 +243,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 128517145
-  m_SortingLayer: 4
+  m_SortingLayerID: 309232123
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300020, guid: d23bf3b83eb888645899bf488fa3b5fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -294,8 +296,8 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 3.12, y: 3.12}
+  m_DrawMode: 1
+  m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
