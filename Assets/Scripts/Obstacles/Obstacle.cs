@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum ObstacleType
 {
+    //N.B: AGGIUNGERE SEMPRE I TIPI NUOVI IN FONDO ALLA LISTA!
     Bomb,
     Bullet,
     Cannon,
@@ -153,7 +154,8 @@ public abstract class Obstacle : MonoBehaviour
     
     //in ostacoli composti da piu' game object mi serve sapere quale di questi ha causato la morte per poter parentarci il player 
     //per esempio quando muore per vie delle spine
-    public GameObject GetDeadlyGameObject() {
+    public GameObject GetDeadlyGameObject()
+    {
         return deadlyGameObject;
     }
 
