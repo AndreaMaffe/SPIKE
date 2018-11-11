@@ -32,7 +32,7 @@ public class MainMenuManager : MonoBehaviour {
     public void StartGame()
     {
         //Cambiare il LoadScene con il nome definitivo della scena che continene il livello di gioco
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("SampleSceneRange");
     }
 
     //Metodo chiamato dopo aver premuto il tasto Levels
