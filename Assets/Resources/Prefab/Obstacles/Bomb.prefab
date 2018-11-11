@@ -158,7 +158,8 @@ MonoBehaviour:
   deadlyGameObject: {fileID: 0}
   draggingCollider: {fileID: 0}
   timeBeforeExplosion: 3.5
-  explosionForce: 100
+  minExplosionForce: 80
+  maxExplosionForce: 280
   explosionInnerRadius: 2
   explosionOuterRadius: 4
   innerRadius: {fileID: 4549167352771426}

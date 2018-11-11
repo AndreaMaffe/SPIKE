@@ -5,7 +5,8 @@ using UnityEngine;
 public class Bomb : ObstacleWithTimer {
 
     public float timeBeforeExplosion;
-    public float explosionForce;
+    public float minExplosionForce;
+    public float maxExplosionForce;
     public float explosionInnerRadius;
     public float explosionOuterRadius;
 
@@ -85,24 +86,26 @@ public class Bomb : ObstacleWithTimer {
 
         for (int i = 0; i < hitColliders.Length; i++)
         {
-
             GameObject objectHit = hitColliders[i].gameObject;
 
-            //if the object hit is within the ExplosionInnerRadius, destroy it
+            //calcola la spinta proporzionalmente rispetto alla distanza dalla bomba
+            float thrust = minExplosionForce + (explosionOuterRadius - Vector3.Distance(objectHit.transform.position, this.transform.position)) / (explosionOuterRadius - explosionInnerRadius) * maxExplosionForce;
+
+            if (thrust > maxExplosionForce)
+                thrust = maxExplosionForce;
+
+            Debug.Log("Bomb thrust (" + objectHit.gameObject.name + "): " + thrust);
+
+            //calcola il vettore direzione tra a e b come (b - a)
+            Vector3 direction = objectHit.transform.position - this.transform.position;
+
+            //applica la forza
+            if (objectHit.GetComponent<Rigidbody2D>())
+                objectHit.GetComponent<Rigidbody2D>().AddForce(direction * thrust);
+
+            //se il player è troppo vicino, uccidilo
             if (Vector3.Distance(objectHit.transform.position, this.transform.position) < explosionInnerRadius && objectHit.tag == "Player")
-                objectHit.GetComponent<Player>().SetActiveRagdoll(true);
-
-            //otherwise, push it in the opposite direction with a thrust proportional to the distance from the explosion
-            else
-            {
-
-                //float thrust = (explosionOuterRadius - Vector3.Distance(objectHit.transform.position, this.transform.position)) / explosionInnerRadius * explosionForce;
-                Vector3 direction = objectHit.transform.position - this.transform.position;
-
-                if (objectHit.GetComponent<Rigidbody2D>())
-                    objectHit.GetComponent<Rigidbody2D>().AddForce(direction * explosionForce);
-            }
-
+                new PlayerDeathByBomb(objectHit.GetComponent<Player>(), this, this.transform.position, direction, maxExplosionForce).StartDeath();
         }
 
     }
