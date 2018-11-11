@@ -213,9 +213,7 @@ public class Player : MonoBehaviour {
             PlayerDeathEvent playerDeathEvent = collision.transform.root.GetComponent<Obstacle>().CreatePlayerDeathEvent(this, collision.GetContact(0).point);
 
             playerDeathEvent.StartDeath();
-
-        }
-           
+        }           
     }
 
     private void OnCollisionExit2D(Collision2D collision)

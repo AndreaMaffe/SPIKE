@@ -40,6 +40,9 @@ public class Bomb : ObstacleWithTimer {
 
         //destroy the bomb
         SetVisible(false);
+
+        //disabilita la fisica legata al gameobject
+        DisablePhysics();
     }
 
     protected override void OnTimerEnd()
@@ -72,7 +75,7 @@ public class Bomb : ObstacleWithTimer {
         //rimette il timer a zero e lo blocca
         ResetTimer();
 
-        //disabilita la fisica legata a quel gameobject
+        //disabilita la fisica legata al gameobject
         DisablePhysics();
     }
 
