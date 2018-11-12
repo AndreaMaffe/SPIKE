@@ -105,7 +105,6 @@ public abstract class Obstacle : MonoBehaviour
         GetComponent<DraggableObjectPositioned>().enabled = true;
     }
 
-
     public void DisableDraggingSystem()
     {
         draggingCollider.enabled = false;

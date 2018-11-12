@@ -1,4 +1,17 @@
-BUG:
+
+-----------  BUG:  ---------------
 
 - salto del personaggio a inizio livello
 - onda d'urto Bomb sulla ragdoll
+
+
+----------  OSTACOLI A POSTO:  -------------
+* Pendolum
+
+
+----------- OSTACOLI DA FARE:  -------------
+
+
+
+
+----------- IDEE PER IL FUTURO:  -----------
