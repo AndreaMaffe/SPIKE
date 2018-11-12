@@ -25,11 +25,16 @@ public class LevelManager : MonoBehaviour
     public int buttonWidth;
     public Transform buttonPanel;
 
+    public GameObject nextLevelPanel;
+
     public delegate void OnRunLevel();
     public static event OnRunLevel runLevelEvent;
 
     public delegate void OnRetryLevel();
     public static event OnRetryLevel retryLevelEvent;
+
+    public delegate void OnEndLevel();
+    public static event OnEndLevel endLevelEvent;
 
 
     //struct che associa ogni ostacolo alla posizione in cui puo' andare
@@ -51,6 +56,7 @@ public class LevelManager : MonoBehaviour
         indexLevel = 1;
         LoadLevel();
         state = LevelState.UNDER_CONSTRUCTION;
+
     }
 
     void LoadLevel()
@@ -101,6 +107,12 @@ public class LevelManager : MonoBehaviour
         //FindObjectOfType<TimerManager>().Clear();
         SceneManager.LoadSceneAsync("SampleSceneRange");
         //state = LevelState.UNDER_CONSTRUCTION;
+    }
+
+    //Metodo che lancia l'evento legato alla fine del livello
+    public static void EndLevel()
+    {
+        endLevelEvent();
     }
 
     //metodo che serve ai bottoni per associare a ogni ostacolo la posizione in cui deve andare in modo da passare al 
