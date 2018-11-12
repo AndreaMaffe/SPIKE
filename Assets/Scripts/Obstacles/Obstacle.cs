@@ -32,9 +32,6 @@ public abstract class Obstacle : MonoBehaviour
     [Tooltip("Tutti i collider non legati al drag and drop")]
     public Collider2D[] allNonDraggableColliders;
 
-    [Tooltip("GameObject che causa effettivamente la morte")]
-    public GameObject deadlyGameObject;
-
     [SerializeField]
     CircleCollider2D draggingCollider; 
 
@@ -139,19 +136,12 @@ public abstract class Obstacle : MonoBehaviour
         {
             case ObstacleType.Bomb: return new PlayerDeathByExplosion(player, this, position);
             case ObstacleType.Bullet: return new PlayerDeathByExplosion(player, this, position);
-            case ObstacleType.Pendolum: return new PlayerDeathBySpike(player, this, position);
-            case ObstacleType.Raptor: return new PlayerDeathBySpike(player, this, position);
-            case ObstacleType.FallingSpikes: return new PlayerDeathBySpike(player, this, position);
+            case ObstacleType.Pendolum: return new PlayerDeathBySpike(player, this, position, transform.Find("Blade").gameObject);
+            case ObstacleType.Raptor: return new PlayerDeathBySpike(player, this, position, this.gameObject);
+            case ObstacleType.FallingSpikes: return new PlayerDeathBySpike(player, this, position, transform.Find("Spikes").gameObject);
 
             default: return new PlayerDeathByExplosion(player, this, position);
         }
-    }
-    
-    //in ostacoli composti da piu' game object mi serve sapere quale di questi ha causato la morte per poter parentarci il player 
-    //per esempio quando muore per vie delle spine
-    public GameObject GetDeadlyGameObject()
-    {
-        return deadlyGameObject;
     }
 
     protected abstract void StartObstacle();

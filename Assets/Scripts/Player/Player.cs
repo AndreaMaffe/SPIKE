@@ -202,22 +202,16 @@ public class Player : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Platform")
         {
-            onGround = true;
-            originalPosition = this.transform.position;
+            onGround = true; 
 
-
-            if (activateMovements)
-            {
-                if (state != MovementType.Move)
+            if (activateMovements && state != MovementType.Move)
                     SetMove();
-            }
         }
 
         if (collision.gameObject.tag == "Deadly")
         {
-            //crea l'evento PlayerDeathEvent nel punto corrispondente al contatto (N.B: CONTROLLARE SE L'INDICE 0 E' CORRETTO!!)
+            //crea l'evento PlayerDeathEvent nel punto corrispondente al contatto e avvialo
             PlayerDeathEvent playerDeathEvent = collision.transform.root.GetComponent<Obstacle>().CreatePlayerDeathEvent(this, collision.GetContact(0).point);
-
             playerDeathEvent.StartDeath();
         }           
     }
