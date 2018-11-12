@@ -1,0 +1,4 @@
+BUG:
+
+- salto del personaggio a inizio livello
+- onda d'urto Bomb sulla ragdoll

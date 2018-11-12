@@ -246,7 +246,7 @@ public class Player : MonoBehaviour {
     //metodo che applica al corpo della ragdoll un impulso in una certa direzione 
     public void ApplyRagdollImpulse(float amount, Vector2 direction) {
         if (activateMovements)
-            RagdollPieces[0].AddForce(direction * amount, ForceMode2D.Impulse);
+            RagdollPieces[0].AddForce(direction * amount);
     }
 
     void UpdateSprite()

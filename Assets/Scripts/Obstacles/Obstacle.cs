@@ -42,15 +42,18 @@ public abstract class Obstacle : MonoBehaviour
     protected virtual void Start ()
     {
         active = false;
+
         LevelManager.runLevelEvent += WakeUp;
         LevelManager.retryLevelEvent += Sleep;
         LevelManager.runLevelEvent += DisableDraggingSystem;
         LevelManager.retryLevelEvent += EnableDraggingSystem;
+
         StartObstacle();
     }
 
     //adesso l'ostacolo viene spawnato ma e' come se fosse attivato solo quando raggiunge la posizione indicata
-    public virtual void ActivateObstacle() {
+    public virtual void ActivateObstacle()
+    {
         originalPosition = this.transform.position;
         originalRotation = this.transform.rotation;
     }
@@ -61,14 +64,6 @@ public abstract class Obstacle : MonoBehaviour
         if (active)
             UpdateObstacle();
     }
-
-
-    protected abstract void StartObstacle();
-    protected abstract void UpdateObstacle();
-    protected abstract void WakeUp();
-    protected abstract void Sleep();
-    public abstract ObstacleType GetObstacleType();
-
 
     //riabilita tutta la fisica del rigidbody
     protected virtual void EnablePhysics() {
@@ -81,7 +76,8 @@ public abstract class Obstacle : MonoBehaviour
     public virtual void DisablePhysics()
     {
         //disabilita i rigidbody e toglie ogni velocita' che avevano residua
-        for (int i = 0; i < rigidbodies.Length; i++) {
+        for (int i = 0; i < rigidbodies.Length; i++)
+        {
             rigidbodies[i].isKinematic = true;
             rigidbodies[i].velocity = Vector2.zero;
             rigidbodies[i].angularVelocity = 0;
@@ -159,7 +155,15 @@ public abstract class Obstacle : MonoBehaviour
         return deadlyGameObject;
     }
 
+    protected abstract void StartObstacle();
+    protected abstract void UpdateObstacle();
+    protected abstract void WakeUp();
+    protected abstract void Sleep();
+    public abstract ObstacleType GetObstacleType();
+
 }
+
+
 
 public abstract class ObstacleWithTimer : Obstacle
 {
