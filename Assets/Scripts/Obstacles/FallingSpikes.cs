@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fallingspikes : ObstacleWithTimer
+public class FallingSpikes : ObstacleWithTimer
 {
     private Rigidbody2D rb;
     [SerializeField]

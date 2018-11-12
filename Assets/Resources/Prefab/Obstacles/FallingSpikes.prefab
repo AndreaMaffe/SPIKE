@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 61532900100683698}
   - component: {fileID: 50776815908930782}
   - component: {fileID: 331156537667263670}
-  - component: {fileID: 114965093903721790}
   m_Layer: 9
   m_Name: Spikes
   m_TagString: Deadly
@@ -56,6 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4836348586832982}
   - component: {fileID: 212097073105831698}
+  - component: {fileID: 114762912325413656}
   m_Layer: 9
   m_Name: FallingSpikes
   m_TagString: Deadly
@@ -126,7 +126,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1557284700432314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7423927, y: 3.140276, z: 0}
+  m_LocalPosition: {x: 1.0839623, y: 4.9053135, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4525105359025124}
@@ -179,17 +179,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.6401987, y: 0.5828819}
   m_EdgeRadius: 0
---- !u!114 &114965093903721790
+--- !u!114 &114762912325413656
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1208627154081086}
+  m_GameObject: {fileID: 1557284700432314}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6f0dcbf9ca13cf49b90cc94f466f61d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fd48769a68f9c04ea470a41883e6a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anchorPosition: 0
+  anchorSlotOccupied: 1
+  rigidbodies:
+  - {fileID: 50776815908930782}
+  allNonDraggableColliders:
+  - {fileID: 61532900100683698}
+  deadlyGameObject: {fileID: 1208627154081086}
+  draggingCollider: {fileID: 0}
+  goingUp: 0
+  raycastOffset: 0.5
+  timeOnGround: 1
+  liftSpeed: 1.5
 --- !u!212 &212097073105831698
 SpriteRenderer:
   m_ObjectHideFlags: 1
