@@ -1,8 +1,12 @@
 
 -----------  BUG:  ---------------
-- salto del personaggio a inizio livello
-- onda d'urto Bomb sulla ragdoll
+- salto del personaggio a inizio livello #FIXATO
+- leggero bug nell'animazione del Player dopo ReloadLevel() e RetryLevel() #FIXATO
+- onda d'urto della bomba sulla ragdoll troppo forte
 - ombra del personaggio rimane sul posto alla morte
+- i pezzi della ragdoll tremano
+- la molla non è allineata all'anchor line
+- il raptor tende a "cadere" in fase di dragging&dropping
 
 
 ----------  OSTACOLI A POSTO:  -------------
@@ -16,9 +20,8 @@
 ----------- OSTACOLI DA FARE/MODIFICARE:  -------------
 - Bomb: sistemare potenza esplosione
 - Laser: limitare il movimento a dx e sx
-- Spring: aggiungere spine
+- Spring: aggiungere spine in alto
 - Raptor: rendere il movimento più pulito e aggiungere immagine 
 
 
 ----------- IDEE PER IL FUTURO:  -----------
--> la ragdoll viene rotta in caso di impatto violento

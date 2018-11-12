@@ -5,9 +5,13 @@ using UnityEngine;
 public class PlayerDeathBySpike : PlayerDeathEvent
 {
     private GameObject bloodParticles;
-    public GameObject bloodStain;
+    private GameObject bloodStain;
+    private GameObject spikes;
 
-    public PlayerDeathBySpike(Player player, Obstacle obstacle, Vector3 position) : base(player, obstacle, position) { }
+    public PlayerDeathBySpike(Player player, Obstacle obstacle, Vector3 position, GameObject spikes) : base(player, obstacle, position)
+    {
+        this.spikes = spikes;
+    }
 
     //TODO: il player si attacca alle spine e ci rimane impalato
     public override void StartDeath()
@@ -16,7 +20,7 @@ public class PlayerDeathBySpike : PlayerDeathEvent
         bloodStain = Resources.Load<GameObject>("Prefab/Particles/BloodStain");
         GameObject blood = GameObject.Instantiate(bloodParticles, position, Quaternion.identity);
         GameObject.Destroy(blood.gameObject, 1f);
-        GameObject bloodStainInstance = GameObject.Instantiate(bloodStain, position, Quaternion.identity,obstacle.GetDeadlyGameObject().transform);
+        GameObject bloodStainInstance = GameObject.Instantiate(bloodStain, position, Quaternion.identity, spikes.transform);
         bloodStainInstance.GetComponent<SpriteRenderer>().sortingOrder = obstacle.GetComponent<SpriteRenderer>().sortingOrder + 1;
 
         player.SetActiveRagdoll(true);
