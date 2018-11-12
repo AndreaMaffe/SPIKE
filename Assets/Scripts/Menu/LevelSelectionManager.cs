@@ -60,7 +60,7 @@ public class LevelSelectionManager : MonoBehaviour {
         SaveUtility.SaveObject(saveManager, "saveFile");
         if (levelIndex <= saveManager.maxUnlockedLevel)
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("SampleSceneRange");
             //Non appena la scena viene caricata dobbiamo riprendere da SaveManager l'informazione del livello scelto (currentLevel) 
             //in modo tale da caricare lo scriptable object relativo
         }
