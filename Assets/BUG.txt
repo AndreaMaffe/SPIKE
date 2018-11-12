@@ -3,6 +3,7 @@
 
 - salto del personaggio a inizio livello
 - onda d'urto Bomb sulla ragdoll
+- ombra del personaggio rimane sul posto alla morte
 
 
 ----------  OSTACOLI A POSTO:  -------------

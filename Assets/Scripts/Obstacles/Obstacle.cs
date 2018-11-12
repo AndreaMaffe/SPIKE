@@ -51,8 +51,8 @@ public abstract class Obstacle : MonoBehaviour
         StartObstacle();
     }
 
-    //adesso l'ostacolo viene spawnato ma e' come se fosse attivato solo quando raggiunge la posizione indicata
-    public virtual void ActivateObstacle()
+    //chiamato quando l'ostacolo viene rilasciato
+    public virtual void OnObstacleDropped()
     {
         originalPosition = this.transform.position;
         originalRotation = this.transform.rotation;

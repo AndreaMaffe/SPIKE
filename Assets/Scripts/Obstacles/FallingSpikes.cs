@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingSpikes : ObstacleWithTimer
+public class Fallingspikes : ObstacleWithTimer
 {
     private Rigidbody2D rb;
     [SerializeField]
     private bool goingUp;
-    public bool colliso;
+    private Vector3 originalSpikesPosition;
+    private GameObject spikes;
 
+    private bool colliso;
+    private SpriteRenderer ropeSprite;
+
+    [Tooltip("Range inside which the Player is detected")]
     public float raycastOffset;
-    public SpriteRenderer gancio;
-
-    Vector3 originalPernoPosition;
-
-    public float offsetGancioFromSpikes = 1;
-
     [Tooltip("Time on ground before starting rising up")]
     public float timeOnGround;
     [Tooltip("Speed of the vertical ascent")]
@@ -29,10 +28,10 @@ public class FallingSpikes : ObstacleWithTimer
     //start apposito per gli ostacoli, usare questo anziché Update().
     protected override void StartObstacle()
     {
-        //rb = GetComponent<Rigidbody2D>();
+        spikes = transform.Find("spikes").gameObject;
+        ropeSprite = transform.Find("Rope").GetComponent<SpriteRenderer>();
+
         DisablePhysics();
-        originalPosition = deadlyGameObject.transform.position;
-        originalPernoPosition = transform.position;
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
@@ -41,19 +40,20 @@ public class FallingSpikes : ObstacleWithTimer
         if (!goingUp)
         {
             //lancia 2 raycast dx e sx
-            RaycastHit2D hit1 = Physics2D.Raycast(transform.position + new Vector3(-raycastOffset,0,0), Vector2.down, 10, LayerMask.GetMask("Player"));
+            RaycastHit2D hit1 = Physics2D.Raycast(transform.position + new Vector3(-raycastOffset, 0, 0), Vector2.down, 10, LayerMask.GetMask("Player"));
             RaycastHit2D hit2 = Physics2D.Raycast(transform.position + new Vector3(raycastOffset, 0, 0), Vector2.down, 10, LayerMask.GetMask("Player"));
 
-            if (hit1 || hit2)           
+            if (hit1 || hit2)
                 EnablePhysics();
         }
 
         if (goingUp)
         {
-            if (deadlyGameObject.transform.position.y <= originalPosition.y)           
-                rigidbodies[0].velocity = new Vector2(0, liftSpeed);
-            
-            else {
+            if (spikes.transform.position.y <= originalSpikesPosition.y)
+                spikes.GetComponent<Rigidbody2D>().velocity = new Vector2(0, liftSpeed);
+
+            else
+            {
                 rigidbodies[0].velocity = new Vector2(0, 0);
                 rigidbodies[0].gravityScale = 5;
                 goingUp = false;
@@ -62,12 +62,8 @@ public class FallingSpikes : ObstacleWithTimer
             }
         }
 
-        UpdateSprite();
+        UpdateropeSprite();
 
-    }
-    private void UpdateSprite()
-    {
-        gancio.size = new Vector2(gancio.size.x, -deadlyGameObject.transform.localPosition.y - offsetGancioFromSpikes);
     }
 
     //chiamato al RunLevel()
@@ -78,6 +74,7 @@ public class FallingSpikes : ObstacleWithTimer
 
         goingUp = false;
         colliso = false;
+
         rigidbodies[0].gravityScale = 5;
     }
 
@@ -93,16 +90,28 @@ public class FallingSpikes : ObstacleWithTimer
         //risetta la posizione iniziale
         ResetPosition();
 
+        goingUp = false;
+        colliso = false;
+
         ResetTimer();
     }
 
-    protected override void ResetPosition() {
-        this.transform.position = originalPernoPosition;
-        deadlyGameObject.transform.position = originalPosition;
-        this.transform.rotation = Quaternion.Euler(0,0,0);
-        UpdateSprite();
-        goingUp = false;
-        colliso = false;
+    public override void OnObstacleDropped()
+    {
+        base.OnObstacleDropped();
+        originalSpikesPosition = transform.Find("Spikes").transform.position;
+    }
+
+    protected override void ResetPosition()
+    {
+        base.ResetPosition();
+        UpdateropeSprite();
+        transform.Find("spikes").transform.position = originalSpikesPosition;
+    }
+
+    private void UpdateropeSprite()
+    {
+        ropeSprite.size = new Vector2(ropeSprite.size.x, -spikes.transform.localPosition.y - 1);
     }
 
     protected override void OnTimerEnd()
@@ -111,10 +120,16 @@ public class FallingSpikes : ObstacleWithTimer
         goingUp = true;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Collided();
+    }
+
     public void Collided()
     {
         //colliso viene settato a false nell'altro script
-        if (!colliso && !goingUp) {
+        if (!colliso && !goingUp)
+        {
             rigidbodies[0].gravityScale = 0;
             SetTimer(timeOnGround);
             StartTimer();

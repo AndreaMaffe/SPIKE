@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4610905080585492}
   - component: {fileID: 212565541856271428}
   - component: {fileID: 95278863635347494}
+  - component: {fileID: 114269932666113808}
   m_Layer: 0
   m_Name: Elevator
   m_TagString: Untagged
@@ -37,7 +38,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4259465760817632}
   - component: {fileID: 212266190364190972}
-  - component: {fileID: 114747096149916314}
   - component: {fileID: 61380244048478286}
   m_Layer: 0
   m_Name: ElevatorPlatform
@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1638983760367060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.72, y: 0.44, z: 0}
+  m_LocalPosition: {x: 1.8340764, y: 0.1123001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4259465760817632}
@@ -116,20 +116,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114747096149916314
+--- !u!114 &114269932666113808
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1697893822895144}
+  m_GameObject: {fileID: 1638983760367060}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f392653f35f5ecb4b877c958a6ffc329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anchorPosition: 2
+  anchorPosition: 0
   anchorSlotOccupied: 1
-  animator: {fileID: 95278863635347494}
+  rigidbodies: []
+  allNonDraggableColliders: []
+  deadlyGameObject: {fileID: 1697893822895144}
+  draggingCollider: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!212 &212266190364190972
 SpriteRenderer:
   m_ObjectHideFlags: 1
