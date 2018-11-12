@@ -5,13 +5,13 @@ using UnityEngine;
 public class FallingSpikes : ObstacleWithTimer
 {
     private Rigidbody2D rb;
-    [SerializeField]
-    private bool goingUp;
     private Vector3 originalSpikesPosition;
     private GameObject spikes;
-
-    private bool colliso;
     private SpriteRenderer ropeSprite;
+
+    private Vector2 originalRopeSize;
+
+    private bool goingUp;
 
     [Tooltip("Range inside which the Player is detected")]
     public float raycastOffset;
@@ -28,8 +28,10 @@ public class FallingSpikes : ObstacleWithTimer
     //start apposito per gli ostacoli, usare questo anziché Update().
     protected override void StartObstacle()
     {
-        spikes = transform.Find("spikes").gameObject;
+        spikes = transform.Find("Spikes").gameObject;
         ropeSprite = transform.Find("Rope").GetComponent<SpriteRenderer>();
+
+        originalRopeSize = ropeSprite.size;
 
         DisablePhysics();
     }
@@ -57,12 +59,11 @@ public class FallingSpikes : ObstacleWithTimer
                 rigidbodies[0].velocity = new Vector2(0, 0);
                 rigidbodies[0].gravityScale = 5;
                 goingUp = false;
-                colliso = false;
-
             }
         }
 
-        UpdateropeSprite();
+        //allunga la corda
+        ropeSprite.size = new Vector2(ropeSprite.size.x, -spikes.transform.localPosition.y - 1);
 
     }
 
@@ -73,9 +74,7 @@ public class FallingSpikes : ObstacleWithTimer
         SetActive(true);
 
         goingUp = false;
-        colliso = false;
 
-        rigidbodies[0].gravityScale = 5;
     }
 
     //chiamato al RetryLevel()
@@ -90,8 +89,11 @@ public class FallingSpikes : ObstacleWithTimer
         //risetta la posizione iniziale
         ResetPosition();
 
+        //rimette a posto corda e spine
+        spikes.transform.position = originalSpikesPosition;
+        ropeSprite.size = originalRopeSize;
+
         goingUp = false;
-        colliso = false;
 
         ResetTimer();
     }
@@ -99,19 +101,7 @@ public class FallingSpikes : ObstacleWithTimer
     public override void OnObstacleDropped()
     {
         base.OnObstacleDropped();
-        originalSpikesPosition = transform.Find("Spikes").transform.position;
-    }
-
-    protected override void ResetPosition()
-    {
-        base.ResetPosition();
-        UpdateropeSprite();
-        transform.Find("spikes").transform.position = originalSpikesPosition;
-    }
-
-    private void UpdateropeSprite()
-    {
-        ropeSprite.size = new Vector2(ropeSprite.size.x, -spikes.transform.localPosition.y - 1);
+        originalSpikesPosition = spikes.transform.position;
     }
 
     protected override void OnTimerEnd()
@@ -120,25 +110,9 @@ public class FallingSpikes : ObstacleWithTimer
         goingUp = true;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnSpikesCollision()
     {
-        Collided();
+        SetTimer(timeOnGround);
+        StartTimer();
     }
-
-    public void Collided()
-    {
-        //colliso viene settato a false nell'altro script
-        if (!colliso && !goingUp)
-        {
-            rigidbodies[0].gravityScale = 0;
-            SetTimer(timeOnGround);
-            StartTimer();
-        }
-    }
-
-
-
-
-
-
 }

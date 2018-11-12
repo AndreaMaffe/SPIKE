@@ -1,6 +1,5 @@
 
 -----------  BUG:  ---------------
-
 - salto del personaggio a inizio livello
 - onda d'urto Bomb sulla ragdoll
 - ombra del personaggio rimane sul posto alla morte
@@ -10,6 +9,7 @@
 * Bullet
 * Cannon
 * Pendolum
+* FallingSpikes
 
 
 
@@ -21,5 +21,4 @@
 
 
 ----------- IDEE PER IL FUTURO:  -----------
-
 -> la ragdoll viene rotta in caso di impatto violento
