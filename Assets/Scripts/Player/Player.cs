@@ -82,12 +82,16 @@ public class Player : MonoBehaviour {
     {
         SetActiveRagdoll(false);
 
-        SetStop();
         gameObject.transform.position = originalPosition;
+        gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
         activateMovements = false;
+
         foreach (Timer timer in movementTimers)
             timerManager.RemoveTimer(timer);
-            //timer.Pause(); //in questo modo i timer non arriveranno mai a zero
+
+        //setta l'animazione di Stop
+        SetStop();
     }
 
     private void FixedUpdate()
@@ -199,6 +203,8 @@ public class Player : MonoBehaviour {
         if (collision.gameObject.tag == "Platform")
         {
             onGround = true;
+            originalPosition = this.transform.position;
+
 
             if (activateMovements)
             {
@@ -243,8 +249,9 @@ public class Player : MonoBehaviour {
         UpdateSprite();
     }
 
-    //metodo che applica al corpo della ragdoll un impulso in una certa direzione 
-    public void ApplyRagdollImpulse(float amount, Vector2 direction) {
+    //metodo che applica al corpo della ragdoll una forza in una certa direzione 
+    public void ApplyRagdollImpulse(float amount, Vector2 direction)
+    {
         if (activateMovements)
             RagdollPieces[0].AddForce(direction * amount);
     }
