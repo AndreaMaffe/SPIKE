@@ -32,14 +32,6 @@ public struct PlatformData
 [System.Serializable]
 public struct MovementData
 {
-    public MovementType type;
+    public PlayerMovementType type;
     public float startTime;
-}
-
-public enum MovementType
-{
-    Jump,
-    Stop,
-    Move,
-    WaitingForJump
 }

@@ -17,6 +17,7 @@ public class Spring : Obstacle {
         triggered = false;
         spikes = transform.Find("Spikes");
         collider = GetComponent<BoxCollider2D>();
+        DisablePhysics();
 	}
 	
 	//update apposito per gli ostacoli, usare questo anziché Update().

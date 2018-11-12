@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum PlayerMovementType
+{
+    Jump,
+    Stop,
+    Move,
+    WaitingForJump
+}
+
 public class Player : MonoBehaviour {
 
     private Rigidbody2D rb;
@@ -14,7 +23,7 @@ public class Player : MonoBehaviour {
     public float jumpStrenght;
     public float jumpDelayTime;
     [SerializeField]
-    private MovementType state;
+    private PlayerMovementType state;
     private Vector3 originalPosition;
 
     public bool onGround;
@@ -54,7 +63,7 @@ public class Player : MonoBehaviour {
 
         LevelManager.runLevelEvent += WakeUp;
         LevelManager.retryLevelEvent += Sleep;
-        state = MovementType.Stop;
+        state = PlayerMovementType.Stop;
         originalPosition = this.transform.position;
         currentLevel = levelManager.GetActualLevel();
         movementTimers = new Timer[currentLevel.movementDatas.Length];
@@ -96,15 +105,18 @@ public class Player : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (state == MovementType.Move)
-            Move();
-        else if (state == MovementType.WaitingForJump) {
-            WaitForJump();
+        switch (state)
+        {
+            case PlayerMovementType.Move:
+                Move();
+                break;
+            case PlayerMovementType.WaitingForJump:
+                WaitForJump();
+                break;
+            case PlayerMovementType.Stop:
+                Stop();
+                break;
         }
-        else if (state == MovementType.Stop)
-            Stop();
-
-
     }
 
     //Riporta l'animator allo stato di stop
@@ -129,7 +141,7 @@ public class Player : MonoBehaviour {
     {
         if (onGround) {
             Invoke("ApplyJumpImpulse", jumpDelayTime);
-            state = MovementType.Jump;
+            state = PlayerMovementType.Jump;
             Stop();
         }
         else
@@ -146,19 +158,19 @@ public class Player : MonoBehaviour {
     }
 
     void SetMove() {
-        state = MovementType.Move;
+        state = PlayerMovementType.Move;
         animator.SetTrigger("Move");
     }
 
     void SetJump()
     {
-        state = MovementType.WaitingForJump;
+        state = PlayerMovementType.WaitingForJump;
         animator.SetTrigger("WaitingJump");
     }
 
     void SetStop()
     {
-        state = MovementType.Stop;
+        state = PlayerMovementType.Stop;
         animator.SetTrigger("Stop");
     }
 
@@ -204,7 +216,7 @@ public class Player : MonoBehaviour {
         {
             onGround = true; 
 
-            if (activateMovements && state != MovementType.Move)
+            if (activateMovements && state != PlayerMovementType.Move)
                     SetMove();
         }
 
