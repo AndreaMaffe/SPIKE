@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1514301016409326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.9570286, y: 3.2308502, z: 0}
+  m_LocalPosition: {x: -9.59, y: 0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -142,8 +142,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.8
-      minScalar: 0.5
+      scalar: 0.35
+      minScalar: 0.3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -195,7 +195,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 30
+      scalar: 24
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -687,7 +687,7 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 4
-    angle: 1.0057425
+    angle: 0.4217045
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -717,7 +717,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.14144689
+      value: 0.032583773
       mode: 0
       spread: 0
       speed:
@@ -1331,10 +1331,10 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.7783019, g: 0.9781395, b: 1, a: 0}
+        key0: {r: 0.75, g: 1, b: 0.96488756, a: 0}
         key1: {r: 1, g: 0.98863906, b: 0.7688679, a: 1}
         key2: {r: 1, g: 0.8591443, b: 0.514151, a: 1}
-        key3: {r: 1, g: 0.59286726, b: 0.43867922, a: 0.6117647}
+        key3: {r: 1, g: 0.59286726, b: 0.43867922, a: 0.85490197}
         key4: {r: 1, g: 0.4198113, b: 0.4198113, a: 0}
         key5: {r: 1, g: 0.4198113, b: 0.4198113, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
@@ -1350,7 +1350,7 @@ ParticleSystem:
         atime0: 0
         atime1: 5204
         atime2: 13878
-        atime3: 61487
+        atime3: 56090
         atime4: 65535
         atime5: 0
         atime6: 0
@@ -4700,7 +4700,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_RenderAlignment: 0
-  m_Pivot: {x: 0, y: 0, z: 0}
+  m_Pivot: {x: 0.9, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
