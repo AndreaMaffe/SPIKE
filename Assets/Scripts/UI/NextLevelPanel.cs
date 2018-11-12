@@ -2,9 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NextLevelPanel : MonoBehaviour
 {
+
+    public LevelManager levelManager;
 
     private Animator animator;
 
@@ -14,10 +17,17 @@ public class NextLevelPanel : MonoBehaviour
         LevelManager.endLevelEvent += DownScrollPanel;
     }
 
-    private void DownScrollPanel()
+    public void DownScrollPanel()
     {
-        Debug.Log("E' stato chiamto DownScrollPanel");
         animator.SetTrigger("DownScrollPanel");
     }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+
+    
 }
 
