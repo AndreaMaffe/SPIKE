@@ -5,6 +5,8 @@ using UnityEngine;
 public class Spring : Obstacle {
 
     private bool triggered;
+    private Transform spikes;
+    private BoxCollider2D collider;
 
     [Tooltip("Intensity of the push")]
     public float push;
@@ -13,6 +15,8 @@ public class Spring : Obstacle {
     protected override void StartObstacle ()
     {
         triggered = false;
+        spikes = transform.Find("Spikes");
+        collider = GetComponent<BoxCollider2D>();
 	}
 	
 	//update apposito per gli ostacoli, usare questo anziché Update().
@@ -30,23 +34,36 @@ public class Spring : Obstacle {
 
             //muovi la sprite
             this.transform.position += new Vector3(0, 1, 0);
+            //riaggiusta la posizione delle spine
+            this.spikes.position -= new Vector3(0, 1, 0);
 
             triggered = true;
+
+            collider.isTrigger = false;
         }
-
-
     }
 
     //chiamato al RunLevel()
     protected override void WakeUp()
     {
+        EnablePhysics();
     }
 
     //chiamato al RetryLevel()
     protected override void Sleep()
     {
+        //risetta la posizione iniziale
         ResetPosition();
+
+        //riaggiusta la posizione delle spine
+        if (triggered)
+            this.spikes.position -= new Vector3(0, -1, 0);
+
         triggered = false;
+
+        collider.isTrigger = true;
+
+        DisablePhysics();
     }
 
     public override ObstacleType GetObstacleType()

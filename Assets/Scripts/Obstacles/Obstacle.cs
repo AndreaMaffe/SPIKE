@@ -22,6 +22,7 @@ public abstract class Obstacle : MonoBehaviour
     protected bool active;
     protected Vector3 originalPosition;
     private Quaternion originalRotation;
+    private CircleCollider2D draggingCollider;
 
     [Tooltip("The position of the anchor that it can occupy")]
     public AnchorPointPosition anchorPosition;
@@ -32,8 +33,7 @@ public abstract class Obstacle : MonoBehaviour
     [Tooltip("Tutti i collider non legati al drag and drop")]
     public Collider2D[] allNonDraggableColliders;
 
-    [SerializeField]
-    CircleCollider2D draggingCollider; 
+
 
     // Usata per inizializzare il drag dell'ostacolo ma  non per la sua attivazione effettiva
     protected virtual void Start ()
@@ -139,6 +139,7 @@ public abstract class Obstacle : MonoBehaviour
             case ObstacleType.Pendolum: return new PlayerDeathBySpike(player, this, position, transform.Find("Blade").gameObject);
             case ObstacleType.Raptor: return new PlayerDeathBySpike(player, this, position, this.gameObject);
             case ObstacleType.FallingSpikes: return new PlayerDeathBySpike(player, this, position, transform.Find("Spikes").gameObject);
+            case ObstacleType.Spring: return new PlayerDeathBySpike(player, this, position, transform.Find("Spikes").gameObject);
 
             default: return new PlayerDeathByExplosion(player, this, position);
         }

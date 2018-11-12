@@ -7,6 +7,7 @@
 - i pezzi della ragdoll tremano
 - la molla non è allineata all'anchor line
 - il raptor tende a "cadere" in fase di dragging&dropping
+- il raggio del laser si blocca a mezz'aria
 
 
 ----------  OSTACOLI A POSTO:  -------------
@@ -24,4 +25,5 @@
 - Raptor: rendere il movimento più pulito e aggiungere immagine 
 
 
------------ IDEE PER IL FUTURO:  -----------
+----------- ALTRO:  -----------
+-> sistemare la matrice delle collisioni in maniera decente
