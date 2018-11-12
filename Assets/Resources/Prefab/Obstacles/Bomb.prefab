@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 50228646109537280}
   - component: {fileID: 58000749948952714}
   - component: {fileID: 114935129837873810}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,8 @@ MonoBehaviour:
   deadlyGameObject: {fileID: 0}
   draggingCollider: {fileID: 0}
   timeBeforeExplosion: 3.5
-  explosionForce: 100
+  minExplosionForce: 80
+  maxExplosionForce: 280
   explosionInnerRadius: 2
   explosionOuterRadius: 4
   innerRadius: {fileID: 4549167352771426}
