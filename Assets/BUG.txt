@@ -3,15 +3,23 @@
 
 - salto del personaggio a inizio livello
 - onda d'urto Bomb sulla ragdoll
+- ombra del personaggio rimane sul posto alla morte
 
 
 ----------  OSTACOLI A POSTO:  -------------
+* Bullet
+* Cannon
 * Pendolum
 
 
------------ OSTACOLI DA FARE:  -------------
 
-
+----------- OSTACOLI DA FARE/MODIFICARE:  -------------
+- Bomb: sistemare potenza esplosione
+- Laser: limitare il movimento a dx e sx
+- Spring: aggiungere spine
+- Raptor: rendere il movimento più pulito e aggiungere immagine 
 
 
 ----------- IDEE PER IL FUTURO:  -----------
+
+-> la ragdoll viene rotta in caso di impatto violento

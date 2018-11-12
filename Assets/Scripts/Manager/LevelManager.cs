@@ -105,7 +105,7 @@ public class LevelManager : MonoBehaviour
     public void ReloadLevel() {
 
         //FindObjectOfType<TimerManager>().Clear();
-        SceneManager.LoadSceneAsync("SampleScene");
+        SceneManager.LoadSceneAsync("SampleSceneRange");
         //state = LevelState.UNDER_CONSTRUCTION;
     }
 

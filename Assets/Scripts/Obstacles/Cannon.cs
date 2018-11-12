@@ -21,9 +21,7 @@ public class Cannon : ObstacleWithTimer {
     {
     }
 
-
-    //start apposito per gli ostacoli, usare questo anziché Start().
-    public override void ActivateObstacle()
+    public override void OnObstacleDropped()
     {
         //1 se sx-->dx , -1 se sx
         direction = - this.transform.position.x / Mathf.Abs(this.transform.position.x);

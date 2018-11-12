@@ -69,7 +69,7 @@ public class DraggableObject : MonoBehaviour, IBeginDragHandler, IEndDragHandler
         {
             //check se se snappato ad un anchor point range
             if (obstacleDragged.CheckIfSnapped()) {
-                obstacleDragged.GetComponent<Obstacle>().ActivateObstacle();
+                obstacleDragged.GetComponent<Obstacle>().OnObstacleDropped();
                 UpdateObstacleNumber(-1);
             }
             //altrimenti distruggi il prefab e basta

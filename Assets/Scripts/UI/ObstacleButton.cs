@@ -63,7 +63,7 @@ public class ObstacleButton : DraggableObject
             if (obstacleDragged.CheckIfSnapped())
             {
                 UpdateObstacleNumber(-1);
-                obstacleDragged.GetComponent<Obstacle>().ActivateObstacle();
+                obstacleDragged.GetComponent<Obstacle>().OnObstacleDropped();
                 AddObstaclePositionedComponents();
             }
             //altrimenti distruggi il prefab e basta
