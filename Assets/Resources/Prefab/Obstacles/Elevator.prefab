@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1697893822895144}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.0003, z: 0}
+  m_LocalPosition: {x: 0, y: -2.0003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4610905080585492}
@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1638983760367060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8340764, y: 0.1123001, z: 0}
+  m_LocalPosition: {x: 2.7811608, y: 0.061409995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4259465760817632}
@@ -81,7 +81,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1697893822895144}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ea9a3ed81ac5e224bbb477ce11d13d11, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -131,9 +131,7 @@ MonoBehaviour:
   anchorSlotOccupied: 1
   rigidbodies: []
   allNonDraggableColliders: []
-  deadlyGameObject: {fileID: 1697893822895144}
-  draggingCollider: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 95278863635347494}
 --- !u!212 &212266190364190972
 SpriteRenderer:
   m_ObjectHideFlags: 1

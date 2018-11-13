@@ -28,11 +28,7 @@ MonoBehaviour:
   - type: 8
     obstacleMaxAmount: 2
   movementDatas:
-  - type: 2
-    startTime: 0
-  - type: 0
-    startTime: 1.4
-  - type: 0
-    startTime: 3.3
-  - type: 0
-    startTime: 5
+  - movement: 1
+    startTime: 1.45
+  - movement: 1
+    startTime: 4.15

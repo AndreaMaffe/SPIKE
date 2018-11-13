@@ -3,39 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum PlayerMovementType
+public enum PlayerState
 {
-    Jump,
-    Stop,
-    Move,
-    WaitingForJump
+    Jumping,
+    Stopped,
+    Running,
+    WaitingToJump
 }
 
 public class Player : MonoBehaviour {
 
     private Rigidbody2D rb;
     private Animator animator;
-
-    public float gridUnitDimension;
+    private BoxCollider2D mainCollider;
+    private Transform body;
 
     public float maxVelocity;
     public float jumpAngle;
     public float jumpStrenght;
     public float jumpDelayTime;
     [SerializeField]
-    private PlayerMovementType state;
+    private PlayerState state;
     private Vector3 originalPosition;
-
-    public bool onGround;
-    public bool activateMovements = false;
+    private bool onGround;
 
     public GameObject bloodParticle;
     public Rigidbody2D[] RagdollPieces;
     public Collider2D[] RagdollColliders;
-
-    [Header("Il rigidbody e il collider principali")]
-    public Rigidbody2D mainRigidbody;
-    public BoxCollider2D mainCollider;
+    public GameObject[] RagdollArts;
 
     public Sprite[] bodySprite;
     public Sprite[] faceSprite;
@@ -43,181 +38,165 @@ public class Player : MonoBehaviour {
     public SpriteRenderer bodyRenderer;
     public SpriteRenderer faceRenderer;
 
-    bool injured = false;
-
     //variabile che contiene lo scriptable object del livello attuale chiesto al level manager
     private Level currentLevel;
     private LevelManager levelManager;
     private TimerManager timerManager;
 
     //Lista che contiene tutti i timer per i movimenti del giocatore
-    private Timer[] movementTimers;
+    private List<Timer> timers;
 
-    private void Start()
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        mainCollider = GetComponent<BoxCollider2D>();
+        body = transform.Find("Body");
 
         levelManager = FindObjectOfType<LevelManager>();
         timerManager = FindObjectOfType<TimerManager>();
 
         LevelManager.runLevelEvent += WakeUp;
         LevelManager.retryLevelEvent += Sleep;
-        state = PlayerMovementType.Stop;
+        state = PlayerState.Stopped;
         originalPosition = this.transform.position;
         currentLevel = levelManager.GetActualLevel();
-        movementTimers = new Timer[currentLevel.movementDatas.Length];
+
+        timers = new List<Timer>();
     }
 
-
-    private void OnDisable()
+    void FixedUpdate()
     {
-        LevelManager.runLevelEvent -= WakeUp;
-        LevelManager.retryLevelEvent -= Sleep;
+        switch (state)
+        {
+            case PlayerState.Running:
+                rb.velocity = new Vector2(maxVelocity, rb.velocity.y); ;
+                break;
+
+            case PlayerState.WaitingToJump:
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                break;
+
+            case PlayerState.Stopped:
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                break;
+        }
     }
 
     //chiamato al RunLevel()
     void WakeUp()
     {
-        activateMovements = true;
-        StartTimersForJumpingAndStopping();
-        ResetPlayerAnimationToDefault();
+        Run();
 
-        rb.velocity = new Vector2(0, 0);
+        SetTimers();
+
+        StartTimers();
     }
 
     //chiamato al RetryLevel()
     void Sleep()
     {
+        //riassesta il corpo in caso di morte
         SetActiveRagdoll(false);
 
+        Stop();
+
+        //risetta il Player immobile e alla posizione iniziale
         gameObject.transform.position = originalPosition;
-        gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        rb.velocity = Vector2.zero;
 
-        activateMovements = false;
-
-        foreach (Timer timer in movementTimers)
-            timerManager.RemoveTimer(timer);
-
-        //setta l'animazione di Stop
-        SetStop();
+        //rimuovi tutti i timer (verranno risettati al successivo WakeUp())
+        ResetTimers();
     }
 
-    private void FixedUpdate()
+    void Run()
     {
-        switch (state)
-        {
-            case PlayerMovementType.Move:
-                Move();
-                break;
-            case PlayerMovementType.WaitingForJump:
-                WaitForJump();
-                break;
-            case PlayerMovementType.Stop:
-                Stop();
-                break;
-        }
-    }
-
-    //Riporta l'animator allo stato di stop
-    void ResetPlayerAnimationToDefault() {
-        animator.Play("Stop",0);
-        animator.ResetTrigger("Jump");
-        animator.ResetTrigger("Move");
-        animator.ResetTrigger("WaitingJump");
-    }
-
-    public void Move()
-    {
-        rb.velocity = new Vector2(maxVelocity, rb.velocity.y);
-    }
-
-    public void Stop()
-    {
-        rb.velocity = new Vector2(0, rb.velocity.y);
-    }
-
-    public void WaitForJump()
-    {
-        if (onGround) {
-            Invoke("ApplyJumpImpulse", jumpDelayTime);
-            state = PlayerMovementType.Jump;
-            Stop();
-        }
-        else
-            SetMove();
-    }
-
-    void ApplyJumpImpulse() {
-
-        if (onGround && activateMovements) {
-            animator.SetTrigger("Jump");
-            rb.AddForce(new Vector2(jumpStrenght * gridUnitDimension * Mathf.Cos(jumpAngle * Mathf.Deg2Rad), 
-                jumpStrenght * gridUnitDimension * Mathf.Sin(jumpAngle * Mathf.Deg2Rad)), ForceMode2D.Impulse);
-        }
-    }
-
-    void SetMove() {
-        state = PlayerMovementType.Move;
+        state = PlayerState.Running;
         animator.SetTrigger("Move");
     }
 
-    void SetJump()
+    void Stop()
     {
-        state = PlayerMovementType.WaitingForJump;
-        animator.SetTrigger("WaitingJump");
-    }
-
-    void SetStop()
-    {
-        state = PlayerMovementType.Stop;
+        state = PlayerState.Stopped;
         animator.SetTrigger("Stop");
     }
 
-    void StartTimersForJumpingAndStopping()
+    void WaitAndJump()
     {
-        //per ogni timer contenuto nello scriptable Object del livello corrente    
-        // per ora crea un solo timer che salta dopo un secondo
+        if (onGround)
+        {
+            state = PlayerState.WaitingToJump;
+            Invoke("Jump", jumpDelayTime);
+            animator.SetTrigger("WaitingJump");
+        }
+    }
 
-        int i = 0;
+    void Jump()
+    {
+        if (state == PlayerState.WaitingToJump)
+        {
+            state = PlayerState.Jumping;
+            animator.SetTrigger("Jump");
+            rb.AddForce(new Vector2(jumpStrenght * Mathf.Cos(jumpAngle * Mathf.Deg2Rad), jumpStrenght * Mathf.Sin(jumpAngle * Mathf.Deg2Rad)), ForceMode2D.Impulse);
+        }
+    }
+
+    //crea e setta i timer collegati ai movimenti
+    void SetTimers()
+    { 
         foreach (MovementData movementData in currentLevel.movementDatas)
         {
             Timer timer = timerManager.AddTimer(movementData.startTime);
-            switch (movementData.type.ToString())
+
+            switch (movementData.movement.ToString())
             {
                 case "Jump":
-                    timer.triggeredEvent += SetJump;
+                    timer.triggeredEvent += WaitAndJump;
                     break;
-                case "Move":
-                    timer.triggeredEvent += SetMove;
+                case "Run":
+                    timer.triggeredEvent += Run;
                     break;
                 case "Stop":
-                    timer.triggeredEvent += SetStop;
+                    timer.triggeredEvent += Stop;
                     break;
                 default:
                     Debug.Log("ERROR: action name not valid, check scriptable object of the level " + currentLevel + " or PlayerMovement.cs");
                     break;
             }
-            movementTimers[i] = timer;
-            i += 1;
+
+            timers.Add(timer);
         }
-        //Da spostare all'interno di un metodo che viene chiamato nel momento in cui si preme il tasto play
-        foreach (Timer timer in movementTimers)
+    }
+
+    //blocca tutti i timer e li rimuove
+    void ResetTimers()
+    {
+        foreach (Timer timer in timers)
+            timer.Pause();
+
+        timers.Clear();
+    }
+
+    //fa partire tutti i timer collegati ai movimenti
+    void StartTimers()
+    {
+        foreach (Timer timer in timers)
         {
             timer.Start();
         }
-
     }
+
 
     //da cambiare e da fare con raycast per evitare collisioni laterali ma per ora va bene anche cosi'
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Platform")
         {
-            onGround = true; 
+            onGround = true;
 
-            if (activateMovements && state != PlayerMovementType.Move)
-                    SetMove();
+            //se tocca terra dopo un salto, riprendi a muoverti
+            if (state == PlayerState.Jumping)
+                Run();
         }
 
         if (collision.gameObject.tag == "Deadly")
@@ -228,47 +207,47 @@ public class Player : MonoBehaviour {
         }           
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    public void SetActiveRagdoll(bool value)
     {
-        if (collision.gameObject.tag == "Platform")
-            onGround = false;
-    }
+        animator.enabled = !value;
+        rb.simulated = !value;
+        mainCollider.enabled = !value;
 
-    public void SetActiveRagdoll(bool active)
-    {
-        if (active)
-        {
-            injured = true;           
-        }
-
-        animator.enabled = !active;
-        mainRigidbody.simulated = !active;
-        mainCollider.enabled = !active;
         foreach (Rigidbody2D rb in RagdollPieces)
         {
-            rb.simulated = active;
+            rb.simulated = value;
         }
+
         foreach (Collider2D col in RagdollColliders)
         {
-            col.enabled = active;
+            col.enabled = value;
         }
-        UpdateSprite();
+
+        foreach(GameObject art in RagdollArts)
+        {
+            if (value)
+                art.transform.parent = null;
+            else art.transform.parent = body;
+        }
+
+        if (value)
+        {
+            bodyRenderer.sprite = bodySprite[0];
+            faceRenderer.sprite = faceSprite[0];
+        }
     }
 
     //metodo che applica al corpo della ragdoll una forza in una certa direzione 
     public void ApplyRagdollImpulse(float amount, Vector2 direction)
     {
-        if (activateMovements)
             RagdollPieces[0].AddForce(direction * amount);
     }
 
-    void UpdateSprite()
+
+    private void OnDisable()
     {
-        if (injured)
-        {
-            bodyRenderer.sprite = bodySprite[0];
-            faceRenderer.sprite = faceSprite[0];
-        }
+        LevelManager.runLevelEvent -= WakeUp;
+        LevelManager.retryLevelEvent -= Sleep;
     }
 
 }

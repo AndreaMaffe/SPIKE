@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum PlayerMovement
+{
+    Run,
+    Jump, 
+    Stop
+}
+
 [CreateAssetMenu(fileName = "Level", menuName = "Level", order = 1)]
 public class Level : ScriptableObject
 {
@@ -32,6 +40,6 @@ public struct PlatformData
 [System.Serializable]
 public struct MovementData
 {
-    public PlayerMovementType type;
+    public PlayerMovement movement;
     public float startTime;
 }
