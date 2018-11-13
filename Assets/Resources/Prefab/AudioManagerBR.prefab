@@ -67,14 +67,14 @@ MonoBehaviour:
   sounds:
   - name: build
     clip: {fileID: 8300000, guid: fd43bd40308a62f478066d57f8c734ed, type: 3}
-    volume: 0.3
+    volume: 0.15
     pitch: 1
     loop: 1
     mute: 0
     source: {fileID: 0}
   - name: play
     clip: {fileID: 8300000, guid: 79170ce2a17064c40bbbf64c1d17bd71, type: 3}
-    volume: 0.3
+    volume: 0.15
     pitch: 1
     loop: 1
     mute: 0
@@ -102,6 +102,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: bomb
     clip: {fileID: 8300000, guid: 9495a0d34fe277440a91c659a2d02005, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: laser
+    clip: {fileID: 8300000, guid: ae2cec4a7629931499f6a2c2ed2e89c8, type: 3}
     volume: 1
     pitch: 1
     loop: 0

@@ -56,6 +56,7 @@ public class Laser : ObstacleWithTimer {
             if (Mathf.Abs(objectToFollow.transform.position.x - this.transform.position.x) < 0.1)
             {
                 StartTimer();
+                FindObjectOfType<AudioManagerBR>().Play("laser");
             }
         }
         if (shooting)
@@ -95,7 +96,7 @@ public class Laser : ObstacleWithTimer {
     }
 
     void ActivateLaserParticle()
-    {     
+    {
         //attiva tutte le particle
         laserStartParticle.SetActive(true);
         laserEndParticle.SetActive(true);
