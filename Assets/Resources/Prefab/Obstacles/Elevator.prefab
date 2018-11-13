@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1638983760367060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8340764, y: 0.1123001, z: 0}
+  m_LocalPosition: {x: 2.5033643, y: -0.5338664, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4259465760817632}
@@ -131,9 +131,7 @@ MonoBehaviour:
   anchorSlotOccupied: 1
   rigidbodies: []
   allNonDraggableColliders: []
-  deadlyGameObject: {fileID: 1697893822895144}
-  draggingCollider: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 95278863635347494}
 --- !u!212 &212266190364190972
 SpriteRenderer:
   m_ObjectHideFlags: 1
