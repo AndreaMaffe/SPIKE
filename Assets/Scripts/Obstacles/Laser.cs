@@ -24,11 +24,14 @@ public class Laser : ObstacleWithTimer {
     public Vector3 laserLightHitPlayerOffsetPosition;
     public GameObject laserLight;
 
+    private int layerHit;
+
     bool shooting = false;
 
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
+        layerHit = LayerMask.GetMask("Player", "Platform");
         readyToMove = false;
 
         objectToFollow = GameObject.FindGameObjectWithTag("Player");
@@ -74,7 +77,7 @@ public class Laser : ObstacleWithTimer {
 
         shooting = true;
         readyToMove = false;
-        RaycastHit2D hit = Physics2D.Raycast(shootingPoint.position, Vector2.down);
+        RaycastHit2D hit = Physics2D.Raycast(shootingPoint.position, Vector2.down, 10 , layerHit);
         DrawLaser(hit.point, hit.collider.gameObject.tag);
         timerToRecover.Start();
     }
