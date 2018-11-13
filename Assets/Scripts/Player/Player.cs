@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
     private Rigidbody2D rb;
     private Animator animator;
     private BoxCollider2D mainCollider;
+    private Transform body;
 
     public float maxVelocity;
     public float jumpAngle;
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour {
     public GameObject bloodParticle;
     public Rigidbody2D[] RagdollPieces;
     public Collider2D[] RagdollColliders;
+    public GameObject[] RagdollArts;
 
     public Sprite[] bodySprite;
     public Sprite[] faceSprite;
@@ -49,6 +51,7 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         mainCollider = GetComponent<BoxCollider2D>();
+        body = transform.Find("Body");
 
         levelManager = FindObjectOfType<LevelManager>();
         timerManager = FindObjectOfType<TimerManager>();
@@ -204,22 +207,30 @@ public class Player : MonoBehaviour {
         }           
     }
 
-    public void SetActiveRagdoll(bool active)
+    public void SetActiveRagdoll(bool value)
     {
-        animator.enabled = !active;
-        rb.simulated = !active;
-        mainCollider.enabled = !active;
+        animator.enabled = !value;
+        rb.simulated = !value;
+        mainCollider.enabled = !value;
 
         foreach (Rigidbody2D rb in RagdollPieces)
         {
-            rb.simulated = active;
-        }
-        foreach (Collider2D col in RagdollColliders)
-        {
-            col.enabled = active;
+            rb.simulated = value;
         }
 
-        if (active)
+        foreach (Collider2D col in RagdollColliders)
+        {
+            col.enabled = value;
+        }
+
+        foreach(GameObject art in RagdollArts)
+        {
+            if (value)
+                art.transform.parent = null;
+            else art.transform.parent = body;
+        }
+
+        if (value)
         {
             bodyRenderer.sprite = bodySprite[0];
             faceRenderer.sprite = faceSprite[0];
