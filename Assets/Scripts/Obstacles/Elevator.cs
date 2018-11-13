@@ -11,6 +11,8 @@ public class Elevator : Obstacle
     protected override void StartObstacle()
     {
         CreateCircleDraggingCollider();
+
+        DisablePhysics();
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().

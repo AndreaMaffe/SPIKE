@@ -16,6 +16,8 @@ public class Raptor : Obstacle {
         CreateCircleDraggingCollider();
 	    objectToFollow = GameObject.FindGameObjectWithTag("Player");
 	    rb = GetComponent<Rigidbody2D>();
+
+	    DisablePhysics();
 	}
 
     //update apposito per gli ostacoli, usare questo anziché Update().
