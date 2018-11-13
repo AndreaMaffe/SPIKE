@@ -10,6 +10,7 @@ public class PlayerDeathByExplosion : PlayerDeathEvent
 
     public override void StartDeath()
     {
+        // istanza dell'esplosione
         explosionParticle = Resources.Load<GameObject>("Prefab/Particles/BombSmoke");
         GameObject explosion = GameObject.Instantiate(explosionParticle, position, Quaternion.identity);      
         GameObject.Destroy(explosion.gameObject, 1f);

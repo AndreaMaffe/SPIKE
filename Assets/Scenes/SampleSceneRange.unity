@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4647,7 +4647,7 @@ GameObject:
   - component: {fileID: 1692389194}
   - component: {fileID: 1692389193}
   - component: {fileID: 1692389196}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Piattaforma
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -4894,14 +4894,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd01da3e5be6bd24d81a54056753db03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridUnitDimension: 1
   maxVelocity: 2
   jumpAngle: 75
   jumpStrenght: 17
   jumpDelayTime: 0.77
   state: 1
-  onGround: 0
-  activateMovements: 0
   bloodParticle: {fileID: 1279267566704632, guid: d4f72d91ea095c9469506a33a5a7274a,
     type: 2}
   RagdollPieces:
@@ -4918,8 +4915,9 @@ MonoBehaviour:
   - {fileID: 1329735607}
   - {fileID: 670330652}
   - {fileID: 930186135}
-  mainRigidbody: {fileID: 1742869300}
-  mainCollider: {fileID: 1742869299}
+  RagdollArts:
+  - {fileID: 1813000392}
+  - {fileID: 90131914}
   bodySprite:
   - {fileID: 21300000, guid: 4756c655fd5c7ec45b83941e4a2d5a10, type: 3}
   faceSprite:
