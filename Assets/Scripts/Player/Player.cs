@@ -99,6 +99,8 @@ public class Player : MonoBehaviour {
         //riassesta il corpo in caso di morte
         SetActiveRagdoll(false);
 
+        ResetAnimatorTriggers();
+
         Stop();
 
         //risetta il Player immobile e alla posizione iniziale
@@ -139,6 +141,14 @@ public class Player : MonoBehaviour {
             animator.SetTrigger("Jump");
             rb.AddForce(new Vector2(jumpStrenght * Mathf.Cos(jumpAngle * Mathf.Deg2Rad), jumpStrenght * Mathf.Sin(jumpAngle * Mathf.Deg2Rad)), ForceMode2D.Impulse);
         }
+    }
+
+    void ResetAnimatorTriggers()
+    {
+        animator.ResetTrigger("Jump");
+        animator.ResetTrigger("Move");
+        animator.ResetTrigger("WaitingJump");
+        animator.ResetTrigger("Stop");
     }
 
     //crea e setta i timer collegati ai movimenti
