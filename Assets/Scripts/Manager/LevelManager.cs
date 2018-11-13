@@ -36,6 +36,8 @@ public class LevelManager : MonoBehaviour
     public delegate void OnEndLevel();
     public static event OnEndLevel endLevelEvent;
 
+    public Button playPauseButton;
+
 
     //struct che associa ogni ostacolo alla posizione in cui puo' andare
     [System.Serializable]
@@ -88,6 +90,8 @@ public class LevelManager : MonoBehaviour
         {
             state = LevelState.RUNNING;
 
+            playPauseButton.image.overrideSprite = Resources.Load<Sprite>("UISprites/PauseButton");
+
             //attiva tutti gli eventi associati al RunLevel() (come i WakeUp() degli ostacoli)
             runLevelEvent();
         }
@@ -95,6 +99,8 @@ public class LevelManager : MonoBehaviour
         else if (state == LevelState.RUNNING)
         {
             state = LevelState.UNDER_CONSTRUCTION;
+
+            playPauseButton.image.overrideSprite = null;
 
             //attiva tutti gli eventi associati al RetryLevel() (come gli Sleep() degli ostacoli)
             retryLevelEvent();
