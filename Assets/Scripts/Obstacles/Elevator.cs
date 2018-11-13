@@ -16,10 +16,7 @@ public class Elevator : Obstacle
     //update apposito per gli ostacoli, usare questo anziché Update().
     protected override void UpdateObstacle()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 10, LayerMask.GetMask("Player"));
-        if (hit.collider != null) {
-            animator.SetTrigger("Down");
-        }
+        
     }
 
     //chiamato al RunLevel()
@@ -27,6 +24,7 @@ public class Elevator : Obstacle
     {
         //permette di entrare nell'UpdateObstacle()
         SetActive(true);
+        animator.SetBool("go", true);
     }
 
     //chiamato al RetryLevel()
@@ -36,6 +34,7 @@ public class Elevator : Obstacle
         SetActive(false);
 
         //risetta la posizione iniziale
+        animator.SetBool("go", false);
         ResetPosition();
     }
 
