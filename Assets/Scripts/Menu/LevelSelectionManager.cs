@@ -25,7 +25,8 @@ public class LevelSelectionManager : MonoBehaviour {
         //Creiamo un bottone per ogni livello creato, adesso il ciclo for è puramente inventato dato che non abbiamo altri livelli oltre il primo
         int x = 0;
         int y = 0;
-        for (int i = 0; i < saveManager.totalLevels; i++)
+        //for (int i = 0; i < saveManager.totalLevels; i++)
+        for (int i = 0; i < 10; i++)
         {
             if(x >= 5)
             {
