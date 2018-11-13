@@ -10,7 +10,7 @@ public class Elevator : Obstacle
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
-
+        CreateCircleDraggingCollider();
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
