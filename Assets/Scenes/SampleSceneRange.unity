@@ -6187,6 +6187,20 @@ MonoBehaviour:
     loop: 0
     mute: 0
     source: {fileID: 0}
+  - name: cannon
+    clip: {fileID: 8300000, guid: 62858ec43aa1798479347efffb3e4a90, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: bomb
+    clip: {fileID: 8300000, guid: 9495a0d34fe277440a91c659a2d02005, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
 --- !u!4 &1994986726
 Transform:
   m_ObjectHideFlags: 0

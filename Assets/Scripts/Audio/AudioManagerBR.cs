@@ -37,16 +37,57 @@ public class AudioManagerBR : MonoBehaviour {
         }
     }
 
+    private void Start()
+    {
+        Play("build");
+        Play("play");
+        Mute("play");
+    }
+
     public void Play (string name)
     {
         Sounds s = Array.Find(sounds, sound => sound.name == name);
         if (s==null)
         {
-            Debug.LogWarning("Soun: " + name + " not found!");
+            Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
         s.source.Play();
     }
+
+    public void Stop(string name)
+    {
+        Sounds s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        s.source.Stop();
+    }
+
+    public void Mute(string name)
+    {
+        Sounds s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        s.source.mute = true;
+    }
+
+    public void Unmute(string name)
+    {
+        Sounds s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        s.source.mute = false;
+    }
+
 }
 
 //      FindObjectOfType<AudioManagerBR>().Play("nome dell'audio");

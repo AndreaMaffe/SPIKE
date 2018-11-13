@@ -33,11 +33,15 @@ public class AudioManager : MonoBehaviour {
     {
         if (IsInPlaymode == false)
         {
-            FindObjectOfType<AudioManagerBR>().Play("build");
+            FindObjectOfType<AudioManagerBR>().Mute("build");
+            FindObjectOfType<AudioManagerBR>().Unmute("play");
+
             IsInPlaymode = true;
         }
         else {
-            FindObjectOfType<AudioManagerBR>().Play("play");
+            FindObjectOfType<AudioManagerBR>().Mute("play");
+            FindObjectOfType<AudioManagerBR>().Unmute("build");
+
             IsInPlaymode = false;
         }
         //playLevel.mute = !playLevel.mute;
