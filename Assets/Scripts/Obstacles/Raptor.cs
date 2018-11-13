@@ -13,6 +13,7 @@ public class Raptor : Obstacle {
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
+        CreateCircleDraggingCollider();
 	    objectToFollow = GameObject.FindGameObjectWithTag("Player");
 	    rb = GetComponent<Rigidbody2D>();
 	}
