@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 1270519679}
   - component: {fileID: 1270519678}
   m_Layer: 5
-  m_Name: DeathUpToNow (1)
+  m_Name: DeathAchievedNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -761,7 +761,7 @@ GameObject:
   - component: {fileID: 1780509842}
   - component: {fileID: 1780509841}
   m_Layer: 5
-  m_Name: DeathUpToNow
+  m_Name: DeathAchieved
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
