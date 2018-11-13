@@ -108,7 +108,7 @@ MonoBehaviour:
     mute: 0
     source: {fileID: 0}
   - name: laser
-    clip: {fileID: 8300000, guid: ae2cec4a7629931499f6a2c2ed2e89c8, type: 3}
+    clip: {fileID: 8300000, guid: adf4eddec24977c4db43b8122c321bad, type: 3}
     volume: 1
     pitch: 1
     loop: 0
