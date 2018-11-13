@@ -15,6 +15,7 @@ public class Player : MonoBehaviour {
 
     private Rigidbody2D rb;
     private Animator animator;
+    private BoxCollider2D mainCollider;
 
     public float maxVelocity;
     public float jumpAngle;
@@ -23,16 +24,11 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private PlayerState state;
     private Vector3 originalPosition;
-
-    public bool onGround;
+    private bool onGround;
 
     public GameObject bloodParticle;
     public Rigidbody2D[] RagdollPieces;
     public Collider2D[] RagdollColliders;
-
-    [Header("Il rigidbody e il collider principali")]
-    public Rigidbody2D mainRigidbody;
-    public BoxCollider2D mainCollider;
 
     public Sprite[] bodySprite;
     public Sprite[] faceSprite;
@@ -52,6 +48,7 @@ public class Player : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        mainCollider = GetComponent<BoxCollider2D>();
 
         levelManager = FindObjectOfType<LevelManager>();
         timerManager = FindObjectOfType<TimerManager>();
@@ -86,8 +83,6 @@ public class Player : MonoBehaviour {
     //chiamato al RunLevel()
     void WakeUp()
     {
-        //ResetPlayerAnimationToDefault();    //<--- SICURI CHE SERVA?
-
         Run();
 
         SetTimers();
@@ -109,15 +104,6 @@ public class Player : MonoBehaviour {
 
         //rimuovi tutti i timer (verranno risettati al successivo WakeUp())
         ResetTimers();
-    }
-
-    //Riporta l'animator allo stato di stop
-    void ResetPlayerAnimationToDefault()
-    {
-        animator.Play("Stop", 0);
-        animator.ResetTrigger("Jump");
-        animator.ResetTrigger("Move");
-        animator.ResetTrigger("WaitingJump");
     }
 
     void Run()
@@ -221,7 +207,7 @@ public class Player : MonoBehaviour {
     public void SetActiveRagdoll(bool active)
     {
         animator.enabled = !active;
-        mainRigidbody.simulated = !active;
+        rb.simulated = !active;
         mainCollider.enabled = !active;
 
         foreach (Rigidbody2D rb in RagdollPieces)
