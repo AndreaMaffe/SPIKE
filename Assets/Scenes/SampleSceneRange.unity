@@ -499,11 +499,6 @@ Prefab:
       propertyPath: volumeSlider
       value: 
       objectReference: {fileID: 1960361988}
-    - target: {fileID: 114899182804527844, guid: 3aad8d85c76371c41865ae13932a3c4a,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aad8d85c76371c41865ae13932a3c4a, type: 2}
   m_IsPrefabAsset: 0
