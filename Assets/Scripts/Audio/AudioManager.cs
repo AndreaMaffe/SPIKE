@@ -8,11 +8,13 @@ public class AudioManager : MonoBehaviour {
 
     public Slider volumeSlider;
 
-    public AudioSource buildLevel;
-    public AudioSource playLevel;
+    bool IsInPlaymode = false;
 
-    public AudioSource winAudio;
-    public AudioSource failAudio;
+    //public AudioSource buildLevel;
+    //public AudioSource playLevel;
+
+    //public AudioSource winAudio;
+    //public AudioSource failAudio;
 
     public void Start()
     {
@@ -29,23 +31,31 @@ public class AudioManager : MonoBehaviour {
 
     public void BuildPlaySoundtrack()
     {
-        buildLevel.mute = !buildLevel.mute;
-        playLevel.mute = !playLevel.mute;
+        if (IsInPlaymode == false)
+        {
+            FindObjectOfType<AudioManagerBR>().Play("build");
+            IsInPlaymode = true;
+        }
+        else {
+            FindObjectOfType<AudioManagerBR>().Play("play");
+            IsInPlaymode = false;
+        }
+        //playLevel.mute = !playLevel.mute;
     }
 
     public void PlayWinAudio()
     {
-        winAudio.Play();
+        //winAudio.Play();
 
-        playLevel.Stop();
-        buildLevel.Stop();
+        //playLevel.Stop();
+        //buildLevel.Stop();
     }
 
     public void PlayFailAudio()
     {
-        failAudio.Play();
+        //failAudio.Play();
 
-        playLevel.Stop();
-        buildLevel.Stop();
+        //playLevel.Stop();
+        //buildLevel.Stop();
     }
 }
