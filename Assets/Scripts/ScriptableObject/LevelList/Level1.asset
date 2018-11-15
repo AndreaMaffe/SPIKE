@@ -33,4 +33,6 @@ MonoBehaviour:
   - movement: 1
     startTime: 1.45
   - movement: 1
-    startTime: 4.15
+    startTime: 3.5
+  - movement: 1
+    startTime: 5.8
