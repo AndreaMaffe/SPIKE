@@ -250,8 +250,12 @@ public class Player : MonoBehaviour {
             else art.transform.parent = body;
         }
 
-        if (value)
-        {
+        //cambia le immagini del player a seconda del tipo di morte che ha subito
+        DamagePlayer(value);
+    }
+
+    void DamagePlayer(bool value) {
+        if (value) {
             bodyRenderer.sprite = bodySprite[0];
             faceRenderer.sprite = faceSprite[0];
         }

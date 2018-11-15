@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -56,12 +57,14 @@ public class LevelSelectionManager : MonoBehaviour {
     private void ChooseLevel()
     {
         int levelIndex;
-        levelIndex = int.Parse(levelButton.GetComponentInChildren<Text>().text);
+        levelIndex = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text);
         saveManager.currentLevel = levelIndex;
+        Debug.Log("Sto per caricare il livello: " + saveManager.currentLevel);
         SaveUtility.SaveObject(saveManager, "saveFile");
         if (levelIndex <= saveManager.maxUnlockedLevel)
         {
             SceneManager.LoadScene("SampleSceneRange");
+            //SceneManager.LoadScene("SampleSceneRangeAle2");
             //Non appena la scena viene caricata dobbiamo riprendere da SaveManager l'informazione del livello scelto (currentLevel) 
             //in modo tale da caricare lo scriptable object relativo
         }

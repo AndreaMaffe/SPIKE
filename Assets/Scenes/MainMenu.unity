@@ -6498,10 +6498,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 1317136552}
-  buildLevel: {fileID: 0}
-  playLevel: {fileID: 0}
-  winAudio: {fileID: 0}
-  failAudio: {fileID: 0}
 --- !u!1 &1935830567
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,10 +10,9 @@ public class LevelManager : MonoBehaviour
 
     private enum LevelState { RUNNING, UNDER_CONSTRUCTION };
 
-    //numero del livello attuale partendo da 1
-    private int indexLevel;
     private Level currentLevel;
     private LevelState state;
+    private SaveManager saveManager;
 
     //Tutti gli scriptable objects dei livelli
     public Level[] levels;
@@ -36,6 +35,8 @@ public class LevelManager : MonoBehaviour
     public delegate void OnEndLevel();
     public static event OnEndLevel endLevelEvent;
 
+    public Button playPauseButton;
+
 
     //struct che associa ogni ostacolo alla posizione in cui puo' andare
     [System.Serializable]
@@ -52,8 +53,12 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
-        //TODO: adesso allo start viene messo direttamente il primo livello ma in futuro và cambiato nel caso in cui viene selezionato subito un livello successivo dal menù
-        indexLevel = 1;
+
+        //Carichiamo l'oggetto SaveManager per ottenere i dati salvati del gioco
+        saveManager = SaveManager.SaveManagerInstance;
+        saveManager = SaveUtility.LoadObject(saveManager, "saveFile");
+        PrintSaveManager();
+
         LoadLevel();
         state = LevelState.UNDER_CONSTRUCTION;
 
@@ -77,9 +82,8 @@ public class LevelManager : MonoBehaviour
 
     public Level GetActualLevel()
     {
-        //i livelli partono da 1
-        //return levels[indexLevel - 1];
-        return levels[0]; //!!!!!Roba HARDCODED, devo trovare una soluzione per rendere visibile currentLevel (inizializzato) anche agli altri script
+        //return levels[saveManager.currentLevel - 1];  //QUESTA E' LA LINEA DI CODICE CORRETTA, NON CANCELLARE
+        return levels[0]; //Questa è la linea di codice più comoda adesso in fase di testing
     }
 
     public void ChangeLevelState()
@@ -88,6 +92,8 @@ public class LevelManager : MonoBehaviour
         {
             state = LevelState.RUNNING;
 
+            playPauseButton.image.overrideSprite = Resources.Load<Sprite>("UISprites/PauseButton");
+
             //attiva tutti gli eventi associati al RunLevel() (come i WakeUp() degli ostacoli)
             runLevelEvent();
         }
@@ -95,6 +101,8 @@ public class LevelManager : MonoBehaviour
         else if (state == LevelState.RUNNING)
         {
             state = LevelState.UNDER_CONSTRUCTION;
+
+            playPauseButton.image.overrideSprite = null;
 
             //attiva tutti gli eventi associati al RetryLevel() (come gli Sleep() degli ostacoli)
             retryLevelEvent();
@@ -147,6 +155,11 @@ public class LevelManager : MonoBehaviour
             button.GetComponent<RectTransform>().localPosition = buttonLocalPosition;
             button.GetComponent<ObstacleButton>().AssignObstacleTypeAndAmount(obstacleData[i].type, obstacleData[i].obstacleMaxAmount);
         }
+    }
+
+    private void PrintSaveManager()
+    {
+        Debug.Log("|CurrenteLevel: " + saveManager.currentLevel + "| |MaxUnlockedLevel: " + saveManager.maxUnlockedLevel + "| |TotalLevels: " + saveManager.totalLevels + "|");
     }
 }
 

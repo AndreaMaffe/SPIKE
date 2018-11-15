@@ -11,13 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: 
-  platformDatas: []
+  platformDatas:
+  - platformType: {fileID: 1507616780894958, guid: a49ff86480db4924382a09c262eb8003,
+      type: 2}
+    platformPos: {x: 0, y: 0, z: 0}
   obstacleDatas:
   - type: 0
     obstacleMaxAmount: 2
-  - type: 2
+  - type: 0
     obstacleMaxAmount: 3
-  - type: 3
+  - type: 0
     obstacleMaxAmount: 3
   - type: 5
     obstacleMaxAmount: 3
@@ -28,11 +31,11 @@ MonoBehaviour:
   - type: 8
     obstacleMaxAmount: 2
   movementDatas:
-  - type: 2
+  - movement: 0
     startTime: 0
-  - type: 0
+  - movement: 0
     startTime: 1.4
-  - type: 0
+  - movement: 0
     startTime: 3.3
-  - type: 0
+  - movement: 0
     startTime: 5

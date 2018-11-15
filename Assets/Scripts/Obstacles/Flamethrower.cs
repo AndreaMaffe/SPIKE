@@ -11,32 +11,32 @@ public class Flamethrower : ObstacleWithTimer {
 
     public ParticleSystem flameParticles;
 
-    public override ObstacleType GetObstacleType()
-    {
+    protected override void StartObstacle() {
+    }
+
+    public override ObstacleType GetObstacleType() {
         return ObstacleType.Flamethrower;
     }
 
-    protected override void OnTimerEnd()
-    {
+    protected override void OnTimerEnd() {
         ShootFlames();
     }
 
-    protected override void Sleep()
-    {
+    protected override void Sleep() {
         //impedisce di sparare
         SetActive(false);
 
         //rimette il timer a zero e lo blocca
         ResetTimer();
-    }
+    } 
 
-    protected override void StartObstacle()
+    public override void OnObstacleDropped()
     {
         //1 se sx-->dx , -1 se sx
         direction = -this.transform.position.x / Mathf.Abs(this.transform.position.x);
 
         //inverti specularmente in base alla direzione
-        this.transform.rotation = new Quaternion(0, Mathf.Acos(direction) * Mathf.Rad2Deg, 0, 1);
+        this.transform.localScale = new Vector3(direction,1,1);
 
         animator = GetComponent<Animator>();
     }
@@ -64,4 +64,6 @@ public class Flamethrower : ObstacleWithTimer {
 
         StartTimer();
     }
+
+
 }
