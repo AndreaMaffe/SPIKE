@@ -8,6 +8,7 @@
 - la molla non è allineata all'anchor line
 - il raptor tende a "cadere" in fase di dragging&dropping
 - il raggio del laser si blocca a mezz'aria
+- le FallinkSpikes non si possono rispostare
 
 
 ----------  OSTACOLI A POSTO:  -------------
@@ -15,13 +16,13 @@
 * Cannon
 * Pendolum
 * FallingSpikes
+* Spring (circa)
 
 
 
 ----------- OSTACOLI DA FARE/MODIFICARE:  -------------
 - Bomb: sistemare potenza esplosione
-- Laser: limitare il movimento a dx e sx
-- Spring: aggiungere spine in alto
+- Laser: limitare il movimento a dx e sx & fixare il raggio
 - Raptor: rendere il movimento più pulito e aggiungere immagine 
 
 

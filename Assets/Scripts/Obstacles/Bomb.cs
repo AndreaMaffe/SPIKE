@@ -86,26 +86,35 @@ public class Bomb : ObstacleWithTimer {
 
         for (int i = 0; i < hitColliders.Length; i++)
         {
-            GameObject objectHit = hitColliders[i].gameObject;
 
+            GameObject objectHit = hitColliders[i].gameObject;
+            Rigidbody2D rigidbodyHit = objectHit.GetComponent<Rigidbody2D>();
+
+            /*
             //calcola la spinta proporzionalmente rispetto alla distanza dalla bomba
             float thrust = minExplosionForce + (explosionOuterRadius - Vector3.Distance(objectHit.transform.position, this.transform.position)) / (explosionOuterRadius - explosionInnerRadius) * maxExplosionForce;
 
             if (thrust > maxExplosionForce)
                 thrust = maxExplosionForce;
-
-            Debug.Log("Bomb thrust (" + objectHit.gameObject.name + "): " + thrust);
-
-            //calcola il vettore direzione tra a e b come (b - a)
-            Vector3 direction = objectHit.transform.position - this.transform.position;
+            */
 
             //applica la forza
-            if (objectHit.GetComponent<Rigidbody2D>())
-                objectHit.GetComponent<Rigidbody2D>().AddForce(direction * thrust);
+            if (rigidbodyHit)
+            {
+                Vector2 direction = rigidbodyHit.worldCenterOfMass - new Vector2(this.transform.position.x - 0.5f, this.transform.position.y - 1.5f);
 
-            //se il player è troppo vicino, uccidilo
-            if (Vector3.Distance(objectHit.transform.position, this.transform.position) < explosionInnerRadius && objectHit.tag == "Player")
-                new PlayerDeathByBomb(objectHit.GetComponent<Player>(), this, this.transform.position, direction, maxExplosionForce).StartDeath();
+                float thrust = maxExplosionForce;
+
+                rigidbodyHit.AddForce(direction * thrust);
+
+
+                //se il player è troppo vicino, uccidilo
+                if (Vector2.Distance(objectHit.transform.position, this.transform.position) < explosionInnerRadius && objectHit.tag == "Player")
+                    new PlayerDeathByBomb(objectHit.GetComponent<Player>(), this, this.transform.position, direction, maxExplosionForce).StartDeath();
+            }
+
+
+
         }
 
     }

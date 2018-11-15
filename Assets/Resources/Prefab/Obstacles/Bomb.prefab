@@ -155,11 +155,9 @@ MonoBehaviour:
   - {fileID: 50228646109537280}
   allNonDraggableColliders:
   - {fileID: 58000749948952714}
-  deadlyGameObject: {fileID: 0}
-  draggingCollider: {fileID: 0}
   timeBeforeExplosion: 3.5
-  minExplosionForce: 80
-  maxExplosionForce: 280
+  minExplosionForce: 100
+  maxExplosionForce: 230
   explosionInnerRadius: 2
   explosionOuterRadius: 4
   innerRadius: {fileID: 4549167352771426}

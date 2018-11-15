@@ -25,6 +25,7 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private PlayerState state;
     private Vector3 originalPosition;
+    [SerializeField]
     private bool onGround;
 
     public GameObject bloodParticle;
@@ -58,7 +59,7 @@ public class Player : MonoBehaviour {
 
         LevelManager.runLevelEvent += WakeUp;
         LevelManager.retryLevelEvent += Sleep;
-        state = PlayerState.Stopped;
+
         originalPosition = this.transform.position;
         currentLevel = levelManager.GetActualLevel();
 
@@ -67,14 +68,32 @@ public class Player : MonoBehaviour {
 
     void FixedUpdate()
     {
+        //se tocca una superficie
+        if (Physics2D.Raycast(new Vector2 (this.transform.position.x, this.transform.position.y - 0.3f), Vector2.down, 0.05f, LayerMask.GetMask("Platform")))
+        {
+            //al primo contatto
+            if (!onGround)
+            {
+                Debug.Log(Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y - 0.3f), Vector2.down, 0.05f).collider.gameObject);
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                if (state == PlayerState.Jumping)
+                    Run();
+            }
+            onGround = true;
+        }
+            
+        else
+            onGround = false;
+
         switch (state)
         {
             case PlayerState.Running:
-                rb.velocity = new Vector2(maxVelocity, rb.velocity.y); ;
+                if (rb.velocity.x < maxVelocity && onGround)
+                    rb.AddForce(new Vector2(5, 0));
                 break;
 
             case PlayerState.WaitingToJump:
-                rb.velocity = new Vector2(0, rb.velocity.y);
+                Invoke("Jump", jumpDelayTime);
                 break;
 
             case PlayerState.Stopped:
@@ -112,7 +131,7 @@ public class Player : MonoBehaviour {
     }
 
     void Run()
-    {
+    { 
         state = PlayerState.Running;
         animator.SetTrigger("Move");
     }
@@ -127,15 +146,15 @@ public class Player : MonoBehaviour {
     {
         if (onGround)
         {
+            rb.velocity = Vector2.zero;
             state = PlayerState.WaitingToJump;
-            Invoke("Jump", jumpDelayTime);
             animator.SetTrigger("WaitingJump");
         }
     }
 
     void Jump()
     {
-        if (state == PlayerState.WaitingToJump)
+        if (state == PlayerState.WaitingToJump && onGround)
         {
             state = PlayerState.Jumping;
             animator.SetTrigger("Jump");
@@ -200,15 +219,6 @@ public class Player : MonoBehaviour {
     //da cambiare e da fare con raycast per evitare collisioni laterali ma per ora va bene anche cosi'
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Platform")
-        {
-            onGround = true;
-
-            //se tocca terra dopo un salto, riprendi a muoverti
-            if (state == PlayerState.Jumping)
-                Run();
-        }
-
         if (collision.gameObject.tag == "Deadly")
         {
             //crea l'evento PlayerDeathEvent nel punto corrispondente al contatto e avvialo
