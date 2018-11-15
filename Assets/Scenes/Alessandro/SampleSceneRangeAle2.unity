@@ -2299,6 +2299,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114709538410556658, guid: dfb359f18f61f114abf363d2c153866d,
+        type: 2}
+      propertyPath: levels.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4449850729506878, guid: dfb359f18f61f114abf363d2c153866d, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2341,6 +2346,12 @@ Prefab:
       propertyPath: playPauseButton
       value: 
       objectReference: {fileID: 1478288962}
+    - target: {fileID: 114709538410556658, guid: dfb359f18f61f114abf363d2c153866d,
+        type: 2}
+      propertyPath: levels.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f976c99f3b6c3849923bfe970b6cc91,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfb359f18f61f114abf363d2c153866d, type: 2}
   m_IsPrefabAsset: 0
