@@ -38,7 +38,12 @@ public class NextLevelPanel : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    private void OnDestroy()
+    {
+        LevelManager.endLevelEvent -= DownScrollPanel;
+    }
 
-    
+
+
 }
 
