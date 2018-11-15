@@ -10,7 +10,12 @@ public class ObstacleButton : DraggableObject
     [SerializeField]
     private int obstacleAmount;
 
-    public Image obstacleImage;
+    private void Start()
+    {
+        DraggableObjectPositioned.onReaddObstacle += AddToSpecificObstacleAmount;
+    }
+
+    //public Image obstacleImage;
     public TextMeshProUGUI obstacleAmountText;
 
     //metodo invocato dal level manager quando crea il bottone per dirgli che tipo di ostacolo sta tenendo
@@ -29,9 +34,10 @@ public class ObstacleButton : DraggableObject
         AssignUIValues();
     }
 
-    void AddToSpecificObstacleAmount(ObstacleType type, int amount) {
+    //se droppi un ostacolo gia' posizionato deve restituirti un ostacolo a disposizione
+    void AddToSpecificObstacleAmount(ObstacleType type) {
         if (obstacleType == type) {
-            obstacleAmount += amount;
+            obstacleAmount += 1;
             AssignUIValues();
         }       
     }
@@ -39,8 +45,8 @@ public class ObstacleButton : DraggableObject
     //aggiorna i valori dei bottoni nella GUI
     void AssignUIValues()
     {
-        obstacleImage.sprite = Resources.Load<Sprite>("UIObstacleImages/" + obstacleType.ToString());
-        obstacleImage.SetNativeSize();
+        GetComponent<Image>().sprite = Resources.Load<Sprite>("UIButtonImages/Bottone" + obstacleType.ToString());
+        GetComponent<Image>().SetNativeSize();
         obstacleAmountText.text = obstacleAmount.ToString();
     }
 

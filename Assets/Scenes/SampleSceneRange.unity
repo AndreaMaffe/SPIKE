@@ -2148,6 +2148,11 @@ Prefab:
       propertyPath: buttonPanel
       value: 
       objectReference: {fileID: 981310882}
+    - target: {fileID: 114709538410556658, guid: dfb359f18f61f114abf363d2c153866d,
+        type: 2}
+      propertyPath: playPauseButton
+      value: 
+      objectReference: {fileID: 1478288962}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfb359f18f61f114abf363d2c153866d, type: 2}
   m_IsPrefabAsset: 0

@@ -59,7 +59,7 @@ public class Laser : ObstacleWithTimer {
             if (Mathf.Abs(objectToFollow.transform.position.x - this.transform.position.x) < 0.1)
             {
                 StartTimer();
-                FindObjectOfType<AudioManagerBR>().Play("laser");
+                //FindObjectOfType<AudioManagerBR>().Play("laser");
             }
         }
         if (shooting)

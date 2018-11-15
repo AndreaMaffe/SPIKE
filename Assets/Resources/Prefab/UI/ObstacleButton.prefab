@@ -63,7 +63,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &114003342317072570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -190,10 +190,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   draggableObstacleOffsetFromFinger: {x: 0, y: 1, z: 0}
+  obstacleDragged: {fileID: 0}
   obstacleType: 0
-  levelManager: {fileID: 0}
+  draggableObjectPrefab: {fileID: 0}
   obstacleAmount: 0
-  obstacleImage: {fileID: 114294689174133332}
   obstacleAmountText: {fileID: 114003342317072570}
 --- !u!114 &114149266997144996
 MonoBehaviour:
@@ -214,7 +214,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 1ca2d29060fb64a4cb81e032bb2bd8b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62e2d50beeb2b1d4e8445a56ad2ca6a7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -346,8 +346,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -417}
-  m_SizeDelta: {x: 169, y: 308}
+  m_AnchoredPosition: {x: -159, y: 66.999}
+  m_SizeDelta: {x: 168, y: 307}
   m_Pivot: {x: 0.5, y: 0.75}
 --- !u!224 &224946501261725760
 RectTransform:
