@@ -11,7 +11,8 @@ public enum PlayerState
     WaitingToJump
 }
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -68,20 +69,19 @@ public class Player : MonoBehaviour {
 
     void FixedUpdate()
     {
-        //se tocca una superficie
-        if (Physics2D.Raycast(new Vector2 (this.transform.position.x, this.transform.position.y - 0.3f), Vector2.down, 0.05f, LayerMask.GetMask("Platform")))
+        //se tocca una piattaforma
+        if (Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y), Vector2.down, 0.1f, LayerMask.GetMask("Platform")))
         {
-            //al primo contatto
+            //al primo contatto, annulla la velocità e fai reiniziare il Player a correre
             if (!onGround)
             {
-                Debug.Log(Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y - 0.3f), Vector2.down, 0.05f).collider.gameObject);
                 rb.velocity = new Vector2(0, rb.velocity.y);
                 if (state == PlayerState.Jumping)
                     Run();
             }
             onGround = true;
         }
-            
+
         else
             onGround = false;
 
@@ -131,7 +131,7 @@ public class Player : MonoBehaviour {
     }
 
     void Run()
-    { 
+    {
         state = PlayerState.Running;
         animator.SetTrigger("Move");
     }
@@ -172,7 +172,7 @@ public class Player : MonoBehaviour {
 
     //crea e setta i timer collegati ai movimenti
     void SetTimers()
-    { 
+    {
         foreach (MovementData movementData in currentLevel.movementDatas)
         {
             Timer timer = timerManager.AddTimer(movementData.startTime);
@@ -224,7 +224,7 @@ public class Player : MonoBehaviour {
             //crea l'evento PlayerDeathEvent nel punto corrispondente al contatto e avvialo
             PlayerDeathEvent playerDeathEvent = collision.transform.root.GetComponent<Obstacle>().CreatePlayerDeathEvent(this, collision.GetContact(0).point);
             playerDeathEvent.StartDeath();
-        }           
+        }
     }
 
     public void SetActiveRagdoll(bool value)
@@ -243,19 +243,15 @@ public class Player : MonoBehaviour {
             col.enabled = value;
         }
 
-        foreach(GameObject art in RagdollArts)
+        foreach (GameObject art in RagdollArts)
         {
             if (value)
                 art.transform.parent = null;
             else art.transform.parent = body;
         }
 
-        //cambia le immagini del player a seconda del tipo di morte che ha subito
-        DamagePlayer(value);
-    }
-
-    void DamagePlayer(bool value) {
-        if (value) {
+        if (value)
+        {
             bodyRenderer.sprite = bodySprite[0];
             faceRenderer.sprite = faceSprite[0];
         }
@@ -264,7 +260,7 @@ public class Player : MonoBehaviour {
     //metodo che applica al corpo della ragdoll una forza in una certa direzione 
     public void ApplyRagdollImpulse(float amount, Vector2 direction)
     {
-            RagdollPieces[0].AddForce(direction * amount);
+        RagdollPieces[0].AddForce(direction * amount);
     }
 
 

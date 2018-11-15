@@ -350,7 +350,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1534689591922538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.410001, y: -2.1099997, z: 0}
+  m_LocalPosition: {x: -5.5190187, y: -2.5834808, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4258226981224356}
@@ -698,7 +698,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.025688887, y: 0.8028937}
+  m_Offset: {x: 0.025688887, y: 0.79646426}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -709,7 +709,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7119584, y: 1.5866476}
+  m_Size: {x: 0.7119584, y: 1.5995065}
   m_EdgeRadius: 0
 --- !u!70 &70122444543854686
 CapsuleCollider2D:
@@ -755,14 +755,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd01da3e5be6bd24d81a54056753db03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridUnitDimension: 1
   maxVelocity: 2
   jumpAngle: 75
   jumpStrenght: 17
   jumpDelayTime: 0.77
   state: 1
   onGround: 0
-  activateMovements: 0
   bloodParticle: {fileID: 1279267566704632, guid: d4f72d91ea095c9469506a33a5a7274a,
     type: 2}
   RagdollPieces:
@@ -779,8 +777,7 @@ MonoBehaviour:
   - {fileID: 70122444543854686}
   - {fileID: 60085484664870772}
   - {fileID: 60837796739412708}
-  mainRigidbody: {fileID: 50581768859980100}
-  mainCollider: {fileID: 61251240996905660}
+  RagdollArts: []
   bodySprite:
   - {fileID: 21300000, guid: 4756c655fd5c7ec45b83941e4a2d5a10, type: 3}
   faceSprite:
@@ -1353,7 +1350,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.0000016223204, y: -0.00000053495637}
-  m_ConnectedAnchor: {x: -0.33000183, y: 0.38299963}
+  m_ConnectedAnchor: {x: -0.33000135, y: 0.38299972}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1376,7 +1373,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.1619997, y: -0.15400007}
+  m_ConnectedAnchor: {x: 0.16200018, y: -0.15400007}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1399,7 +1396,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.15199947, y: -0.03300008}
+  m_ConnectedAnchor: {x: -0.15199995, y: -0.032999966}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1422,7 +1419,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.29100037, y: 0.38400006}
+  m_ConnectedAnchor: {x: 0.2909999, y: 0.38400018}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1445,7 +1442,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.026410975, y: -0.24014337}
+  m_ConnectedAnchor: {x: -0.026411004, y: -0.2401435}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1468,7 +1465,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.19549023, y: -0.21053912}
+  m_ConnectedAnchor: {x: -0.1954907, y: -0.21053915}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1491,7 +1488,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.17100048, y: 0.013000081}
+  m_ConnectedAnchor: {x: 0.171, y: 0.013000198}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1514,7 +1511,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.02477267, y: -0.23616903}
+  m_ConnectedAnchor: {x: -0.024772707, y: -0.23616914}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
