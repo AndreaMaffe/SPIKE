@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class NextLevelPanel : MonoBehaviour
@@ -14,11 +11,9 @@ public class NextLevelPanel : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        //Carichiamo l'oggetto SaveManager per ottenere i dati salvati del gioco
-        saveManager = SaveManager.SaveManagerInstance;
-        saveManager = SaveUtility.LoadObject(saveManager, "saveFile");
-
+        //Se il livello è completato facciamo scendere il pannello della vittoria
         LevelManager.endLevelEvent += DownScrollPanel;
+        //Se il livello è completato aggiorniamo il massimo livello sbloccato
         LevelManager.endLevelEvent += UpdateMaxUnlockedLevel;
     }
 
@@ -28,8 +23,11 @@ public class NextLevelPanel : MonoBehaviour
         animator.SetTrigger("DownScrollPanel");
     }
 
+    //Metodo legato al bottone next level, aggiorna il livello corrente in modo tale che verrà caricato lo scriptable object corretto nella prossima scena
     public void NextLevel()
     {
+        saveManager = SaveManager.SaveManagerInstance;
+        saveManager = SaveUtility.LoadObject(saveManager, "saveFile");
         //Adesso bisogna settare currentLevel al livello successivo e caricare la scena
         saveManager.currentLevel += 1;
         SaveUtility.SaveObject(saveManager, "saveFile");
@@ -38,14 +36,26 @@ public class NextLevelPanel : MonoBehaviour
 
     public void RestartLevel()
     {
-
+        SceneManager.LoadScene("SampleRangeAle2");
     }
 
     //Metodo che della schermata di vittoria ci riporta al main menu
     public void BackToMenu()
     {
-        SaveUtility.SaveObject(saveManager, "saveFile");
         SceneManager.LoadScene("MainMenu");
+    }
+
+    //Metodo che aggiorna il massimo livello sbloccato
+    private void UpdateMaxUnlockedLevel()
+    {
+        saveManager = SaveManager.SaveManagerInstance;
+        saveManager = SaveUtility.LoadObject(saveManager, "saveFile");
+        if (saveManager.currentLevel == saveManager.maxUnlockedLevel)
+        {
+            saveManager.maxUnlockedLevel += 1;
+            SaveUtility.SaveObject(saveManager, "saveFile");
+            Debug.Log("Ho aggiornato maxunlockedlevel a: " + saveManager.maxUnlockedLevel);
+        }
     }
 
     private void OnDestroy()
@@ -53,17 +63,6 @@ public class NextLevelPanel : MonoBehaviour
         //Unregister events
         LevelManager.endLevelEvent -= DownScrollPanel;
         LevelManager.endLevelEvent -= UpdateMaxUnlockedLevel;
-    }
-
-    //Metodo che aggiorna il massimo livello sbloccato
-    private void UpdateMaxUnlockedLevel()
-    {
-        if (saveManager.currentLevel == saveManager.maxUnlockedLevel)
-        {
-            saveManager.maxUnlockedLevel += 1;
-            SaveUtility.SaveObject(saveManager, "saveFile");
-            Debug.Log("Ho aggiornato maxunlockedlevel a: " + saveManager.maxUnlockedLevel);
-        }
     }
 
 }
