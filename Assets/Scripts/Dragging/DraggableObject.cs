@@ -51,8 +51,6 @@ public class DraggableObject : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 
     }
 
-   
-
     public virtual void OnDrag(PointerEventData eventData)
     {
         if (obstacleDragged != null)
@@ -71,6 +69,8 @@ public class DraggableObject : MonoBehaviour, IBeginDragHandler, IEndDragHandler
             if (obstacleDragged.CheckIfSnapped()) {
                 obstacleDragged.GetComponent<Obstacle>().OnObstacleDropped();
                 UpdateObstacleNumber(-1);
+                obstacleDragged = null;
+
             }
             //altrimenti distruggi il prefab e basta
             else

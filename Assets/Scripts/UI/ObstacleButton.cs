@@ -24,7 +24,6 @@ public class ObstacleButton : DraggableObject
         obstacleType = type;
         obstacleAmount = amount;
         AssignUIValues();
-        //AnchorPoint.OnReaddObstacle += AddToSpecificObstacleAmount;
     }
 
     //metodo per decrementare il numero di ostacoli usati sul bottone
@@ -55,8 +54,9 @@ public class ObstacleButton : DraggableObject
         //se ho abbastanza ostacoli da piazzare
         if (obstacleAmount > 0)
         {
+            Debug.Log("Inizio drag");
+
             SpawnObstacleInstance();
-            //SpawnObstacleDraggerPrefab();
             HideObstacleButtons();
         }
     }
@@ -71,6 +71,7 @@ public class ObstacleButton : DraggableObject
                 UpdateObstacleNumber(-1);
                 obstacleDragged.GetComponent<Obstacle>().OnObstacleDropped();
                 AddObstaclePositionedComponents();
+                obstacleDragged = null;
             }
             //altrimenti distruggi il prefab e basta
             else
@@ -89,14 +90,15 @@ public class ObstacleButton : DraggableObject
         obstacleDragged = obstacleInstance.AddComponent<DraggableObjectPositionUpdater>();
     }
 
-    void SpawnObstacleDraggerPrefab() {
-        GameObject obstacleInstance = Instantiate(draggableObjectPrefab, transform.position, Quaternion.identity);
-
-    }
-
     protected override void UpdateObstacleNumber(int amount) {
         if (amount < 0 )
             AddToObstacleAmount(amount);
+    }
+
+    private void OnDisable()
+    {
+        DraggableObjectPositioned.onReaddObstacle -= AddToSpecificObstacleAmount;
+
     }
 
 }
