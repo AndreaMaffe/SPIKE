@@ -42,6 +42,8 @@ public abstract class Obstacle : MonoBehaviour
 
         LevelManager.runLevelEvent += WakeUp;
         LevelManager.retryLevelEvent += Sleep;
+        LevelManager.endLevelEvent += OnEndLevel;
+
         LevelManager.runLevelEvent += DisableDraggingSystem;
         LevelManager.retryLevelEvent += EnableDraggingSystem;
 
@@ -128,6 +130,8 @@ public abstract class Obstacle : MonoBehaviour
     {
         LevelManager.runLevelEvent -= WakeUp;
         LevelManager.retryLevelEvent -= Sleep;
+        LevelManager.endLevelEvent -= OnEndLevel;
+
         LevelManager.runLevelEvent -= DisableDraggingSystem;
         LevelManager.retryLevelEvent -= EnableDraggingSystem;
     }
@@ -145,6 +149,11 @@ public abstract class Obstacle : MonoBehaviour
 
             default: return new PlayerDeathByExplosion(player, this, position);
         }
+    }
+
+    protected virtual void OnEndLevel()
+    {
+        SetActive(false);
     }
 
     protected abstract void StartObstacle();

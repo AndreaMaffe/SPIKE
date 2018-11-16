@@ -8,7 +8,8 @@ public enum PlayerState
     Jumping,
     Stopped,
     Running,
-    WaitingToJump
+    WaitingToJump,
+    Exulting
 }
 
 public class Player : MonoBehaviour
@@ -60,6 +61,7 @@ public class Player : MonoBehaviour
 
         LevelManager.runLevelEvent += WakeUp;
         LevelManager.retryLevelEvent += Sleep;
+        LevelManager.endLevelEvent += OnEndLevel;
 
         originalPosition = this.transform.position;
         currentLevel = levelManager.GetActualLevel();
@@ -99,6 +101,10 @@ public class Player : MonoBehaviour
             case PlayerState.Stopped:
                 rb.velocity = new Vector2(0, rb.velocity.y);
                 break;
+
+            case PlayerState.Exulting:
+                rb.velocity = Vector2.zero;
+                break;
         }
     }
 
@@ -128,6 +134,12 @@ public class Player : MonoBehaviour
 
         //rimuovi tutti i timer (verranno risettati al successivo WakeUp())
         ResetTimers();
+    }
+
+    //chiamato al EndLevel()
+    void OnEndLevel()
+    {
+        //TODO: aggiungere animazione di vittoria
     }
 
     void Run()
@@ -160,6 +172,12 @@ public class Player : MonoBehaviour
             animator.SetTrigger("Jump");
             rb.AddForce(new Vector2(jumpStrenght * Mathf.Cos(jumpAngle * Mathf.Deg2Rad), jumpStrenght * Mathf.Sin(jumpAngle * Mathf.Deg2Rad)), ForceMode2D.Impulse);
         }
+    }
+
+    void Exult()
+    {
+        state = PlayerState.Exulting;
+        //animator.SetTrigger("Exult");
     }
 
     void ResetAnimatorTriggers()
@@ -268,6 +286,7 @@ public class Player : MonoBehaviour
     {
         LevelManager.runLevelEvent -= WakeUp;
         LevelManager.retryLevelEvent -= Sleep;
+        LevelManager.endLevelEvent -= OnEndLevel;
     }
 
 }
