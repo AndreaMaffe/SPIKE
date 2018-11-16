@@ -6,8 +6,8 @@ public class Spring : Obstacle {
 
     private bool triggered;
     private Transform spikes;
-    private BoxCollider2D trigger;
-    private PolygonCollider2D collider;
+    private PolygonCollider2D coll;
+    private BoxCollider2D trigg;
 
     [Tooltip("Intensity of the push")]
     public float push;
@@ -19,10 +19,10 @@ public class Spring : Obstacle {
     {
         triggered = false;
         spikes = transform.Find("Spikes");
-        trigger = GetComponent<BoxCollider2D>();
-        collider = GetComponent<PolygonCollider2D>();
-        DisablePhysics();
-	}
+
+        coll = GetComponent<PolygonCollider2D>();
+        coll.enabled = false;
+    }
 	
 	//update apposito per gli ostacoli, usare questo anziché Update().
 	protected override void UpdateObstacle () {
@@ -31,14 +31,14 @@ public class Spring : Obstacle {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!triggered)
+        if (!triggered && active)
         {
             //applica una forza verticale di intensità pari a "push" all'oggetto soprastante
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             collision.gameObject.transform.position += new Vector3(0, platformHeight, 0);
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, push, 0));
 
-            collider.isTrigger = false;
+            coll.enabled = true;
 
             //muovi la sprite
             this.transform.position += new Vector3(0, platformHeight, 0);
@@ -52,7 +52,7 @@ public class Spring : Obstacle {
     //chiamato al RunLevel()
     protected override void WakeUp()
     {
-        EnablePhysics();
+        SetActive(true);
     }
 
     //chiamato al RetryLevel()
@@ -65,11 +65,13 @@ public class Spring : Obstacle {
         if (triggered)
             this.spikes.position -= new Vector3(0, -platformHeight, 0);
 
+        //impedisce di entrare in OnTrigger
+        SetActive(false);
+
+        //disabilita il collider fisico della piattaforma
+        coll.enabled = false;
+
         triggered = false;
-
-        collider.isTrigger = true;
-
-        DisablePhysics();
     }
 
     public override ObstacleType GetObstacleType()
