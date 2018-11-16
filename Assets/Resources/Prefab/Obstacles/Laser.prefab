@@ -256,8 +256,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 0
   anchorSlotOccupied: 1
-  timeToRecover: 1.3
-  timeBeforeShooting: 1
+  rigidbodies: []
+  allNonDraggableColliders: []
+  timeToRecover: 1.2
+  timeBeforeShooting: 0.8
   deceleration: 2.3
   maxVelocity: 0.15
   shootingPoint: {fileID: 4815030268687150}

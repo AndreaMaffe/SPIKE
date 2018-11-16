@@ -59,6 +59,7 @@ public class FallingSpikes : ObstacleWithTimer
                 rigidbodies[0].velocity = new Vector2(0, 0);
                 rigidbodies[0].gravityScale = 5;
                 goingUp = false;
+                DisablePhysics();
             }
         }
 
@@ -110,6 +111,7 @@ public class FallingSpikes : ObstacleWithTimer
         goingUp = true;
     }
 
+    //chiamato quando le spikes in caduta collidono con il primo oggetto sottostante
     public void OnSpikesCollision()
     {
         SetTimer(timeOnGround);

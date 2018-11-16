@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4731853523268312}
   - component: {fileID: 212164368961305380}
   - component: {fileID: 114654919587807854}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 50776815908930782}
   - component: {fileID: 331156537667263670}
   - component: {fileID: 114123626562977488}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Spikes
   m_TagString: Deadly
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 4836348586832982}
   - component: {fileID: 212097073105831698}
   - component: {fileID: 114762912325413656}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: FallingSpikes
   m_TagString: Deadly
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4525105359025124}
   - component: {fileID: 212939472569536780}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,8 +220,6 @@ MonoBehaviour:
   - {fileID: 50776815908930782}
   allNonDraggableColliders:
   - {fileID: 61532900100683698}
-  deadlyGameObject: {fileID: 1208627154081086}
-  draggingCollider: {fileID: 0}
   raycastOffset: 0.5
   timeOnGround: 1
   liftSpeed: 3

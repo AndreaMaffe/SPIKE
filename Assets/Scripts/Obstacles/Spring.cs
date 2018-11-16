@@ -10,6 +10,8 @@ public class Spring : Obstacle {
 
     [Tooltip("Intensity of the push")]
     public float push;
+    [Tooltip("Vertical shift of the platform when triggered")]
+    public float platformHeight;
 
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle ()
@@ -29,18 +31,19 @@ public class Spring : Obstacle {
     {
         if (!triggered)
         {
-            //applica una forza verticale di intensità pari a "push"
+            //applica una forza verticale di intensità pari a "push" all'oggetto soprastante
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            collision.gameObject.transform.position += new Vector3(0, platformHeight, 0);
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, push, 0));
 
+            collider.isTrigger = false;
+
             //muovi la sprite
-            this.transform.position += new Vector3(0, 1, 0);
+            this.transform.position += new Vector3(0, platformHeight, 0);
             //riaggiusta la posizione delle spine
-            this.spikes.position -= new Vector3(0, 1, 0);
+            this.spikes.position -= new Vector3(0, platformHeight, 0);
 
             triggered = true;
-
-            collider.isTrigger = false;
         }
     }
 
@@ -58,7 +61,7 @@ public class Spring : Obstacle {
 
         //riaggiusta la posizione delle spine
         if (triggered)
-            this.spikes.position -= new Vector3(0, -1, 0);
+            this.spikes.position -= new Vector3(0, -platformHeight, 0);
 
         triggered = false;
 

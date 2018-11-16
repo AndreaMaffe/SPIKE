@@ -31,7 +31,7 @@ public class Laser : ObstacleWithTimer {
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
-        layerHit = LayerMask.GetMask("Player", "Platform");
+        layerHit = LayerMask.GetMask("Player", "Platform", "Default"); //TODO: sistemare
         readyToMove = false;
 
         objectToFollow = GameObject.FindGameObjectWithTag("Player");
@@ -64,7 +64,6 @@ public class Laser : ObstacleWithTimer {
         }
         if (shooting)
             Shoot();
-
 	}
 
     protected override void OnTimerEnd()
@@ -73,8 +72,8 @@ public class Laser : ObstacleWithTimer {
         ActivateLaserParticle();
     }
 
-    void Shoot() {
-
+    void Shoot()
+    {
         shooting = true;
         readyToMove = false;
         RaycastHit2D hit = Physics2D.Raycast(shootingPoint.position, Vector2.down, 10 , layerHit);
@@ -86,13 +85,16 @@ public class Laser : ObstacleWithTimer {
     void DrawLaser(Vector3 hitPoint, string objectHit)
     {         
         //il laser arriva fino in fondo al player
-        if (objectHit == "Player") {
+        if (objectHit == "Player")
+        {
             hitPoint += laserLightHitPlayerOffsetPosition;
+            new PlayerDeathByExplosion(objectToFollow.GetComponent<Player>(), this, objectToFollow.transform.position).StartDeath();
         }
         SetLaserParticlePosition(hitPoint);      
     }
 
-    void SetLaserParticlePosition(Vector3 hitPoint) {
+    void SetLaserParticlePosition(Vector3 hitPoint)
+    {
         SpriteRenderer renderer = laserLight.GetComponent<SpriteRenderer>();
         renderer.size = new Vector2(renderer.size.x, laserLight.transform.position.y - hitPoint.y);
         laserEndParticle.transform.position = hitPoint + laserEndParticleOffsetPosition;

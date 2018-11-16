@@ -63,7 +63,8 @@ public abstract class Obstacle : MonoBehaviour
     }
 
     //riabilita tutta la fisica del rigidbody
-    protected virtual void EnablePhysics() {
+    protected virtual void EnablePhysics()
+    {
         for (int i = 0; i < rigidbodies.Length; i++)
             rigidbodies[i].isKinematic = false;
         for (int i = 0; i < allNonDraggableColliders.Length; i++)
