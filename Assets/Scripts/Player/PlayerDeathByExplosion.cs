@@ -10,13 +10,17 @@ public class PlayerDeathByExplosion : PlayerDeathEvent
 
     public override void StartDeath()
     {
-        // istanza dell'esplosione
-        explosionParticle = Resources.Load<GameObject>("Prefab/Particles/BombSmoke");
-        GameObject explosion = GameObject.Instantiate(explosionParticle, position, Quaternion.identity);      
-        GameObject.Destroy(explosion.gameObject, 1f);
+        SpawnExplosionParticles();
+        SpawnBloodParticles();
+
         player.SetActiveRagdoll(true);
         Vector2 angleOfImpact = (player.transform.position - obstacle.transform.position).normalized;
         player.ApplyRagdollImpulse(20, angleOfImpact);       //TODO: Sistemare
+    }
 
+    void SpawnExplosionParticles() {
+        explosionParticle = Resources.Load<GameObject>("Prefab/Particles/BombSmoke");
+        GameObject explosion = GameObject.Instantiate(explosionParticle, position, Quaternion.identity);
+        GameObject.Destroy(explosion.gameObject, 1f);
     }
 }
