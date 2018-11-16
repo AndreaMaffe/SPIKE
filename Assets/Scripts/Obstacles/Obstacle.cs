@@ -99,8 +99,10 @@ public abstract class Obstacle : MonoBehaviour
     {
         if (draggingCollider != null)
             draggingCollider.enabled = true; 
-        GetComponent<DraggableObjectPositionUpdater>().enabled = true;
-        GetComponent<DraggableObjectPositioned>().enabled = true;
+        if (GetComponent<DraggableObjectPositionUpdater>() != null)
+            GetComponent<DraggableObjectPositionUpdater>().enabled = true;
+        if (GetComponent<DraggableObjectPositioned>() != null)
+            GetComponent<DraggableObjectPositioned>().enabled = true;
     }
 
     public void DisableDraggingSystem()
@@ -138,7 +140,7 @@ public abstract class Obstacle : MonoBehaviour
         {
             case ObstacleType.Bomb: return new PlayerDeathByExplosion(player, this, position);
             case ObstacleType.Bullet: return new PlayerDeathByExplosion(player, this, position);
-            case ObstacleType.Pendolum: return new PlayerDeathBySpike(player, this, position, transform.Find("Blade").gameObject);
+            case ObstacleType.Pendolum: return new PlayerDeathBySpike(player, this, position, transform.Find("Body").transform.Find("Blade").gameObject);
             case ObstacleType.Raptor: return new PlayerDeathBySpike(player, this, position, this.gameObject);
             case ObstacleType.FallingSpikes: return new PlayerDeathBySpike(player, this, position, transform.Find("Spikes").gameObject);
             case ObstacleType.Spring: return new PlayerDeathBySpike(player, this, position, transform.Find("Spikes").gameObject);
