@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Name: Level3
   m_EditorClassIdentifier: 
   platformDatas:
-  - platformType: {fileID: 1241728110151688, guid: 9cbff62118ed5664ba4f4d2ee5e75821,
+  - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
       type: 2}
     platformPos: {x: -5, y: 2.05, z: 0}
-  - platformType: {fileID: 1241728110151688, guid: 9cbff62118ed5664ba4f4d2ee5e75821,
+  - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
       type: 2}
     platformPos: {x: 5, y: 2.05, z: 0}
   obstacleDatas:
