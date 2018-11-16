@@ -18,7 +18,7 @@ public class DraggableObjectPositioned : DraggableObject
 
     protected override void UpdateObstacleNumber(int amount)
     {
-        if (amount == 1) { }
+        if (amount == 1) 
             onReaddObstacle(GetComponent<Obstacle>().GetObstacleType());
     }
 }
