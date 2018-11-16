@@ -29,4 +29,6 @@ MonoBehaviour:
     obstacleMaxAmount: 2
   - type: 9
     obstacleMaxAmount: 2
-  movementDatas: []
+  movementDatas:
+  - movement: 1
+    startTime: 2
