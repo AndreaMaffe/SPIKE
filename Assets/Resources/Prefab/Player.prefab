@@ -92,8 +92,8 @@ GameObject:
   - component: {fileID: 4515397928196316}
   - component: {fileID: 50581768859980100}
   - component: {fileID: 61251240996905660}
-  - component: {fileID: 114861656159316304}
   - component: {fileID: 95056477599102302}
+  - component: {fileID: 114956289795205636}
   m_Layer: 20
   m_Name: Player
   m_TagString: Player
@@ -744,7 +744,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114861656159316304
+--- !u!114 &114956289795205636
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -752,38 +752,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1534689591922538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd01da3e5be6bd24d81a54056753db03, type: 3}
+  m_Script: {fileID: 11500000, guid: afcf91c8e350bcf48b3fdc49833e75b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVelocity: 2
-  jumpAngle: 75
-  jumpStrenght: 17
-  jumpDelayTime: 0.77
-  state: 1
+  maxVelocity: 0
+  jumpAngle: 0
+  jumpStrenght: 0
+  jumpDelayTime: 0
+  state: 0
   onGround: 0
-  bloodParticle: {fileID: 1279267566704632, guid: d4f72d91ea095c9469506a33a5a7274a,
-    type: 2}
-  RagdollPieces:
-  - {fileID: 50840213225605646}
-  - {fileID: 50424390159621762}
-  - {fileID: 50492029797144852}
-  - {fileID: 50545368345570412}
-  - {fileID: 50535248357558056}
-  - {fileID: 50140522333299512}
-  - {fileID: 50175815455778892}
-  - {fileID: 50049839591490196}
-  - {fileID: 50493207412715292}
-  RagdollColliders:
-  - {fileID: 70122444543854686}
-  - {fileID: 60085484664870772}
-  - {fileID: 60837796739412708}
+  bloodParticle: {fileID: 0}
+  RagdollPieces: []
+  RagdollColliders: []
   RagdollArts: []
-  bodySprite:
-  - {fileID: 21300000, guid: 4756c655fd5c7ec45b83941e4a2d5a10, type: 3}
-  faceSprite:
-  - {fileID: 21300000, guid: 1ed246f8e92d7d942a92a3218f4fd7b7, type: 3}
-  bodyRenderer: {fileID: 212974547819116172}
-  faceRenderer: {fileID: 212874277904566782}
+  bodySprite: []
+  faceSprite: []
+  bodyRenderer: {fileID: 0}
+  faceRenderer: {fileID: 0}
 --- !u!212 &212090497790188728
 SpriteRenderer:
   m_ObjectHideFlags: 1
