@@ -6,8 +6,7 @@ public class Spring : Obstacle {
 
     private bool triggered;
     private Transform spikes;
-    private BoxCollider2D trigger;
-    private PolygonCollider2D collider;
+    private PolygonCollider2D coll;
 
     [Tooltip("Intensity of the push")]
     public float push;
@@ -19,8 +18,7 @@ public class Spring : Obstacle {
     {
         triggered = false;
         spikes = transform.Find("Spikes");
-        trigger = GetComponent<BoxCollider2D>();
-        collider = GetComponent<PolygonCollider2D>();
+        coll = GetComponent<PolygonCollider2D>();
         DisablePhysics();
 	}
 	
@@ -38,7 +36,7 @@ public class Spring : Obstacle {
             collision.gameObject.transform.position += new Vector3(0, platformHeight, 0);
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, push, 0));
 
-            collider.isTrigger = false;
+            coll.enabled = true;
 
             //muovi la sprite
             this.transform.position += new Vector3(0, platformHeight, 0);
@@ -53,6 +51,7 @@ public class Spring : Obstacle {
     protected override void WakeUp()
     {
         EnablePhysics();
+        coll.enabled = false;
     }
 
     //chiamato al RetryLevel()
@@ -66,8 +65,6 @@ public class Spring : Obstacle {
             this.spikes.position -= new Vector3(0, -platformHeight, 0);
 
         triggered = false;
-
-        collider.isTrigger = true;
 
         DisablePhysics();
     }
