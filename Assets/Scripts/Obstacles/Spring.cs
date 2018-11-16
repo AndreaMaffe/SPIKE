@@ -6,7 +6,8 @@ public class Spring : Obstacle {
 
     private bool triggered;
     private Transform spikes;
-    private BoxCollider2D collider;
+    private BoxCollider2D trigger;
+    private PolygonCollider2D collider;
 
     [Tooltip("Intensity of the push")]
     public float push;
@@ -18,7 +19,8 @@ public class Spring : Obstacle {
     {
         triggered = false;
         spikes = transform.Find("Spikes");
-        collider = GetComponent<BoxCollider2D>();
+        trigger = GetComponent<BoxCollider2D>();
+        collider = GetComponent<PolygonCollider2D>();
         DisablePhysics();
 	}
 	
