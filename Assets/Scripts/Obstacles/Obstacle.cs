@@ -73,7 +73,7 @@ public abstract class Obstacle : MonoBehaviour
             allNonDraggableColliders[i].enabled = true;
     }
 
-    public virtual void DisablePhysics()
+    protected virtual void DisablePhysics()
     {
         //disabilita i rigidbody e toglie ogni velocita' che avevano residua
         for (int i = 0; i < rigidbodies.Length; i++)
