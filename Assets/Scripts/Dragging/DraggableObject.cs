@@ -28,7 +28,7 @@ public class DraggableObject : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     public delegate void EndObstacleDrag();
     public static event EndObstacleDrag onEndDraggingObstacle;
 
-    private void Start()
+    protected virtual void Start()
     {
         draggableObstacleOffsetFromFinger = new Vector3(0, 1, 0);
     }

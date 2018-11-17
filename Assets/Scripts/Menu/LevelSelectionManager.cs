@@ -74,4 +74,8 @@ public class LevelSelectionManager : MonoBehaviour {
         }
     }
 
+    public void GoToMainMenu() {
+        SceneManager.LoadSceneAsync("MainMenu");
+    }
+
 }

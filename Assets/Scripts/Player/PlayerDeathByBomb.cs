@@ -18,7 +18,7 @@ public class PlayerDeathByBomb : PlayerDeathEvent
         SpawnBloodParticles();
 
         player.SetActiveRagdoll(true);
-        player.ApplyRagdollImpulse(thrust, direction);    
-
+        player.ApplyRagdollImpulse(thrust, direction);
+        player.GetComponent<PlayerAppearence>().ChangeBodyPiecesSprite("explosion");
     }
 }

@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Name: Level2
   m_EditorClassIdentifier: 
   platformDatas:
-  - platformType: {fileID: 1507616780894958, guid: a49ff86480db4924382a09c262eb8003,
+  - platformType: {fileID: 1198458058388202, guid: 8bf99fe968ea35941b0ff343bb668a85,
       type: 2}
-    platformPos: {x: 0, y: 0, z: 0}
+    platformPos: {x: -3, y: 0.5, z: 0}
   obstacleDatas:
   - type: 0
     obstacleMaxAmount: 2
-  - type: 0
+  - type: 2
     obstacleMaxAmount: 3
-  - type: 0
+  - type: 4
     obstacleMaxAmount: 3
   - type: 5
     obstacleMaxAmount: 3
@@ -33,9 +33,9 @@ MonoBehaviour:
   movementDatas:
   - movement: 0
     startTime: 0
-  - movement: 0
+  - movement: 1
     startTime: 1.4
-  - movement: 0
+  - movement: 1
     startTime: 3.3
-  - movement: 0
+  - movement: 1
     startTime: 5

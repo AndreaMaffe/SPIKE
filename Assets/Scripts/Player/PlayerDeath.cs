@@ -27,4 +27,11 @@ public abstract class PlayerDeathEvent
         GameObject.Destroy(blood.gameObject, 1f);
     }
 
+    protected void SpawnBloodStainOnPlayer() {
+        GameObject bloodStain = Resources.Load<GameObject>("Prefab/Particles/BloodStainPlayer");
+        GameObject bloodStainInstance = GameObject.Instantiate(bloodStain, position - new Vector3(Random.Range(-0.3f, 0.3f), Random.Range(0.4f, 0.7f), 0), Quaternion.identity, player.transform.Find("Body").transform);
+        bloodStainInstance.GetComponent<SpriteRenderer>().sortingOrder = player.transform.Find("Body").GetComponent<SpriteRenderer>().sortingOrder + 1;
+        bloodStainInstance.transform.localScale = new Vector3(1, 1, 0);
+    }
+
 }

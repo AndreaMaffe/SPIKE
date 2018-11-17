@@ -53,11 +53,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - {fileID: 11400000, guid: f797705af24349d49b4ca9d3f4774c7d, type: 2}
+  - {fileID: 11400000, guid: 9f976c99f3b6c3849923bfe970b6cc91, type: 2}
+  - {fileID: 11400000, guid: 0e6cc0a9a98051e4394502be09389875, type: 2}
+  - {fileID: 11400000, guid: 1f2f99dfa5819394ba65ad30a96e2286, type: 2}
+  - {fileID: 11400000, guid: 7317087c2cb1283438ec7f33ab6d5563, type: 2}
+  - {fileID: 11400000, guid: c44c6c9860bf7794591ebebee4b0a4bb, type: 2}
+  - {fileID: 11400000, guid: f07479c4ef87e554abe5ee4ebafd5de2, type: 2}
+  - {fileID: 11400000, guid: 29634a6101416574d9728e902d94b86a, type: 2}
+  - {fileID: 11400000, guid: e660660554a80be469671c852488e184, type: 2}
+  - {fileID: 11400000, guid: f26db3eb565050242b89d96c34119150, type: 2}
   obstacleButton: {fileID: 1352755739588244, guid: 9a5925cccbb7d214395c4fee17475e2e,
     type: 2}
   buttonInBetweenSpace: 40
   buttonWidth: 169
   buttonPanel: {fileID: 0}
+  nextLevelPanel: {fileID: 0}
+  playPauseButton: {fileID: 0}
   obstaclePositionData:
   - obstacle: 0
     position: 2
@@ -73,3 +84,5 @@ MonoBehaviour:
     position: 2
   - obstacle: 8
     position: 0
+  - obstacle: 9
+    position: 1

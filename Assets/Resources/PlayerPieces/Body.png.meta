@@ -1,0 +1,425 @@
+fileFormatVersion: 2
+guid: b935180c16915a94e8847c3139ffc9d8
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BodyNormal
+    21300002: BodyCut1
+    21300004: BodyCut2
+    21300006: BodyHorizontalCut1
+    21300008: BodyCutNormal
+    21300010: BodyHorizontalCut2
+    21300012: BodyExplosion1
+    21300014: BodyExplosion2
+    21300016: BodyExplosion3
+    21300018: BodyVerticalCut1
+    21300020: BodyVerticalCut2
+    21300022: BodyVerticalCutNormal
+    21300024: BodyHit2
+    21300026: BodyHit1
+    21300028: BodyExplosion4
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BodyNormal
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 284
+        width: 82
+        height: 123
+      alignment: 9
+      pivot: {x: 0.4878049, y: 0.11382114}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7df5a8d157900ed4f85e993f969093e3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BodyCut1
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 283
+        width: 82
+        height: 109
+      alignment: 9
+      pivot: {x: 0.4878049, y: 0.12844037}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7be3fa4f336fe454ca7a222f489934b2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BodyCut2
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 282
+        width: 82
+        height: 109
+      alignment: 9
+      pivot: {x: 0.4878049, y: 0.12844037}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27436ce6ec39e7146b7293adde444e06
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BodyHorizontalCut1
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 338
+        width: 81
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b88c9cc2408d98b49ae98014dd6c9880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BodyCutNormal
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 293
+        width: 81
+        height: 123
+      alignment: 9
+      pivot: {x: 0.49382716, y: 0.11382114}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 580a6386d3cc8b642af5bddd28ade51d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BodyHorizontalCut2
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 282
+        width: 82
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad56b15c4cdf67842b67e5dbacbc7f18
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BodyExplosion1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 149
+        width: 85
+        height: 123
+      alignment: 9
+      pivot: {x: 0.47058824, y: 0.11382114}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cc520b417315644a92c88f4ff40ab6d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BodyExplosion2
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 148
+        width: 87
+        height: 123
+      alignment: 9
+      pivot: {x: 0.4597701, y: 0.11382114}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eed1a24a5be722d469882c0ad0881393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BodyExplosion3
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 149
+        width: 87
+        height: 122
+      alignment: 9
+      pivot: {x: 0.4597701, y: 0.114754096}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94686e24052be2648809be83a5a626ae
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BodyVerticalCut1
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 153
+        width: 53
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e62a282457c3ff841b320485fa7b46ea
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BodyVerticalCut2
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 150
+        width: 54
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22c132975313f6e43b46f55520935c17
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BodyVerticalCutNormal
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 149
+        width: 81
+        height: 123
+      alignment: 9
+      pivot: {x: 0.49382716, y: 0.11382114}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c00aa496db17ff4f8c59e4ac0855576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BodyHit2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 15
+        width: 84
+        height: 135
+      alignment: 9
+      pivot: {x: 0.47619048, y: 0.1037037}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67c23e0ba30b47e409fdaf16738f32c3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BodyHit1
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 84
+        height: 128
+      alignment: 9
+      pivot: {x: 0.47619048, y: 0.109375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9dcc95cef7ea1245ac301df4cb61c19
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BodyExplosion4
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 1
+        width: 81
+        height: 123
+      alignment: 9
+      pivot: {x: 0.49382716, y: 0.11382114}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45fd70240c9062c4fa9ad487602a1966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 0db10532b1de1114881110f2ebe6db73
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: Game
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
