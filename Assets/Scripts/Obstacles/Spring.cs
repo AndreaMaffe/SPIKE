@@ -23,9 +23,21 @@ public class Spring : Obstacle {
         coll = GetComponent<PolygonCollider2D>();
         coll.enabled = false;
     }
-	
-	//update apposito per gli ostacoli, usare questo anziché Update().
-	protected override void UpdateObstacle () {
+
+    public override void OnObstacleDropped()
+    {
+        base.OnObstacleDropped();
+
+        
+        //sposta le spine sotto alla prima piattaforma disponibile
+        if (Physics2D.Raycast(this.transform.position + Vector3.up, Vector2.up, 10, LayerMask.GetMask("Platform")))
+            spikes.transform.position = new Vector3(spikes.transform.position.x, Physics2D.Raycast(this.transform.position + Vector3.up, Vector2.up, 10, LayerMask.GetMask("Platform")).collider.gameObject.transform.position.y - 0.5f, 0);
+        else
+            spikes.transform.position = new Vector3(spikes.transform.position.x, GameObject.Find("AstaMetallo").transform.position.y - 1.25f, 0);
+    }
+
+    //update apposito per gli ostacoli, usare questo anziché Update().
+    protected override void UpdateObstacle () {
 		
 	}
 
@@ -43,7 +55,7 @@ public class Spring : Obstacle {
             //muovi la sprite
             this.transform.position += new Vector3(0, platformHeight, 0);
             //riaggiusta la posizione delle spine
-            this.spikes.position -= new Vector3(0, platformHeight, 0);
+            spikes.position -= new Vector3(0, platformHeight, 0);
 
             triggered = true;
         }

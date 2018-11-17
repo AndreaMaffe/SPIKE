@@ -91,6 +91,9 @@ public class Player : MonoBehaviour
                 Invoke("Jump", jumpDelayTime);
                 break;
 
+            case PlayerState.Jumping:
+                break;
+
             case PlayerState.Stopped:
                 rb.velocity = new Vector2(0, rb.velocity.y);
                 break;
@@ -138,7 +141,7 @@ public class Player : MonoBehaviour
     //chiamato al EndLevel()
     void OnEndLevel()
     {
-        Exult();
+        Invoke("Exult", 0.8f);
     }
 
     void Run()
