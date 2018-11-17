@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class Pendolum : Obstacle {
 
-    private Rigidbody2D rb;
+    private Rigidbody2D rbPendolum;
+    private Rigidbody2D rbBody;
+
+    private BoxCollider2D collBody;
+    private BoxCollider2D collBlade;
 
     public float oscillation;
 
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
-        rb = transform.Find("Body").GetComponent<Rigidbody2D>();
+        rbPendolum = GetComponent<Rigidbody2D>();
+        rbBody = transform.Find("Body").GetComponent<Rigidbody2D>();
+
+        collBody = transform.Find("Body").GetComponent<BoxCollider2D>();
+        collBlade = transform.Find("Body").Find("Blade").GetComponent<BoxCollider2D>();
+
         DisablePhysics();
 	}
 
@@ -24,7 +33,7 @@ public class Pendolum : Obstacle {
     protected override void WakeUp()
     {
         EnablePhysics();
-        rb.AddForce(new Vector3(oscillation, 0, 0));
+        rbBody.AddForce(new Vector3(oscillation, 0, 0));
     }
 
     //chiamato al RetryLevel()
@@ -33,10 +42,19 @@ public class Pendolum : Obstacle {
         DisablePhysics();
 
         //reimposta la posizione e la rotazione del pendolo a quella inziale
-        rb.transform.localPosition = new Vector3(0, -1.5f, 0);
-        rb.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        rbBody.transform.localPosition = new Vector3(0, -1.5f, 0);
+        rbBody.transform.localRotation = Quaternion.Euler(0, 0, 0);
         transform.localRotation = Quaternion.Euler(0, 0, 0);
-        Debug.Log("sleep");
+    }
+
+    protected override void EnablePhysics()
+    {
+        base.EnablePhysics();
+    }
+
+    protected override void DisablePhysics()
+    {
+        base.DisablePhysics();
     }
 
     public override ObstacleType GetObstacleType()

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4749505806793492}
   - component: {fileID: 212613958415185948}
   - component: {fileID: 61546366567027010}
-  m_Layer: 22
+  m_Layer: 0
   m_Name: Blade
   m_TagString: Deadly
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 212296509713571414}
   - component: {fileID: 114985095526969782}
   - component: {fileID: 50053572395007434}
-  m_Layer: 22
+  m_Layer: 0
   m_Name: Pendolum
   m_TagString: Deadly
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 61560964412369652}
   - component: {fileID: 50018333103526126}
   - component: {fileID: 233387618195022510}
-  m_Layer: 22
+  m_Layer: 0
   m_Name: Body
   m_TagString: Deadly
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1129859790619002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.13, y: 1.19, z: 0}
+  m_LocalPosition: {x: 3.672152, y: 4.392764, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children:
   - {fileID: 4012128757438440}
@@ -214,7 +214,6 @@ MonoBehaviour:
   - {fileID: 50053572395007434}
   allNonDraggableColliders:
   - {fileID: 61560964412369652}
-  - {fileID: 61546366567027010}
   - {fileID: 61546366567027010}
   oscillation: 400
 --- !u!212 &212092244832251310

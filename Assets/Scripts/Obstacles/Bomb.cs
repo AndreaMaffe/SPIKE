@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Bomb : ObstacleWithTimer {
 
+    private Collider2D coll;
+    private Rigidbody2D rb;
+
     public float timeBeforeExplosion;
     public float minExplosionForce;
     public float maxExplosionForce;
@@ -23,6 +26,9 @@ public class Bomb : ObstacleWithTimer {
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
+        rb = FindObjectOfType<Rigidbody2D>();
+        coll = FindObjectOfType<Collider2D>();
+
         DisablePhysics();
     }
 
@@ -119,6 +125,21 @@ public class Bomb : ObstacleWithTimer {
 
         }
 
+    }
+
+    protected override void EnablePhysics()
+    {
+        rb.isKinematic = false;
+        coll.enabled = true;
+
+    }
+
+    protected override void DisablePhysics()
+    {
+        rb.isKinematic = true;
+        rb.angularVelocity = 0;
+        rb.velocity = Vector2.zero;
+        coll.enabled = false;
     }
 
     void SetVisible(bool value)
