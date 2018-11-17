@@ -1126,6 +1126,7 @@ MonoBehaviour:
   panel: {fileID: 628754582}
   horizontalSpacing: 150
   verticalSpacing: 180
+  levelAmountTest: 10
 --- !u!4 &2112351801
 Transform:
   m_ObjectHideFlags: 0
