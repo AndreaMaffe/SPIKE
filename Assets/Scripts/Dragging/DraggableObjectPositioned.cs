@@ -11,7 +11,6 @@ public class DraggableObjectPositioned : DraggableObject
 
     public override void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("Dragged");
         obstacleDragged = this.GetComponent<DraggableObjectPositionUpdater>();
         //obstacleDragged.Activate();
         HideObstacleButtons();    
@@ -19,7 +18,7 @@ public class DraggableObjectPositioned : DraggableObject
 
     protected override void UpdateObstacleNumber(int amount)
     {
-        if (amount == 1) { }
+        if (amount == 1) 
             onReaddObstacle(GetComponent<Obstacle>().GetObstacleType());
     }
 }

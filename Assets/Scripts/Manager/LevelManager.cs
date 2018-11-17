@@ -82,8 +82,8 @@ public class LevelManager : MonoBehaviour
 
     public Level GetActualLevel()
     {
-        //return levels[saveManager.currentLevel - 1];  //QUESTA E' LA LINEA DI CODICE CORRETTA, NON CANCELLARE
-        return levels[0]; //Questa è la linea di codice più comoda adesso in fase di testing
+        return levels[saveManager.currentLevel - 1];  //QUESTA E' LA LINEA DI CODICE CORRETTA, NON CANCELLARE
+        //return levels[0]; //Questa è la linea di codice più comoda adesso in fase di testing
     }
 
     public void ChangeLevelState()

@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 887d92387c8dc474a935f1e7d9300791
+guid: 1794d00f1b846374e8492810e5e54ee2
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: AnchorRangeLine
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -41,17 +40,17 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 0
-  alignment: 9
-  spritePivot: {x: 0.4853381, y: 0.0008605538}
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 14, z: 0, w: 16}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -70,64 +69,18 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: AnchorRangeLine
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 173
-        width: 30
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: efe29c2f040c8b74d8fb0e3177884977
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    outline:
-    - - {x: -12.5, y: 2.5}
-      - {x: -12.5, y: 18.5}
-      - {x: 13.5, y: 18.5}
-      - {x: 13.5, y: 2.5}
+    sprites: []
+    outline: []
     physicsShape: []
     bones: []
-    spriteID: 65f3332f01c09ca49937a9be0fe8788b
+    spriteID: b4120533fc301f54c9ee5f3937f3a5ed
     vertices: []
     indices: 
     edges: []
     weights: []
-  spritePackingTag: Game
+  spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 

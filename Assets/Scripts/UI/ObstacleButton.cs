@@ -54,8 +54,6 @@ public class ObstacleButton : DraggableObject
         //se ho abbastanza ostacoli da piazzare
         if (obstacleAmount > 0)
         {
-            Debug.Log("Inizio drag");
-
             SpawnObstacleInstance();
             HideObstacleButtons();
         }
