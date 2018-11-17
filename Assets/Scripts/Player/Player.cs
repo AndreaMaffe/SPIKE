@@ -109,6 +109,12 @@ public class Player : MonoBehaviour
         SetTimers();
 
         StartTimers();
+
+        //distrugge lo spruzzo di sangue
+        GetComponent<PlayerAppearence>().DestroyBloodFountainParticle();
+        //riattiva l'ombra
+        transform.Find("OmbraPlayer").gameObject.SetActive(true);
+
     }
 
     //chiamato al RetryLevel()
@@ -170,7 +176,7 @@ public class Player : MonoBehaviour
     void Exult()
     {
         state = PlayerState.Exulting;
-        //animator.SetTrigger("Exult");
+        animator.SetTrigger("Exult");
     }
 
     void ResetAnimatorTriggers()
@@ -240,6 +246,7 @@ public class Player : MonoBehaviour
 
     public void SetActiveRagdoll(bool value)
     {
+        transform.Find("OmbraPlayer").gameObject.SetActive(false);
         animator.enabled = !value;
         rb.simulated = !value;
         mainCollider.enabled = !value;

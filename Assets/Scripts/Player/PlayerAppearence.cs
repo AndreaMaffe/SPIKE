@@ -23,6 +23,9 @@ public class PlayerAppearence : MonoBehaviour {
     private int cutDamageLevel = 0;
 
 
+    private GameObject bloodFountainParticle;
+
+
 
     //metodo invocato dalla playerDeath che cambia le immagini del player a seconda del tipo di morte fatto 
     public void ChangeBodyPiecesSprite(string typeOfDeath)
@@ -92,4 +95,14 @@ public class PlayerAppearence : MonoBehaviour {
         else
             return "ForarmNormal";
     }
+
+    public void AssignBloodFountainParticle(GameObject particles) {
+        bloodFountainParticle = particles;
+    }
+
+    public void DestroyBloodFountainParticle() {
+        if (bloodFountainParticle != null)
+            Destroy(bloodFountainParticle.gameObject);
+    }
+
 }

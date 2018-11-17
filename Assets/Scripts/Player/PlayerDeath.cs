@@ -30,8 +30,8 @@ public abstract class PlayerDeathEvent
     protected void SpawnBloodFountain()
     {
         GameObject bloodFountain = Resources.Load<GameObject>("Prefab/Particles/BloodFountain");
-        GameObject bloodFountainInstance = GameObject.Instantiate(bloodFountain, player.transform.position + new Vector3(0,0.7f,0), Quaternion.Euler(-90,0,0), player.transform.Find("Body").transform);
-        //GameObject.Destroy(bloodFountainInstance.gameObject, 2f);
+        GameObject bloodFountainInstance = GameObject.Instantiate(bloodFountain, player.transform.position + new Vector3(0,0.7f,0), Quaternion.Euler(-90,20,0), player.transform.Find("Body").transform);
+        player.GetComponent<PlayerAppearence>().AssignBloodFountainParticle(bloodFountainInstance);
     }
 
     protected void SpawnBloodStainOnPlayer() {
