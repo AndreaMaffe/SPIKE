@@ -13,7 +13,6 @@ public class Raptor : Obstacle {
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
-        CreateCircleDraggingCollider();
 	    objectToFollow = GameObject.FindGameObjectWithTag("Player");
 	    rb = GetComponent<Rigidbody2D>();
 
@@ -44,6 +43,9 @@ public class Raptor : Obstacle {
 	//chiamato al RunLevel()
 	protected override void WakeUp()
 	{
+
+        GetComponent<Animator>().enabled = true;
+        transform.Find("RaptorDavanti").transform.Find("Fumo").GetComponent<ParticleSystem>().Play();
 		//permette di entrare nell'UpdateObstacle()
 		SetActive(true);
 
@@ -55,8 +57,11 @@ public class Raptor : Obstacle {
 	protected override void Sleep()
 	{
 
-		//impedisce di entrare nell'UpdateObstacle()
-		SetActive(false);
+        GetComponent<Animator>().enabled = false;
+        transform.Find("RaptorDavanti").transform.Find("Fumo").GetComponent<ParticleSystem>().Stop();
+        
+        //impedisce di entrare nell'UpdateObstacle()
+        SetActive(false);
 
 		//risetta la posizione iniziale
 		ResetPosition();
@@ -67,6 +72,6 @@ public class Raptor : Obstacle {
 
 	public override ObstacleType GetObstacleType()
 	{
-		return ObstacleType.Bomb;
+		return ObstacleType.Raptor;
 	}
 }
