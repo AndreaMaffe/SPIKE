@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public enum PlayerState
 {
     Jumping,
@@ -34,12 +33,6 @@ public class Player : MonoBehaviour
     public Rigidbody2D[] RagdollPieces;
     public Collider2D[] RagdollColliders;
     public GameObject[] RagdollArts;
-
-    public Sprite[] bodySprite;
-    public Sprite[] faceSprite;
-
-    public SpriteRenderer bodyRenderer;
-    public SpriteRenderer faceRenderer;
 
     //variabile che contiene lo scriptable object del livello attuale chiesto al level manager
     private Level currentLevel;
@@ -267,12 +260,6 @@ public class Player : MonoBehaviour
                 art.transform.parent = null;
             else art.transform.parent = body;
         }
-
-        if (value)
-        {
-            bodyRenderer.sprite = bodySprite[0];
-            faceRenderer.sprite = faceSprite[0];
-        }
     }
 
     //metodo che applica al corpo della ragdoll una forza in una certa direzione 
@@ -287,6 +274,6 @@ public class Player : MonoBehaviour
         LevelManager.runLevelEvent -= WakeUp;
         LevelManager.retryLevelEvent -= Sleep;
         LevelManager.endLevelEvent -= OnEndLevel;
-    }
+    } 
 
 }

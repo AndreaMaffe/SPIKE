@@ -1,0 +1,320 @@
+fileFormatVersion: 2
+guid: d576f7446d4489943a561753098e937e
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ArmCut1
+    21300002: ArmNormal
+    21300004: ArmExplosion
+    21300006: ArmCut2
+    21300008: ArmRightNormal
+    21300010: ForarmCut
+    21300012: ForarmNormal
+    21300014: Leg
+    21300016: ForarmRightNormal
+    21300018: ForarmExplosion
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ArmCut1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 135
+        width: 31
+        height: 35
+      alignment: 9
+      pivot: {x: 0.81249565, y: 0.8360923}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ef435f7ecb211946a01852e08adfada
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmNormal
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 136
+        width: 33
+        height: 33
+      alignment: 9
+      pivot: {x: 0.79355645, y: 0.8005459}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dbf4d4a814a0ff46a0fc7406c6f6cb3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmExplosion
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 135
+        width: 32
+        height: 33
+      alignment: 9
+      pivot: {x: 0.8243537, y: 0.82151425}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e1615d72e3e7714aba88133ca74354a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmCut2
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 131
+        width: 35
+        height: 37
+      alignment: 9
+      pivot: {x: 0.82291216, y: 0.8303928}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a657685bbb5b0374bb5e0cd5631ce833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmRightNormal
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 135
+        width: 32
+        height: 33
+      alignment: 9
+      pivot: {x: 0.218894, y: 0.8005459}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 851ae27417ca6094d997d10cbc4d3cc8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForarmCut
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 64
+        width: 54
+        height: 43
+      alignment: 9
+      pivot: {x: 0.51547396, y: 0.8627383}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3548d9cc468a1f843ab1f072a15cab05
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForarmNormal
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 61
+        width: 55
+        height: 43
+      alignment: 9
+      pivot: {x: 0.51519275, y: 0.86921567}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91211fea8c58bf147a7cd058b87da675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leg
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 55
+        width: 13
+        height: 35
+      alignment: 9
+      pivot: {x: 0.56427824, y: 0.85811156}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d812992d0cebdff4898642719993bf13
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForarmRightNormal
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 77
+        width: 21
+        height: 39
+      alignment: 9
+      pivot: {x: 0.3408392, y: 0.86423314}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ab8ad06ef924ab4daa1c79bfe264a87
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForarmExplosion
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 0
+        width: 52
+        height: 43
+      alignment: 9
+      pivot: {x: 0.5321382, y: 0.86921567}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce347b34162e16843b3b657bcbb7e169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 89c260e660026514fbf6936fce82ddd5
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: Game
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

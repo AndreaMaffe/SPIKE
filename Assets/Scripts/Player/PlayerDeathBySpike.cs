@@ -17,10 +17,13 @@ public class PlayerDeathBySpike : PlayerDeathEvent
     public override void StartDeath()
     {
         SpawnBloodParticles();
+        SpawnBloodStainOnPlayer();
         bloodStain = Resources.Load<GameObject>("Prefab/Particles/BloodStain");
         GameObject bloodStainInstance = GameObject.Instantiate(bloodStain, position, Quaternion.identity, spikes.transform);
         bloodStainInstance.GetComponent<SpriteRenderer>().sortingOrder = obstacle.GetComponent<SpriteRenderer>().sortingOrder + 1;
 
         player.SetActiveRagdoll(true);
+        player.GetComponent<PlayerAppearence>().ChangeBodyPiecesSprite("spike");
+
     }
 }

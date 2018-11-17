@@ -142,7 +142,7 @@ public abstract class Obstacle : MonoBehaviour
     {
         switch (GetObstacleType())
         {
-            case ObstacleType.Bomb: return new PlayerDeathByExplosion(player, this, position);
+            //case ObstacleType.Bomb: return new PlayerDeathByExplosion(player, this, position);
             case ObstacleType.Bullet: return new PlayerDeathByExplosion(player, this, position);
             case ObstacleType.Pendolum: return new PlayerDeathBySpike(player, this, position, transform.Find("Body").transform.Find("Blade").gameObject);
             case ObstacleType.Raptor: return new PlayerDeathBySpike(player, this, position, this.gameObject);
