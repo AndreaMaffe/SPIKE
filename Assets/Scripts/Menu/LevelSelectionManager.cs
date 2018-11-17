@@ -14,6 +14,8 @@ public class LevelSelectionManager : MonoBehaviour {
     [Header("Distanza hor/ver tra i bottoni")]
     public float horizontalSpacing;
     public float verticalSpacing;
+    [Header("Scegliere il numero massimo di livelli in fase di testing")]
+    public int levelAmountTest;
 
     private SaveManager saveManager;
 
@@ -27,7 +29,7 @@ public class LevelSelectionManager : MonoBehaviour {
         int x = 0;
         int y = 0;
         //for (int i = 0; i < saveManager.totalLevels; i++)
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < levelAmountTest; i++)
         {
             if(x >= 5)
             {
@@ -40,7 +42,8 @@ public class LevelSelectionManager : MonoBehaviour {
             newButton.GetComponentInChildren<Text>().text = (i + 1).ToString();
 
             //Entra nell'if solo se il livello selezionato è sbloccato
-            if (i < saveManager.maxUnlockedLevel)
+            //if (i < saveManager.maxUnlockedLevel) LINEA DI CODICE CORRETTA, USIAMO LA PROSSIMA IN FASE DI TESTING
+            if (i < levelAmountTest)
             {
                 newButton.transform.GetChild(1).gameObject.SetActive(false);
                 newButton.GetComponent<Button>().onClick.AddListener(ChooseLevel);
@@ -61,7 +64,8 @@ public class LevelSelectionManager : MonoBehaviour {
         saveManager.currentLevel = levelIndex;
         Debug.Log("Sto per caricare il livello: " + saveManager.currentLevel);
         SaveUtility.SaveObject(saveManager, "saveFile");
-        if (levelIndex <= saveManager.maxUnlockedLevel)
+        //if (levelIndex <= saveManager.maxUnlockedLevel) LINEA DI CODICE CORRETTA, USIAMO LA PROSSIMA IN FASE DI TESTING
+        if (levelIndex <= levelAmountTest)
         {
             SceneManager.LoadScene("SampleSceneRange");
             //SceneManager.LoadScene("SampleSceneRangeAle2");

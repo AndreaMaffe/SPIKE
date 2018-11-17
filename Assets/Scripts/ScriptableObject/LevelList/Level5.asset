@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
+  m_Name: Level5
+  m_EditorClassIdentifier: 
+  platformDatas:
+  - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
+      type: 2}
+    platformPos: {x: -5, y: 2.05, z: 0}
+  - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
+      type: 2}
+    platformPos: {x: 5, y: 2.05, z: 0}
+  obstacleDatas:
+  - type: 0
+    obstacleMaxAmount: 1
+  - type: 5
+    obstacleMaxAmount: 1
+  - type: 3
+    obstacleMaxAmount: 1
+  - type: 4
+    obstacleMaxAmount: 2
+  movementDatas: []
