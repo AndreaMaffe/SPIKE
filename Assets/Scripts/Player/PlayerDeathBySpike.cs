@@ -18,6 +18,7 @@ public class PlayerDeathBySpike : PlayerDeathEvent
     {
         SpawnBloodParticles();
         SpawnBloodStainOnPlayer();
+        SpawnBloodFountain();
         bloodStain = Resources.Load<GameObject>("Prefab/Particles/BloodStain");
         GameObject bloodStainInstance = GameObject.Instantiate(bloodStain, position, Quaternion.identity, spikes.transform);
         bloodStainInstance.GetComponent<SpriteRenderer>().sortingOrder = obstacle.GetComponent<SpriteRenderer>().sortingOrder + 1;
