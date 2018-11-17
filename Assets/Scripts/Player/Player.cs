@@ -138,7 +138,7 @@ public class Player : MonoBehaviour
     //chiamato al EndLevel()
     void OnEndLevel()
     {
-        //TODO: aggiungere animazione di vittoria
+        Exult();
     }
 
     void Run()
