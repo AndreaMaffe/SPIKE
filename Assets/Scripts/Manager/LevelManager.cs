@@ -161,5 +161,10 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("|CurrenteLevel: " + saveManager.currentLevel + "| |MaxUnlockedLevel: " + saveManager.maxUnlockedLevel + "| |TotalLevels: " + saveManager.totalLevels + "|");
     }
+
+    public void GoToMainMenu() {
+        SceneManager.LoadSceneAsync("LevelSelection");
+    }
+
 }
 
