@@ -14,9 +14,11 @@ public class Raptor : Obstacle {
     protected override void StartObstacle()
     {
 	    objectToFollow = GameObject.FindGameObjectWithTag("Player");
-	    rb = GetComponent<Rigidbody2D>();
+	    //rb = GetComponent<Rigidbody2D>();
 
 	    DisablePhysics();
+
+        rb = rigidbodies[0];
 	}
 
     //update apposito per gli ostacoli, usare questo anziché Update().
