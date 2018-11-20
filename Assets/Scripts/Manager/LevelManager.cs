@@ -120,6 +120,8 @@ public class LevelManager : MonoBehaviour
     //Metodo che lancia l'evento legato alla fine del livello
     public static void EndLevel()
     {
+        FindObjectOfType<AudioManagerBR>().GetComponent<AudioManager>().PlayWinAudio();
+
         endLevelEvent();
     }
 
