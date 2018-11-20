@@ -33,8 +33,8 @@ public class Bomb : ObstacleWithTimer {
 
     protected override void UpdateObstacle()
     {
-    }
 
+    }
    
     void Explode()
     {
@@ -46,7 +46,7 @@ public class Bomb : ObstacleWithTimer {
         //crea effetti particellari
         Destroy(Instantiate(explosionParticlePrefab, transform.position, Quaternion.identity), 1.5f);
 
-        //destroy the bomb
+        //disattiva la Sprite
         SetVisible(false);
 
         //disabilita la fisica legata al gameobject
@@ -96,18 +96,26 @@ public class Bomb : ObstacleWithTimer {
             GameObject objectHit = hitColliders[i].gameObject;
             Rigidbody2D rigidbodyHit = objectHit.GetComponent<Rigidbody2D>();
 
-            Vector2 bombCentrePosition = new Vector2(this.transform.position.x - 0.5f, this.transform.position.y - 1.5f);
-            Vector2 direction = rigidbodyHit.worldCenterOfMass - bombCentrePosition;
-
-            //se non ci sono altri oggetti che si interpongono tra la bomba e l'oggetto
-            if (Physics2D.Raycast(bombCentrePosition, direction).collider.gameObject.name == objectHit.name)
+            if (rigidbodyHit && objectHit!=this.gameObject)
             {
-                rigidbodyHit.AddForce(direction * explosionThrust);
+                Vector2 bombCentrePosition = rb.worldCenterOfMass - new Vector2(0, 0.2f);
+                Vector2 direction = rigidbodyHit.worldCenterOfMass - bombCentrePosition;               
 
-                //se il player è troppo vicino, uccidilo
-                if (Vector2.Distance(objectHit.transform.position, this.transform.position) < explosionInnerRadius && objectHit.tag == "Player")
-                    new PlayerDeathByBomb(objectHit.GetComponent<Player>(), this, this.transform.position, direction, explosionThrust).StartDeath();
+                if (Physics2D.RaycastAll(bombCentrePosition, direction)[1].collider.gameObject.name == objectHit.name)
+                {
+                    if (bombCentrePosition.y > objectHit.transform.position.y)
+                        direction += new Vector2(0, 2);
+                    else direction -= new Vector2(0, 2);
+
+                    //applica una spinta all'oggetto pari a explosionThrust
+                    rigidbodyHit.AddForce(direction * explosionThrust);
+
+                    //se il player è troppo vicino, uccidilo
+                    if (Vector2.Distance(objectHit.transform.position, this.transform.position) < explosionInnerRadius && objectHit.tag == "Player")
+                        new PlayerDeathByBomb(objectHit.GetComponent<Player>(), this, this.transform.position, direction, explosionThrust).StartDeath();
+                }
             }
+
         }
     }
 

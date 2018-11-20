@@ -13,7 +13,6 @@ public enum PlayerState
 
 public class Player : MonoBehaviour
 {
-
     private Rigidbody2D rb;
     private Animator animator;
     private BoxCollider2D mainCollider;
@@ -41,6 +40,7 @@ public class Player : MonoBehaviour
 
     //Lista che contiene tutti i timer per i movimenti del giocatore
     private List<Timer> timers;
+    private Timer timerBeforeExulting;
 
     void Start()
     {
@@ -60,6 +60,8 @@ public class Player : MonoBehaviour
         currentLevel = levelManager.GetActualLevel();
 
         timers = new List<Timer>();
+        timerBeforeExulting = timerManager.AddTimer(0.8f);
+        timerBeforeExulting.triggeredEvent += Exult;
     }
 
     void FixedUpdate()
@@ -110,6 +112,8 @@ public class Player : MonoBehaviour
         Run();
 
         SetTimers();
+        timerBeforeExulting = timerManager.AddTimer(0.8f);
+        timerBeforeExulting.triggeredEvent += Exult;
 
         StartTimers();
 
@@ -136,12 +140,13 @@ public class Player : MonoBehaviour
 
         //rimuovi tutti i timer (verranno risettati al successivo WakeUp())
         ResetTimers();
+        timerBeforeExulting.Pause();
     }
 
     //chiamato al EndLevel()
     void OnEndLevel()
     {
-        Invoke("Exult", 0.8f);
+        timerBeforeExulting.Start();
     }
 
     void Run()
@@ -235,7 +240,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
     //da cambiare e da fare con raycast per evitare collisioni laterali ma per ora va bene anche cosi'
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -286,6 +290,7 @@ public class Player : MonoBehaviour
         LevelManager.runLevelEvent -= WakeUp;
         LevelManager.retryLevelEvent -= Sleep;
         LevelManager.endLevelEvent -= OnEndLevel;
+        timerBeforeExulting.triggeredEvent -= Exult;
     } 
 
 }
