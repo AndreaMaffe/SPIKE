@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1743,16 +1743,6 @@ Prefab:
       propertyPath: volumeSlider
       value: 
       objectReference: {fileID: 1960361988}
-    - target: {fileID: 114957681691860560, guid: 3aad8d85c76371c41865ae13932a3c4a,
-        type: 2}
-      propertyPath: sounds.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: beb318d4a453b1847927003e1460ba98, type: 3}
-    - target: {fileID: 114957681691860560, guid: 3aad8d85c76371c41865ae13932a3c4a,
-        type: 2}
-      propertyPath: sounds.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 815943b1a2e77e3458da7ed7531de21f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aad8d85c76371c41865ae13932a3c4a, type: 2}
   m_IsPrefabAsset: 0
