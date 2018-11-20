@@ -49,17 +49,17 @@ public class AudioManager : MonoBehaviour {
 
     public void PlayWinAudio()
     {
-        //winAudio.Play();
+        FindObjectOfType<AudioManagerBR>().Stop("play");
+        FindObjectOfType<AudioManagerBR>().Unmute("build");
 
-        //playLevel.Stop();
-        //buildLevel.Stop();
+        FindObjectOfType<AudioManagerBR>().Play("win");
     }
 
     public void PlayFailAudio()
     {
-        //failAudio.Play();
+        FindObjectOfType<AudioManagerBR>().Stop("play");
+        FindObjectOfType<AudioManagerBR>().Stop("build");
 
-        //playLevel.Stop();
-        //buildLevel.Stop();
+        FindObjectOfType<AudioManagerBR>().Play("fail");
     }
 }

@@ -248,6 +248,8 @@ public class Player : MonoBehaviour
             //crea l'evento PlayerDeathEvent nel punto corrispondente al contatto e avvialo
             PlayerDeathEvent playerDeathEvent = collision.transform.root.GetComponent<Obstacle>().CreatePlayerDeathEvent(this, collision.GetContact(0).point);
             playerDeathEvent.StartDeath();
+
+            FindObjectOfType<AudioManagerBR>().GetComponent<AudioManager>().PlayFailAudio();
         }
     }
 
