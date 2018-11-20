@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1712870259608482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13261628, y: -2.1337492, z: 0}
+  m_LocalPosition: {x: 1.9101887, y: -0.8848009, z: 0}
   m_LocalScale: {x: 1, y: 0.858, z: 1}
   m_Children:
   - {fileID: 4612440627069870}
@@ -169,6 +169,7 @@ MonoBehaviour:
   allNonDraggableColliders:
   - {fileID: 61401731526754518}
   - {fileID: 61723628964676386}
+  - {fileID: 60307037104761008}
   push: 1200
   platformHeight: 2
 --- !u!212 &212586360638749124

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4731853523268312}
   - component: {fileID: 212164368961305380}
   - component: {fileID: 114654919587807854}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 50776815908930782}
   - component: {fileID: 331156537667263670}
   - component: {fileID: 114123626562977488}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Spikes
   m_TagString: Deadly
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 4836348586832982}
   - component: {fileID: 212097073105831698}
   - component: {fileID: 114762912325413656}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: FallingSpikes
   m_TagString: Deadly
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4525105359025124}
   - component: {fileID: 212939472569536780}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1557284700432314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.303833, y: 4.2037964, z: 0}
+  m_LocalPosition: {x: -0.51317143, y: 0.59193355, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4525105359025124}

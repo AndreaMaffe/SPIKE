@@ -39,6 +39,7 @@ public class AnchorRangeSpawner : MonoBehaviour {
     }
 
     void HideAnchorRange() {
+        boxCollider.enabled = false;
         line.enabled = false;
         startingPoint.GetComponent<SpriteRenderer>().enabled = false;
         endingPoint.GetComponent<SpriteRenderer>().enabled = false;

@@ -20,8 +20,7 @@ public class Spring : Obstacle {
         triggered = false;
         spikes = transform.Find("Spikes");
 
-        coll = GetComponent<PolygonCollider2D>();
-        coll.enabled = false;
+        DisablePhysics();
     }
 
     public override void OnObstacleDropped()
@@ -65,6 +64,8 @@ public class Spring : Obstacle {
     protected override void WakeUp()
     {
         SetActive(true);
+
+        EnablePhysics();
     }
 
     //chiamato al RetryLevel()
@@ -80,9 +81,8 @@ public class Spring : Obstacle {
         //impedisce di entrare in OnTrigger
         SetActive(false);
 
-        //disabilita il collider fisico della piattaforma
-        coll.enabled = false;
-
+        DisablePhysics();
+       
         triggered = false;
     }
 
