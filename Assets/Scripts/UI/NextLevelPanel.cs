@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class NextLevelPanel : MonoBehaviour
@@ -15,6 +16,15 @@ public class NextLevelPanel : MonoBehaviour
         LevelManager.endLevelEvent += DownScrollPanel;
         //Se il livello è completato aggiorniamo il massimo livello sbloccato
         LevelManager.endLevelEvent += UpdateMaxUnlockedLevel;
+        //Se viene premuto il tasto reply al di fuori del pannello, il pannello ritorna su (probabilmente ci serve solo in fase di testing)
+        LevelManager.retryLevelEvent += UpScrollPanel;
+    }
+
+    //Metodo che viene chiamato nel momento in cui il livello è stato vinto e che fa il pannello della vittoria
+    private void UpScrollPanel()
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("PannelloGiù"))
+            animator.SetTrigger("UpScrollPanel");
     }
 
     //Metodo che viene chiamato nel momento in cui il livello è stato vinto e che fa il pannello della vittoria
@@ -63,6 +73,7 @@ public class NextLevelPanel : MonoBehaviour
         //Unregister events
         LevelManager.endLevelEvent -= DownScrollPanel;
         LevelManager.endLevelEvent -= UpdateMaxUnlockedLevel;
+        LevelManager.retryLevelEvent -= UpScrollPanel;
     }
 
 }
