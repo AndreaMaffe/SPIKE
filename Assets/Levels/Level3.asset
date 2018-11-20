@@ -17,7 +17,7 @@ MonoBehaviour:
     platformPos: {x: -5, y: 2.05, z: 0}
   - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
       type: 2}
-    platformPos: {x: 5, y: 2.05, z: 0}
+    platformPos: {x: 6.2, y: 2.05, z: 0}
   obstacleDatas:
   - type: 0
     obstacleMaxAmount: 1
