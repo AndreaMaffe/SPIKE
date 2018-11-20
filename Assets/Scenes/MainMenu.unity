@@ -269,7 +269,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 257.99994, y: -218}
+  m_AnchoredPosition: {x: 893, y: -106}
   m_SizeDelta: {x: 608.6, y: 103.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &92698588
@@ -1040,7 +1040,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 0.5
+  m_padding: 0
   m_canvasRenderer: {fileID: 553897848}
   m_TextComponent: {fileID: 1844003746}
   m_materialReferenceIndex: 1
@@ -1363,7 +1363,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 0.5
+  m_padding: 0
   m_canvasRenderer: {fileID: 584438886}
   m_TextComponent: {fileID: 92698588}
   m_materialReferenceIndex: 1
@@ -1545,8 +1545,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 639, y: -68}
-  m_SizeDelta: {x: 193, y: 121.4}
+  m_AnchoredPosition: {x: 269.5, y: -115.05}
+  m_SizeDelta: {x: 314, y: 121.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &692172980
 MonoBehaviour:
@@ -2360,7 +2360,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 0.5
+  m_padding: 0
   m_canvasRenderer: {fileID: 1305432122}
   m_TextComponent: {fileID: 1744049711}
   m_materialReferenceIndex: 1
@@ -2471,7 +2471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1406293587
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2587,7 +2587,7 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -2654,7 +2654,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1485687104}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -2672,7 +2672,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 0.5
+  m_padding: 0
   m_canvasRenderer: {fileID: 1485687107}
   m_TextComponent: {fileID: 1406293588}
   m_materialReferenceIndex: 1
@@ -2874,7 +2874,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 0.5
+  m_padding: 0
   m_canvasRenderer: {fileID: 1519450309}
   m_TextComponent: {fileID: 496163013}
   m_materialReferenceIndex: 1
@@ -8480,8 +8480,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.000015258789, y: -40}
+  m_SizeDelta: {x: 0.000030518, y: 49.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045157709
 MonoBehaviour:
@@ -8504,18 +8504,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 675247a8a49c2d84ba2b6d69945bf205, type: 3}
-    m_FontSize: 60
-    m_FontStyle: 0
+    m_FontSize: 80
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 5
-    m_MaxSize: 60
+    m_MaxSize: 143
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Levels
+  m_Text: "L\u0332e\u0332v\u0332e\u0332l\u0332s\u0332"
 --- !u!222 &2045157710
 CanvasRenderer:
   m_ObjectHideFlags: 0
