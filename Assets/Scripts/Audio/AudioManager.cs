@@ -10,12 +10,6 @@ public class AudioManager : MonoBehaviour {
 
     bool IsInPlaymode = false;
 
-    //public AudioSource buildLevel;
-    //public AudioSource playLevel;
-
-    //public AudioSource winAudio;
-    //public AudioSource failAudio;
-
     public void Start()
     {
         //Adds a listener to the main slider and invokes a method when the value changes.
