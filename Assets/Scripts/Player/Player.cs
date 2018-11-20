@@ -18,7 +18,8 @@ public class Player : MonoBehaviour
     private BoxCollider2D mainCollider;
     private Transform body;
 
-    public float maxVelocity;
+    [Header("Movements")]
+    public float speed;
     public float jumpAngle;
     public float jumpStrenght;
     public float jumpDelayTime;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool onGround;
 
+    [Header("Ragdoll")]
     public GameObject bloodParticle;
     public Rigidbody2D[] RagdollPieces;
     public Collider2D[] RagdollColliders;
@@ -73,6 +75,7 @@ public class Player : MonoBehaviour
             if (!onGround)
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
+                rb.drag = 4;
                 if (state == PlayerState.Jumping)
                     Run();
             }
@@ -80,13 +83,17 @@ public class Player : MonoBehaviour
         }
 
         else
+        {
+            rb.drag = 0;
             onGround = false;
+        }
+            
 
         switch (state)
         {
             case PlayerState.Running:
-                if (rb.velocity.x < maxVelocity && onGround)
-                    rb.AddForce(new Vector2(5, 0));
+                if (onGround)
+                    rb.AddForce(new Vector2(speed, 0));
                 break;
 
             case PlayerState.WaitingToJump:

@@ -99,17 +99,11 @@ public class Bomb : ObstacleWithTimer {
 
             if (rigidbodyHit && objectHit!=this.gameObject)
             {
-                Vector2 bombCentrePosition = rb.worldCenterOfMass - new Vector2(0, 0.2f);
-                Vector2 direction = rigidbodyHit.worldCenterOfMass - bombCentrePosition;               
+                Vector2 direction = rigidbodyHit.worldCenterOfMass - rb.worldCenterOfMass;               
 
-                if (Physics2D.RaycastAll(bombCentrePosition, direction)[1].collider.gameObject.name == objectHit.name)
+                //se non si interpongono oggetti tra la bomba e l'oggetto
+                if (Physics2D.RaycastAll(rb.worldCenterOfMass, direction)[1].collider.gameObject.name == objectHit.name)
                 {
-                   if (bombCentrePosition.y <= rb.worldCenterOfMass.y && direction.y < sbalzoMinimo)
-                        direction += new Vector2(0, sbalzoMinimo - direction.y);
-                    else if (bombCentrePosition.y > rb.worldCenterOfMass.y && direction.y > -sbalzoMinimo)
-                        direction += new Vector2(0, sbalzoMinimo - direction.y);
-
-
                     //applica una spinta all'oggetto pari a explosionThrust
                     rigidbodyHit.AddForce(direction * explosionThrust);
 
