@@ -6,9 +6,11 @@
 - ombra del personaggio rimane sul posto alla morte
 - i pezzi della ragdoll tremano
 - la molla non è allineata all'anchor line
-- il raptor tende a "cadere" in fase di dragging&dropping
+- il raptor tende a "cadere" in fase di dragging&dropping #FIXATO
 - il raggio del laser si blocca a mezz'aria
 - le FallinkSpikes non si possono rispostare
+- spostare la parte superiore della molla tramite drag and drop sposta quella inferiore
+- è possibile schiacciare il tasto retry durante la schermata di fine livello
 
 
 ----------  OSTACOLI A POSTO:  -------------
