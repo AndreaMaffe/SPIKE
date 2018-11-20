@@ -37,6 +37,8 @@ public class LevelManager : MonoBehaviour
 
     public Button playPauseButton;
 
+    public Text currentLevelText;
+
 
     //struct che associa ogni ostacolo alla posizione in cui puo' andare
     [System.Serializable]
@@ -61,7 +63,6 @@ public class LevelManager : MonoBehaviour
 
         LoadLevel();
         state = LevelState.UNDER_CONSTRUCTION;
-
     }
 
     void LoadLevel()
@@ -161,7 +162,9 @@ public class LevelManager : MonoBehaviour
 
     private void PrintSaveManager()
     {
-        Debug.Log("|CurrenteLevel: " + saveManager.currentLevel + "| |MaxUnlockedLevel: " + saveManager.maxUnlockedLevel + "| |TotalLevels: " + saveManager.totalLevels + "|");
+        //Debug.Log("|CurrentLevel: " + saveManager.currentLevel + "| |MaxUnlockedLevel: " + saveManager.maxUnlockedLevel + "| |TotalLevels: " + saveManager.totalLevels + "|");
+        currentLevelText.text = "LV. " + saveManager.currentLevel;
+        Debug.Log("LV. " + saveManager.currentLevel); 
     }
 
     public void GoToMainMenu() {
