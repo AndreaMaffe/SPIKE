@@ -103,9 +103,9 @@ public class Bomb : ObstacleWithTimer {
 
                 if (Physics2D.RaycastAll(bombCentrePosition, direction)[1].collider.gameObject.name == objectHit.name)
                 {
-                    if (bombCentrePosition.y > objectHit.transform.position.y)
+                   /* if (bombCentrePosition.y > objectHit.transform.position.y)
                         direction += new Vector2(0, 2);
-                    else direction -= new Vector2(0, 2);
+                    else direction -= new Vector2(0, 2);*/
 
                     //applica una spinta all'oggetto pari a explosionThrust
                     rigidbodyHit.AddForce(direction * explosionThrust);
