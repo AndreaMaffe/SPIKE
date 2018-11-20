@@ -156,8 +156,7 @@ MonoBehaviour:
   allNonDraggableColliders:
   - {fileID: 58000749948952714}
   timeBeforeExplosion: 3
-  minExplosionForce: 0
-  maxExplosionForce: 200
+  explosionThrust: 180
   explosionInnerRadius: 2
   explosionOuterRadius: 4
   innerRadius: {fileID: 4549167352771426}
