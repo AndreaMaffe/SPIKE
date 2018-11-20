@@ -59,7 +59,6 @@ public class Player : MonoBehaviour
         LevelManager.endLevelEvent += OnEndLevel;
 
         originalPosition = this.transform.position;
-        currentLevel = levelManager.GetActualLevel();
 
         timers = new List<Timer>();
         timerBeforeExulting = timerManager.AddTimer(0.8f);
