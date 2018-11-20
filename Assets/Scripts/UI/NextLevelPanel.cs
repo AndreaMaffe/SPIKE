@@ -31,12 +31,12 @@ public class NextLevelPanel : MonoBehaviour
         //Adesso bisogna settare currentLevel al livello successivo e caricare la scena
         saveManager.currentLevel += 1;
         SaveUtility.SaveObject(saveManager, "saveFile");
-        SceneManager.LoadScene("SampleSceneRangeAle2");
+        SceneManager.LoadScene("SampleSceneRange");
     }
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene("SampleRangeAle2");
+        SceneManager.LoadScene("SampleSceneRange");
     }
 
     //Metodo che della schermata di vittoria ci riporta al main menu
