@@ -98,14 +98,6 @@ public class Bomb : ObstacleWithTimer {
             GameObject objectHit = hitColliders[i].gameObject;
             Rigidbody2D rigidbodyHit = objectHit.GetComponent<Rigidbody2D>();
 
-            /*
-            //calcola la spinta proporzionalmente rispetto alla distanza dalla bomba
-            float thrust = minExplosionForce + (explosionOuterRadius - Vector3.Distance(objectHit.transform.position, this.transform.position)) / (explosionOuterRadius - explosionInnerRadius) * maxExplosionForce;
-
-            if (thrust > maxExplosionForce)
-                thrust = maxExplosionForce;
-            */
-
             //applica la forza
             if (rigidbodyHit)
             {

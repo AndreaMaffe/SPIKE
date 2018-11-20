@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spring : Obstacle {
-
+public class Spring : Obstacle
+{
     private bool triggered;
     private Transform spikes;
     private PolygonCollider2D coll;
@@ -15,19 +15,20 @@ public class Spring : Obstacle {
     public float platformHeight;
 
     //start apposito per gli ostacoli, usare questo anziché Start().
-    protected override void StartObstacle ()
+    protected override void StartObstacle()
     {
         triggered = false;
         spikes = transform.Find("Spikes");
 
-        DisablePhysics();
+        coll = GetComponent<PolygonCollider2D>();
+        coll.enabled = false;
     }
 
     public override void OnObstacleDropped()
     {
         base.OnObstacleDropped();
 
-        
+
         //sposta le spine sotto alla prima piattaforma disponibile
         if (Physics2D.Raycast(this.transform.position + Vector3.up, Vector2.up, 10, LayerMask.GetMask("Platform")))
             spikes.transform.position = new Vector3(spikes.transform.position.x, Physics2D.Raycast(this.transform.position + Vector3.up, Vector2.up, 10, LayerMask.GetMask("Platform")).collider.gameObject.transform.position.y - 0.5f, 0);
@@ -36,9 +37,10 @@ public class Spring : Obstacle {
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
-    protected override void UpdateObstacle () {
-		
-	}
+    protected override void UpdateObstacle()
+    {
+
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -64,8 +66,6 @@ public class Spring : Obstacle {
     protected override void WakeUp()
     {
         SetActive(true);
-
-        EnablePhysics();
     }
 
     //chiamato al RetryLevel()
@@ -81,8 +81,9 @@ public class Spring : Obstacle {
         //impedisce di entrare in OnTrigger
         SetActive(false);
 
-        DisablePhysics();
-       
+        //disabilita il collider fisico della piattaforma
+        coll.enabled = false;
+
         triggered = false;
     }
 
