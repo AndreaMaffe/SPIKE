@@ -11,6 +11,7 @@ public class Bomb : ObstacleWithTimer {
     public float explosionThrust;
     public float explosionInnerRadius;
     public float explosionOuterRadius;
+    public float sbalzoMinimo;
 
     public Transform innerRadius;
     public Transform outerRadius;
@@ -103,9 +104,11 @@ public class Bomb : ObstacleWithTimer {
 
                 if (Physics2D.RaycastAll(bombCentrePosition, direction)[1].collider.gameObject.name == objectHit.name)
                 {
-                    if (bombCentrePosition.y > objectHit.transform.position.y)
-                        direction += new Vector2(0, 2);
-                    else direction -= new Vector2(0, 2);
+                   if (bombCentrePosition.y <= rb.worldCenterOfMass.y && direction.y < sbalzoMinimo)
+                        direction += new Vector2(0, sbalzoMinimo - direction.y);
+                    else if (bombCentrePosition.y > rb.worldCenterOfMass.y && direction.y > -sbalzoMinimo)
+                        direction += new Vector2(0, sbalzoMinimo - direction.y);
+
 
                     //applica una spinta all'oggetto pari a explosionThrust
                     rigidbodyHit.AddForce(direction * explosionThrust);

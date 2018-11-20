@@ -156,9 +156,10 @@ MonoBehaviour:
   allNonDraggableColliders:
   - {fileID: 58000749948952714}
   timeBeforeExplosion: 3
-  explosionThrust: 175
+  explosionThrust: 180
   explosionInnerRadius: 2
   explosionOuterRadius: 4
+  sbalzoMinimo: 3
   innerRadius: {fileID: 4549167352771426}
   outerRadius: {fileID: 4094407001567790}
   explosionParticlePrefab: {fileID: 1452723846864288, guid: 9f6c10db90382c44f84a7894dae7d0fa,

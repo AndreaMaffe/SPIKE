@@ -295,7 +295,7 @@ MonoBehaviour:
   allNonDraggableColliders:
   - {fileID: 58058022464208296}
   deceleration: 2.3
-  speed: 4
+  speed: 3
   positionOffset: 0.05
 --- !u!198 &198483049352428576
 ParticleSystem:
