@@ -12,7 +12,7 @@ public class AudioManagerBR : MonoBehaviour {
 
     void Awake () {
 
-        //non sono sicuro mi servano
+        ////non sono sicuro mi servano
         //if (instance == null)
         //{
         //    instance = this;
@@ -25,7 +25,7 @@ public class AudioManagerBR : MonoBehaviour {
 
         //DontDestroyOnLoad(gameObject);
 
-		foreach (Sounds s in sounds)
+        foreach (Sounds s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
