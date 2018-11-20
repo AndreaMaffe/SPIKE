@@ -20,25 +20,30 @@ public class Raptor : Obstacle {
 	}
 
     //update apposito per gli ostacoli, usare questo anziché Update().
-    protected override void UpdateObstacle () {
-	    if (objectToFollow)  //controllo se il Player esiste ancora
-	    {
-		    //calcola lo spostamento verso il player in base alla distanza da quest'ultimo
-		    float deltaXPosition = (objectToFollow.transform.position.x - this.transform.position.x) / deceleration;
-		    
-		    // evita jitter quando deltaXPosition è vicino a 0
-		    if (deltaXPosition < positionOffset && deltaXPosition > -positionOffset)
-			    deltaXPosition = 0;
+    protected override void UpdateObstacle ()
+    {
+        //calcola lo spostamento verso il player in base alla distanza da quest'ultimo
+        float deltaXPosition = (objectToFollow.transform.position.x - this.transform.position.x) / deceleration;
 
-		    //spostamento usando rigidbody2d
-		    if (deltaXPosition > 0)
-			    rb.velocity = new Vector2(speed, rb.velocity.y);
-		    else if (deltaXPosition < 0)
-			    rb.velocity = new Vector2(-speed, rb.velocity.y);
-		    else
-			    rb.velocity = new Vector2(0.0f, rb.velocity.y);
-	    }
-	}
+        // evita jitter quando deltaXPosition è vicino a 0
+        if (deltaXPosition < positionOffset && deltaXPosition > -positionOffset)
+            deltaXPosition = 0;
+
+        //spostamento usando rigidbody2d
+        if (deltaXPosition > 0)
+        {
+            rb.velocity = new Vector2(speed, rb.velocity.y);
+            this.transform.rotation = new Quaternion(0, 180, 0, 1);
+        }
+        else if (deltaXPosition < 0)
+        {
+            rb.velocity = new Vector2(-speed, rb.velocity.y);
+            this.transform.rotation = Quaternion.identity;
+        }
+
+        else
+            rb.velocity = new Vector2(0.0f, rb.velocity.y);
+    }
 
 	//chiamato al RunLevel()
 	protected override void WakeUp()
