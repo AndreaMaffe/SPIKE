@@ -169,7 +169,7 @@ MonoBehaviour:
   allNonDraggableColliders:
   - {fileID: 61401731526754518}
   - {fileID: 61723628964676386}
-  push: 1400
+  push: 1300
   platformHeight: 2
 --- !u!212 &212586360638749124
 SpriteRenderer:

@@ -46,7 +46,7 @@ public class Spring : Obstacle
     {
         if (!triggered && active)
         {
-            //applica una forza verticale di intensità pari a "push" all'oggetto soprastante
+            //alza la piattaforma e applica una forza verticale di intensità pari a "push" all'oggetto soprastante
             collision.gameObject.transform.position += new Vector3(0, platformHeight, 0);
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, push, 0));
 
