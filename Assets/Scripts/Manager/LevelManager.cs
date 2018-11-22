@@ -100,7 +100,6 @@ public class LevelManager : MonoBehaviour
             //attiva tutti gli eventi associati al RetryLevel() (come gli Sleep() degli ostacoli)
             retryLevelEvent();
         }
-
     }
 
     public void ReloadLevel()

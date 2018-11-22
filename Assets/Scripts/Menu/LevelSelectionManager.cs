@@ -59,9 +59,8 @@ public class LevelSelectionManager : MonoBehaviour {
     //Metodo da rivedere una volta che iniziamo ad avere qualche livello definitivo
     private void ChooseLevel()
     {
-        int levelIndex;
-        levelIndex = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text);
-        LevelManager.CurrentLevelIndex = levelIndex;
+        int levelIndex = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text);
+        LevelManager.CurrentLevelIndex = levelIndex -1;
         SaveUtility.SaveObject(saveManager, "saveFile");
         //if (levelIndex <= saveManager.maxUnlockedLevel) LINEA DI CODICE CORRETTA, USIAMO LA PROSSIMA IN FASE DI TESTING
         if (levelIndex <= levelAmountTest)
