@@ -77,6 +77,7 @@ public class Player : MonoBehaviour
             onGround = true;
         }
 
+        //se è in aria
         else
         {
             rb.drag = 0;
@@ -289,7 +290,7 @@ public class Player : MonoBehaviour
         LevelManager.runLevelEvent -= WakeUp;
         LevelManager.retryLevelEvent -= Sleep;
         LevelManager.endLevelEvent -= OnEndLevel;
-        timerBeforeExulting.triggeredEvent -= Exult;
+        timerBeforeExulting.Pause();
     } 
 
 }

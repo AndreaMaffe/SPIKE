@@ -29,6 +29,6 @@ MonoBehaviour:
     obstacleMaxAmount: 1
   movementDatas:
   - movement: 1
-    startTime: 2
+    startTime: 1.8
   - movement: 1
-    startTime: 4.9
+    startTime: 4.5

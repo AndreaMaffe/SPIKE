@@ -4025,6 +4025,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114017451738194706, guid: 67017b6148226b24d86f54ae958a263f,
+        type: 2}
+      propertyPath: jumpStrenght
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 114017451738194706, guid: 67017b6148226b24d86f54ae958a263f,
+        type: 2}
+      propertyPath: jumpAngle
+      value: 75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67017b6148226b24d86f54ae958a263f, type: 2}
   m_IsPrefabAsset: 0
