@@ -7,12 +7,11 @@ using System;
 
 public class LevelManager : MonoBehaviour
 {
-
     private enum LevelState { RUNNING, UNDER_CONSTRUCTION };
 
-    private Level currentLevel;
+    public static int CurrentLevelIndex { get; set; }
+    public static Level CurrentLevel { get; set; }
     private LevelState state;
-    private SaveManager saveManager;
 
     //Tutti gli scriptable objects dei livelli
     public Level[] levels;
@@ -56,20 +55,19 @@ public class LevelManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
 
-        //Carichiamo l'oggetto SaveManager per ottenere i dati salvati del gioco
-        saveManager = SaveManager.SaveManagerInstance;
-        saveManager = SaveUtility.LoadObject(saveManager, "saveFile");
-        PrintSaveManager();
+        CurrentLevel = levels[CurrentLevelIndex];
+        if (CurrentLevel == null)
+            Debug.Log("Il livello corrente è null nel LevelManager");
+       
+        LoadLevel(CurrentLevel);
 
-        LoadLevel();
         state = LevelState.UNDER_CONSTRUCTION;
     }
 
-    void LoadLevel()
+    void LoadLevel(Level level)
     {
-        currentLevel = GetActualLevel();
-        CreatePlatforms(currentLevel);
-        CreateUIObstacleButtons(currentLevel);
+        CreatePlatforms(level);
+        CreateUIObstacleButtons(level);
     }
 
     //Metodo che posiziona le piattaforme del livello a partire dallo scriptable object
@@ -79,12 +77,6 @@ public class LevelManager : MonoBehaviour
         {
             Instantiate(platform.platformType, platform.platformPos, Quaternion.identity);
         }
-    }
-
-    public Level GetActualLevel()
-    {
-        return levels[saveManager.currentLevel - 1];  //QUESTA E' LA LINEA DI CODICE CORRETTA, NON CANCELLARE
-        //return levels[0]; //Questa è la linea di codice più comoda adesso in fase di testing
     }
 
     public void ChangeLevelState()
@@ -111,8 +103,8 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    public void ReloadLevel() {
-
+    public void ReloadLevel()
+    {
         //FindObjectOfType<TimerManager>().Clear();
         SceneManager.LoadSceneAsync("SampleSceneRange");
         //state = LevelState.UNDER_CONSTRUCTION;
@@ -160,14 +152,8 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void PrintSaveManager()
+    public void GoToMainMenu()
     {
-        //Debug.Log("|CurrentLevel: " + saveManager.currentLevel + "| |MaxUnlockedLevel: " + saveManager.maxUnlockedLevel + "| |TotalLevels: " + saveManager.totalLevels + "|");
-        currentLevelText.text = "LV. " + saveManager.currentLevel;
-        Debug.Log("LV. " + saveManager.currentLevel); 
-    }
-
-    public void GoToMainMenu() {
         SceneManager.LoadSceneAsync("LevelSelection");
     }
 

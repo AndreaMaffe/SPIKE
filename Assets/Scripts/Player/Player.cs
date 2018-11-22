@@ -35,9 +35,6 @@ public class Player : MonoBehaviour
     public Collider2D[] RagdollColliders;
     public GameObject[] RagdollArts;
 
-    //variabile che contiene lo scriptable object del livello attuale chiesto al level manager
-    private Level currentLevel;
-    private LevelManager levelManager;
     private TimerManager timerManager;
 
     //Lista che contiene tutti i timer per i movimenti del giocatore
@@ -51,7 +48,6 @@ public class Player : MonoBehaviour
         mainCollider = GetComponent<BoxCollider2D>();
         body = transform.Find("Body");
 
-        levelManager = FindObjectOfType<LevelManager>();
         timerManager = FindObjectOfType<TimerManager>();
 
         LevelManager.runLevelEvent += WakeUp;
@@ -204,7 +200,7 @@ public class Player : MonoBehaviour
     //crea e setta i timer collegati ai movimenti
     void SetTimers()
     {
-        foreach (MovementData movementData in currentLevel.movementDatas)
+        foreach (MovementData movementData in LevelManager.CurrentLevel.movementDatas)
         {
             Timer timer = timerManager.AddTimer(movementData.startTime);
 
@@ -218,9 +214,6 @@ public class Player : MonoBehaviour
                     break;
                 case "Stop":
                     timer.triggeredEvent += Stop;
-                    break;
-                default:
-                    Debug.Log("ERROR: action name not valid, check scriptable object of the level " + currentLevel + " or PlayerMovement.cs");
                     break;
             }
 

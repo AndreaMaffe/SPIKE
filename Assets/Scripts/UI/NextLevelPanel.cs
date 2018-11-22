@@ -15,7 +15,7 @@ public class NextLevelPanel : MonoBehaviour
         //Se il livello è completato facciamo scendere il pannello della vittoria
         LevelManager.endLevelEvent += DownScrollPanel;
         //Se il livello è completato aggiorniamo il massimo livello sbloccato
-        LevelManager.endLevelEvent += UpdateMaxUnlockedLevel;
+        //LevelManager.endLevelEvent += UpdateMaxUnlockedLevel;
         //Se viene premuto il tasto reply al di fuori del pannello, il pannello ritorna su (probabilmente ci serve solo in fase di testing)
         LevelManager.retryLevelEvent += UpScrollPanel;
     }
@@ -39,7 +39,7 @@ public class NextLevelPanel : MonoBehaviour
         saveManager = SaveManager.SaveManagerInstance;
         saveManager = SaveUtility.LoadObject(saveManager, "saveFile");
         //Adesso bisogna settare currentLevel al livello successivo e caricare la scena
-        saveManager.currentLevel += 1;
+        LevelManager.CurrentLevelIndex += 1;
         SaveUtility.SaveObject(saveManager, "saveFile");
         SceneManager.LoadScene("SampleSceneRange");
     }
@@ -55,6 +55,7 @@ public class NextLevelPanel : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    /*
     //Metodo che aggiorna il massimo livello sbloccato
     private void UpdateMaxUnlockedLevel()
     {
@@ -67,12 +68,13 @@ public class NextLevelPanel : MonoBehaviour
             Debug.Log("Ho aggiornato maxunlockedlevel a: " + saveManager.maxUnlockedLevel);
         }
     }
+    */
 
     private void OnDestroy()
     {
         //Unregister events
         LevelManager.endLevelEvent -= DownScrollPanel;
-        LevelManager.endLevelEvent -= UpdateMaxUnlockedLevel;
+        //LevelManager.endLevelEvent -= UpdateMaxUnlockedLevel;
         LevelManager.retryLevelEvent -= UpScrollPanel;
     }
 

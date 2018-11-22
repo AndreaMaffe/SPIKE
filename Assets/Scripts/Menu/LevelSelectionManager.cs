@@ -61,8 +61,7 @@ public class LevelSelectionManager : MonoBehaviour {
     {
         int levelIndex;
         levelIndex = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text);
-        saveManager.currentLevel = levelIndex;
-        Debug.Log("Sto per caricare il livello: " + saveManager.currentLevel);
+        LevelManager.CurrentLevelIndex = levelIndex;
         SaveUtility.SaveObject(saveManager, "saveFile");
         //if (levelIndex <= saveManager.maxUnlockedLevel) LINEA DI CODICE CORRETTA, USIAMO LA PROSSIMA IN FASE DI TESTING
         if (levelIndex <= levelAmountTest)
@@ -74,7 +73,8 @@ public class LevelSelectionManager : MonoBehaviour {
         }
     }
 
-    public void GoToMainMenu() {
+    public void GoToMainMenu()
+    {
         SceneManager.LoadSceneAsync("MainMenu");
     }
 

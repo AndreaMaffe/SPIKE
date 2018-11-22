@@ -4,8 +4,6 @@
 [Serializable]
 public class SaveManager
 {
-    //Variabile relativa al livello attuale da caricare in scena
-    public int currentLevel;
     //Variabile relativa al massimo livello raggiunto dal giocatore
     public int maxUnlockedLevel;
     //Variabile relativa al totale dei livelli inseriti
@@ -15,7 +13,6 @@ public class SaveManager
 
     private SaveManager()
     {
-        currentLevel = 0;
         maxUnlockedLevel = 0;
         totalLevels = 0;
     }
