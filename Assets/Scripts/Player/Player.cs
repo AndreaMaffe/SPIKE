@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
         {
             case PlayerState.Running:
                 if (onGround)
-                    rb.AddForce(new Vector2(speed, 0));
+                    rb.AddForce(new Vector2(speed/100, 0), ForceMode2D.Impulse);
                 break;
 
             case PlayerState.WaitingToJump:

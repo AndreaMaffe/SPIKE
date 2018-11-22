@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4236351195152336}
   - component: {fileID: 212438825540057256}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: RaptorMascella
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4256917855159132}
   - component: {fileID: 212864499426929930}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: RaptorLuce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4515311309973992}
   - component: {fileID: 198483049352428576}
   - component: {fileID: 199165612572692912}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Fumo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4369893046744924}
   - component: {fileID: 212866223786259328}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: OmbraPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4246467585322634}
   - component: {fileID: 212568039196020284}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: RaptorDavanti
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 114418823827491104}
   - component: {fileID: 58058022464208296}
   - component: {fileID: 95175686492455374}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Raptor
   m_TagString: Deadly
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4529766401560646}
   - component: {fileID: 212996276392712848}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: RaptorRuota
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ MonoBehaviour:
   - {fileID: 50411576397563470}
   allNonDraggableColliders:
   - {fileID: 58058022464208296}
-  speed: 10
+  speed: 13
 --- !u!198 &198483049352428576
 ParticleSystem:
   m_ObjectHideFlags: 1

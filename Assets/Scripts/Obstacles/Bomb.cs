@@ -11,7 +11,6 @@ public class Bomb : ObstacleWithTimer {
     public float explosionThrust;
     public float explosionInnerRadius;
     public float explosionOuterRadius;
-    public float sbalzoMinimo;
 
     public Transform innerRadius;
     public Transform outerRadius;
@@ -105,7 +104,7 @@ public class Bomb : ObstacleWithTimer {
                 if (Physics2D.RaycastAll(rb.worldCenterOfMass, direction)[1].collider.gameObject.name == objectHit.name)
                 {
                     //applica una spinta all'oggetto pari a explosionThrust
-                    rigidbodyHit.AddForce(direction * explosionThrust);
+                    rigidbodyHit.AddForce(direction * explosionThrust /10, ForceMode2D.Impulse);
 
                     //se il player è troppo vicino, uccidilo
                     if (Vector2.Distance(objectHit.transform.position, this.transform.position) < explosionInnerRadius && objectHit.tag == "Player")

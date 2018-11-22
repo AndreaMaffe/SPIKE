@@ -58,7 +58,7 @@ public abstract class Obstacle : MonoBehaviour
     }
 
     // Update is called once per frame
-    protected void Update()
+    protected void FixedUpdate()
     {
         if (active)
             UpdateObstacle();

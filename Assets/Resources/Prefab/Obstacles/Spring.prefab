@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4612440627069870}
   - component: {fileID: 212779393570249934}
   - component: {fileID: 61723628964676386}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Spikes
   m_TagString: Deadly
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ MonoBehaviour:
   allNonDraggableColliders:
   - {fileID: 61401731526754518}
   - {fileID: 61723628964676386}
-  push: 1300
+  push: 10
   platformHeight: 2
 --- !u!212 &212586360638749124
 SpriteRenderer:
