@@ -14,7 +14,8 @@ public enum ObstacleType
     Elevator,
     Raptor,
     FallingSpikes,
-    Flamethrower
+    Flamethrower,
+    Spikes
 }
 
 public abstract class Obstacle : MonoBehaviour
@@ -26,8 +27,6 @@ public abstract class Obstacle : MonoBehaviour
 
     [Tooltip("The position of the anchor that it can occupy")]
     public AnchorPointPosition anchorPosition;
-    [Tooltip("How many anchor point needs")]
-    public int anchorSlotOccupied;
     [Tooltip("All the rigidbodies attached to the prefab")]
     public Rigidbody2D[] rigidbodies;
     [Tooltip("Tutti i collider non legati al drag and drop")]
@@ -148,6 +147,7 @@ public abstract class Obstacle : MonoBehaviour
             case ObstacleType.Raptor: return new PlayerDeathBySpike(player, this, position, transform.Find("RaptorRuota").gameObject);
             case ObstacleType.FallingSpikes: return new PlayerDeathBySpike(player, this, position, transform.Find("Spikes").gameObject);
             case ObstacleType.Spring: return new PlayerDeathBySpike(player, this, position, transform.Find("Spikes").gameObject);
+            case ObstacleType.Spikes: return new PlayerDeathBySpike(player, this, position, this.gameObject);
 
             default: return new PlayerDeathByExplosion(player, this, position);
         }

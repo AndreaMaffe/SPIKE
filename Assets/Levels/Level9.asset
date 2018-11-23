@@ -21,7 +21,7 @@ MonoBehaviour:
     obstacleMaxAmount: 1
   - type: 3
     obstacleMaxAmount: 1
-  - type: 4
+  - type: 10
     obstacleMaxAmount: 2
   movementDatas:
   - movement: 1
