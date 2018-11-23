@@ -11,7 +11,7 @@ public class Spikes : Obstacle
 
     protected override void StartObstacle()
     {
-
+        DisablePhysics();
     }
 
     protected override void UpdateObstacle()

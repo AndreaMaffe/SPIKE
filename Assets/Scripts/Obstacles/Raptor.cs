@@ -25,7 +25,6 @@ public class Raptor : Obstacle
         //applica una forza orizzontale in direzione del Player
         Vector2 direction = (objectToFollow.GetComponent<Rigidbody2D>().worldCenterOfMass - this.rb.worldCenterOfMass).normalized;
         direction.y = 0;
-        Debug.Log(direction);
         rb.AddForce(direction * speed /100, ForceMode2D.Impulse);
 
         //inverti la sprite se il player è a destra del Raptor
