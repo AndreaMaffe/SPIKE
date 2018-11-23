@@ -44,6 +44,8 @@ public class Raptor : Obstacle
         //permette di entrare nell'UpdateObstacle()
         SetActive(true);
 
+        rb.drag = 0;
+
         EnablePhysics();
 
     }
@@ -63,6 +65,12 @@ public class Raptor : Obstacle
 
         DisablePhysics();
 
+    }
+
+    protected override void OnEndLevel()
+    {
+        SetActive(false);
+        rb.drag = 4;
     }
 
     public override ObstacleType GetObstacleType()
