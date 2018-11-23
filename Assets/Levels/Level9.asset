@@ -11,6 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level9
   m_EditorClassIdentifier: 
+  startingPoint: {x: -8.5, y: -2.6, z: 0}
+  endingPoint: {x: 8.5, y: -2.5, z: 0}
   platformDatas: []
   obstacleDatas:
   - type: 0

@@ -11,13 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level4
   m_EditorClassIdentifier: 
-  platformDatas:
-  - platformType: {fileID: 1791573446530272, guid: 3b171e04078e2864f97e45a5a93d21ce,
-      type: 2}
-    platformPos: {x: 3, y: 0.41, z: 0}
-  - platformType: {fileID: 1369588825285826, guid: 7aa6330ffaad7364bb4006525fc928fd,
-      type: 2}
-    platformPos: {x: -1.4, y: -0.5185881, z: 0}
+  startingPoint: {x: -8.5, y: -2.6, z: 0}
+  endingPoint: {x: 8.5, y: -2.5, z: 0}
+  platformDatas: []
   obstacleDatas:
   - type: 0
     obstacleMaxAmount: 1
@@ -29,6 +25,6 @@ MonoBehaviour:
     obstacleMaxAmount: 1
   movementDatas:
   - movement: 1
-    startTime: 1.8
+    startTime: 1.4
   - movement: 1
-    startTime: 4.5
+    startTime: 4.1

@@ -13,7 +13,8 @@ public enum PlayerMovement
 [CreateAssetMenu(fileName = "Level", menuName = "Level", order = 1)]
 public class Level : ScriptableObject
 {
-
+    public Vector3 startingPoint;
+    public Vector3 endingPoint;
     //Lista della posizione delle piattaforme presenti nel livello;
     public PlatformData[] platformDatas;
     //Lista degli ostacoli presenti nel livello

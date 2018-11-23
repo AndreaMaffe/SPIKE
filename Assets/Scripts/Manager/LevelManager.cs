@@ -68,7 +68,8 @@ public class LevelManager : MonoBehaviour
     {
         CreatePlatforms(level);
         CreateUIObstacleButtons(level);
-        Instantiate(Resources.Load<GameObject>("Prefab/Player"), new Vector3(-8.69f, -2.65f, 0), Quaternion.identity);
+        Instantiate(Resources.Load<GameObject>("Prefab/Player"), level.startingPoint, Quaternion.identity);
+        Instantiate(Resources.Load<GameObject>("Prefab/Flag"), level.endingPoint, Quaternion.identity);
     }
 
     //Metodo che posiziona le piattaforme del livello a partire dallo scriptable object

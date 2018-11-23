@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     private Vector3 originalPosition;
     [SerializeField]
     private bool onGround;
+    private bool invincible;
 
     [Header("Ragdoll")]
     public GameObject bloodParticle;
@@ -38,7 +39,7 @@ public class Player : MonoBehaviour
     private TimerManager timerManager;
 
     //Lista che contiene tutti i timer per i movimenti del giocatore
-    private List<Timer> timers;
+    private List<Timer> movementTimers;
     private Timer timerBeforeExulting;
 
     void Start()
@@ -56,9 +57,10 @@ public class Player : MonoBehaviour
 
         originalPosition = this.transform.position;
 
-        timers = new List<Timer>();
+        movementTimers = new List<Timer>();
         timerBeforeExulting = timerManager.AddTimer(0.8f);
         timerBeforeExulting.triggeredEvent += Exult;
+
     }
 
     void FixedUpdate()
@@ -115,15 +117,15 @@ public class Player : MonoBehaviour
         Run();
 
         SetTimers();
-        timerBeforeExulting = timerManager.AddTimer(0.8f);
-        timerBeforeExulting.triggeredEvent += Exult;
 
-        StartTimers();
+        StartMovementTimers();
 
         //distrugge lo spruzzo di sangue
         GetComponent<PlayerAppearence>().DestroyBloodFountainParticle();
         //riattiva l'ombra
         transform.Find("OmbraPlayer").gameObject.SetActive(true);
+
+        invincible = false;
 
     }
 
@@ -143,13 +145,13 @@ public class Player : MonoBehaviour
 
         //rimuovi tutti i timer (verranno risettati al successivo WakeUp())
         ResetTimers();
-        timerBeforeExulting.Pause();
     }
 
     //chiamato al EndLevel()
     void OnEndLevel()
     {
         timerBeforeExulting.Start();
+        invincible = true;
     }
 
     void Run()
@@ -218,23 +220,28 @@ public class Player : MonoBehaviour
                     break;
             }
 
-            timers.Add(timer);
+            movementTimers.Add(timer);
         }
+
+        timerBeforeExulting = timerManager.AddTimer(0.8f);
+        timerBeforeExulting.triggeredEvent += Exult;
     }
 
     //blocca tutti i timer e li rimuove
     void ResetTimers()
     {
-        foreach (Timer timer in timers)
+        foreach (Timer timer in movementTimers)
             timer.Pause();
 
-        timers.Clear();
+        movementTimers.Clear();
+
+        timerBeforeExulting.Pause();
     }
 
     //fa partire tutti i timer collegati ai movimenti
-    void StartTimers()
+    void StartMovementTimers()
     {
-        foreach (Timer timer in timers)
+        foreach (Timer timer in movementTimers)
         {
             timer.Start();
         }
@@ -243,7 +250,7 @@ public class Player : MonoBehaviour
     //da cambiare e da fare con raycast per evitare collisioni laterali ma per ora va bene anche cosi'
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Deadly")
+        if (collision.gameObject.tag == "Deadly" && !invincible)
         {
             //crea l'evento PlayerDeathEvent nel punto corrispondente al contatto e avvialo
             PlayerDeathEvent playerDeathEvent = collision.transform.root.GetComponent<Obstacle>().CreatePlayerDeathEvent(this, collision.GetContact(0).point);

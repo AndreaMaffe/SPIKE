@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4018759121602988}
   - component: {fileID: 96180894561258936}
-  m_Layer: 9
+  m_Layer: 26
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114276457688601808}
   - component: {fileID: 50807369524404532}
   - component: {fileID: 60507497203018620}
-  m_Layer: 9
+  m_Layer: 26
   m_Name: Bullet
   m_TagString: Deadly
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4610867813758608}
   - component: {fileID: 61412249919695282}
   - component: {fileID: 50278521552642606}
-  m_Layer: 9
+  m_Layer: 26
   m_Name: Body
   m_TagString: Platform
   m_Icon: {fileID: 0}
