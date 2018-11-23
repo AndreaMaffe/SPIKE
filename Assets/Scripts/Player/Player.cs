@@ -232,7 +232,8 @@ public class Player : MonoBehaviour
 
         movementTimers.Clear();
 
-        timerBeforeExulting.Pause();
+        if(timerBeforeExulting != null)
+            timerBeforeExulting.Pause();
     }
 
     //fa partire tutti i timer collegati ai movimenti
@@ -294,7 +295,6 @@ public class Player : MonoBehaviour
         LevelManager.runLevelEvent -= WakeUp;
         LevelManager.retryLevelEvent -= Sleep;
         LevelManager.endLevelEvent -= OnEndLevel;
-        timerBeforeExulting.Pause();
     } 
 
 }
