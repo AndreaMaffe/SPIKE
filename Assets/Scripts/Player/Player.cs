@@ -58,9 +58,6 @@ public class Player : MonoBehaviour
         originalPosition = this.transform.position;
 
         movementTimers = new List<Timer>();
-        timerBeforeExulting = timerManager.AddTimer(0.8f);
-        timerBeforeExulting.triggeredEvent += Exult;
-
     }
 
     void FixedUpdate()
