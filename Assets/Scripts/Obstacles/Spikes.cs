@@ -27,6 +27,8 @@ public class Spikes : Obstacle
     protected override void Sleep()
     {
         DisablePhysics();
+
+        ResetPosition();
     }
 
 
