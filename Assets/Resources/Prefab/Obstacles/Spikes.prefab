@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61859702404532346}
   - component: {fileID: 50915303177944298}
   - component: {fileID: 114866244507589206}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Spikes
   m_TagString: Deadly
   m_Icon: {fileID: 0}

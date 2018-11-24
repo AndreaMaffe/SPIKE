@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level5
   m_EditorClassIdentifier: 
-  description: 
+  description: saltare sul missile per schivare il raptor
   startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
   platformDatas:
@@ -26,14 +26,14 @@ MonoBehaviour:
     platformPos: {x: 5, y: 0.5, z: 0}
   - platformType: {fileID: 1058377351572860, guid: 15df901a804d5a449b27cc99e16e2483,
       type: 2}
-    platformPos: {x: 3, y: 4, z: 0}
+    platformPos: {x: 2.5, y: 4, z: 0}
   obstacleDatas:
   - type: 7
     obstacleMaxAmount: 1
   - type: 2
     obstacleMaxAmount: 2
-  - type: 0
-    obstacleMaxAmount: 1
+  - type: 10
+    obstacleMaxAmount: 2
   movementDatas:
   - movement: 1
     startTime: 0.2
