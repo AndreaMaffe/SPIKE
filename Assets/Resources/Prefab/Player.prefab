@@ -881,8 +881,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 18
   jumpAngle: 75
-  jumpStrenght: 19
-  jumpDelayTime: 0.7
+  jumpStrenght: 20
+  jumpDelayTime: 0.5
   state: 1
   onGround: 0
   bloodParticle: {fileID: 1279267566704632, guid: d4f72d91ea095c9469506a33a5a7274a,

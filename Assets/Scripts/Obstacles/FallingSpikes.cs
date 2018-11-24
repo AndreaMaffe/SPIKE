@@ -105,6 +105,12 @@ public class FallingSpikes : ObstacleWithTimer
         originalSpikesPosition = spikes.transform.position;
     }
 
+    protected override void OnEndLevel()
+    {
+        //inizia la risalita
+        goingUp = true;
+    }
+
     protected override void OnTimerEnd()
     {
         //inizia la risalita

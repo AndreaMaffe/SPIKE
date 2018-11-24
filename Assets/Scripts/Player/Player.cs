@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         //se tocca una piattaforma
-        if (Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y), Vector2.down, 0.1f , LayerMask.GetMask("Platform", "Bullet")))
+        if (Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y), Vector2.down, 0.1f , LayerMask.GetMask("Platform")))
         {
             //al primo contatto, annulla la velocità e fai reiniziare il Player a correre
             if (!onGround)
@@ -159,8 +159,14 @@ public class Player : MonoBehaviour
 
     void Stop()
     {
-        state = PlayerState.Stopped;
-        animator.SetTrigger("Stop");
+        if (onGround)
+        {
+            state = PlayerState.Stopped;
+            animator.SetTrigger("Stop");
+        }
+
+        else Invoke("Stop", 0.1f);
+
     }
 
     void WaitAndJump()
