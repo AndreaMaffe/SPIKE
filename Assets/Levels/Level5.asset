@@ -11,13 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level5
   m_EditorClassIdentifier: 
+  description: 
+  startingPoint: {x: -8.5, y: -2.6, z: 0}
+  endingPoint: {x: 8.5, y: -2.5, z: 0}
   platformDatas:
-  - platformType: {fileID: 1791573446530272, guid: 3b171e04078e2864f97e45a5a93d21ce,
+  - platformType: {fileID: 1507616780894958, guid: a49ff86480db4924382a09c262eb8003,
       type: 2}
-    platformPos: {x: 2.24, y: 0.41, z: 0}
-  - platformType: {fileID: 1369588825285826, guid: 7aa6330ffaad7364bb4006525fc928fd,
-      type: 2}
-    platformPos: {x: -2.082655, y: -0.5185881, z: 0}
+    platformPos: {x: -4, y: -0.4, z: 0}
   obstacleDatas:
   - type: 0
     obstacleMaxAmount: 1
@@ -29,6 +29,6 @@ MonoBehaviour:
     obstacleMaxAmount: 1
   movementDatas:
   - movement: 1
-    startTime: 1.8
-  - movement: 2
+    startTime: 1
+  - movement: 1
     startTime: 2.5

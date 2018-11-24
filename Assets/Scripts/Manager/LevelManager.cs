@@ -37,6 +37,8 @@ public class LevelManager : MonoBehaviour
     public Button playPauseButton;
 
     public Text currentLevelText;
+    public Text currentTimeText;
+    private float currentTime;
 
 
     //struct che associa ogni ostacolo alla posizione in cui puo' andare
@@ -51,7 +53,7 @@ public class LevelManager : MonoBehaviour
     //al draggable obstacle in quale posizione puo' andare e in quale no
     public ObstaclePositionData[] obstaclePositionData;
 
-    private void Start()
+    void Start()
     {
         Application.targetFrameRate = 60;
 
@@ -62,6 +64,15 @@ public class LevelManager : MonoBehaviour
         LoadLevel(CurrentLevel);
 
         state = LevelState.UNDER_CONSTRUCTION;
+
+        currentTime = 0.0f;
+    }
+
+    private void FixedUpdate()
+    {
+        if (state == LevelState.RUNNING)
+        currentTime += Time.deltaTime;
+        currentTimeText.text = currentTime.ToString();
     }
 
     void LoadLevel(Level level)
@@ -70,6 +81,7 @@ public class LevelManager : MonoBehaviour
         CreateUIObstacleButtons(level);
         Instantiate(Resources.Load<GameObject>("Prefab/Player"), level.startingPoint, Quaternion.identity);
         Instantiate(Resources.Load<GameObject>("Prefab/Flag"), level.endingPoint, Quaternion.identity);
+        currentTime = 0.0f;
     }
 
     //Metodo che posiziona le piattaforme del livello a partire dallo scriptable object
@@ -98,6 +110,7 @@ public class LevelManager : MonoBehaviour
             state = LevelState.UNDER_CONSTRUCTION;
 
             playPauseButton.image.overrideSprite = null;
+            currentTime = 0.0f;
 
             //attiva tutti gli eventi associati al RetryLevel() (come gli Sleep() degli ostacoli)
             retryLevelEvent();
