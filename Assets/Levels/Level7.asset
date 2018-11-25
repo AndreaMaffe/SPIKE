@@ -17,12 +17,22 @@ MonoBehaviour:
   platformDatas:
   - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
       type: 2}
-    platformPos: {x: 6, y: 3, z: 0}
+    platformPos: {x: 3, y: 1, z: 0}
   obstacleDatas:
-  - type: 7
+  - type: 0
     obstacleMaxAmount: 1
-  - type: 2
+  - type: 10
+    obstacleMaxAmount: 4
+  - type: 8
     obstacleMaxAmount: 1
-  - type: 3
-    obstacleMaxAmount: 2
-  movementDatas: []
+  movementDatas:
+  - movement: 2
+    startTime: 2.9
+  - movement: 1
+    startTime: 3.2
+  - movement: 0
+    startTime: 4.8
+  - movement: 2
+    startTime: 5.1
+  - movement: 1
+    startTime: 7.5

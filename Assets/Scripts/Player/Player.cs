@@ -99,7 +99,6 @@ public class Player : MonoBehaviour
                 break;
 
             case PlayerState.Stopped:
-                rb.velocity = new Vector2(0, rb.velocity.y);
                 break;
 
             case PlayerState.Exulting:
@@ -153,6 +152,7 @@ public class Player : MonoBehaviour
 
     void Run()
     {
+        ResetAnimatorTriggers();
         state = PlayerState.Running;
         animator.SetTrigger("Move");
     }
@@ -161,6 +161,8 @@ public class Player : MonoBehaviour
     {
         if (onGround)
         {
+            ResetAnimatorTriggers();
+            rb.velocity = Vector2.zero;
             state = PlayerState.Stopped;
             animator.SetTrigger("Stop");
         }
@@ -173,6 +175,7 @@ public class Player : MonoBehaviour
     {
         if (onGround)
         {
+            ResetAnimatorTriggers();
             rb.velocity = Vector2.zero;
             state = PlayerState.WaitingToJump;
             animator.SetTrigger("WaitingJump");
@@ -183,6 +186,7 @@ public class Player : MonoBehaviour
     {
         if (state == PlayerState.WaitingToJump && onGround)
         {
+            ResetAnimatorTriggers();
             state = PlayerState.Jumping;
             animator.SetTrigger("Jump");
             rb.AddForce(new Vector2(jumpStrenght * Mathf.Cos(jumpAngle * Mathf.Deg2Rad), jumpStrenght * Mathf.Sin(jumpAngle * Mathf.Deg2Rad)), ForceMode2D.Impulse);
@@ -191,6 +195,7 @@ public class Player : MonoBehaviour
 
     void Exult()
     {
+        ResetAnimatorTriggers();
         state = PlayerState.Exulting;
         animator.SetTrigger("Exult");
     }

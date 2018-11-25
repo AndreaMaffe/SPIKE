@@ -150,13 +150,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorPosition: 2
-  anchorSlotOccupied: 1
   rigidbodies:
   - {fileID: 50228646109537280}
   allNonDraggableColliders:
   - {fileID: 58000749948952714}
   timeBeforeExplosion: 3
-  explosionThrust: 55
+  explosionThrust: 175
   explosionInnerRadius: 2
   explosionOuterRadius: 4
   innerRadius: {fileID: 4549167352771426}
