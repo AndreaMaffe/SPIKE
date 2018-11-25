@@ -58,8 +58,8 @@ MonoBehaviour:
   rigidbodies: []
   allNonDraggableColliders: []
   flameParticles: {fileID: 198211916914756626}
-  flameCloseRange: 7
-  flameFarRange: 10
+  flameCloseRange: 9
+  flameFarRange: 12
   push: 11
 --- !u!198 &198211916914756626
 ParticleSystem:
