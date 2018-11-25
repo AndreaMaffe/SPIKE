@@ -26,7 +26,7 @@ MonoBehaviour:
     platformPos: {x: 5, y: 0.5, z: 0}
   - platformType: {fileID: 1058377351572860, guid: 15df901a804d5a449b27cc99e16e2483,
       type: 2}
-    platformPos: {x: 2.5, y: 4, z: 0}
+    platformPos: {x: 3, y: 4, z: 0}
   obstacleDatas:
   - type: 7
     obstacleMaxAmount: 1

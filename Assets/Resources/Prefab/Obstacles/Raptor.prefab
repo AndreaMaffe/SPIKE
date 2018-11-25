@@ -289,7 +289,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorPosition: 2
-  anchorSlotOccupied: 1
   rigidbodies:
   - {fileID: 50411576397563470}
   allNonDraggableColliders:
