@@ -10,10 +10,12 @@ public class DraggableObjectPositionUpdater : MonoBehaviour
     bool snapped;
 
     int layerMask;
+    int obstacleLayerMask;
 
     public void OnEnable()
     {
-        layerMask = LayerMask.GetMask("PuntoAncoraggio"); ;
+        layerMask = LayerMask.GetMask("PuntoAncoraggio");
+        obstacleLayerMask = LayerMask.GetMask("Bomb", "Default", "FallingSpikes", "Pendolum","Raptor","Spikes");
         spriteRenderer = GetComponentsInChildren<SpriteRenderer>();
         ChangeSpriteOpacity();
     }
@@ -25,20 +27,33 @@ public class DraggableObjectPositionUpdater : MonoBehaviour
         else return false;
     }
 
+    public bool CheckIfOverAnotherObstacle()
+    {
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.zero, 10000, obstacleLayerMask);
+
+        if (hit.collider != null && hit.collider.gameObject != this.gameObject) {
+            Debug.Log(hit.collider.name);
+            return true;
+
+        }
+
+        else return false;
+    }
+
     public void UpdatePosition(Vector3 newPosition)
     {
 
         //spara un raycast nella posizione leggermente sopra al tocco del dito
         RaycastHit2D hit = Physics2D.Raycast(newPosition, Vector2.zero, 10000, layerMask);
 
-        //prendo la posizione in cui l'ostacolo puo' andare
-
         //se sono sopra un punto di ancoraggio
         if (hit.collider != null)
         {
+            //prendo la posizione in cui l'ostacolo puo' andare
             AnchorPointPosition anchorPosition = GetComponent<Obstacle>().anchorPosition;
 
-            if (anchorPosition == hit.collider.GetComponent<AnchorRangeSpawner>().GetPosition())
+            if (anchorPosition == hit.collider.GetComponent<AnchorRangeSpawner>().GetPosition() )
             {
                 snapped = true;
                 //cambia l'opacita' della sprite
