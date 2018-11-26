@@ -92,7 +92,7 @@ public abstract class Obstacle : MonoBehaviour
     {
         draggingCollider = gameObject.AddComponent<CircleCollider2D>();
         draggingCollider.isTrigger = true;
-        draggingCollider.radius = 0.7f;
+        draggingCollider.radius = 0.6f;
         draggingCollider.offset = Vector2.zero;
     }
 

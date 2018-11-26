@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4054685172115892}
   - component: {fileID: 212011420506732034}
   - component: {fileID: 114203856396189820}
+  - component: {fileID: 50496493924278782}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
@@ -135,7 +136,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1105142238937366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5770411, y: 2.350071, z: 5.6373873}
+  m_LocalPosition: {x: -6.695341, y: 2.8008595, z: 5.6373873}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4815030268687150}
@@ -225,6 +226,26 @@ Transform:
   m_Father: {fileID: 4369807456067080}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50496493924278782
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1105142238937366}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!95 &95004412889317770
 Animator:
   serializedVersion: 3
@@ -255,7 +276,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorPosition: 0
-  anchorSlotOccupied: 1
   rigidbodies: []
   allNonDraggableColliders: []
   timeToRecover: 1.2

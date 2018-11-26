@@ -48,7 +48,7 @@ public class DraggableObject : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     // sia i bottoni che gli anchor point lo implementano diversamente
     public virtual void OnBeginDrag(PointerEventData eventData)
     {
-
+        obstacleDragged.GetComponent<Obstacle>().CreateCircleDraggingCollider();
     }
 
     public virtual void OnDrag(PointerEventData eventData)
@@ -87,7 +87,7 @@ public class DraggableObject : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     protected virtual void AddObstaclePositionedComponents() {
         if (obstacleDragged.GetComponent<DraggableObjectPositioned>() == null)
             obstacleDragged.gameObject.AddComponent<DraggableObjectPositioned>();
-        obstacleDragged.GetComponent<Obstacle>().CreateCircleDraggingCollider();
+        
     }
 
     //metodo che aggiorna il numero di ostacoli a disposizione, implementato effettivamente nelle classi figlio
