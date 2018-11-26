@@ -231,7 +231,7 @@ public class Player : MonoBehaviour
             movementTimers.Add(timer);
         }
 
-        timerBeforeExulting = timerManager.AddTimer(0.8f);
+        timerBeforeExulting = timerManager.AddTimer(0.7f);
         timerBeforeExulting.triggeredEvent += Exult;
     }
 

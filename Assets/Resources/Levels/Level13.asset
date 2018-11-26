@@ -11,9 +11,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level13
   m_EditorClassIdentifier: 
-  description: modificabile
+  description: la scala
   startingPoint: {x: -8.5, y: -2.6, z: 0}
-  endingPoint: {x: 8.5, y: -2.5, z: 0}
-  platformDatas: []
-  obstacleDatas: []
-  movementDatas: []
+  endingPoint: {x: 7.6, y: 3.2, z: 0}
+  platformDatas:
+  - platformType: {fileID: 1507616780894958, guid: a49ff86480db4924382a09c262eb8003,
+      type: 2}
+    platformPos: {x: -1.5, y: -0.5, z: 0}
+  - platformType: {fileID: 1351263389209680, guid: c378033ebfd97da4cb0d1d50e64e089a,
+      type: 2}
+    platformPos: {x: 8.3, y: 3, z: 0}
+  - platformType: {fileID: 1791573446530272, guid: 3b171e04078e2864f97e45a5a93d21ce,
+      type: 2}
+    platformPos: {x: 1.8, y: 0.4, z: 0}
+  - platformType: {fileID: 1058377351572860, guid: 15df901a804d5a449b27cc99e16e2483,
+      type: 2}
+    platformPos: {x: 4.8, y: 1.3, z: 0}
+  obstacleDatas:
+  - type: 0
+    obstacleMaxAmount: 1
+  - type: 2
+    obstacleMaxAmount: 2
+  movementDatas:
+  - movement: 1
+    startTime: 2.2
+  - movement: 1
+    startTime: 3.3
+  - movement: 1
+    startTime: 4.6
+  - movement: 1
+    startTime: 6
