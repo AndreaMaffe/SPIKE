@@ -16,7 +16,6 @@ public class DraggableObjectPositionUpdater : MonoBehaviour
     private void Start()
     {
         FillObstacleLayerMask();
-
     }
 
     public void OnEnable()
@@ -84,25 +83,42 @@ public class DraggableObjectPositionUpdater : MonoBehaviour
     void ChangeSpriteOpacity()
     {
         if (snapped)
-            foreach(SpriteRenderer spr in spriteRenderer )
-                spr.color = new Color32(255, 255, 255, 255);
-        else
+        {
+            if (!overAnotherObstacle)
+            {
+                foreach (SpriteRenderer spr in spriteRenderer)
+                    spr.color = new Color32(255, 255, 255, 255);
+            }
+
+            else
+            {
+                foreach (SpriteRenderer spr in spriteRenderer)
+                    spr.color = new Color32(255, 255, 255, 120);
+            }       
+        }
+            
+        else if (!snapped)
             foreach (SpriteRenderer spr in spriteRenderer)
                 spr.color = new Color32(255, 255, 255, 120);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (CheckIfObjectInLayerMask(LayerMask.GetMask(LayerMask.LayerToName(collision.gameObject.layer))))        
+        if (CheckIfObjectInLayerMask(LayerMask.GetMask(LayerMask.LayerToName(collision.gameObject.layer))))
+        {
             overAnotherObstacle = true;
+            ChangeSpriteOpacity();
+        }       
       
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (CheckIfObjectInLayerMask(LayerMask.GetMask(LayerMask.LayerToName(collision.gameObject.layer))))
+        {
             overAnotherObstacle = false;
-
+            ChangeSpriteOpacity();
+        }
     }
 
     bool CheckIfObjectInLayerMask(int layerMask)
