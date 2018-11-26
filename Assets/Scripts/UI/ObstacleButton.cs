@@ -55,6 +55,7 @@ public class ObstacleButton : DraggableObject
         if (obstacleAmount > 0)
         {
             SpawnObstacleInstance();
+            obstacleDragged.GetComponent<Obstacle>().CreateCircleDraggingCollider();
             HideObstacleButtons();
         }
     }
