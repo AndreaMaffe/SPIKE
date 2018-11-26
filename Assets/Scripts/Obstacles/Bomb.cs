@@ -101,7 +101,7 @@ public class Bomb : ObstacleWithTimer {
                 Vector2 direction = rigidbodyHit.worldCenterOfMass - rb.worldCenterOfMass;               
 
                 //se non si interpongono oggetti tra la bomba e l'oggetto
-                if (Physics2D.RaycastAll(rb.worldCenterOfMass, direction)[1].collider.gameObject.name == objectHit.name || Physics2D.RaycastAll(rb.worldCenterOfMass, direction)[0].collider.gameObject.name == objectHit.name)
+                if (Physics2D.RaycastAll(rb.worldCenterOfMass, direction)[1].collider.gameObject.name == objectHit.name || Physics2D.RaycastAll(rb.worldCenterOfMass, direction)[0].collider.gameObject.name == objectHit.name || (Physics2D.RaycastAll(rb.worldCenterOfMass, direction)[1].collider.gameObject.name == "Spikes (Clone)" && Physics2D.RaycastAll(rb.worldCenterOfMass, direction)[2].collider.gameObject.name == objectHit.name))
                 {
                     //applica una spinta all'oggetto pari a explosionThrust
                     rigidbodyHit.AddForce(direction.normalized * explosionThrust /10, ForceMode2D.Impulse);

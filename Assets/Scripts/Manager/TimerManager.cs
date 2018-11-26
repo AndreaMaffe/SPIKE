@@ -5,19 +5,12 @@ using UnityEngine;
 public class TimerManager : MonoBehaviour
 {
     public List<Timer> timers = new List<Timer>();
-    public float updateRate;
 
-    // Use this for initialization
-    void Start()
-    {
-        InvokeRepeating("UpdateTimers", 0, updateRate);
-    }
-
-    void UpdateTimers()
+    void FixedUpdate()
     {
         foreach(Timer timer in timers)
         {
-            timer.Update(updateRate);
+            timer.Update(Time.fixedDeltaTime);
         }
     }
 

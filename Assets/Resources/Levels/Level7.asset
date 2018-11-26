@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level7
   m_EditorClassIdentifier: 
-  description: spikesss
+  description: spikes up&down
   startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
   platformDatas: []
@@ -19,19 +19,11 @@ MonoBehaviour:
   - type: 0
     obstacleMaxAmount: 1
   - type: 10
-    obstacleMaxAmount: 4
-  - type: 8
     obstacleMaxAmount: 1
-  - type: 2
+  - type: 8
     obstacleMaxAmount: 1
   movementDatas:
   - movement: 2
     startTime: 2.9
   - movement: 1
     startTime: 3.2
-  - movement: 0
-    startTime: 4.8
-  - movement: 2
-    startTime: 5.1
-  - movement: 1
-    startTime: 6.7

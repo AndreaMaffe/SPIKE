@@ -11,17 +11,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: 
-  description: bomba + 2 spine
+  description: 4 spikes
   startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
   platformDatas: []
   obstacleDatas:
-  - type: 10
-    obstacleMaxAmount: 2
   - type: 0
     obstacleMaxAmount: 1
-  - type: 2
-    obstacleMaxAmount: 2
+  - type: 10
+    obstacleMaxAmount: 4
   movementDatas:
   - movement: 1
-    startTime: 2.3
+    startTime: 2
