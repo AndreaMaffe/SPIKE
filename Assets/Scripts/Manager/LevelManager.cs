@@ -11,10 +11,10 @@ public class LevelManager : MonoBehaviour
 
     public static int CurrentLevelIndex { get; set; }
     public static Level CurrentLevel { get; set; }
-    private LevelState state;
 
     //Tutti gli scriptable objects dei livelli
-    public Level[] levels;
+    private List<Level> levels;
+    private LevelState state;
 
     //[SerializeField]
     //public ObstacleData[] obstacleData;
@@ -57,7 +57,21 @@ public class LevelManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
 
+        levels = new List<Level>();
+
+        try
+        {
+            for (int i = 1; i < 100; i++)
+            {
+                String levelPath = "Levels/Level" + i.ToString();
+                levels.Add(Resources.Load<Level>(levelPath));
+            }
+        }
+        catch (NullReferenceException e) { }
+     
+
         CurrentLevel = levels[CurrentLevelIndex];
+
         if (CurrentLevel == null)
             Debug.Log("Il livello corrente è null nel LevelManager");
        
