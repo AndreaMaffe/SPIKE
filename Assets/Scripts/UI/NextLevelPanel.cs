@@ -7,10 +7,12 @@ public class NextLevelPanel : MonoBehaviour
 
     private Animator animator;
     private SaveManager saveManager;
+    private bool panelDown;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        panelDown = false;
 
         //Se il livello è completato facciamo scendere il pannello della vittoria
         LevelManager.endLevelEvent += DownScrollPanel;
@@ -23,14 +25,19 @@ public class NextLevelPanel : MonoBehaviour
     //Metodo che viene chiamato nel momento in cui il livello è stato vinto e che fa il pannello della vittoria
     private void UpScrollPanel()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("PannelloGiù"))
+        if (panelDown)
+        {
             animator.SetTrigger("UpScrollPanel");
+            panelDown = false;
+        }
+            
     }
 
     //Metodo che viene chiamato nel momento in cui il livello è stato vinto e che fa il pannello della vittoria
     public void DownScrollPanel()
     {
         animator.SetTrigger("DownScrollPanel");
+        panelDown = true;
     }
 
     //Metodo legato al bottone next level, aggiorna il livello corrente in modo tale che verrà caricato lo scriptable object corretto nella prossima scena
