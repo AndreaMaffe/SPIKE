@@ -42,8 +42,8 @@ public class FallingSpikes : ObstacleWithTimer
         if (!goingUp)
         {
             //lancia 2 raycast dx e sx
-            RaycastHit2D hit1 = Physics2D.Raycast(transform.position + new Vector3(-raycastOffset, 0, 0), Vector2.down, 10, LayerMask.GetMask("Player", "Raptor"));
-            RaycastHit2D hit2 = Physics2D.Raycast(transform.position + new Vector3(raycastOffset, 0, 0), Vector2.down, 10, LayerMask.GetMask("Player", "Raptor"));
+            RaycastHit2D hit1 = Physics2D.Raycast(transform.position + new Vector3(-raycastOffset, -1, 0), Vector2.down, 10, LayerMask.GetMask("Player", "Raptor"));
+            RaycastHit2D hit2 = Physics2D.Raycast(transform.position + new Vector3(raycastOffset, -1, 0), Vector2.down, 10, LayerMask.GetMask("Player", "Raptor"));
 
             if (hit1 || hit2)
                 EnablePhysics();

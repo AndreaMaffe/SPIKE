@@ -11,6 +11,7 @@
 - le FallinkSpikes non si possono rispostare #FIXATO
 - spostare la parte superiore della molla tramite drag and drop sposta quella inferiore #FIXATO
 - è possibile schiacciare il tasto retry durante la schermata di fine livello
+- circle collider delle spikes 
 
 
 ----------  OSTACOLI A POSTO:  -------------
@@ -21,15 +22,17 @@
 * Spring
 
 
-
 ----------- OSTACOLI DA FARE/MODIFICARE:  -------------
 - Bomb: sistemare potenza esplosione #FATTO
 - Laser: limitare il movimento a dx
 - Raptor: rendere il movimento più pulito #FATTO
 - Elevator: finire e aggiungere immagine
+- Flamethrower: migliorare particles delle fiamme
 
 
 ----------- ALTRO:  -----------
 -> sistemare la matrice delle collisioni in maniera decente #FATTO
 -> fare in modo che gli estremi della anchor line siano settabili da livello
 -> fare in modo che una anchor line possa essere di più tipi
+-> sistemare il panel di fine livello
+-> fare in modo che gli ostacoli non possano essere disposti sovrapposti
