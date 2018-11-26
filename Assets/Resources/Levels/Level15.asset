@@ -12,8 +12,20 @@ MonoBehaviour:
   m_Name: Level15
   m_EditorClassIdentifier: 
   description: modificabile
-  startingPoint: {x: -8.5, y: -2.6, z: 0}
+  startingPoint: {x: -6.8, y: 2, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
-  platformDatas: []
-  obstacleDatas: []
-  movementDatas: []
+  platformDatas:
+  - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
+      type: 2}
+    platformPos: {x: -6.5, y: 2, z: 0}
+  - platformType: {fileID: 1369588825285826, guid: 7aa6330ffaad7364bb4006525fc928fd,
+      type: 2}
+    platformPos: {x: -1, y: -0.5, z: 0}
+  obstacleDatas:
+  - type: 2
+    obstacleMaxAmount: 1
+  - type: 8
+    obstacleMaxAmount: 1
+  movementDatas:
+  - movement: 1
+    startTime: 0.8
