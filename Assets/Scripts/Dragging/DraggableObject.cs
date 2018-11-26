@@ -66,7 +66,7 @@ public class DraggableObject : MonoBehaviour, IBeginDragHandler, IEndDragHandler
         if (obstacleDragged != null)
         {
             //check se se snappato ad un anchor point range
-            if (obstacleDragged.CheckIfSnapped()) {
+            if (obstacleDragged.CheckIfSnapped() && !obstacleDragged.CheckIfOverAnotherObstacle()) {
                 obstacleDragged.GetComponent<Obstacle>().OnObstacleDropped();
                 UpdateObstacleNumber(-1);
                 obstacleDragged = null;

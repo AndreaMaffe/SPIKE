@@ -63,8 +63,8 @@ public class ObstacleButton : DraggableObject
         //se non controllo se e' stato spawnato mi da' problemi dopo di null reference
         if (obstacleDragged != null)
         {
-            //check se se snappato ad un anchor point range
-            if (obstacleDragged.CheckIfSnapped())
+            //check se se snappato ad un anchor point range e non sei sopra un altro ostacolo
+            if (obstacleDragged.CheckIfSnapped() && !obstacleDragged.CheckIfOverAnotherObstacle())
             {
                 UpdateObstacleNumber(-1);
                 obstacleDragged.GetComponent<Obstacle>().OnObstacleDropped();
