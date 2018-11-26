@@ -35,7 +35,7 @@ MonoBehaviour:
   - type: 10
     obstacleMaxAmount: 2
   - type: 4
-    obstacleMaxAmount: 1
+    obstacleMaxAmount: 2
   movementDatas:
   - movement: 1
     startTime: 0.2
