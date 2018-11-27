@@ -16,10 +16,6 @@ MonoBehaviour:
   endingPoint: {x: 8.5, y: -2.5, z: 0}
   platformDatas: []
   obstacleDatas:
-  - type: 2
-    obstacleMaxAmount: 1
-  - type: 8
-    obstacleMaxAmount: 1
-  - type: 3
-    obstacleMaxAmount: 1
+  - type: 6
+    obstacleMaxAmount: 2
   movementDatas: []
