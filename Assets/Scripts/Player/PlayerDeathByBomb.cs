@@ -20,5 +20,7 @@ public class PlayerDeathByBomb : PlayerDeathEvent
         player.SetActiveRagdoll(true);
         player.ApplyRagdollImpulse(thrust, direction);
         player.GetComponent<PlayerAppearence>().ChangeBodyPiecesSprite("explosion");
+
+        PlayDeathSong();
     }
 }
