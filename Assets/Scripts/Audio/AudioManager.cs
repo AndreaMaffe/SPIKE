@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,16 +7,33 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour {
 
-    public Slider musicSlider;
-    public Slider sfxSlider;
+    private Slider musicSlider;
+    private Slider sfxSlider;
 
+    private SaveManager saveManager;
     bool IsInPlaymode = false;
 
     public void Start()
     {
-        //Adds a listener to the main slider and invokes a method when the value changes.
-        musicSlider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
+        saveManager = SaveManager.SaveManagerInstance;
+        saveManager = SaveUtility.LoadObject(saveManager, "saveFile");
+        Debug.Log("Volume musica iniziale: " + saveManager.musicVolume);
+        FindSoundSlider();
+        musicSlider.value = saveManager.musicVolume;
+    }
 
+    //Trova gli slider giusti in scena
+    private void FindSoundSlider()
+    {
+        Slider[] sliders;
+        sliders = FindObjectOfType<Canvas>().GetComponentsInChildren<Slider>(true);
+        foreach (Slider s in sliders)
+        {
+            if (s.name == "MusicSlider")
+                musicSlider = s;
+            if (s.name == "SFXSlider")
+                sfxSlider = s;
+        }
     }
 
     // Invoked when the value of the slider changes.
@@ -57,5 +75,12 @@ public class AudioManager : MonoBehaviour {
         FindObjectOfType<AudioManagerBR>().Stop("build");
 
         FindObjectOfType<AudioManagerBR>().Play("fail");
+    }
+
+    public void SaveAudioSettings()
+    {
+        saveManager.musicVolume = AudioListener.volume;
+        Debug.Log("Volume Musica salvato a: " + saveManager.musicVolume);
+        SaveUtility.SaveObject(saveManager, "saveFile");
     }
 }
