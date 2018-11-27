@@ -26,5 +26,6 @@ public class PlayerDeathBySpike : PlayerDeathEvent
         player.SetActiveRagdoll(true);
         player.GetComponent<PlayerAppearence>().ChangeBodyPiecesSprite("spike");
 
+        PlayDeathSong();
     }
 }
