@@ -19,19 +19,27 @@ public class LevelSelectionManager : MonoBehaviour {
 
     private SaveManager saveManager;
 
+    private GameObject[] allButtons;
+
     public void Start()
     {
+
+        allButtons = new GameObject[levelAmountTest];
         //Carichiamo l'oggetto SaveManager per ottenere i dati salvati del gioco
         saveManager = SaveManager.SaveManagerInstance;
         saveManager = SaveUtility.LoadObject(saveManager, "saveFile");
 
+        CreateLevelButtons();  
+    }
+
+    private void CreateLevelButtons() {
         //Creiamo un bottone per ogni livello creato, adesso il ciclo for è puramente inventato dato che non abbiamo altri livelli oltre il primo
         int x = 0;
         int y = 0;
         //for (int i = 0; i < saveManager.totalLevels; i++)
         for (int i = 0; i < levelAmountTest; i++)
         {
-            if(x >= 5)
+            if (x >= 5)
             {
                 x = 0;
                 y += 1;
@@ -39,6 +47,7 @@ public class LevelSelectionManager : MonoBehaviour {
 
             GameObject newButton;
             newButton = Instantiate(Resources.Load<GameObject>("Prefab/UI/LevelButton"));
+            allButtons[y * 5 + x] = newButton;
             newButton.GetComponentInChildren<Text>().text = (i + 1).ToString();
 
             //Entra nell'if solo se il livello selezionato è sbloccato
@@ -50,9 +59,16 @@ public class LevelSelectionManager : MonoBehaviour {
             }
 
             newButton.transform.SetParent(panel.transform, false);
-            newButton.transform.localPosition += new Vector3(horizontalSpacing*x, -verticalSpacing*y, 0);
-            
+            newButton.transform.localPosition += new Vector3(horizontalSpacing * x, -verticalSpacing * y, 0);
+
             x++;
+        }
+    }
+
+    //riassegna i valori dei bottoni a seconda della pagina di livelli a cui sei (ogni pagina ha 15 livelli)
+    private void ReassignButtons(int pageIndex) {
+        for (int i = 0; i < allButtons.Length; i++) {
+             
         }
     }
 
