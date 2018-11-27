@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AudioManagerBR : MonoBehaviour {
 
@@ -39,9 +40,16 @@ public class AudioManagerBR : MonoBehaviour {
 
     private void Start()
     {
-        Play("build");
-        Play("play");
-        Mute("play");
+        if (SceneManager.GetActiveScene().buildIndex == 0) //schermata home
+        {
+            Play("landing");
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 1) //SampleSceneRange
+        {
+            Play("build");
+            Play("play");
+            Mute("play");
+        }
     }
 
     public void Play (string name)

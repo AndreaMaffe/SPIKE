@@ -52,7 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed925e3a71a2174f8ef244975fed976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeSlider: {fileID: 0}
+  musicSlider: {fileID: 0}
+  sfxSlider: {fileID: 0}
 --- !u!114 &114957681691860560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -95,21 +96,21 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: cannon
     clip: {fileID: 8300000, guid: 917c67e70bffdc8469e26ab13cdf7fed, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loop: 0
     mute: 0
     source: {fileID: 0}
   - name: bomb
     clip: {fileID: 8300000, guid: ff780e4fe08753d4980c59b9f7eba9a5, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loop: 0
     mute: 0
     source: {fileID: 0}
   - name: laser
     clip: {fileID: 8300000, guid: d78e606140ec56f408a43623d636528d, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loop: 0
     mute: 0
@@ -123,8 +124,15 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: raptor
     clip: {fileID: 8300000, guid: c36bfcc1abe679940a3be4955076c11e, type: 3}
-    volume: 1
+    volume: 0.2
     pitch: 1
-    loop: 0
+    loop: 1
+    mute: 0
+    source: {fileID: 0}
+  - name: landing
+    clip: {fileID: 8300000, guid: 46c09b7c362a65745afb9fb156cf0754, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
     mute: 0
     source: {fileID: 0}
