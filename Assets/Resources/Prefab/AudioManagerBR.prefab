@@ -96,21 +96,21 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: cannon
     clip: {fileID: 8300000, guid: 917c67e70bffdc8469e26ab13cdf7fed, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loop: 0
     mute: 0
     source: {fileID: 0}
   - name: bomb
     clip: {fileID: 8300000, guid: ff780e4fe08753d4980c59b9f7eba9a5, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loop: 0
     mute: 0
     source: {fileID: 0}
   - name: laser
     clip: {fileID: 8300000, guid: d78e606140ec56f408a43623d636528d, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loop: 0
     mute: 0
@@ -124,9 +124,9 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: raptor
     clip: {fileID: 8300000, guid: c36bfcc1abe679940a3be4955076c11e, type: 3}
-    volume: 1
+    volume: 0.2
     pitch: 1
-    loop: 0
+    loop: 1
     mute: 0
     source: {fileID: 0}
   - name: landing
@@ -134,5 +134,12 @@ MonoBehaviour:
     volume: 0.3
     pitch: 1
     loop: 1
+    mute: 0
+    source: {fileID: 0}
+  - name: spring
+    clip: {fileID: 8300000, guid: 79e6e17dd2933f542a43621f39cab21e, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
     mute: 0
     source: {fileID: 0}

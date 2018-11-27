@@ -14,12 +14,14 @@ public class LevelSelectionManager : MonoBehaviour {
     [Header("Distanza hor/ver tra i bottoni")]
     public float horizontalSpacing;
     public float verticalSpacing;
-    [Header("Scegliere il numero massimo di livelli in fase di testing")]
+    [Header("Scegliere il numero massimo di livelli su una pagina")]
     public int levelAmountTest;
 
     private SaveManager saveManager;
 
     private GameObject[] allButtons;
+    private int currentLevelPage = 0;
+    private int maxLevelNumber = 1000; 
 
     public void Start()
     {
@@ -66,10 +68,18 @@ public class LevelSelectionManager : MonoBehaviour {
     }
 
     //riassegna i valori dei bottoni a seconda della pagina di livelli a cui sei (ogni pagina ha 15 livelli)
-    private void ReassignButtons(int pageIndex) {
+    private void ReassignButtons(int pageIndex)
+    {
         for (int i = 0; i < allButtons.Length; i++) {
-             
+            allButtons[i].GetComponentInChildren<Text>().text = (pageIndex * levelAmountTest + i + 1).ToString();
         }
+    }
+
+    public void ChangePageIndex(int amount) 
+    {
+        currentLevelPage += amount;
+        currentLevelPage = Mathf.Clamp(currentLevelPage, 0, maxLevelNumber);
+        ReassignButtons(currentLevelPage);   
     }
 
     //Metodo da rivedere una volta che iniziamo ad avere qualche livello definitivo
@@ -78,14 +88,11 @@ public class LevelSelectionManager : MonoBehaviour {
         int levelIndex = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text);
         LevelManager.CurrentLevelIndex = levelIndex -1;
         SaveUtility.SaveObject(saveManager, "saveFile");
-        //if (levelIndex <= saveManager.maxUnlockedLevel) LINEA DI CODICE CORRETTA, USIAMO LA PROSSIMA IN FASE DI TESTING
-        if (levelIndex <= levelAmountTest)
-        {
-            SceneManager.LoadScene("SampleSceneRange");
-            //SceneManager.LoadScene("SampleSceneRangeAle2");
-            //Non appena la scena viene caricata dobbiamo riprendere da SaveManager l'informazione del livello scelto (currentLevel) 
-            //in modo tale da caricare lo scriptable object relativo
-        }
+        //if (levelIndex <= saveManager.maxUnlockedLevel) LINEA DI CODICE CORRETTA, USIAMO LA PROSSIMA IN FASE DI TESTING   
+
+        SceneManager.LoadScene("SampleSceneRange");
+        //Non appena la scena viene caricata dobbiamo riprendere da SaveManager l'informazione del livello scelto (currentLevel) 
+        //in modo tale da caricare lo scriptable object relativo      
     }
 
     public void GoToMainMenu()
