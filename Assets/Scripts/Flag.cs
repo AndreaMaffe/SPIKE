@@ -10,5 +10,9 @@ public class Flag : MonoBehaviour {
         {
             LevelManager.EndLevel();
         }
+
+        else if (collision.gameObject.tag == "PlayerSimulator") {
+            collision.gameObject.GetComponent<PlayerSimulator>().StopMovement();
+        }
     }
 }

@@ -2,21 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerState
-{
-    Jumping,
-    Stopped,
-    Running,
-    WaitingToJump,
-    Exulting
-}
+public class PlayerSimulator : MonoBehaviour {
 
-public class Player : MonoBehaviour
-{
     private Rigidbody2D rb;
-    private Animator animator;
     private BoxCollider2D mainCollider;
-    private Transform body;
 
     [Header("Movements")]
     public float speed;
@@ -30,40 +19,35 @@ public class Player : MonoBehaviour
     private bool onGround;
     private bool invincible;
 
-    [Header("Ragdoll")]
-    public GameObject bloodParticle;
-    public Rigidbody2D[] RagdollPieces;
-    public Collider2D[] RagdollColliders;
-    public GameObject[] RagdollArts;
-
     private TimerManager timerManager;
 
     //Lista che contiene tutti i timer per i movimenti del giocatore
     private List<Timer> movementTimers;
-    private Timer timerBeforeExulting;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         mainCollider = GetComponent<BoxCollider2D>();
-        body = transform.Find("Body");
+
+        Time.timeScale = 2;
 
         timerManager = FindObjectOfType<TimerManager>();
 
-        LevelManager.runLevelEvent += WakeUp;
+        LevelManager.runLevelEvent += StopMovement;
         LevelManager.retryLevelEvent += Sleep;
-        LevelManager.endLevelEvent += OnEndLevel;
 
         originalPosition = this.transform.position;
 
         movementTimers = new List<Timer>();
+
+        Invoke("WakeUp", 0.5f);
+
     }
 
     void FixedUpdate()
     {
         //se tocca una piattaforma
-        if (Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y), Vector2.down, 0.1f , LayerMask.GetMask("Platform")))
+        if (Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y), Vector2.down, 0.1f, LayerMask.GetMask("Platform")))
         {
             //al primo contatto, annulla la velocità e fai reiniziare il Player a correre
             if (!onGround)
@@ -82,13 +66,13 @@ public class Player : MonoBehaviour
             rb.drag = 0;
             onGround = false;
         }
-            
+
 
         switch (state)
         {
             case PlayerState.Running:
                 if (onGround)
-                    rb.AddForce(new Vector2(speed/100, 0), ForceMode2D.Impulse);
+                    rb.AddForce(new Vector2(speed / 100, 0), ForceMode2D.Impulse);
                 break;
 
             case PlayerState.WaitingToJump:
@@ -116,12 +100,6 @@ public class Player : MonoBehaviour
 
         StartMovementTimers();
 
-        //distrugge lo spruzzo di sangue
-        GetComponent<PlayerAppearence>().DestroyBloodFountainParticle();
-        //riattiva l'ombra
-        transform.Find("OmbraPlayer").gameObject.SetActive(true);
-        Time.timeScale = 1;
-
         invincible = false;
 
     }
@@ -129,43 +107,22 @@ public class Player : MonoBehaviour
     //chiamato al RetryLevel()
     void Sleep()
     {
-        //riassesta il corpo in caso di morte
-        SetActiveRagdoll(false);
+        gameObject.SetActive(false);
 
-        ResetAnimatorTriggers();
-
-        Stop();
-
-        //risetta il Player immobile e alla posizione iniziale
-        gameObject.transform.position = originalPosition;
-        rb.velocity = Vector2.zero;
-
-        //rimuovi tutti i timer (verranno risettati al successivo WakeUp())
         ResetTimers();
-    }
-
-    //chiamato al EndLevel()
-    void OnEndLevel()
-    {
-        timerBeforeExulting.Start();
-        invincible = true;
     }
 
     void Run()
     {
-        ResetAnimatorTriggers();
         state = PlayerState.Running;
-        animator.SetTrigger("Move");
     }
 
     void Stop()
     {
         if (onGround)
         {
-            ResetAnimatorTriggers();
             rb.velocity = Vector2.zero;
             state = PlayerState.Stopped;
-            animator.SetTrigger("Stop");
         }
 
         else Invoke("Stop", 0.1f);
@@ -176,10 +133,8 @@ public class Player : MonoBehaviour
     {
         if (onGround)
         {
-            ResetAnimatorTriggers();
             rb.velocity = Vector2.zero;
             state = PlayerState.WaitingToJump;
-            animator.SetTrigger("WaitingJump");
         }
     }
 
@@ -187,26 +142,14 @@ public class Player : MonoBehaviour
     {
         if (state == PlayerState.WaitingToJump && onGround)
         {
-            ResetAnimatorTriggers();
             state = PlayerState.Jumping;
-            animator.SetTrigger("Jump");
             rb.AddForce(new Vector2(jumpStrenght * Mathf.Cos(jumpAngle * Mathf.Deg2Rad), jumpStrenght * Mathf.Sin(jumpAngle * Mathf.Deg2Rad)), ForceMode2D.Impulse);
         }
     }
 
     void Exult()
     {
-        ResetAnimatorTriggers();
         state = PlayerState.Exulting;
-        animator.SetTrigger("Exult");
-    }
-
-    void ResetAnimatorTriggers()
-    {
-        animator.ResetTrigger("Jump");
-        animator.ResetTrigger("Move");
-        animator.ResetTrigger("WaitingJump");
-        animator.ResetTrigger("Stop");
     }
 
     //crea e setta i timer collegati ai movimenti
@@ -231,9 +174,6 @@ public class Player : MonoBehaviour
 
             movementTimers.Add(timer);
         }
-
-        timerBeforeExulting = timerManager.AddTimer(0.7f);
-        timerBeforeExulting.triggeredEvent += Exult;
     }
 
     //blocca tutti i timer e li rimuove
@@ -243,9 +183,6 @@ public class Player : MonoBehaviour
             timer.Pause();
 
         movementTimers.Clear();
-
-        if(timerBeforeExulting != null)
-            timerBeforeExulting.Pause();
     }
 
     //fa partire tutti i timer collegati ai movimenti
@@ -257,56 +194,24 @@ public class Player : MonoBehaviour
         }
     }
 
-    //da cambiare e da fare con raycast per evitare collisioni laterali ma per ora va bene anche cosi'
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Deadly" && !invincible)
-        {
-            //crea l'evento PlayerDeathEvent nel punto corrispondente al contatto e avvialo
-            PlayerDeathEvent playerDeathEvent = collision.transform.root.GetComponent<Obstacle>().CreatePlayerDeathEvent(this, collision.GetContact(0).point);
-            playerDeathEvent.StartDeath();
-
-            FindObjectOfType<AudioManagerBR>().GetComponent<AudioManager>().PlayFailAudio();
-        }
-    }
-
-    public void SetActiveRagdoll(bool value)
-    {
-        transform.Find("OmbraPlayer").gameObject.SetActive(false);
-        animator.enabled = !value;
-        rb.simulated = !value;
-        mainCollider.enabled = !value;
-
-        foreach (Rigidbody2D rb in RagdollPieces)
-        {
-            rb.simulated = value;
-        }
-
-        foreach (Collider2D col in RagdollColliders)
-        {
-            col.enabled = value;
-        }
-
-        foreach (GameObject art in RagdollArts)
-        {
-            if (value)
-                art.transform.parent = null;
-            else art.transform.parent = body;
-        }
-    }
-
-    //metodo che applica al corpo della ragdoll una forza in una certa direzione 
-    public void ApplyRagdollImpulse(float amount, Vector2 direction)
-    {
-        RagdollPieces[0].AddForce(direction * amount);
-    }
-
-
     private void OnDisable()
     {
-        LevelManager.runLevelEvent -= WakeUp;
         LevelManager.retryLevelEvent -= Sleep;
-        LevelManager.endLevelEvent -= OnEndLevel;
-    } 
+    }
+
+    public void StopMovement() {
+
+        Stop();
+        rb.velocity = Vector2.zero;
+    }
+
+    void SetInvisible() {
+        this.gameObject.SetActive(false);
+    }
+
+    void SetVisible()
+    {
+        this.gameObject.SetActive(true);
+    }
 
 }
