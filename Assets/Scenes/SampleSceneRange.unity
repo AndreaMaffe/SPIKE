@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -598,7 +598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafdfa2afded63742bee12873ab839e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updateRate: 0.01
 --- !u!4 &302509186
 Transform:
   m_ObjectHideFlags: 0
@@ -1234,8 +1233,14 @@ Prefab:
       propertyPath: volumeSlider
       value: 
       objectReference: {fileID: 1960361988}
-    - target: {fileID: 1778774273310780, guid: 3aad8d85c76371c41865ae13932a3c4a, type: 2}
-      propertyPath: m_IsActive
+    - target: {fileID: 114957681691860560, guid: 3aad8d85c76371c41865ae13932a3c4a,
+        type: 2}
+      propertyPath: sounds.Array.data[8].volume
+      value: 0.365
+      objectReference: {fileID: 0}
+    - target: {fileID: 114957681691860560, guid: 3aad8d85c76371c41865ae13932a3c4a,
+        type: 2}
+      propertyPath: sounds.Array.data[8].loop
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -26,6 +26,7 @@ public class Flamethrower : Obstacle {
 
     protected override void UpdateObstacle()
     {
+
         try
         {
             Rigidbody2D rigidbodyHit = Physics2D.Raycast(this.transform.position, new Vector2(direction, 0), flameFarRange, layerMaskHit).rigidbody;
@@ -51,6 +52,8 @@ public class Flamethrower : Obstacle {
         SetActive(true);
 
         flameParticles.Play();
+        FindObjectOfType<AudioManagerBR>().Play("lanciafiamme");
+
     }
 
     protected override void Sleep()

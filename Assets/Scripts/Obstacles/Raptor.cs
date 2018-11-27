@@ -47,6 +47,9 @@ public class Raptor : Obstacle
 
         EnablePhysics();
 
+        FindObjectOfType<AudioManagerBR>().Play("raptor");
+
+
     }
 
     //chiamato al RetryLevel()
