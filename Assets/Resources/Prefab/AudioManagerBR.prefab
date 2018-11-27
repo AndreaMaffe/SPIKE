@@ -136,3 +136,10 @@ MonoBehaviour:
     loop: 1
     mute: 0
     source: {fileID: 0}
+  - name: spring
+    clip: {fileID: 8300000, guid: 79e6e17dd2933f542a43621f39cab21e, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
