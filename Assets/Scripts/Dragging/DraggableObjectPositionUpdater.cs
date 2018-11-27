@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -78,6 +79,27 @@ public class DraggableObjectPositionUpdater : MonoBehaviour
             ChangeSpriteOpacity();
             transform.position = newPosition;
         }
+
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 0.7f);
+        bool objectFound = false;
+
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
+            GameObject objectHit = hitColliders[i].gameObject;
+
+            if (objectHit != gameObject && CheckIfObjectInLayerMask(LayerMask.GetMask(LayerMask.LayerToName(objectHit.layer))))
+            {
+                overAnotherObstacle = true;
+                objectFound = true;
+                ChangeSpriteOpacity();
+            }
+        }
+
+        if (!objectFound) {
+            overAnotherObstacle = false;
+            ChangeSpriteOpacity();
+        }
+
     }
 
     void ChangeSpriteOpacity()
@@ -102,33 +124,19 @@ public class DraggableObjectPositionUpdater : MonoBehaviour
                 spr.color = new Color32(255, 255, 255, 120);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (CheckIfObjectInLayerMask(LayerMask.GetMask(LayerMask.LayerToName(collision.gameObject.layer))))
-        {
-            overAnotherObstacle = true;
-            ChangeSpriteOpacity();
-        }       
-      
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (CheckIfObjectInLayerMask(LayerMask.GetMask(LayerMask.LayerToName(collision.gameObject.layer))))
-        {
-            overAnotherObstacle = false;
-            ChangeSpriteOpacity();
-        }
-    }
-
     bool CheckIfObjectInLayerMask(int layerMask)
     {
-        for (int i = 0; i < obstacleLayerMask.Length; i++)
+        try
         {
-            if (layerMask == obstacleLayerMask[i])
-                return true;        
+            for (int i = 0; i < obstacleLayerMask.Length; i++)
+            {
+                if (layerMask == obstacleLayerMask[i])
+                    return true;
+            }
+            return false;
         }
-        return false;
+        catch (NullReferenceException e){ return false; }
+     
     }
 
 }
