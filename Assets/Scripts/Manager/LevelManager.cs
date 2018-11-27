@@ -71,6 +71,7 @@ public class LevelManager : MonoBehaviour
      
 
         CurrentLevel = levels[CurrentLevelIndex];
+        currentLevelText.text = "LV. " + (CurrentLevelIndex+1);
 
         if (CurrentLevel == null)
             Debug.Log("Il livello corrente è null nel LevelManager");
