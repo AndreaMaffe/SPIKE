@@ -43,12 +43,7 @@ public class NextLevelPanel : MonoBehaviour
     //Metodo legato al bottone next level, aggiorna il livello corrente in modo tale che verrà caricato lo scriptable object corretto nella prossima scena
     public void NextLevel()
     {
-        saveManager = SaveManager.SaveManagerInstance;
-        saveManager = SaveUtility.LoadObject(saveManager, "saveFile");
-        //Adesso bisogna settare currentLevel al livello successivo e caricare la scena
         LevelManager.CurrentLevelIndex += 1;
-        SaveUtility.SaveObject(saveManager, "saveFile");
-        SceneManager.LoadScene("SampleSceneRange");
     }
 
     public void RestartLevel()
