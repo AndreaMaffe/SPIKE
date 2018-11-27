@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1237,7 +1237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &583641314
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1296,21 +1296,6 @@ Prefab:
     - target: {fileID: 4142837308333542, guid: 3aad8d85c76371c41865ae13932a3c4a, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114899182804527844, guid: 3aad8d85c76371c41865ae13932a3c4a,
-        type: 2}
-      propertyPath: volumeSlider
-      value: 
-      objectReference: {fileID: 1960361988}
-    - target: {fileID: 114957681691860560, guid: 3aad8d85c76371c41865ae13932a3c4a,
-        type: 2}
-      propertyPath: sounds.Array.data[8].volume
-      value: 0.365
-      objectReference: {fileID: 0}
-    - target: {fileID: 114957681691860560, guid: 3aad8d85c76371c41865ae13932a3c4a,
-        type: 2}
-      propertyPath: sounds.Array.data[8].loop
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aad8d85c76371c41865ae13932a3c4a, type: 2}
@@ -1989,7 +1974,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2baa9c9b4b7e96a42a3ff2443890ee8d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4352,7 +4337,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4376e983c9189d041b4fea2440fc8174, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ee097171413cdc946ab1c914d26c5c09, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4614,7 +4599,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1654954523
 RectTransform:
   m_ObjectHideFlags: 0
