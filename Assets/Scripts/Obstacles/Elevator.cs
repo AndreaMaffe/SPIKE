@@ -9,6 +9,7 @@ public class Elevator : Obstacle
     private GameObject platform;
     private Animator animator;
 
+    private Vector3 originalPlatformPosition;
     private Vector3 direction;
 
     //start apposito per gli ostacoli, usare questo anziché Start().
@@ -34,11 +35,10 @@ public class Elevator : Obstacle
         //permette di entrare nell'UpdateObstacle()
         SetActive(true);
 
-        //attiva la motosega
-        animator.SetBool("go", true);
+        //accendi la motosega
+        animator.SetBool("On", true);
 
         EnablePhysics();
-
     }
 
     //chiamato al RetryLevel()
@@ -47,10 +47,19 @@ public class Elevator : Obstacle
         //impedisce di entrare nell'UpdateObstacle()
         SetActive(false);
 
-        //risetta la posizione iniziale
-        animator.SetBool("go", false);
+        //spegni la motosega
+        animator.SetBool("On", false);
+
+        //rimetti la piattaforma nella posizione originaria
+        platform.transform.position = originalPlatformPosition;
 
         DisablePhysics();
+    }
+
+    public override void OnObstacleDropped()
+    {
+        base.OnObstacleDropped();
+        originalPlatformPosition = platform.transform.position;
     }
 
     public void InvertDirection()
@@ -62,7 +71,7 @@ public class Elevator : Obstacle
 
     public override ObstacleType GetObstacleType()
     {
-        return ObstacleType.Spring;
+        return ObstacleType.Elevator;
     }
 
 
