@@ -72,7 +72,6 @@ public class LevelSelectionManager : MonoBehaviour {
     {
         for (int i = 0; i < allButtons.Length; i++) {
             allButtons[i].GetComponentInChildren<Text>().text = (pageIndex * levelAmountTest + i + 1).ToString();
-            allButtons[i].GetComponent<Button>().onClick.AddListener(ChooseLevel);
         }
     }
 
@@ -89,13 +88,11 @@ public class LevelSelectionManager : MonoBehaviour {
         int levelIndex = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text);
         LevelManager.CurrentLevelIndex = levelIndex -1;
         SaveUtility.SaveObject(saveManager, "saveFile");
-        //if (levelIndex <= saveManager.maxUnlockedLevel) LINEA DI CODICE CORRETTA, USIAMO LA PROSSIMA IN FASE DI TESTING
-        if (levelIndex <= levelAmountTest)
-        {
-            SceneManager.LoadScene("SampleSceneRange");
-            //Non appena la scena viene caricata dobbiamo riprendere da SaveManager l'informazione del livello scelto (currentLevel) 
-            //in modo tale da caricare lo scriptable object relativo
-        }
+        //if (levelIndex <= saveManager.maxUnlockedLevel) LINEA DI CODICE CORRETTA, USIAMO LA PROSSIMA IN FASE DI TESTING   
+
+        SceneManager.LoadScene("SampleSceneRange");
+        //Non appena la scena viene caricata dobbiamo riprendere da SaveManager l'informazione del livello scelto (currentLevel) 
+        //in modo tale da caricare lo scriptable object relativo      
     }
 
     public void GoToMainMenu()
