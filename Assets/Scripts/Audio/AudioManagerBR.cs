@@ -50,9 +50,6 @@ public class AudioManagerBR : MonoBehaviour {
             Play("play");
             Mute("play");
         }
-       
-
-        
     }
 
     public void Play (string name)
