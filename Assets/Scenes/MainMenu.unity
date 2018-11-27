@@ -787,17 +787,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1712669495}
-        m_MethodName: SaveAudioSettings
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &334557137
@@ -1813,7 +1802,7 @@ GameObject:
   - component: {fileID: 935056294}
   m_Layer: 5
   m_Name: SFXSlider
-  m_TagString: SFXSlider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2393,7 +2382,7 @@ GameObject:
   - component: {fileID: 1317136552}
   m_Layer: 5
   m_Name: MusicSlider
-  m_TagString: MusicSlider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2463,18 +2452,7 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1712669495}
-        m_MethodName: ValueChangeCheck
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1406293586
@@ -7635,12 +7613,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1712669495 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114899182804527844, guid: 3aad8d85c76371c41865ae13932a3c4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 1847029892}
-  m_Script: {fileID: 11500000, guid: fed925e3a71a2174f8ef244975fed976, type: 3}
 --- !u!1 &1744049709
 GameObject:
   m_ObjectHideFlags: 0

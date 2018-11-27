@@ -8,8 +8,6 @@ public class SaveManager
     public int maxUnlockedLevel;
     //Variabile relativa al totale dei livelli inseriti
     public int totalLevels;
-    //Variabile relativa al volume della musica
-    public float musicVolume;
 
     private static SaveManager saveManagerInstance;
 
@@ -17,7 +15,6 @@ public class SaveManager
     {
         maxUnlockedLevel = 0;
         totalLevels = 0;
-        musicVolume = 1;
     }
 
     public static SaveManager SaveManagerInstance

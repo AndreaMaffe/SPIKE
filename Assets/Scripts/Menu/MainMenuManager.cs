@@ -16,7 +16,6 @@ public class MainMenuManager : MonoBehaviour {
         //Qui controlliamo se è il primo lancio del gioco oppure no, nel caso lo fosse andiamo a settare il nostro file di salvataggio
         if (!PlayerPrefs.HasKey("firstLaunch"))
         {
-            Debug.Log("First launch");
             saveManager = SaveManager.SaveManagerInstance;
             saveManager.maxUnlockedLevel = 1;
             saveManager.totalLevels = 20; //TODO vedere come fargli prendere il reale numero massimo dei livelli, facile ma poco elegante reinserendo di nuovo una lista pubblica degli scriptables

@@ -17,8 +17,6 @@ public class PlayerDeathByExplosion : PlayerDeathEvent
         Vector2 angleOfImpact = (player.transform.position - obstacle.transform.position).normalized;
         player.ApplyRagdollImpulse(20, angleOfImpact);
         player.GetComponent<PlayerAppearence>().ChangeBodyPiecesSprite("explosion");
-
-        PlayDeathSong();
     }
 
     void SpawnExplosionParticles() {

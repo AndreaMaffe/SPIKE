@@ -21,13 +21,6 @@ public abstract class PlayerDeathEvent
 
     public abstract void StartDeath();
 
-    protected void PlayDeathSong ()
-    {
-        GameObject.FindObjectOfType<AudioManagerBR>().Play("fail");
-        GameObject.FindObjectOfType<AudioManagerBR>().Mute("play");
-        GameObject.FindObjectOfType<AudioManagerBR>().Mute("build");
-    }
-
     protected void SpawnBloodParticles() {
         bloodParticles = Resources.Load<GameObject>("Prefab/Particles/BloodParticles");
         GameObject blood = GameObject.Instantiate(bloodParticles, position, Quaternion.identity);
