@@ -26,6 +26,9 @@ public class Bullet : Obstacle {
     protected override void UpdateObstacle()
     {
         rb.velocity = new Vector3(speed * direction, 0, 0);
+
+        if (Mathf.Abs(this.transform.position.x) > 20)
+            Destroy(this.gameObject);
     }
 
     //chiamato al RunLevel()
