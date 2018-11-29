@@ -97,7 +97,7 @@ public class LevelManager : MonoBehaviour
         CreatePlatforms(level);
         CreateUIObstacleButtons(level);
         Instantiate(Resources.Load<GameObject>("Prefab/Player"), level.startingPoint, Quaternion.identity);
-        if (playerSimulator)
+        if (playerSimulator) 
             Instantiate(Resources.Load<GameObject>("Prefab/PlayerSimulator"), level.startingPoint, Quaternion.identity);
         Instantiate(Resources.Load<GameObject>("Prefab/Flag"), level.endingPoint, Quaternion.identity);
         currentTime = 0.0f;

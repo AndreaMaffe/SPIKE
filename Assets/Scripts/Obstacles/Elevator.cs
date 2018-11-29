@@ -5,6 +5,8 @@ using UnityEngine;
 public class Elevator : Obstacle
 {
     public float speed;
+    [Tooltip("Maximum vertical height reach by the platform")]
+    public float maxHeight;
 
     private GameObject platform;
     private Animator animator;
@@ -26,7 +28,11 @@ public class Elevator : Obstacle
     //update apposito per gli ostacoli, usare questo anziché Update().
     protected override void UpdateObstacle()
     {
-        platform.transform.position += direction * speed;
+        Vector3 newPlatformPosition = new Vector3(originalPlatformPosition.x, platform.transform.position.y, 0) + direction * speed/1000;
+        platform.transform.position = newPlatformPosition;
+
+        if (platform.transform.position.y >= maxHeight)
+            InvertDirection();
     }
 
     //chiamato al RunLevel()
@@ -53,6 +59,8 @@ public class Elevator : Obstacle
         //rimetti la piattaforma nella posizione originaria
         platform.transform.position = originalPlatformPosition;
 
+        direction = Vector3.down;
+
         DisablePhysics();
     }
 
@@ -64,9 +72,10 @@ public class Elevator : Obstacle
 
     public void InvertDirection()
     {
-        if (direction == Vector3.up)
-            direction = Vector3.down;
-        else direction = Vector3.up;
+        if (direction == Vector3.down)
+            direction = Vector3.up;
+        else direction = Vector3.down;
+
     }
 
     public override ObstacleType GetObstacleType()
