@@ -11,7 +11,7 @@ public class Spikes : Obstacle
 
     protected override void StartObstacle()
     {
-        DisablePhysics();
+        SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
     }
 
     protected override void UpdateObstacle()
@@ -21,12 +21,12 @@ public class Spikes : Obstacle
 
     protected override void WakeUp()
     {
-        EnablePhysics();
+        SetCollidersActive(true); SetDynamicRigidbodyActive(true);;
     }
 
     protected override void Sleep()
     {
-        DisablePhysics();
+        SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
 
         ResetPosition();
     }

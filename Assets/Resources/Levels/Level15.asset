@@ -34,5 +34,3 @@ MonoBehaviour:
   movementDatas:
   - movement: 1
     startTime: 1
-  - movement: 1
-    startTime: 3.9

@@ -28,7 +28,8 @@ public class Bomb : ObstacleWithTimer {
         rb = FindObjectOfType<Rigidbody2D>();
         coll = FindObjectOfType<Collider2D>();
 
-        DisablePhysics();
+        SetCollidersActive(false); SetDynamicRigidbodyActive(false);
+
     }
 
     protected override void UpdateObstacle()
@@ -50,7 +51,7 @@ public class Bomb : ObstacleWithTimer {
         SetVisible(false);
 
         //disabilita la fisica legata al gameobject
-        DisablePhysics();
+        SetCollidersActive(false); SetDynamicRigidbodyActive(false);
     }
 
     protected override void OnTimerEnd()
@@ -68,7 +69,7 @@ public class Bomb : ObstacleWithTimer {
         StartTimer();
         
         //risveglia i rigidbodies e i collider
-        EnablePhysics();
+        SetCollidersActive(true); SetDynamicRigidbodyActive(true);;
     }
 
     //chiamato al RetryLevel()
@@ -84,7 +85,7 @@ public class Bomb : ObstacleWithTimer {
         ResetTimer();
 
         //disabilita la fisica legata al gameobject
-        DisablePhysics();
+        SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
     }
 
     void ShockWave()

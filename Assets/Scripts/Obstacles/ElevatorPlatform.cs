@@ -8,9 +8,6 @@ public class ElevatorPlatform : MonoBehaviour {
     {
         if(collision.collider.tag == "Platform")
             transform.parent.gameObject.GetComponent<Elevator>().InvertDirection();
-
-        if (collision.collider.gameObject.name == "Player(Clone)")
-            Debug.Log("CIAONE");
     }
 
 }

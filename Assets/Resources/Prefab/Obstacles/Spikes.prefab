@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1925046848684570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.1143417, y: -1.9037834, z: 0}
+  m_LocalPosition: {x: -1.482539, y: -2.6731238, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,7 +102,7 @@ MonoBehaviour:
   anchorPosition: 2
   rigidbodies:
   - {fileID: 50915303177944298}
-  allNonDraggableColliders:
+  allColliders:
   - {fileID: 61859702404532346}
 --- !u!212 &212543222848671460
 SpriteRenderer:

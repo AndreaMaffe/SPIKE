@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FallingSpikes : ObstacleWithTimer
 {
-    private Rigidbody2D rb;
     private Vector3 originalSpikesPosition;
     private GameObject spikes;
     private SpriteRenderer ropeSprite;
@@ -13,8 +12,6 @@ public class FallingSpikes : ObstacleWithTimer
 
     private bool goingUp;
 
-    [Tooltip("Range inside which the Player is detected")]
-    public float raycastOffset;
     [Tooltip("Time on ground before starting rising up")]
     public float timeOnGround;
     [Tooltip("Speed of the vertical ascent")]
@@ -33,7 +30,7 @@ public class FallingSpikes : ObstacleWithTimer
 
         originalRopeSize = ropeSprite.size;
 
-        DisablePhysics();
+        SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
@@ -42,11 +39,17 @@ public class FallingSpikes : ObstacleWithTimer
         if (!goingUp)
         {
             //lancia 2 raycast dx e sx
-            RaycastHit2D hit1 = Physics2D.Raycast(transform.position + new Vector3(-raycastOffset, -1, 0), Vector2.down, 10, LayerMask.GetMask("Player", "Raptor"));
-            RaycastHit2D hit2 = Physics2D.Raycast(transform.position + new Vector3(raycastOffset, -1, 0), Vector2.down, 10, LayerMask.GetMask("Player", "Raptor"));
+            RaycastHit2D hit1 = Physics2D.Raycast(transform.position + new Vector3(-0.5f, -1, 0), Vector2.down, 10, LayerMask.GetMask("Player", "Raptor"));
+            RaycastHit2D hit2 = Physics2D.Raycast(transform.position + new Vector3(0.5f, -1, 0), Vector2.down, 10, LayerMask.GetMask("Player", "Raptor"));
 
             if (hit1 || hit2)
-                EnablePhysics();
+            {
+                SetCollidersActive(true);
+                SetDynamicRigidbodyActive(true);
+            }
+
+
+                              
         }
 
         if (goingUp)
@@ -56,10 +59,10 @@ public class FallingSpikes : ObstacleWithTimer
 
             else
             {
-                rigidbodies[0].velocity = new Vector2(0, 0);
-                rigidbodies[0].gravityScale = 5;
+                spikes.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                spikes.GetComponent<Rigidbody2D>().gravityScale = 5;
                 goingUp = false;
-                DisablePhysics();
+                SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
             }
         }
 
@@ -85,7 +88,7 @@ public class FallingSpikes : ObstacleWithTimer
         SetActive(false);
 
         //impedisce di cadere
-        DisablePhysics();
+        SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
 
         //risetta la posizione iniziale
         ResetPosition();
@@ -122,5 +125,26 @@ public class FallingSpikes : ObstacleWithTimer
     {
         SetTimer(timeOnGround);
         StartTimer();
+    }
+
+    protected override void SetDynamicRigidbodyActive(bool value)
+    {
+        Rigidbody2D rbSpikes = spikes.GetComponent<Rigidbody2D>();
+        Rigidbody2D rbPlatform = spikes.transform.Find("Platform").GetComponent<Rigidbody2D>();
+
+        if (value)
+        {
+            rbPlatform.isKinematic = false;
+            rbSpikes.isKinematic = false;
+        }
+
+        else
+        {
+            rbSpikes.isKinematic = true;
+            rbPlatform.isKinematic = true;
+
+            rbSpikes.velocity = Vector2.zero;
+            rbPlatform.velocity = Vector2.zero;
+        }
     }
 }

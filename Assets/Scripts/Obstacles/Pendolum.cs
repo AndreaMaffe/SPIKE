@@ -16,7 +16,7 @@ public class Pendolum : Obstacle {
     {
         rbBody = transform.Find("Body").GetComponent<Rigidbody2D>();
 
-        DisablePhysics();
+        SetCollidersActive(false); SetDynamicRigidbodyActive(false);
 	}
 
     //update apposito per gli ostacoli, usare questo anziché Update().
@@ -27,14 +27,14 @@ public class Pendolum : Obstacle {
     //chiamato al RunLevel()
     protected override void WakeUp()
     {
-        EnablePhysics();
+        SetCollidersActive(true); SetDynamicRigidbodyActive(true);;
         rbBody.AddForce(new Vector3(oscillation, 0, 0));
     }
 
     //chiamato al RetryLevel()
     protected override void Sleep()
     {
-        DisablePhysics();
+        SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
 
         //reimposta la posizione e la rotazione del pendolo a quella inziale
         rbBody.transform.localPosition = new Vector3(0, -1.5f, 0);
@@ -45,5 +45,19 @@ public class Pendolum : Obstacle {
     public override ObstacleType GetObstacleType()
     {
         return ObstacleType.Pendolum;
+    }
+
+    protected override void SetDynamicRigidbodyActive(bool value)
+    {
+        base.SetDynamicRigidbodyActive(value);
+
+        if (value)
+            rbBody.isKinematic = false;
+        else
+        {
+            rbBody.isKinematic = true;
+            rbBody.velocity = Vector2.zero;
+            rbBody.angularVelocity = 0;
+        }
     }
 }

@@ -14,9 +14,7 @@ public class Raptor : Obstacle
         objectToFollow = GameObject.FindGameObjectWithTag("Player");
         //rb = GetComponent<Rigidbody2D>();
 
-        DisablePhysics();
-
-        rb = rigidbodies[0];
+        SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
@@ -38,14 +36,14 @@ public class Raptor : Obstacle
     {
         //abilita le animazioni
         GetComponent<Animator>().enabled = true;
-        transform.Find("RaptorDavanti").transform.Find("Fumo").GetComponent<ParticleSystem>().Play();
+        transform.Find("Body").transform.Find("Smoke").GetComponent<ParticleSystem>().Play();
 
         //permette di entrare nell'UpdateObstacle()
         SetActive(true);
 
         rb.drag = 0;
 
-        EnablePhysics();
+        SetCollidersActive(true); SetDynamicRigidbodyActive(true);
 
         FindObjectOfType<AudioManagerBR>().Play("raptor");
     }
@@ -55,7 +53,7 @@ public class Raptor : Obstacle
     {
         //disabilita le animazioni
         GetComponent<Animator>().enabled = false;
-        transform.Find("RaptorDavanti").transform.Find("Fumo").GetComponent<ParticleSystem>().Stop();
+        transform.Find("Body").transform.Find("Smoke").GetComponent<ParticleSystem>().Stop();
 
         //impedisce di entrare nell'UpdateObstacle()
         SetActive(false);
@@ -63,7 +61,7 @@ public class Raptor : Obstacle
         //risetta la posizione iniziale
         ResetPosition();
 
-        DisablePhysics();
+        SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
 
         FindObjectOfType<AudioManagerBR>().Stop("raptor");
 

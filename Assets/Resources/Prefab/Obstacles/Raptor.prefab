@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4236351195152336}
   - component: {fileID: 212438825540057256}
   m_Layer: 27
-  m_Name: RaptorMascella
+  m_Name: Jaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4256917855159132}
   - component: {fileID: 212864499426929930}
   m_Layer: 27
-  m_Name: RaptorLuce
+  m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 198483049352428576}
   - component: {fileID: 199165612572692912}
   m_Layer: 27
-  m_Name: Fumo
+  m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 4369893046744924}
   - component: {fileID: 212866223786259328}
   m_Layer: 27
-  m_Name: OmbraPlayer
+  m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 4246467585322634}
   - component: {fileID: 212568039196020284}
   m_Layer: 27
-  m_Name: RaptorDavanti
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 4529766401560646}
   - component: {fileID: 212996276392712848}
   m_Layer: 27
-  m_Name: RaptorRuota
+  m_Name: Saw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,7 +215,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1614653091365494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.205896, y: -0.24604331, z: 0}
+  m_LocalPosition: {x: -1.4543908, y: -2.3636537, z: 0}
   m_LocalScale: {x: 0.92, y: 0.92, z: 1}
   m_Children:
   - {fileID: 4369893046744924}
@@ -291,7 +291,7 @@ MonoBehaviour:
   anchorPosition: 2
   rigidbodies:
   - {fileID: 50411576397563470}
-  allNonDraggableColliders:
+  allColliders:
   - {fileID: 58058022464208296}
   speed: 13
 --- !u!198 &198483049352428576

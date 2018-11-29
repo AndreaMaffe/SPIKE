@@ -22,13 +22,13 @@ public class Elevator : Obstacle
 
         direction = Vector3.down;
 
-        DisablePhysics();
+        SetCollidersActive(false);
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
     protected override void UpdateObstacle()
     {
-        Vector3 newPlatformPosition = new Vector3(originalPlatformPosition.x, platform.transform.position.y, 0) + direction * speed/1000;
+        Vector3 newPlatformPosition = new Vector3(originalPlatformPosition.x, platform.transform.position.y, 0) + direction * speed / 1000;
         platform.transform.position = newPlatformPosition;
 
         if (platform.transform.position.y >= maxHeight)
@@ -44,7 +44,7 @@ public class Elevator : Obstacle
         //accendi la motosega
         animator.SetBool("On", true);
 
-        EnablePhysics();
+        SetCollidersActive(true); SetDynamicRigidbodyActive(true);
     }
 
     //chiamato al RetryLevel()
@@ -61,7 +61,7 @@ public class Elevator : Obstacle
 
         direction = Vector3.down;
 
-        DisablePhysics();
+        SetCollidersActive(false); SetDynamicRigidbodyActive(false);
     }
 
     public override void OnObstacleDropped()
@@ -78,10 +78,24 @@ public class Elevator : Obstacle
 
     }
 
+    protected override void SetDynamicRigidbodyActive(bool value)
+    {
+        Rigidbody2D rb = transform.Find("Platform").GetComponent<Rigidbody2D>();
+
+        if (value)
+            rb.isKinematic = false;
+        else
+        {
+            rb.isKinematic = true;
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0;
+        }
+    }
+
     public override ObstacleType GetObstacleType()
     {
         return ObstacleType.Elevator;
     }
 
-
 }
+

@@ -25,14 +25,8 @@ public abstract class Obstacle : MonoBehaviour
     private Quaternion originalRotation;
     private CircleCollider2D draggingCollider;
 
-    [Tooltip("The position of the anchor that it can occupy")]
     public AnchorPointPosition anchorPosition;
-    [Tooltip("All the rigidbodies attached to the prefab")]
-    public Rigidbody2D[] rigidbodies;
-    [Tooltip("Tutti i collider non legati al drag and drop")]
-    public Collider2D[] allNonDraggableColliders;
-
-
+    public Collider2D[] allColliders;
 
     // Usata per inizializzare il drag dell'ostacolo ma  non per la sua attivazione effettiva
     protected virtual void Start ()
@@ -63,28 +57,24 @@ public abstract class Obstacle : MonoBehaviour
             UpdateObstacle();
     }
 
-    //riabilita tutta la fisica del rigidbody
-    protected virtual void EnablePhysics()
+     protected void SetCollidersActive(bool value)
     {
-        for (int i = 0; i < rigidbodies.Length; i++)
-            rigidbodies[i].isKinematic = false;
-        for (int i = 0; i < allNonDraggableColliders.Length; i++)
-            allNonDraggableColliders[i].enabled = true;
+        foreach (Collider2D collider in allColliders)
+            collider.enabled = value;
     }
 
-    protected virtual void DisablePhysics()
+    protected virtual void SetDynamicRigidbodyActive(bool value)
     {
-        //disabilita i rigidbody e toglie ogni velocita' che avevano residua
-        for (int i = 0; i < rigidbodies.Length; i++)
-        {
-            rigidbodies[i].isKinematic = true;
-            rigidbodies[i].velocity = Vector2.zero;
-            rigidbodies[i].angularVelocity = 0;
-        }
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
-        //disattiva tutti i collider, questo serve a evitare che il collider fisico interferisca con il drag and drop
-        for (int i = 0; i < allNonDraggableColliders.Length; i++)
-            allNonDraggableColliders[i].enabled = false;
+        if (value)
+            rb.isKinematic = false;
+        else
+        {
+            rb.isKinematic = true;
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0;
+        }            
     }
 
     //metodo che crea un collider per il drag and drop
@@ -165,10 +155,7 @@ public abstract class Obstacle : MonoBehaviour
     protected abstract void WakeUp();
     protected abstract void Sleep();
     public abstract ObstacleType GetObstacleType();
-
 }
-
-
 
 public abstract class ObstacleWithTimer : Obstacle
 {

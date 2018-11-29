@@ -145,7 +145,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1557284700432314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06113243, y: -0.18429983, z: 0}
+  m_LocalPosition: {x: -3.2995381, y: -0.54332876, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4525105359025124}
@@ -279,11 +279,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorPosition: 0
-  rigidbodies:
-  - {fileID: 50776815908930782}
-  allNonDraggableColliders:
-  - {fileID: 61532900100683698}
+  allColliders:
   - {fileID: 61038902932826476}
+  - {fileID: 61532900100683698}
   raycastOffset: 0.5
   timeOnGround: 1
   liftSpeed: 3

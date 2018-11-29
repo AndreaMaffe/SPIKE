@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1318106213304226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.121897, y: -0.28007448, z: 0}
+  m_LocalPosition: {x: -1.6232789, y: -0.8163023, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4610867813758608}
@@ -328,7 +328,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorPosition: 0
   rigidbodies: []
-  allNonDraggableColliders: []
+  allColliders:
+  - {fileID: 60292797415582324}
+  - {fileID: 60507497203018620}
   speed: 6
 --- !u!212 &212285773125297882
 SpriteRenderer:
