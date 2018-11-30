@@ -18,8 +18,14 @@ MonoBehaviour:
   obstacleDatas:
   - type: 8
     obstacleMaxAmount: 1
+    points: 1
   - type: 3
     obstacleMaxAmount: 1
+    points: 1
   - type: 2
     obstacleMaxAmount: 1
+    points: 1
   movementDatas: []
+  pointsForOneStar: 1
+  pointsForTwoStars: 2
+  pointsForThreeStars: 3
