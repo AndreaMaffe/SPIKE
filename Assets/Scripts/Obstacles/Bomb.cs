@@ -50,7 +50,7 @@ public class Bomb : ObstacleWithTimer {
         //disattiva la Sprite
         SetVisible(false);
 
-        //disabilita la fisica legata al gameobject
+        //disabilita collider e rigidbody
         SetCollidersActive(false); SetDynamicRigidbodyActive(rb, false);
     }
 
@@ -68,7 +68,7 @@ public class Bomb : ObstacleWithTimer {
         //avvia il timer
         StartTimer();
         
-        //risveglia i rigidbodies e i collider
+        //abilita collider e rigidbody
         SetCollidersActive(true); SetDynamicRigidbodyActive(rb, true);;
     }
 
@@ -84,7 +84,7 @@ public class Bomb : ObstacleWithTimer {
         //rimette il timer a zero e lo blocca
         ResetTimer();
 
-        //disabilita la fisica legata al gameobject
+        //disabilita collider e rigidbody
         SetCollidersActive(false); SetDynamicRigidbodyActive(rb, false);
     }
 
@@ -102,13 +102,13 @@ public class Bomb : ObstacleWithTimer {
                 Vector2 direction = rigidbodyHit.worldCenterOfMass - rb.worldCenterOfMass;               
 
                 //se non si interpongono oggetti tra la bomba e l'oggetto
-                if (Physics2D.RaycastAll(rb.worldCenterOfMass, direction)[1].collider.gameObject.name == objectHit.name || Physics2D.RaycastAll(rb.worldCenterOfMass, direction)[0].collider.gameObject.name == objectHit.name)
+                if (!Physics2D.Raycast(rb.worldCenterOfMass, direction, direction.magnitude, LayerMask.GetMask("Platform")))
                 {
                     //applica una spinta all'oggetto pari a explosionThrust
                     rigidbodyHit.AddForce(direction.normalized * explosionThrust /10, ForceMode2D.Impulse);
 
                     //se il player è troppo vicino, uccidilo
-                    if (direction.magnitude <= explosionInnerRadius && objectHit.tag == "Player")
+                    if (objectHit.tag == "Player" && direction.magnitude <= explosionInnerRadius)
                         new PlayerDeathByBomb(objectHit.GetComponent<Player>(), this, this.transform.position, direction, explosionThrust).StartDeath();
                 }
             }
