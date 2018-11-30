@@ -156,7 +156,7 @@ public abstract class Obstacle : MonoBehaviour
 
     protected virtual void OnPlayerDeath()
     {
-        SetActive(false);
+       SetActive(false);
     }
 
     protected abstract void StartObstacle();
