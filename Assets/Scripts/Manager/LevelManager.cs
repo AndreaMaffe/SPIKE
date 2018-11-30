@@ -11,13 +11,11 @@ public class LevelManager : MonoBehaviour
 
     public static int CurrentLevelIndex { get; set; }
     public static Level CurrentLevel { get; set; }
+    public static Dictionary<ObstacleType, int> NumberOfObstacles { get; set; }
 
-    //Tutti gli scriptable objects dei livelli
     private List<Level> levels;
     private LevelState state;
 
-    //[SerializeField]
-    //public ObstacleData[] obstacleData;
     public GameObject obstacleButton;
     public int buttonInBetweenSpace;
     public int buttonWidth;
@@ -33,6 +31,9 @@ public class LevelManager : MonoBehaviour
 
     public delegate void OnEndLevel();
     public static event OnEndLevel endLevelEvent;
+
+    public delegate void OnPlayerDeath();
+    public static event OnPlayerDeath playerDeathEvent;
 
     public Button playPauseButton;
 
@@ -60,6 +61,11 @@ public class LevelManager : MonoBehaviour
         Application.targetFrameRate = 60;
 
         levels = new List<Level>();
+
+        //inizializza il Dictionary degli ostacoli a zero
+        LevelManager.NumberOfObstacles = new Dictionary<ObstacleType, int>();
+        foreach (ObstacleType type in System.Enum.GetValues(typeof(ObstacleType)))
+            NumberOfObstacles.Add(type, 0);
 
         try
         {
@@ -101,6 +107,11 @@ public class LevelManager : MonoBehaviour
             Instantiate(Resources.Load<GameObject>("Prefab/PlayerSimulator"), level.startingPoint, Quaternion.identity);
         Instantiate(Resources.Load<GameObject>("Prefab/Flag"), level.endingPoint, Quaternion.identity);
         currentTime = 0.0f;
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadSceneAsync("LevelSelection");
     }
 
     //Metodo che posiziona le piattaforme del livello a partire dallo scriptable object
@@ -149,6 +160,15 @@ public class LevelManager : MonoBehaviour
         FindObjectOfType<AudioManagerBR>().GetComponent<AudioManager>().PlayWinAudio();
 
         endLevelEvent();
+
+        Debug.Log("*** Well done! You get " + GetNumberOfStars() + " stars! ***");
+    }
+
+    public static void PlayerDeath()
+    {
+        FindObjectOfType<AudioManagerBR>().GetComponent<AudioManager>().PlayFailAudio();
+
+        playerDeathEvent();
     }
 
     //metodo che serve ai bottoni per associare a ogni ostacolo la posizione in cui deve andare in modo da passare al 
@@ -185,10 +205,20 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void GoToMainMenu()
+    private static int GetNumberOfStars()
     {
-        SceneManager.LoadSceneAsync("LevelSelection");
-    }
+        int points = 0;
 
+        foreach (ObstacleData obstacle in CurrentLevel.obstacleDatas)
+            points += NumberOfObstacles[obstacle.type] * obstacle.points;
+
+        if (points >= CurrentLevel.pointsForThreeStars)
+            return 3;
+        else if (points >= CurrentLevel.pointsForTwoStars)
+            return 2;
+        else if (points >= CurrentLevel.pointsForOneStar)
+            return 1;
+        else return 0;
+    }
 }
 

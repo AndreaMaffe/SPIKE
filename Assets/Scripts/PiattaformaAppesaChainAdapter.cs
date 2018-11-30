@@ -17,7 +17,6 @@ public class PiattaformaAppesaChainAdapter : MonoBehaviour {
     void AdaptChainLenght() {
         GameObject astaOrizzontale = GameObject.Find("AstaMetallo");
         float yOffset =  astaOrizzontale.transform.position.y - transform.position.y ;
-        Debug.Log(yOffset);
         chainSx.GetComponent<SpriteRenderer>().size = new Vector2(chainSx.GetComponent<SpriteRenderer>().size.x, yOffset);
         chainDx.GetComponent<SpriteRenderer>().size = chainSx.GetComponent<SpriteRenderer>().size;
 

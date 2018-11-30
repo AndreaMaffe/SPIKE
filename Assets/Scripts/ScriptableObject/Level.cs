@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public enum PlayerMovement
 {
     Run,
@@ -23,6 +22,10 @@ public class Level : ScriptableObject
     public ObstacleData[] obstacleDatas;
     [Header("Player movements")]
     public MovementData[] movementDatas;
+    [Header("Stars")]
+    public int pointsForOneStar;
+    public int pointsForTwoStars;
+    public int pointsForThreeStars;
 
 }
 
@@ -31,6 +34,7 @@ public struct ObstacleData
 {
     public ObstacleType type;
     public int obstacleMaxAmount;
+    public int points;
 }
 
 [System.Serializable]
@@ -46,3 +50,8 @@ public struct MovementData
     public PlayerMovement movement;
     public float startTime;
 }
+
+
+
+
+

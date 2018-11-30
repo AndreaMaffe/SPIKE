@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour {
     {
         saveManager = SaveManager.SaveManagerInstance;
         saveManager = SaveUtility.LoadObject(saveManager, "saveFile");
-        Debug.Log("Volume musica iniziale: " + saveManager.musicVolume);
+        //Debug.Log("Volume musica iniziale: " + saveManager.musicVolume);
         FindSoundSlider();
         musicSlider.value = saveManager.musicVolume;
     }
@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour {
     public void SaveAudioSettings()
     {
         saveManager.musicVolume = AudioListener.volume;
-        Debug.Log("Volume Musica salvato a: " + saveManager.musicVolume);
+        //Debug.Log("Volume Musica salvato a: " + saveManager.musicVolume);
         SaveUtility.SaveObject(saveManager, "saveFile");
     }
 

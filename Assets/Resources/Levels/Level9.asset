@@ -45,3 +45,6 @@ MonoBehaviour:
     startTime: 3
   - movement: 1
     startTime: 4.4
+  pointsForOneStar: 0
+  pointsForTwoStars: 0
+  pointsForThreeStars: 0

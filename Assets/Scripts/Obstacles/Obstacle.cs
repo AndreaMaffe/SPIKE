@@ -36,9 +36,13 @@ public abstract class Obstacle : MonoBehaviour
         LevelManager.runLevelEvent += WakeUp;
         LevelManager.retryLevelEvent += Sleep;
         LevelManager.endLevelEvent += OnEndLevel;
+        LevelManager.playerDeathEvent += OnPlayerDeath;
 
         LevelManager.runLevelEvent += DisableDraggingSystem;
         LevelManager.retryLevelEvent += EnableDraggingSystem;
+
+        LevelManager.NumberOfObstacles[GetObstacleType()] += 1;
+                  
 
         StartObstacle();
     }
@@ -123,6 +127,8 @@ public abstract class Obstacle : MonoBehaviour
 
         LevelManager.runLevelEvent -= DisableDraggingSystem;
         LevelManager.retryLevelEvent -= EnableDraggingSystem;
+
+        LevelManager.NumberOfObstacles[GetObstacleType()] -= 1;
     }
 
     public PlayerDeathEvent CreatePlayerDeathEvent(Player player, Vector3 position)
@@ -148,12 +154,20 @@ public abstract class Obstacle : MonoBehaviour
         SetActive(false);
     }
 
+    protected virtual void OnPlayerDeath()
+    {
+        SetActive(false);
+    }
+
     protected abstract void StartObstacle();
     protected abstract void UpdateObstacle();
     protected abstract void WakeUp();
     protected abstract void Sleep();
     public abstract ObstacleType GetObstacleType();
 }
+
+
+
 
 public abstract class ObstacleWithTimer : Obstacle
 {

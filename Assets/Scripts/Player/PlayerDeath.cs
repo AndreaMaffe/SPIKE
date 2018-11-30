@@ -17,11 +17,14 @@ public abstract class PlayerDeathEvent
         this.player = player;
         this.position = position;
         this.obstacle = obstacle;
+
+        LevelManager.PlayerDeath();
     }
 
     public abstract void StartDeath();
 
-    protected void SpawnBloodParticles() {
+    protected void SpawnBloodParticles()
+    {
         bloodParticles = Resources.Load<GameObject>("Prefab/Particles/BloodParticles");
         GameObject blood = GameObject.Instantiate(bloodParticles, position, Quaternion.identity);
         GameObject.Destroy(blood.gameObject, 1f);
@@ -34,7 +37,8 @@ public abstract class PlayerDeathEvent
         player.GetComponent<PlayerAppearence>().AssignBloodFountainParticle(bloodFountainInstance);
     }
 
-    protected void SpawnBloodStainOnPlayer() {
+    protected void SpawnBloodStainOnPlayer()
+    {
         GameObject bloodStain = Resources.Load<GameObject>("Prefab/Particles/BloodStainPlayer");
         GameObject bloodStainInstance = GameObject.Instantiate(bloodStain, position - new Vector3(Random.Range(-0.3f, 0.3f), Random.Range(0.4f, 0.7f), 0), Quaternion.identity, player.transform.Find("Body").transform);
         bloodStainInstance.GetComponent<SpriteRenderer>().sortingOrder = player.transform.Find("Body").GetComponent<SpriteRenderer>().sortingOrder + 1;
