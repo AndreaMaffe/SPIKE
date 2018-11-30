@@ -6,8 +6,10 @@ public class FallingSpikes : ObstacleWithTimer
 {
     private Vector3 originalSpikesPosition;
     private GameObject spikes;
-    private SpriteRenderer ropeSprite;
+    private Rigidbody2D rbSpikes;
+    private Rigidbody2D rbPlatform;
 
+    private SpriteRenderer ropeSprite;
     private Vector2 originalRopeSize;
 
     private bool goingUp;
@@ -17,20 +19,18 @@ public class FallingSpikes : ObstacleWithTimer
     [Tooltip("Speed of the vertical ascent")]
     public float liftSpeed;
 
-    public override ObstacleType GetObstacleType()
-    {
-        return ObstacleType.FallingSpikes;
-    }
-
     //start apposito per gli ostacoli, usare questo anziché Update().
     protected override void StartObstacle()
     {
         spikes = transform.Find("Spikes").gameObject;
+        rbSpikes = spikes.GetComponent<Rigidbody2D>();
+        rbPlatform = spikes.transform.Find("Platform").GetComponent<Rigidbody2D>();
+
         ropeSprite = transform.Find("Pivot").GetComponent<SpriteRenderer>();
 
         originalRopeSize = ropeSprite.size;
 
-        SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
+        SetCollidersActive(false); SetDynamicRigidbodyActive(rbSpikes, false); SetDynamicRigidbodyActive(rbPlatform, false);
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
@@ -45,11 +45,9 @@ public class FallingSpikes : ObstacleWithTimer
             if (hit1 || hit2)
             {
                 SetCollidersActive(true);
-                SetDynamicRigidbodyActive(true);
-            }
-
-
-                              
+                SetDynamicRigidbodyActive(rbSpikes, true);
+                SetDynamicRigidbodyActive(rbPlatform, true);
+            }                              
         }
 
         if (goingUp)
@@ -62,7 +60,9 @@ public class FallingSpikes : ObstacleWithTimer
                 spikes.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 spikes.GetComponent<Rigidbody2D>().gravityScale = 5;
                 goingUp = false;
-                SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
+                SetCollidersActive(false);
+                SetDynamicRigidbodyActive(rbSpikes, false);
+                SetDynamicRigidbodyActive(rbPlatform, false);
             }
         }
 
@@ -88,7 +88,7 @@ public class FallingSpikes : ObstacleWithTimer
         SetActive(false);
 
         //impedisce di cadere
-        SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
+        SetCollidersActive(false); SetDynamicRigidbodyActive(rbSpikes, false); SetDynamicRigidbodyActive(rbPlatform, false);
 
         //risetta la posizione iniziale
         ResetPosition();
@@ -127,24 +127,8 @@ public class FallingSpikes : ObstacleWithTimer
         StartTimer();
     }
 
-    protected override void SetDynamicRigidbodyActive(bool value)
+    public override ObstacleType GetObstacleType()
     {
-        Rigidbody2D rbSpikes = spikes.GetComponent<Rigidbody2D>();
-        Rigidbody2D rbPlatform = spikes.transform.Find("Platform").GetComponent<Rigidbody2D>();
-
-        if (value)
-        {
-            rbPlatform.isKinematic = false;
-            rbSpikes.isKinematic = false;
-        }
-
-        else
-        {
-            rbSpikes.isKinematic = true;
-            rbPlatform.isKinematic = true;
-
-            rbSpikes.velocity = Vector2.zero;
-            rbPlatform.velocity = Vector2.zero;
-        }
+        return ObstacleType.FallingSpikes;
     }
 }

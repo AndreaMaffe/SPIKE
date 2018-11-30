@@ -12,9 +12,9 @@ public class Raptor : Obstacle
     protected override void StartObstacle()
     {
         objectToFollow = GameObject.FindGameObjectWithTag("Player");
-        //rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
 
-        SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
+        SetCollidersActive(false); SetDynamicRigidbodyActive(rb, false);;
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
@@ -43,7 +43,7 @@ public class Raptor : Obstacle
 
         rb.drag = 0;
 
-        SetCollidersActive(true); SetDynamicRigidbodyActive(true);
+        SetCollidersActive(true); SetDynamicRigidbodyActive(rb, true);
 
         FindObjectOfType<AudioManagerBR>().Play("raptor");
     }
@@ -61,11 +61,9 @@ public class Raptor : Obstacle
         //risetta la posizione iniziale
         ResetPosition();
 
-        SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
+        SetCollidersActive(false); SetDynamicRigidbodyActive(rb, false);;
 
         FindObjectOfType<AudioManagerBR>().Stop("raptor");
-
-
     }
 
     protected override void OnEndLevel()

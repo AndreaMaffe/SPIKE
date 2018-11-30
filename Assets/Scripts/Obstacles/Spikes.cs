@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Spikes : Obstacle
 {
+    private Rigidbody2D rb; 
+
     public override ObstacleType GetObstacleType()
     {
         return ObstacleType.Spikes;
@@ -11,7 +13,8 @@ public class Spikes : Obstacle
 
     protected override void StartObstacle()
     {
-        SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
+        rb = GetComponent<Rigidbody2D>(); 
+        SetCollidersActive(false); SetDynamicRigidbodyActive(rb, false);
     }
 
     protected override void UpdateObstacle()
@@ -21,12 +24,12 @@ public class Spikes : Obstacle
 
     protected override void WakeUp()
     {
-        SetCollidersActive(true); SetDynamicRigidbodyActive(true);;
+        SetCollidersActive(true); SetDynamicRigidbodyActive(rb, true);;
     }
 
     protected override void Sleep()
     {
-        SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
+        SetCollidersActive(false); SetDynamicRigidbodyActive(rb, false);;
 
         ResetPosition();
     }

@@ -63,10 +63,8 @@ public abstract class Obstacle : MonoBehaviour
             collider.enabled = value;
     }
 
-    protected virtual void SetDynamicRigidbodyActive(bool value)
+    protected virtual void SetDynamicRigidbodyActive(Rigidbody2D rb, bool value)
     {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-
         if (value)
             rb.isKinematic = false;
         else

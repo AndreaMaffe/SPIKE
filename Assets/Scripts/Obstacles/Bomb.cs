@@ -28,7 +28,7 @@ public class Bomb : ObstacleWithTimer {
         rb = FindObjectOfType<Rigidbody2D>();
         coll = FindObjectOfType<Collider2D>();
 
-        SetCollidersActive(false); SetDynamicRigidbodyActive(false);
+        SetCollidersActive(false); SetDynamicRigidbodyActive(rb, false);
 
     }
 
@@ -51,7 +51,7 @@ public class Bomb : ObstacleWithTimer {
         SetVisible(false);
 
         //disabilita la fisica legata al gameobject
-        SetCollidersActive(false); SetDynamicRigidbodyActive(false);
+        SetCollidersActive(false); SetDynamicRigidbodyActive(rb, false);
     }
 
     protected override void OnTimerEnd()
@@ -69,7 +69,7 @@ public class Bomb : ObstacleWithTimer {
         StartTimer();
         
         //risveglia i rigidbodies e i collider
-        SetCollidersActive(true); SetDynamicRigidbodyActive(true);;
+        SetCollidersActive(true); SetDynamicRigidbodyActive(rb, true);;
     }
 
     //chiamato al RetryLevel()
@@ -85,7 +85,7 @@ public class Bomb : ObstacleWithTimer {
         ResetTimer();
 
         //disabilita la fisica legata al gameobject
-        SetCollidersActive(false); SetDynamicRigidbodyActive(false);;
+        SetCollidersActive(false); SetDynamicRigidbodyActive(rb, false);
     }
 
     void ShockWave()
@@ -102,7 +102,7 @@ public class Bomb : ObstacleWithTimer {
                 Vector2 direction = rigidbodyHit.worldCenterOfMass - rb.worldCenterOfMass;               
 
                 //se non si interpongono oggetti tra la bomba e l'oggetto
-                if (Physics2D.RaycastAll(rb.worldCenterOfMass, direction)[1].collider.gameObject.name == objectHit.name || Physics2D.RaycastAll(rb.worldCenterOfMass, direction)[0].collider.gameObject.name == objectHit.name || (Physics2D.RaycastAll(rb.worldCenterOfMass, direction)[1].collider.gameObject.name == "Spikes (Clone)" && Physics2D.RaycastAll(rb.worldCenterOfMass, direction)[2].collider.gameObject.name == objectHit.name))
+                if (Physics2D.RaycastAll(rb.worldCenterOfMass, direction)[1].collider.gameObject.name == objectHit.name || Physics2D.RaycastAll(rb.worldCenterOfMass, direction)[0].collider.gameObject.name == objectHit.name)
                 {
                     //applica una spinta all'oggetto pari a explosionThrust
                     rigidbodyHit.AddForce(direction.normalized * explosionThrust /10, ForceMode2D.Impulse);
