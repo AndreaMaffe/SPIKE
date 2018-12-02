@@ -44,6 +44,7 @@ public class NextLevelPanel : MonoBehaviour
     public void NextLevel()
     {
         LevelManager.CurrentLevelIndex += 1;
+        SceneManager.LoadScene("SampleSceneRange");
     }
 
     public void RestartLevel()
