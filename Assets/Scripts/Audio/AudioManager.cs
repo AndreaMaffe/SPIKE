@@ -78,8 +78,8 @@ public class AudioManager : MonoBehaviour {
 
     public void PlayFailAudio()
     {
-        FindObjectOfType<AudioManagerBR>().Stop("play");
-        FindObjectOfType<AudioManagerBR>().Stop("build");
+        FindObjectOfType<AudioManagerBR>().Mute("play");
+        FindObjectOfType<AudioManagerBR>().Mute("build");
 
         FindObjectOfType<AudioManagerBR>().Play("fail");
     }
