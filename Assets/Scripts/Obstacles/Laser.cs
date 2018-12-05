@@ -31,7 +31,7 @@ public class Laser : ObstacleWithTimer {
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
-        layerHit = LayerMask.GetMask("Player", "Platform", "Default", "Pendolum", "Bullet"); //TODO: sistemare
+        layerHit = LayerMask.GetMask("Player", "Platform", "Default", "Pendolum", "Bullet", "SpringPlatform"); //TODO: sistemare
         readyToMove = false;
 
         objectToFollow = GameObject.FindGameObjectWithTag("Player");

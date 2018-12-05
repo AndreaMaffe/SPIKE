@@ -161,7 +161,7 @@ public class LevelManager : MonoBehaviour
 
         endLevelEvent();
 
-        Debug.Log("*** Well done! You get " + GetNumberOfStars() + " stars! ***");
+        GameObject.Find("CanvasFront").transform.Find("EndLevelPanelContent").Find("Text").GetComponent<Text>().text = "*** Well done! You get " + GetNumberOfStars() + " stars! ***";
     }
 
     public static void PlayerDeath()

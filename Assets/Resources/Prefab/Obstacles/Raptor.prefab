@@ -289,8 +289,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorPosition: 2
-  rigidbodies:
-  - {fileID: 50411576397563470}
   allColliders:
   - {fileID: 58058022464208296}
   speed: 13

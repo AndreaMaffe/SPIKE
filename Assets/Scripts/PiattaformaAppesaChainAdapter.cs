@@ -8,14 +8,15 @@ public class PiattaformaAppesaChainAdapter : MonoBehaviour {
     GameObject chainDx;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         chainSx = transform.Find("CatenaSx").gameObject;
         chainDx = transform.Find("CatenaDx").gameObject;
         AdaptChainLenght();
     }
 
     void AdaptChainLenght() {
-        GameObject astaOrizzontale = GameObject.Find("AstaMetallo");
+        GameObject astaOrizzontale = GameObject.Find("HorizontalBar");
         float yOffset =  astaOrizzontale.transform.position.y - transform.position.y ;
         chainSx.GetComponent<SpriteRenderer>().size = new Vector2(chainSx.GetComponent<SpriteRenderer>().size.x, yOffset);
         chainDx.GetComponent<SpriteRenderer>().size = chainSx.GetComponent<SpriteRenderer>().size;

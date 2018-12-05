@@ -11,12 +11,14 @@
 - le FallinkSpikes non si possono rispostare #FIXATO
 - spostare la parte superiore della molla tramite drag and drop sposta quella inferiore #FIXATO
 - è possibile schiacciare il tasto retry durante la schermata di fine livello
-- circle collider delle spikes 
+- circle collider delle spikes #FIXATO
 
 
 ----------  OSTACOLI A POSTO:  -------------
+* Bomb
 * Bullet
 * Cannon
+* Elevator
 * Pendolum
 * FallingSpikes
 * Spring
@@ -24,9 +26,10 @@
 
 ----------- OSTACOLI DA FARE/MODIFICARE:  -------------
 - Bomb: sistemare potenza esplosione #FATTO
+- Bomb: aggiungere timer
 - Laser: limitare il movimento a dx
 - Raptor: rendere il movimento più pulito #FATTO
-- Elevator: finire e aggiungere immagine
+- Elevator: finire e aggiungere immagine #FATTO
 - Flamethrower: migliorare particles delle fiamme
 
 
@@ -35,4 +38,6 @@
 -> fare in modo che gli estremi della anchor line siano settabili da livello
 -> fare in modo che una anchor line possa essere di più tipi
 -> sistemare il panel di fine livello
--> fare in modo che gli ostacoli non possano essere disposti sovrapposti
+-> fare in modo che gli ostacoli non possano essere disposti sovrapposti #FATTO
+-> finire il PlayerSimulator
+-> inserire dei boundaries a destra e sinistra per quando il player esce dalla visuale

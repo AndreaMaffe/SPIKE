@@ -84,7 +84,7 @@ public abstract class Obstacle : MonoBehaviour
     {
         draggingCollider = gameObject.AddComponent<CircleCollider2D>();
         draggingCollider.isTrigger = true;
-        draggingCollider.radius = 0.6f;
+        draggingCollider.radius = 0.8f;
         draggingCollider.offset = Vector2.zero;
     }
 
@@ -156,7 +156,7 @@ public abstract class Obstacle : MonoBehaviour
 
     protected virtual void OnPlayerDeath()
     {
-       SetActive(false);
+       //SetActive(false);
     }
 
     protected abstract void StartObstacle();

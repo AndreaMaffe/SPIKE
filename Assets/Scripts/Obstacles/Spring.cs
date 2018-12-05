@@ -33,7 +33,7 @@ public class Spring : Obstacle
         if (Physics2D.Raycast(this.transform.position + Vector3.up, Vector2.up, 10, LayerMask.GetMask("Platform")))
             spikes.transform.position = new Vector3(spikes.transform.position.x, Physics2D.Raycast(this.transform.position + Vector3.up, Vector2.up, 10, LayerMask.GetMask("Platform")).collider.gameObject.transform.position.y - 0.5f, 0);
         else
-            spikes.transform.position = new Vector3(spikes.transform.position.x, GameObject.Find("AstaMetallo").transform.position.y - 1.25f, 0);
+            spikes.transform.position = new Vector3(spikes.transform.position.x, GameObject.Find("HorizontalBar").transform.position.y - 1.25f, 0);
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
