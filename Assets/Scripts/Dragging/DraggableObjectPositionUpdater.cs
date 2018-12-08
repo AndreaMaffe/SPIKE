@@ -16,7 +16,9 @@ public class DraggableObjectPositionUpdater : MonoBehaviour
 
     private void Start()
     {
-        FillObstacleLayerMask();
+        obstacleLayerMask = new int[8] { LayerMask.GetMask("Bomb"), LayerMask.GetMask("Default"), LayerMask.GetMask("FallingSpikes"),
+            LayerMask.GetMask("Pendolum"), LayerMask.GetMask("Raptor"), LayerMask.GetMask("Spikes"), LayerMask.GetMask("SpringPlatform"),
+            LayerMask.GetMask("SpringPlatform") };
     }
 
     public void OnEnable()
@@ -24,17 +26,6 @@ public class DraggableObjectPositionUpdater : MonoBehaviour
         layerMask = LayerMask.GetMask("PuntoAncoraggio");
         spriteRenderer = GetComponentsInChildren<SpriteRenderer>();
         ChangeSpriteOpacity();
-    }
-
-    void FillObstacleLayerMask()
-    {
-        obstacleLayerMask = new int[6];
-        obstacleLayerMask[0] = LayerMask.GetMask("Bomb");
-        obstacleLayerMask[1] = LayerMask.GetMask("Default");
-        obstacleLayerMask[2] = LayerMask.GetMask("FallingSpikes");
-        obstacleLayerMask[3] = LayerMask.GetMask("Pendolum");
-        obstacleLayerMask[4] = LayerMask.GetMask("Raptor");
-        obstacleLayerMask[5] = LayerMask.GetMask("Spikes");
     }
 
     public bool CheckIfSnapped()
@@ -80,7 +71,7 @@ public class DraggableObjectPositionUpdater : MonoBehaviour
             transform.position = newPosition;
         }
 
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 0.7f);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 0.6f);
         bool objectFound = false;
 
         for (int i = 0; i < hitColliders.Length; i++)
@@ -119,7 +110,7 @@ public class DraggableObjectPositionUpdater : MonoBehaviour
             }       
         }
             
-        else if (!snapped)
+        else
             foreach (SpriteRenderer spr in spriteRenderer)
                 spr.color = new Color32(255, 255, 255, 120);
     }
