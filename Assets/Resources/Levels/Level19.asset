@@ -12,24 +12,29 @@ MonoBehaviour:
   m_Name: Level19
   m_EditorClassIdentifier: 
   description: modificabile
-  startingPoint: {x: -6.6, y: 2, z: 0}
-  endingPoint: {x: 6.6, y: 2, z: 0}
-  platformDatas: []
+  startingPoint: {x: -8.5, y: -2.6, z: 0}
+  endingPoint: {x: 8.5, y: -2.5, z: 0}
+  platformDatas:
+  - platformType: {fileID: 1369588825285826, guid: 7aa6330ffaad7364bb4006525fc928fd,
+      type: 2}
+    platformPos: {x: 0, y: 0, z: 0}
+  - platformType: {fileID: 1369588825285826, guid: 7aa6330ffaad7364bb4006525fc928fd,
+      type: 2}
+    platformPos: {x: 4, y: 0, z: 0}
   obstacleDatas:
-  - type: 4
-    obstacleMaxAmount: 2
+  - type: 6
+    obstacleMaxAmount: 1
+    points: 0
+  - type: 7
+    obstacleMaxAmount: 1
     points: 0
   - type: 0
     obstacleMaxAmount: 1
     points: 0
-  - type: 6
+  - type: 2
     obstacleMaxAmount: 1
     points: 0
-  movementDatas:
-  - movement: 1
-    startTime: 1
-  - movement: 1
-    startTime: 3.9
+  movementDatas: []
   pointsForOneStar: 0
   pointsForTwoStars: 0
   pointsForThreeStars: 0

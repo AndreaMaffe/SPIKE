@@ -18,6 +18,9 @@ MonoBehaviour:
   - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
       type: 2}
     platformPos: {x: -4, y: 3, z: 0}
+  - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
+      type: 2}
+    platformPos: {x: 4, y: 3, z: 0}
   obstacleDatas:
   - type: 6
     obstacleMaxAmount: 1
