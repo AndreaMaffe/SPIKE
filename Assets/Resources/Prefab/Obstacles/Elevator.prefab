@@ -363,7 +363,7 @@ MonoBehaviour:
   allColliders:
   - {fileID: 61833337392442534}
   - {fileID: 61135953416096692}
-  speed: 32
+  speed: 35
   maxHeight: 3.1
 --- !u!114 &114900700155556510
 MonoBehaviour:

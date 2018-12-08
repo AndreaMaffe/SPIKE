@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Level15
   m_EditorClassIdentifier: 
   description: parkour
-  startingPoint: {x: -6.7, y: 2, z: 0}
+  startingPoint: {x: -6.9, y: 2, z: 0}
   endingPoint: {x: 6.7, y: 2, z: 0}
   platformDatas:
   - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
@@ -39,7 +39,7 @@ MonoBehaviour:
     points: 0
   movementDatas:
   - movement: 1
-    startTime: 1
+    startTime: 1.2
   pointsForOneStar: 1
   pointsForTwoStars: 2
   pointsForThreeStars: 10
