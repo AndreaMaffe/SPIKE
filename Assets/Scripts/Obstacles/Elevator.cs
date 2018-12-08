@@ -72,6 +72,14 @@ public class Elevator : Obstacle
         originalPlatformPosition = platform.transform.position;
     }
 
+    protected override void OnEndLevel()
+    {
+        base.OnEndLevel();
+
+        //spegni la motosega
+        animator.SetBool("On", false);
+    }
+
     public void InvertDirection()
     {
         if (direction == Vector3.down)

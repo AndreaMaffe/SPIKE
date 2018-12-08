@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ElevatorPlatform : MonoBehaviour {
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.collider.tag == "Platform")
+        if (collision.tag == "Platform")
             transform.parent.gameObject.GetComponent<Elevator>().InvertDirection();
     }
 

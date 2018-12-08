@@ -33,13 +33,13 @@ TagManager:
   - Bomb
   - Pendolum
   - FallingSpikes
-  - ElevatorChainsaw
+  - ElevatorPlatform
   - SpringSpikes
   - Bullet
   - Raptor
   - Spikes
   - SpringPlatform
-  - 
+  - ElevatorPlatformSensor
   - 
   m_SortingLayers:
   - name: Default
