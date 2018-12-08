@@ -69,7 +69,7 @@ public class Bomb : ObstacleWithTimer {
         StartTimer();
         
         //abilita collider e rigidbody
-        SetCollidersActive(true); SetDynamicRigidbodyActive(rb, true);;
+        SetCollidersActive(true); SetDynamicRigidbodyActive(rb, true);
     }
 
     //chiamato al RetryLevel()

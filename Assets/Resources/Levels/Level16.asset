@@ -9,30 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
-  m_Name: Level16
+  m_Name: Level22
   m_EditorClassIdentifier: 
   description: modificabile
-  startingPoint: {x: -6.6, y: 2, z: 0}
-  endingPoint: {x: 6.6, y: 2, z: 0}
-  platformDatas:
-  - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
-      type: 2}
-    platformPos: {x: -6.5, y: 1.8, z: 0}
-  - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
-      type: 2}
-    platformPos: {x: 0, y: 1.8, z: 0}
-  - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
-      type: 2}
-    platformPos: {x: 6.5, y: 1.8, z: 0}
-  obstacleDatas:
-  - type: 4
-    obstacleMaxAmount: 2
-  - type: 0
-    obstacleMaxAmount: 1
-  - type: 6
-    obstacleMaxAmount: 1
-  movementDatas:
-  - movement: 1
-    startTime: 1
-  - movement: 1
-    startTime: 3.9
+  startingPoint: {x: -8.5, y: -2.6, z: 0}
+  endingPoint: {x: 8.5, y: -2.5, z: 0}
+  platformDatas: []
+  obstacleDatas: []
+  movementDatas: []
+  pointsForOneStar: 1
+  pointsForTwoStars: 2
+  pointsForThreeStars: 3
