@@ -24,7 +24,7 @@ public class Elevator : Obstacle
 
         direction = Vector3.down;
 
-        SetCollidersActive(false); SetDynamicRigidbodyActive(platformRigidbody, false);
+        SetCollidersActive(false); 
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().
@@ -46,7 +46,7 @@ public class Elevator : Obstacle
         //accendi la motosega
         animator.SetBool("On", true);
 
-        SetCollidersActive(true); SetDynamicRigidbodyActive(platformRigidbody, true);
+        SetCollidersActive(true); 
     }
 
     //chiamato al RetryLevel()
@@ -63,7 +63,7 @@ public class Elevator : Obstacle
 
         direction = Vector3.down;
 
-        SetCollidersActive(false); SetDynamicRigidbodyActive(platformRigidbody, false);
+        SetCollidersActive(false); 
     }
 
     public override void OnObstacleDropped()
