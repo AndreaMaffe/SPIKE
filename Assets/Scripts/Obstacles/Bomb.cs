@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,7 +41,11 @@ public class Bomb : ObstacleWithTimer {
 
     protected override void UpdateObstacle()
     {
-        Debug.Log("update iniziato");
+        currentTime -= Time.deltaTime;
+        if (currentTime < 0)
+            timerText.text = "";
+        else
+            timerText.text = Math.Ceiling(currentTime).ToString();
     }
    
     void Explode()
@@ -75,6 +80,9 @@ public class Bomb : ObstacleWithTimer {
         //inizializza il timer per l'esplosione
         SetTimer(timeBeforeExplosion);
 
+        //permette di entrare nell'UpdateObstacle()
+        SetActive(true);
+
         //avvia il timer
         StartTimer();
         
@@ -88,6 +96,9 @@ public class Bomb : ObstacleWithTimer {
         //rigenera l'immagine e il timer
         SetVisible(true);
         canvas.enabled = true;
+
+        //impedisce di entrare nell'UpdateObstacle()
+        SetActive(false);
 
         //risetta la posizione iniziale
         ResetPosition();
