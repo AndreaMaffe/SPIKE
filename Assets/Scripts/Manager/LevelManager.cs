@@ -42,6 +42,7 @@ public class LevelManager : MonoBehaviour
     private float currentTime;
 
     public bool playerSimulator;
+    private GameObject playerSimulatorObject;
 
 
     //struct che associa ogni ostacolo alla posizione in cui puo' andare
@@ -62,6 +63,7 @@ public class LevelManager : MonoBehaviour
 
         levels = new List<Level>();
 
+        PlayerSimulator.playerSimulatorFlagReached += ActivateChangeLevelStateButton;
         //inizializza il Dictionary degli ostacoli a zero
         LevelManager.NumberOfObstacles = new Dictionary<ObstacleType, int>();
         foreach (ObstacleType type in System.Enum.GetValues(typeof(ObstacleType)))
@@ -104,7 +106,7 @@ public class LevelManager : MonoBehaviour
         CreateUIObstacleButtons(level);
         Instantiate(Resources.Load<GameObject>("Prefab/Player"), level.startingPoint, Quaternion.identity);
         if (playerSimulator) 
-            Instantiate(Resources.Load<GameObject>("Prefab/PlayerSimulator"), level.startingPoint, Quaternion.identity);
+            playerSimulatorObject = Instantiate(Resources.Load<GameObject>("Prefab/PlayerSimulator"), level.startingPoint, Quaternion.identity);
         Instantiate(Resources.Load<GameObject>("Prefab/Flag"), level.endingPoint, Quaternion.identity);
         currentTime = 0.0f;
     }
@@ -122,6 +124,9 @@ public class LevelManager : MonoBehaviour
             Instantiate(platform.platformType, platform.platformPos, Quaternion.identity);
         }
     }
+    void ActivateChangeLevelStateButton() {
+        playPauseButton.gameObject.SetActive(true);
+    }
 
     public void ChangeLevelState()
     {
@@ -130,7 +135,8 @@ public class LevelManager : MonoBehaviour
             state = LevelState.RUNNING;
 
             playPauseButton.image.overrideSprite = Resources.Load<Sprite>("UISprites/PauseButton");
-
+            //disattiva la trail del player simulator
+            playerSimulatorObject.SetActive(false);
             //attiva tutti gli eventi associati al RunLevel() (come i WakeUp() degli ostacoli)
             runLevelEvent();
         }
@@ -139,6 +145,8 @@ public class LevelManager : MonoBehaviour
         {
             state = LevelState.UNDER_CONSTRUCTION;
 
+            //attiva il player simulator
+            playerSimulatorObject.SetActive(true);
             playPauseButton.image.overrideSprite = null;
             currentTime = 0.0f;
 
@@ -161,7 +169,7 @@ public class LevelManager : MonoBehaviour
 
         endLevelEvent();
 
-        GameObject.Find("CanvasFront").transform.Find("EndLevelPanelContent").Find("Text").GetComponent<Text>().text = "*** Well done! You get " + GetNumberOfStars() + " stars! ***";
+        GameObject.Find("CanvasFront").transform.Find("EndLevelPanel").Find("Text").GetComponent<Text>().text = "*** Well done! You get " + GetNumberOfStars() + " stars! ***";
     }
 
     public static void PlayerDeath()
@@ -219,6 +227,12 @@ public class LevelManager : MonoBehaviour
         else if (points >= CurrentLevel.pointsForOneStar)
             return 1;
         else return 0;
+    }
+
+    private void OnDisable()
+    {
+        PlayerSimulator.playerSimulatorFlagReached -= ActivateChangeLevelStateButton;
+
     }
 }
 

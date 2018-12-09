@@ -24,6 +24,9 @@ public class PlayerSimulator : MonoBehaviour {
     //Lista che contiene tutti i timer per i movimenti del giocatore
     private List<Timer> movementTimers;
 
+    public delegate void OnFlagReached();
+    public static event OnFlagReached playerSimulatorFlagReached;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -94,6 +97,7 @@ public class PlayerSimulator : MonoBehaviour {
     //chiamato al RunLevel()
     void WakeUp()
     {
+        rb = GetComponent<Rigidbody2D>();
         Run();
 
         SetTimers();
@@ -197,12 +201,14 @@ public class PlayerSimulator : MonoBehaviour {
     private void OnDisable()
     {
         LevelManager.retryLevelEvent -= Sleep;
+        LevelManager.runLevelEvent -= StopMovement;
+
     }
 
     public void StopMovement() {
-
         Stop();
         rb.velocity = Vector2.zero;
+        playerSimulatorFlagReached();
     }
 
     void SetInvisible() {

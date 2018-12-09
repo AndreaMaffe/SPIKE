@@ -9,6 +9,8 @@ public class NextLevelPanel : MonoBehaviour
     private SaveManager saveManager;
     private bool panelDown;
 
+    public GameObject blackBackground;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -37,6 +39,7 @@ public class NextLevelPanel : MonoBehaviour
     public void DownScrollPanel()
     {
         animator.SetTrigger("DownScrollPanel");
+        blackBackground.SetActive(true);
         panelDown = true;
     }
 
