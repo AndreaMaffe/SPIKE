@@ -10,6 +10,10 @@ public class Bomb : ObstacleWithTimer {
     private Rigidbody2D rb;
     private Canvas canvas;
     private Text timerText;
+    private SpriteRenderer img;
+
+    public Sprite disabledBomb;
+    public Sprite activatedBomb;
 
     public float timeBeforeExplosion;
     private float currentTime;
@@ -34,6 +38,7 @@ public class Bomb : ObstacleWithTimer {
         coll = FindObjectOfType<Collider2D>();
         canvas = GetComponentInChildren<Canvas>();
         timerText = canvas.GetComponentInChildren<Text>();
+        img = GetComponent<SpriteRenderer>();
 
         SetCollidersActive(false); SetDynamicRigidbodyActive(rb, false);
 
@@ -46,6 +51,10 @@ public class Bomb : ObstacleWithTimer {
             timerText.text = "";
         else
             timerText.text = Math.Ceiling(currentTime).ToString();
+        if (currentTime - Math.Floor(currentTime) < 0.5)
+            img.sprite = activatedBomb;
+        else
+            img.sprite = disabledBomb;
     }
    
     void Explode()
@@ -95,6 +104,7 @@ public class Bomb : ObstacleWithTimer {
     {
         //rigenera l'immagine e il timer
         SetVisible(true);
+        img.sprite = disabledBomb;
         canvas.enabled = true;
 
         //impedisce di entrare nell'UpdateObstacle()
