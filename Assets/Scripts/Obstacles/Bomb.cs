@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bomb : ObstacleWithTimer {
 
     private Collider2D coll;
     private Rigidbody2D rb;
+    private Canvas canvas;
+    private Text timerText;
 
     public float timeBeforeExplosion;
+    private float currentTime;
     public float explosionThrust;
     public float explosionInnerRadius;
     public float explosionOuterRadius;
@@ -27,6 +31,8 @@ public class Bomb : ObstacleWithTimer {
     {
         rb = FindObjectOfType<Rigidbody2D>();
         coll = FindObjectOfType<Collider2D>();
+        canvas = GetComponentInChildren<Canvas>();
+        timerText = canvas.GetComponentInChildren<Text>();
 
         SetCollidersActive(false); SetDynamicRigidbodyActive(rb, false);
 
@@ -34,7 +40,7 @@ public class Bomb : ObstacleWithTimer {
 
     protected override void UpdateObstacle()
     {
-
+        Debug.Log("update iniziato");
     }
    
     void Explode()
@@ -47,8 +53,9 @@ public class Bomb : ObstacleWithTimer {
         //crea effetti particellari
         Destroy(Instantiate(explosionParticlePrefab, transform.position, Quaternion.identity), 1.5f);
 
-        //disattiva la Sprite
+        //disattiva la Sprite e il timer
         SetVisible(false);
+        canvas.enabled = false;
 
         //disabilita collider e rigidbody
         SetCollidersActive(false); SetDynamicRigidbodyActive(rb, false);
@@ -62,6 +69,9 @@ public class Bomb : ObstacleWithTimer {
     //chiamato al RunLevel()
     protected override void WakeUp()
     {
+        timerText.text = timeBeforeExplosion.ToString();
+        currentTime = timeBeforeExplosion;
+
         //inizializza il timer per l'esplosione
         SetTimer(timeBeforeExplosion);
 
@@ -75,8 +85,9 @@ public class Bomb : ObstacleWithTimer {
     //chiamato al RetryLevel()
     protected override void Sleep()
     {
-        //rigenera l'immagine
+        //rigenera l'immagine e il timer
         SetVisible(true);
+        canvas.enabled = true;
 
         //risetta la posizione iniziale
         ResetPosition();
