@@ -106,6 +106,7 @@ public class Bomb : ObstacleWithTimer {
         SetVisible(true);
         img.sprite = disabledBomb;
         canvas.enabled = true;
+        timerText.text = "";
 
         //impedisce di entrare nell'UpdateObstacle()
         SetActive(false);
