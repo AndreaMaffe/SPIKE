@@ -11,20 +11,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level20
   m_EditorClassIdentifier: 
-  description: modificabile
+  description: stop FS & spring using bullet
   startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
-  platformDatas:
-  - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
-      type: 2}
-    platformPos: {x: 0, y: 0, z: 0}
+  platformDatas: []
   obstacleDatas:
   - type: 8
     obstacleMaxAmount: 1
-    points: 0
-  - type: 0
+    points: 1
+  - type: 3
     obstacleMaxAmount: 1
-    points: 0
+    points: 1
+  - type: 2
+    obstacleMaxAmount: 1
+    points: 1
   movementDatas: []
   pointsForOneStar: 1
   pointsForTwoStars: 2

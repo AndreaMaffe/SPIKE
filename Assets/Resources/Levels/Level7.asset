@@ -11,19 +11,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level7
   m_EditorClassIdentifier: 
-  description: spikes up&down
+  description: cannons & spikesss
   startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
-  platformDatas: []
+  platformDatas:
+  - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
+      type: 2}
+    platformPos: {x: 0, y: 2, z: 0}
+  - platformType: {fileID: 1507616780894958, guid: a49ff86480db4924382a09c262eb8003,
+      type: 2}
+    platformPos: {x: -4.5, y: -0.3, z: 0}
+  - platformType: {fileID: 1507616780894958, guid: a49ff86480db4924382a09c262eb8003,
+      type: 2}
+    platformPos: {x: 4.5, y: -0.3, z: 0}
   obstacleDatas:
-  - type: 0
-    obstacleMaxAmount: 1
+  - type: 2
+    obstacleMaxAmount: 3
+    points: 2
   - type: 10
-    obstacleMaxAmount: 1
-  - type: 8
-    obstacleMaxAmount: 1
+    obstacleMaxAmount: 3
+    points: 1
   movementDatas:
-  - movement: 2
-    startTime: 2.9
   - movement: 1
-    startTime: 3.2
+    startTime: 0.6
+  - movement: 1
+    startTime: 2.4
+  - movement: 1
+    startTime: 4.7
+  pointsForOneStar: 1
+  pointsForTwoStars: 3
+  pointsForThreeStars: 9

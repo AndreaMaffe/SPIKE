@@ -11,21 +11,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level5
   m_EditorClassIdentifier: 
-  description: respingi il raptor con un bullet
+  description: bomb+ 2 spikes
   startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
   platformDatas: []
   obstacleDatas:
-  - type: 3
+  - type: 10
+    obstacleMaxAmount: 2
+    points: 1
+  - type: 0
     obstacleMaxAmount: 1
     points: 1
   - type: 2
-    obstacleMaxAmount: 1
+    obstacleMaxAmount: 2
     points: 1
-  - type: 7
-    obstacleMaxAmount: 1
-    points: 1
-  movementDatas: []
+  movementDatas:
+  - movement: 1
+    startTime: 2
   pointsForOneStar: 1
-  pointsForTwoStars: 2
-  pointsForThreeStars: 3
+  pointsForTwoStars: 3
+  pointsForThreeStars: 5

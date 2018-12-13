@@ -11,30 +11,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level8
   m_EditorClassIdentifier: 
-  description: simmetry
+  description: intro fallingspikes
   startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
   platformDatas:
-  - platformType: {fileID: 1058377351572860, guid: 15df901a804d5a449b27cc99e16e2483,
+  - platformType: {fileID: 1369588825285826, guid: 7aa6330ffaad7364bb4006525fc928fd,
       type: 2}
-    platformPos: {x: 7, y: 2.05, z: 0}
-  - platformType: {fileID: 1058377351572860, guid: 15df901a804d5a449b27cc99e16e2483,
+    platformPos: {x: -3, y: -0.3, z: 0}
+  - platformType: {fileID: 1369588825285826, guid: 7aa6330ffaad7364bb4006525fc928fd,
       type: 2}
-    platformPos: {x: -7, y: 2.05, z: 0}
+    platformPos: {x: 3, y: -0.3, z: 0}
   obstacleDatas:
   - type: 10
     obstacleMaxAmount: 2
-    points: 1
-  - type: 5
+    points: 0
+  - type: 8
     obstacleMaxAmount: 1
-    points: 2
-  - type: 3
-    obstacleMaxAmount: 1
-    points: 2
+    points: 0
   - type: 2
-    obstacleMaxAmount: 1
-    points: 1
-  movementDatas: []
-  pointsForOneStar: 2
-  pointsForTwoStars: 4
-  pointsForThreeStars: 7
+    obstacleMaxAmount: 2
+    points: 0
+  movementDatas:
+  - movement: 1
+    startTime: 1.1
+  pointsForOneStar: 0
+  pointsForTwoStars: 0
+  pointsForThreeStars: 0

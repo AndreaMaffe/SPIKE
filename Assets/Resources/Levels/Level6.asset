@@ -11,12 +11,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level6
   m_EditorClassIdentifier: 
-  description: stop FS & spring using bullet
+  description: impara a far scattare la molla
   startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
-  platformDatas: []
+  platformDatas:
+  - platformType: {fileID: 1058377351572860, guid: 15df901a804d5a449b27cc99e16e2483,
+      type: 2}
+    platformPos: {x: -4, y: 2, z: 0}
+  - platformType: {fileID: 1058377351572860, guid: 15df901a804d5a449b27cc99e16e2483,
+      type: 2}
+    platformPos: {x: 4, y: 2, z: 0}
   obstacleDatas:
-  - type: 8
+  - type: 0
     obstacleMaxAmount: 1
     points: 1
   - type: 3

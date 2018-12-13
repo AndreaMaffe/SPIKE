@@ -11,20 +11,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: 
-  description: 4 spikes
+  description: intro cannon
   startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
   platformDatas: []
   obstacleDatas:
-  - type: 0
-    obstacleMaxAmount: 1
-    points: 0
   - type: 10
-    obstacleMaxAmount: 4
+    obstacleMaxAmount: 1
+    points: 1
+  - type: 2
+    obstacleMaxAmount: 3
     points: 1
   movementDatas:
   - movement: 1
-    startTime: 2
+    startTime: 3.2
   pointsForOneStar: 1
-  pointsForTwoStars: 2
-  pointsForThreeStars: 4
+  pointsForTwoStars: 1
+  pointsForThreeStars: 2
