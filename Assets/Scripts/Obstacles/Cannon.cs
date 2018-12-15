@@ -33,6 +33,10 @@ public class Cannon : ObstacleWithTimer {
         animator = GetComponent<Animator>();
     }
 
+    protected override void StartObstacle()
+    {
+    }
+
     //update apposito per gli ostacoli, usare questo anziché Update().
     protected override void UpdateObstacle () {
 
