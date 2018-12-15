@@ -119,11 +119,14 @@ public class LevelManager : MonoBehaviour
     //Metodo che posiziona le piattaforme del livello a partire dallo scriptable object
     private void CreatePlatforms(Level currentLevel)
     {
-        foreach (PlatformData platform in currentLevel.platformDatas)
+        try
         {
-            Instantiate(platform.platformType, platform.platformPos, Quaternion.identity);
+            foreach (PlatformData platform in currentLevel.platformDatas)
+                Instantiate(platform.platformType, platform.platformPos, Quaternion.identity);
         }
+        catch (NullReferenceException e) { }
     }
+
     void ActivateChangeLevelStateButton() {
         playPauseButton.gameObject.SetActive(true);
     }

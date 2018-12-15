@@ -17,8 +17,9 @@ public class Cannon : ObstacleWithTimer {
     public Vector3 shootingOffset;
 
 
-    protected override void StartObstacle()
+    protected override void OnPlayerDeath()
     {
+        SetActive(false);
     }
 
     public override void OnObstacleDropped()
