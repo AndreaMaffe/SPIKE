@@ -87,12 +87,9 @@ public class LevelSelectionManager : MonoBehaviour {
     {
         int levelIndex = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text);
         LevelManager.CurrentLevelIndex = levelIndex -1;
-        SaveUtility.SaveObject(saveManager, "saveFile");
         //if (levelIndex <= saveManager.maxUnlockedLevel) LINEA DI CODICE CORRETTA, USIAMO LA PROSSIMA IN FASE DI TESTING   
 
-        SceneManager.LoadScene("SampleSceneRange");
-        //Non appena la scena viene caricata dobbiamo riprendere da SaveManager l'informazione del livello scelto (currentLevel) 
-        //in modo tale da caricare lo scriptable object relativo      
+        SceneManager.LoadScene("SampleSceneRange");    
     }
 
     public void GoToMainMenu()

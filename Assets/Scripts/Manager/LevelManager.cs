@@ -173,6 +173,18 @@ public class LevelManager : MonoBehaviour
         endLevelEvent();
 
         GameObject.Find("CanvasFront").transform.Find("EndLevelPanel").Find("Text").GetComponent<Text>().text = "*** Well done! You get " + GetNumberOfStars() + " stars! ***";
+        SaveStarsNumber();
+    }
+
+    private static void SaveStarsNumber()
+    {
+        SaveManager saveManager = SaveManager.SaveManagerInstance;
+        saveManager = SaveUtility.LoadObject<SaveManager>(saveManager, "saveFile");
+        if (saveManager.stars[CurrentLevelIndex] < GetNumberOfStars())
+        {
+            saveManager.stars[CurrentLevelIndex] = GetNumberOfStars();
+            SaveUtility.SaveObject(saveManager, "saveFile");
+        }
     }
 
     public static void PlayerDeath()
