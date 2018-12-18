@@ -10,7 +10,7 @@ public class TimerManager : MonoBehaviour
     {
         foreach(Timer timer in timers)
         {
-            timer.Update(Time.fixedDeltaTime);
+            timer.Update(Time.deltaTime);
         }
     }
 

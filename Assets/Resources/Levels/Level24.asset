@@ -11,12 +11,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level24
   m_EditorClassIdentifier: 
-  description: modificabile
-  startingPoint: {x: -8.5, y: -2.6, z: 0}
+  description: intro cannon
+  startingPoint: {x: -6.5, y: 2, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
-  platformDatas: []
-  obstacleDatas: []
-  movementDatas: []
+  platformDatas:
+  - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
+      type: 2}
+    platformPos: {x: -6.5, y: 2, z: 0}
+  - platformType: {fileID: 1198458058388202, guid: 8bf99fe968ea35941b0ff343bb668a85,
+      type: 2}
+    platformPos: {x: -1, y: 0.5, z: 0}
+  obstacleDatas:
+  - type: 2
+    obstacleMaxAmount: 3
+    points: 1
+  movementDatas:
+  - movement: 1
+    startTime: 0.9
   pointsForOneStar: 1
   pointsForTwoStars: 2
   pointsForThreeStars: 3

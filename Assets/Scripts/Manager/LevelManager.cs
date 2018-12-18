@@ -165,6 +165,12 @@ public class LevelManager : MonoBehaviour
         //state = LevelState.UNDER_CONSTRUCTION;
     }
 
+    public void LoadNextLevel()
+    {
+        CurrentLevelIndex += 1;
+        SceneManager.LoadScene("SampleSceneRange");
+    }
+
     //Metodo che lancia l'evento legato alla fine del livello
     public static void EndLevel()
     {

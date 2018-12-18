@@ -6,16 +6,17 @@ public class ButtonUpDown : MonoBehaviour {
 
     public Animator animator;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         animator = GetComponent<Animator>();
         LevelManager.runLevelEvent += HideButtons;
         DraggableObject.onDraggingObstacle += HideButtons;
         DraggableObject.onEndDraggingObstacle += ShowButtons;
         LevelManager.retryLevelEvent += ShowButtons;
-
     }
 
-    public void HideButtons() {
+    public void HideButtons()
+    {
         animator.SetBool("Up", false);
     }
 

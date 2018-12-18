@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class NextLevelPanel : MonoBehaviour
 {
-
     private Animator animator;
     private SaveManager saveManager;
     private bool panelDown;
@@ -14,7 +13,6 @@ public class NextLevelPanel : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        panelDown = false;
 
         //Se il livello è completato facciamo scendere il pannello della vittoria
         LevelManager.endLevelEvent += DownScrollPanel;
@@ -24,18 +22,17 @@ public class NextLevelPanel : MonoBehaviour
         LevelManager.retryLevelEvent += UpScrollPanel;
     }
 
-    //Metodo che viene chiamato nel momento in cui il livello è stato vinto e che fa il pannello della vittoria
     private void UpScrollPanel()
     {
         if (panelDown)
         {
             animator.SetTrigger("UpScrollPanel");
+            blackBackground.SetActive(false);
             panelDown = false;
         }
             
     }
 
-    //Metodo che viene chiamato nel momento in cui il livello è stato vinto e che fa il pannello della vittoria
     public void DownScrollPanel()
     {
         animator.SetTrigger("DownScrollPanel");
@@ -43,26 +40,8 @@ public class NextLevelPanel : MonoBehaviour
         panelDown = true;
     }
 
-    //Metodo legato al bottone next level, aggiorna il livello corrente in modo tale che verrà caricato lo scriptable object corretto nella prossima scena
-    public void NextLevel()
-    {
-        LevelManager.CurrentLevelIndex += 1;
-        SceneManager.LoadScene("SampleSceneRange");
-    }
-
-    public void RestartLevel()
-    {
-        SceneManager.LoadScene("SampleSceneRange");
-    }
-
-    //Metodo che della schermata di vittoria ci riporta al main menu
-    public void BackToMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
-
     /*
-    //Metodo che aggiorna il massimo livello sbloccato
+    //*** LA LOGICA DI GIOCO NON DOVREBBE STARE NELLA UI! (Spostare in LevelManager) ***
     private void UpdateMaxUnlockedLevel()
     {
         saveManager = SaveManager.SaveManagerInstance;
@@ -78,9 +57,7 @@ public class NextLevelPanel : MonoBehaviour
 
     private void OnDestroy()
     {
-        //Unregister events
         LevelManager.endLevelEvent -= DownScrollPanel;
-        //LevelManager.endLevelEvent -= UpdateMaxUnlockedLevel;
         LevelManager.retryLevelEvent -= UpScrollPanel;
     }
 

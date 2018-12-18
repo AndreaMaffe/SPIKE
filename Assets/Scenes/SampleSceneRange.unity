@@ -3038,8 +3038,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1145642480}
-        m_MethodName: NextLevel
+      - m_Target: {fileID: 1159661753}
+        m_MethodName: LoadNextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3406,8 +3406,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1145642480}
-        m_MethodName: BackToMenu
+      - m_Target: {fileID: 1159661753}
+        m_MethodName: GoToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3809,7 +3809,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RETRY
+  m_Text: STAY HERE
 --- !u!222 &1454077962
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4796,7 +4796,7 @@ GameObject:
   - component: {fileID: 1797253145}
   - component: {fileID: 1797253144}
   m_Layer: 5
-  m_Name: RetryButton
+  m_Name: StayHereButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4860,8 +4860,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1145642480}
-        m_MethodName: RestartLevel
+      - m_Target: {fileID: 1159661753}
+        m_MethodName: ChangeLevelState
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
