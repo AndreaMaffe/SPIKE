@@ -178,7 +178,6 @@ public class LevelManager : MonoBehaviour
 
         endLevelEvent();
 
-        GameObject.Find("CanvasFront").transform.Find("EndLevelPanel").Find("Text").GetComponent<Text>().text = "*** Well done! You get " + GetNumberOfStars() + " stars! ***";
         SaveStarsNumber();
     }
 
@@ -234,7 +233,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private static int GetNumberOfStars()
+    public static int GetNumberOfStars()
     {
         int points = 0;
 
