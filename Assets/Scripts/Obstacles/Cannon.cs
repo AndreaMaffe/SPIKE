@@ -17,8 +17,9 @@ public class Cannon : ObstacleWithTimer {
     public Vector3 shootingOffset;
 
 
-    protected override void StartObstacle()
+    protected override void OnPlayerDeath()
     {
+        SetActive(false);
     }
 
     public override void OnObstacleDropped()
@@ -30,6 +31,10 @@ public class Cannon : ObstacleWithTimer {
         this.transform.rotation = new Quaternion(0, Mathf.Acos(direction) * Mathf.Rad2Deg, 0, 1);
 
         animator = GetComponent<Animator>();
+    }
+
+    protected override void StartObstacle()
+    {
     }
 
     //update apposito per gli ostacoli, usare questo anziché Update().

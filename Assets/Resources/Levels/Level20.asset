@@ -23,7 +23,7 @@ MonoBehaviour:
     obstacleMaxAmount: 1
     points: 1
   - type: 2
-    obstacleMaxAmount: 1
+    obstacleMaxAmount: 2
     points: 1
   movementDatas: []
   pointsForOneStar: 1

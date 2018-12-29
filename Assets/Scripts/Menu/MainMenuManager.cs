@@ -17,8 +17,6 @@ public class MainMenuManager : MonoBehaviour {
         if (!PlayerPrefs.HasKey("firstLaunch"))
         {
             saveManager = SaveManager.SaveManagerInstance;
-            saveManager.maxUnlockedLevel = 1;
-            saveManager.totalLevels = 20; //TODO vedere come fargli prendere il reale numero massimo dei livelli, facile ma poco elegante reinserendo di nuovo una lista pubblica degli scriptables
             SaveUtility.SaveObject(saveManager, "saveFile");
             PlayerPrefs.SetInt("firstLaunch", 0);
         }

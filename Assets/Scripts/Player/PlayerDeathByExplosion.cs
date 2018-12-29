@@ -19,7 +19,8 @@ public class PlayerDeathByExplosion : PlayerDeathEvent
         player.GetComponent<PlayerAppearence>().ChangeBodyPiecesSprite("explosion");
     }
 
-    void SpawnExplosionParticles() {
+    void SpawnExplosionParticles()
+    {
         explosionParticle = Resources.Load<GameObject>("Prefab/Particles/BombSmoke");
         GameObject explosion = GameObject.Instantiate(explosionParticle, position, Quaternion.identity);
         GameObject.Destroy(explosion.gameObject, 1f);

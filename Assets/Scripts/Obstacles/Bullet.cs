@@ -7,7 +7,7 @@ public class Bullet : Obstacle {
     public float speed;
 
     private Rigidbody2D rb;
-    private float direction;
+    private float direction;    // 1 se sx-->dx , -1 se sx<--dx
 
 
     protected override void EnableDraggingSystem() { }
@@ -18,7 +18,6 @@ public class Bullet : Obstacle {
 
         rb = GetComponent<Rigidbody2D>();
 
-        // 1 se sx-->dx , -1 se sx<--dx
         direction = Mathf.Cos(transform.eulerAngles.y);
     }
 

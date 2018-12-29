@@ -119,11 +119,14 @@ public class LevelManager : MonoBehaviour
     //Metodo che posiziona le piattaforme del livello a partire dallo scriptable object
     private void CreatePlatforms(Level currentLevel)
     {
-        foreach (PlatformData platform in currentLevel.platformDatas)
+        try
         {
-            Instantiate(platform.platformType, platform.platformPos, Quaternion.identity);
+            foreach (PlatformData platform in currentLevel.platformDatas)
+                Instantiate(platform.platformType, platform.platformPos, Quaternion.identity);
         }
+        catch (NullReferenceException e) { }
     }
+
     void ActivateChangeLevelStateButton() {
         playPauseButton.gameObject.SetActive(true);
     }
@@ -162,6 +165,12 @@ public class LevelManager : MonoBehaviour
         //state = LevelState.UNDER_CONSTRUCTION;
     }
 
+    public void LoadNextLevel()
+    {
+        CurrentLevelIndex += 1;
+        SceneManager.LoadScene("SampleSceneRange");
+    }
+
     //Metodo che lancia l'evento legato alla fine del livello
     public static void EndLevel()
     {
@@ -170,6 +179,18 @@ public class LevelManager : MonoBehaviour
         endLevelEvent();
 
         GameObject.Find("CanvasFront").transform.Find("EndLevelPanel").Find("Text").GetComponent<Text>().text = "*** Well done! You get " + GetNumberOfStars() + " stars! ***";
+        SaveStarsNumber();
+    }
+
+    private static void SaveStarsNumber()
+    {
+        SaveManager saveManager = SaveManager.SaveManagerInstance;
+        saveManager = SaveUtility.LoadObject<SaveManager>(saveManager, "saveFile");
+        if (saveManager.stars[CurrentLevelIndex] < GetNumberOfStars())
+        {
+            saveManager.stars[CurrentLevelIndex] = GetNumberOfStars();
+            SaveUtility.SaveObject(saveManager, "saveFile");
+        }
     }
 
     public static void PlayerDeath()
