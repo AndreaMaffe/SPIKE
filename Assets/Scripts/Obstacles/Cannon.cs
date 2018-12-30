@@ -58,7 +58,7 @@ public class Cannon : ObstacleWithTimer {
             //spara un colpo
             Instantiate(bullet, this.transform.position + shootingOffset * direction, this.transform.rotation);
 
-            FindObjectOfType<AudioManagerBR>().Play("cannon");
+            FindObjectOfType<AudioManager>().Play("cannon");
 
             StartTimer();
         }

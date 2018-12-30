@@ -34,8 +34,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1778774273310780}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.1560912, y: -1.1942955, z: -0.052734375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,13 +52,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed925e3a71a2174f8ef244975fed976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sounds:
+  - name: build
+    clip: {fileID: 8300000, guid: 815943b1a2e77e3458da7ed7531de21f, type: 3}
+    volume: 0.15
+    pitch: 1
+    loop: 1
+    mute: 0
+    source: {fileID: 0}
+  - name: play
+    clip: {fileID: 8300000, guid: beb318d4a453b1847927003e1460ba98, type: 3}
+    volume: 0.15
+    pitch: 1
+    loop: 1
+    mute: 0
+    source: {fileID: 0}
+  - name: win
+    clip: {fileID: 8300000, guid: 3b2930b561a6f4948b7e181c6fad7779, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: fail
+    clip: {fileID: 8300000, guid: 52ba386c4c0cd2e4ba69c6195646044c, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: cannon
+    clip: {fileID: 8300000, guid: 917c67e70bffdc8469e26ab13cdf7fed, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: bomb
+    clip: {fileID: 8300000, guid: ff780e4fe08753d4980c59b9f7eba9a5, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: laser
+    clip: {fileID: 8300000, guid: d78e606140ec56f408a43623d636528d, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: lanciafiamme
+    clip: {fileID: 8300000, guid: 816c0ccb7cf590e4781232084ea568e4, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: raptor
+    clip: {fileID: 8300000, guid: c36bfcc1abe679940a3be4955076c11e, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 1
+    mute: 0
+    source: {fileID: 0}
+  - name: landing
+    clip: {fileID: 8300000, guid: 46c09b7c362a65745afb9fb156cf0754, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    mute: 0
+    source: {fileID: 0}
 --- !u!114 &114957681691860560
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1778774273310780}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d6717a8e8e5e8f4e96aba694724df60, type: 3}
   m_Name: 

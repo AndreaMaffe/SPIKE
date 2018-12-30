@@ -59,7 +59,7 @@ public class Bomb : ObstacleWithTimer {
    
     void Explode()
     {
-        FindObjectOfType<AudioManagerBR>().Play("bomb");
+        FindObjectOfType<AudioManager>().Play("bomb");
 
         //genera l'onda d'urto 
         ShockWave();

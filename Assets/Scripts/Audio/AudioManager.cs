@@ -2,19 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
+using System;
+using UnityEngine.SceneManagement;
 
 
 public class AudioManager : MonoBehaviour {
 
+    public Sounds[] sounds;
+
     private Slider musicSlider;
     private Slider sfxSlider;
+
+    //public Toggle soundToggle;
+    public Toggle musicToggle;
 
     private SaveManager saveManager;
 
     bool IsInPlaymode = false;
 
+    public void Awake()
+    {
+        foreach (Sounds s in sounds)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+            s.source.mute = s.mute;
+        }
+    }
+
     public void Start()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 0) //schermata home
+        {
+            Play("landing");
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 1) //SampleSceneRange
+        {
+            Play("build");
+            Play("play");
+            Mute("play");
+        }
+
         saveManager = SaveManager.SaveManagerInstance;
         saveManager = SaveUtility.LoadObject(saveManager, "saveFile");
         //Debug.Log("Volume musica iniziale: " + saveManager.musicVolume);
@@ -36,6 +69,18 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
+    public void OnValueChanged()
+    {
+        if (musicToggle.isOn)
+        {
+            AudioListener.volume = 1f;
+        }
+        else
+        {
+            AudioListener.volume = 0;
+        }
+    } 
+
     public void SaveAudioSettings()
     {
         saveManager.musicVolume = AudioListener.volume;
@@ -54,14 +99,14 @@ public class AudioManager : MonoBehaviour {
     {
         if (IsInPlaymode == false)
         {
-            FindObjectOfType<AudioManagerBR>().Mute("build");
-            FindObjectOfType<AudioManagerBR>().Unmute("play");
+            FindObjectOfType<AudioManager>().Mute("build");
+            FindObjectOfType<AudioManager>().Unmute("play");
 
             IsInPlaymode = true;
         }
         else {
-            FindObjectOfType<AudioManagerBR>().Mute("play");
-            FindObjectOfType<AudioManagerBR>().Unmute("build");
+            FindObjectOfType<AudioManager>().Mute("play");
+            FindObjectOfType<AudioManager>().Unmute("build");
 
             IsInPlaymode = false;
         }
@@ -70,17 +115,61 @@ public class AudioManager : MonoBehaviour {
 
     public void PlayWinAudio()
     {
-        FindObjectOfType<AudioManagerBR>().Stop("play");
-        FindObjectOfType<AudioManagerBR>().Unmute("build");
+        FindObjectOfType<AudioManager>().Stop("play");
+        FindObjectOfType<AudioManager>().Unmute("build");
 
-        FindObjectOfType<AudioManagerBR>().Play("win");
+        FindObjectOfType<AudioManager>().Play("win");
     }
 
     public void PlayFailAudio()
     {
-        FindObjectOfType<AudioManagerBR>().Mute("play");
-        FindObjectOfType<AudioManagerBR>().Mute("build");
+        FindObjectOfType<AudioManager>().Mute("play");
+        FindObjectOfType<AudioManager>().Mute("build");
 
-        FindObjectOfType<AudioManagerBR>().Play("fail");
+        FindObjectOfType<AudioManager>().Play("fail");
+    }
+
+    public void Play(string name)
+    {
+        Sounds s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        s.source.Play();
+    }
+
+    public void Stop(string name)
+    {
+        Sounds s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        s.source.Stop();
+    }
+
+    public void Mute(string name)
+    {
+        Sounds s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        s.source.mute = true;
+    }
+
+    public void Unmute(string name)
+    {
+        Sounds s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        s.source.mute = false;
     }
 }
