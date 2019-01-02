@@ -24,6 +24,8 @@ public class Cannon : ObstacleWithTimer {
 
     public override void OnObstacleDropped()
     {
+        base.OnObstacleDropped();
+
         //1 se sx-->dx , -1 se sx
         direction = - this.transform.position.x / Mathf.Abs(this.transform.position.x);
 

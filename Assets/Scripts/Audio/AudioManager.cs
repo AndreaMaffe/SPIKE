@@ -5,11 +5,13 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 using System;
 using UnityEngine.SceneManagement;
-
+using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour {
 
     public Sounds[] sounds;
+    public Sounds[] placings;
+    private int count = 0;
 
     private Slider musicSlider;
     private Slider sfxSlider;
@@ -32,6 +34,16 @@ public class AudioManager : MonoBehaviour {
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
             s.source.mute = s.mute;
+        }
+
+        foreach (Sounds p in placings)
+        {
+            p.source = gameObject.AddComponent<AudioSource>();
+            p.source.clip = p.clip;
+
+            p.source.volume = p.volume;
+            p.source.pitch = p.pitch;
+            p.source.loop = p.loop;
         }
     }
 
@@ -171,5 +183,21 @@ public class AudioManager : MonoBehaviour {
             return;
         }
         s.source.mute = false;
+    }
+
+    //public void RandomClip()
+    //{
+    //    Sounds p = Array.Find(placings, sound => sound.name == name);
+    //    if (p == null)
+    //    {
+    //        Debug.LogWarning("Sound: " + name + " not found!");
+    //        return;
+    //    }
+    //}
+
+    public void ObstacleDraggedIn()
+    {
+        int i = Random.Range(0, placings.Length);
+        placings[i].source.Play();
     }
 }
