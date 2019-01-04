@@ -58,6 +58,9 @@ public class Spring : Obstacle
             spikes.position -= new Vector3(0, platformHeight, 0);
 
             triggered = true;
+
+            FindObjectOfType<AudioManager>().Play("spring");
+
         }
     }
 

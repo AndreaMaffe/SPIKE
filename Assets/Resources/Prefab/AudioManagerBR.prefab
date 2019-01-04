@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4142837308333542}
   - component: {fileID: 114957681691860560}
   - component: {fileID: 114899182804527844}
-  - component: {fileID: 114393373968446888}
   m_Layer: 0
   m_Name: AudioManagerBR
   m_TagString: Untagged
@@ -42,17 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114393373968446888
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1778774273310780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 903f0d80c3b900c4ab30bb9d18b46922, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114899182804527844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,6 +121,27 @@ MonoBehaviour:
     volume: 0.3
     pitch: 1
     loop: 1
+    mute: 0
+    source: {fileID: 0}
+  - name: falling
+    clip: {fileID: 8300000, guid: 81b78aef242c09f499f7eddbddd159e4, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: spring
+    clip: {fileID: 8300000, guid: 58106765090945743bea3595ea00fecf, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: elevator
+    clip: {fileID: 8300000, guid: 898697c2cc49bc644befd290faa75ea7, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
     mute: 0
     source: {fileID: 0}
   placings:

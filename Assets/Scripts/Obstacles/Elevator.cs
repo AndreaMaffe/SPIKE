@@ -35,6 +35,9 @@ public class Elevator : Obstacle
 
         if (platform.transform.position.y >= maxHeight)
             InvertDirection();
+
+        FindObjectOfType<AudioManager>().Play("elevator");
+
     }
 
     //chiamato al RunLevel()
