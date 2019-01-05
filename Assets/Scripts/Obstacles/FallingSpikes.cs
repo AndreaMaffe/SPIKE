@@ -19,6 +19,9 @@ public class FallingSpikes : ObstacleWithTimer
     [Tooltip("Speed of the vertical ascent")]
     public float liftSpeed;
 
+
+    bool audioon = false;
+
     //start apposito per gli ostacoli, usare questo anziché Update().
     protected override void StartObstacle()
     {
@@ -47,11 +50,19 @@ public class FallingSpikes : ObstacleWithTimer
                 SetCollidersActive(true);
                 SetDynamicRigidbodyActive(rbSpikes, true);
                 SetDynamicRigidbodyActive(rbPlatform, true);
+
+                if (audioon == false)
+                {
+                    FindObjectOfType<AudioManager>().Play("falling");
+                    audioon = true;
+                }
             }                              
         }
 
         if (goingUp)
         {
+            audioon = false;
+
             if (spikes.transform.position.y <= originalSpikesPosition.y)
                 spikes.GetComponent<Rigidbody2D>().velocity = new Vector2(0, liftSpeed);
 

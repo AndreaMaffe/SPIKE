@@ -52,6 +52,11 @@ public abstract class Obstacle : MonoBehaviour
     {
         originalPosition = this.transform.position;
         originalRotation = this.transform.rotation;
+
+
+        //fai partire l'audio di "montaggio ostacolo"
+        Debug.Log("snappato");
+        FindObjectOfType<AudioManager>().ObstacleDraggedIn();
     }
 
     // Update is called once per frame

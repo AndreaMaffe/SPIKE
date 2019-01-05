@@ -52,7 +52,7 @@ public class Flamethrower : Obstacle {
         SetActive(true);
 
         flameParticles.Play();
-        FindObjectOfType<AudioManagerBR>().Play("lanciafiamme");
+        FindObjectOfType<AudioManager>().Play("lanciafiamme");
 
     }
 

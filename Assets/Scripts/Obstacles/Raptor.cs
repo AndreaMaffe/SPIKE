@@ -45,7 +45,7 @@ public class Raptor : Obstacle
 
         SetCollidersActive(true); SetDynamicRigidbodyActive(rb, true);
 
-        FindObjectOfType<AudioManagerBR>().Play("raptor");
+        FindObjectOfType<AudioManager>().Play("raptor");
     }
 
     //chiamato al RetryLevel()
@@ -63,7 +63,7 @@ public class Raptor : Obstacle
 
         SetCollidersActive(false); SetDynamicRigidbodyActive(rb, false);;
 
-        FindObjectOfType<AudioManagerBR>().Stop("raptor");
+        FindObjectOfType<AudioManager>().Stop("raptor");
     }
 
     protected override void OnEndLevel()

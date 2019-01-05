@@ -24,6 +24,8 @@ public class Cannon : ObstacleWithTimer {
 
     public override void OnObstacleDropped()
     {
+        base.OnObstacleDropped();
+
         //1 se sx-->dx , -1 se sx
         direction = - this.transform.position.x / Mathf.Abs(this.transform.position.x);
 
@@ -58,7 +60,7 @@ public class Cannon : ObstacleWithTimer {
             //spara un colpo
             Instantiate(bullet, this.transform.position + shootingOffset * direction, this.transform.rotation);
 
-            FindObjectOfType<AudioManagerBR>().Play("cannon");
+            FindObjectOfType<AudioManager>().Play("cannon");
 
             StartTimer();
         }

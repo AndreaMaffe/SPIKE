@@ -174,7 +174,7 @@ public class LevelManager : MonoBehaviour
     //Metodo che lancia l'evento legato alla fine del livello
     public static void EndLevel()
     {
-        FindObjectOfType<AudioManagerBR>().GetComponent<AudioManager>().PlayWinAudio();
+        FindObjectOfType<AudioManager>().GetComponent<AudioManager>().PlayWinAudio();
 
         endLevelEvent();
 
@@ -194,7 +194,7 @@ public class LevelManager : MonoBehaviour
 
     public static void PlayerDeath()
     {
-        FindObjectOfType<AudioManagerBR>().GetComponent<AudioManager>().PlayFailAudio();
+        FindObjectOfType<AudioManager>().GetComponent<AudioManager>().PlayFailAudio();
 
         playerDeathEvent();
     }
