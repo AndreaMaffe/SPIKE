@@ -139,7 +139,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: elevator
     clip: {fileID: 8300000, guid: 898697c2cc49bc644befd290faa75ea7, type: 3}
-    volume: 0.3
+    volume: 0.15
     pitch: 1
     loop: 0
     mute: 0

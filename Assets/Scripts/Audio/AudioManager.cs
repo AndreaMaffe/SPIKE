@@ -127,8 +127,8 @@ public class AudioManager : MonoBehaviour {
 
     public void PlayWinAudio()
     {
-        FindObjectOfType<AudioManager>().Stop("play");
-        FindObjectOfType<AudioManager>().Unmute("build");
+        FindObjectOfType<AudioManager>().Mute("play");
+        FindObjectOfType<AudioManager>().Mute("build");
 
         FindObjectOfType<AudioManager>().Play("win");
     }
