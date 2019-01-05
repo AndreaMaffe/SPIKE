@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class PlayerDeathEvent
 {
@@ -21,7 +22,13 @@ public abstract class PlayerDeathEvent
         LevelManager.PlayerDeath();
     }
 
-    public abstract void StartDeath();
+    public virtual void StartDeath()
+    {
+        player.SetActiveRagdoll(true);
+        SpawnBloodParticles();
+        LevelManager.NumberOfDeaths += 1;
+        GameObject.Find("NumberOfAttemptsText").GetComponent<Text>().text = "NUMBER OF ATTEMPTS: " + LevelManager.NumberOfDeaths;
+    }
 
     protected void SpawnBloodParticles()
     {

@@ -10,10 +10,9 @@ public class PlayerDeathByExplosion : PlayerDeathEvent
 
     public override void StartDeath()
     {
+        base.StartDeath();
         SpawnExplosionParticles();
-        SpawnBloodParticles();
         SpawnBloodFountain();
-        player.SetActiveRagdoll(true);
         Vector2 angleOfImpact = (player.transform.position - obstacle.transform.position).normalized;
         player.ApplyRagdollImpulse(20, angleOfImpact);
         player.GetComponent<PlayerAppearence>().ChangeBodyPiecesSprite("explosion");

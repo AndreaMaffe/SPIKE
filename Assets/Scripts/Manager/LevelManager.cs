@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public static int CurrentLevelIndex { get; set; }
     public static Level CurrentLevel { get; set; }
     public static Dictionary<ObstacleType, int> NumberOfObstacles { get; set; }
+    public static int NumberOfDeaths { get; set; }
 
     private List<Level> levels;
     private LevelState state;
@@ -129,6 +130,7 @@ public class LevelManager : MonoBehaviour
     public void GoToMainMenu()
     {
         SceneManager.LoadSceneAsync("LevelSelection");
+        NumberOfDeaths = 0;
     }
 
     void ActivateChangeLevelStateButton() {
@@ -173,15 +175,16 @@ public class LevelManager : MonoBehaviour
     {
         CurrentLevelIndex += 1;
         SceneManager.LoadScene("SampleSceneRange");
+        NumberOfDeaths = 0;
     }
 
     //Metodo che lancia l'evento legato alla fine del livello
     public static void EndLevel()
     {
         FindObjectOfType<AudioManager>().GetComponent<AudioManager>().PlayWinAudio();
+        GameObject.Find("NumberOfAttemptsText").GetComponent<Text>().text = "NUMBER OF ATTEMPTS: " + LevelManager.NumberOfDeaths;
 
         endLevelEvent();
-
         SaveStarsNumber();
     }
 

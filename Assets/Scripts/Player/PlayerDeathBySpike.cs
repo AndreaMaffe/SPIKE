@@ -16,14 +16,12 @@ public class PlayerDeathBySpike : PlayerDeathEvent
     //TODO: il player si attacca alle spine e ci rimane impalato
     public override void StartDeath()
     {
-        SpawnBloodParticles();
+        base.StartDeath();
         SpawnBloodStainOnPlayer();
         SpawnBloodFountain();
         bloodStain = Resources.Load<GameObject>("Prefab/Particles/BloodStain");
         GameObject bloodStainInstance = GameObject.Instantiate(bloodStain, position, Quaternion.identity, spikes.transform);
         bloodStainInstance.GetComponent<SpriteRenderer>().sortingOrder = spikes.GetComponent<SpriteRenderer>().sortingOrder + 1;
-
-        player.SetActiveRagdoll(true);
         player.GetComponent<PlayerAppearence>().ChangeBodyPiecesSprite("spike");
     }
 }

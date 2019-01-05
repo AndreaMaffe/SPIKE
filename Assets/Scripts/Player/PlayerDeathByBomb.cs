@@ -15,9 +15,7 @@ public class PlayerDeathByBomb : PlayerDeathEvent
 
     public override void StartDeath()
     {
-        SpawnBloodParticles();
-
-        player.SetActiveRagdoll(true);
+        base.StartDeath();
         player.ApplyRagdollImpulse(thrust, direction);
         player.GetComponent<PlayerAppearence>().ChangeBodyPiecesSprite("explosion");
     }
