@@ -41,7 +41,6 @@ public class LevelManager : MonoBehaviour
     public Text currentTimeText;
     private float currentTime;
 
-    public bool playerSimulator;
     private GameObject playerSimulatorObject;
 
 
@@ -86,7 +85,7 @@ public class LevelManager : MonoBehaviour
         if (CurrentLevel == null)
             Debug.Log("Il livello corrente è null nel LevelManager");
        
-        LoadLevel(CurrentLevel);
+        SetUpLevel();
 
         state = LevelState.UNDER_CONSTRUCTION;
 
@@ -100,31 +99,36 @@ public class LevelManager : MonoBehaviour
         currentTimeText.text = currentTime.ToString();
     }
 
-    void LoadLevel(Level level)
+    void SetUpLevel()
     {
-        CreatePlatforms(level);
-        CreateUIObstacleButtons(level);
-        Instantiate(Resources.Load<GameObject>("Prefab/Player"), level.startingPoint, Quaternion.identity);
-        if (playerSimulator) 
-            playerSimulatorObject = Instantiate(Resources.Load<GameObject>("Prefab/PlayerSimulator"), level.startingPoint, Quaternion.identity);
-        Instantiate(Resources.Load<GameObject>("Prefab/Flag"), level.endingPoint, Quaternion.identity);
+        //crea le piattaforme
+        try
+        {
+            foreach (PlatformData platform in CurrentLevel.platformDatas)
+                Instantiate(platform.platformType, platform.platformPos, Quaternion.identity);
+        }
+        catch (NullReferenceException e) { }
+
+        //crea pulsanti, player e flag
+        CreateUIObstacleButtons(CurrentLevel);
+        Instantiate(Resources.Load<GameObject>("Prefab/Player"), CurrentLevel.startingPoint, Quaternion.identity);
+        Instantiate(Resources.Load<GameObject>("Prefab/Flag"), CurrentLevel.endingPoint, Quaternion.identity);
+
+        //crea il PlayerSimulator
+        playerSimulatorObject = Instantiate(Resources.Load<GameObject>("Prefab/PlayerSimulator"), CurrentLevel.startingPoint, Quaternion.identity);
+
+        //crea i tutorial, se esistono
+        try
+        {
+            Instantiate(Resources.Load<GameObject>("Prefab/Tutorial/TutorialLevel" + (CurrentLevelIndex+1)), Vector3.zero, Quaternion.identity);
+        } catch (Exception e) { }
+
         currentTime = 0.0f;
     }
 
     public void GoToMainMenu()
     {
         SceneManager.LoadSceneAsync("LevelSelection");
-    }
-
-    //Metodo che posiziona le piattaforme del livello a partire dallo scriptable object
-    private void CreatePlatforms(Level currentLevel)
-    {
-        try
-        {
-            foreach (PlatformData platform in currentLevel.platformDatas)
-                Instantiate(platform.platformType, platform.platformPos, Quaternion.identity);
-        }
-        catch (NullReferenceException e) { }
     }
 
     void ActivateChangeLevelStateButton() {
@@ -252,7 +256,6 @@ public class LevelManager : MonoBehaviour
     private void OnDisable()
     {
         PlayerSimulator.playerSimulatorFlagReached -= ActivateChangeLevelStateButton;
-
     }
 }
 
