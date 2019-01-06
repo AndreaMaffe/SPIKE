@@ -31,3 +31,10 @@ MonoBehaviour:
   pointsForOneStar: 1
   pointsForTwoStars: 2
   pointsForThreeStars: 3
+  isTutorial: 1
+  tutorialTitle: the CANNON!
+  tutorialImage: {fileID: 21300024, guid: d23bf3b83eb888645899bf488fa3b5fe, type: 3}
+  tutorialText:
+  - '- Must be positioned on the side'
+  - '- Shoots a bullet every 2 seconds'
+  - '- The head of the bullet kills you, but the body is harmless'

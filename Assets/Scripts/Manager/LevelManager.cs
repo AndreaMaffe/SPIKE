@@ -46,7 +46,6 @@ public class LevelManager : MonoBehaviour
     public GameObject playerTutorial;
     public GameObject tutorialPanel;
     public GameObject blackScreen;
-    public bool tutorialActive;
 
     public GameObject deathPanel;
 
@@ -134,7 +133,10 @@ public class LevelManager : MonoBehaviour
 
             tutorialPanel.transform.Find("Title").GetComponent<Text>().text = CurrentLevel.tutorialTitle;
             tutorialPanel.transform.Find("Image").GetComponent<Image>().sprite = CurrentLevel.tutorialImage;
-            tutorialPanel.transform.Find("Text").GetComponent<Text>().text = CurrentLevel.tutorialText;
+            tutorialPanel.transform.Find("Image").GetComponent<Image>().SetNativeSize();
+            tutorialPanel.transform.Find("Text").Find("Line1").GetComponent<Text>().text = CurrentLevel.tutorialText[0];
+            tutorialPanel.transform.Find("Text").Find("Line2").GetComponent<Text>().text = CurrentLevel.tutorialText[1];
+            tutorialPanel.transform.Find("Text").Find("Line3").GetComponent<Text>().text = CurrentLevel.tutorialText[2];
         }
 
         currentTime = 0.0f;

@@ -32,3 +32,10 @@ MonoBehaviour:
   pointsForOneStar: 1
   pointsForTwoStars: 2
   pointsForThreeStars: 3
+  isTutorial: 1
+  tutorialTitle: the LASER!
+  tutorialImage: {fileID: 21300030, guid: d23bf3b83eb888645899bf488fa3b5fe, type: 3}
+  tutorialText:
+  - '- Follows you from above!'
+  - '- Istantly kills you if you are not under a cover'
+  - '- I like its sound when shooting.'

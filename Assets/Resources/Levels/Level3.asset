@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level3
   m_EditorClassIdentifier: 
-  description: 4 spikes
+  description: intro Bomb
   startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
   platformDatas: []
@@ -28,3 +28,10 @@ MonoBehaviour:
   pointsForOneStar: 1
   pointsForTwoStars: 2
   pointsForThreeStars: 5
+  isTutorial: 1
+  tutorialTitle: the Bomb!
+  tutorialImage: {fileID: 21300020, guid: d23bf3b83eb888645899bf488fa3b5fe, type: 3}
+  tutorialText:
+  - '- Detonate in 3 seconds'
+  - '- Too close and you''re dead.'
+  - '- Use the push to help you!'

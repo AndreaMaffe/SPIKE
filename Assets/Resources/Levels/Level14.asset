@@ -23,3 +23,7 @@ MonoBehaviour:
   pointsForOneStar: 0
   pointsForTwoStars: 0
   pointsForThreeStars: 0
+  isTutorial: 1
+  tutorialTitle: the ELEVATOR!
+  tutorialImage: {fileID: 0}
+  tutorialText: []

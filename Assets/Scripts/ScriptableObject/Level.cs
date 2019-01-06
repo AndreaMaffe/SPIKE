@@ -30,7 +30,7 @@ public class Level : ScriptableObject
     public bool isTutorial;
     public string tutorialTitle;
     public Sprite tutorialImage;
-    public string tutorialText;
+    public string[] tutorialText;
 
 }
 
