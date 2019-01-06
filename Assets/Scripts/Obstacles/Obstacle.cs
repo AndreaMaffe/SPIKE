@@ -25,7 +25,7 @@ public abstract class Obstacle : MonoBehaviour
     private Quaternion originalRotation;
     private CircleCollider2D draggingCollider;
 
-    public AnchorPointPosition anchorPosition;
+    public AnchorPointPosition[] anchorPosition;
     public Collider2D[] allColliders;
 
     private bool dropped;

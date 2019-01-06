@@ -47,6 +47,8 @@ public class LevelManager : MonoBehaviour
     public GameObject blackScreen;
     public bool tutorialActive;
 
+    public GameObject deathPanel;
+
     private GameObject playerSimulatorObject;
 
 
@@ -83,14 +85,14 @@ public class LevelManager : MonoBehaviour
             }
         }
         catch (NullReferenceException e) { }
-     
+
 
         CurrentLevel = levels[CurrentLevelIndex];
-        currentLevelText.text = "LV. " + (CurrentLevelIndex+1);
+        currentLevelText.text = "LV. " + (CurrentLevelIndex + 1);
 
         if (CurrentLevel == null)
             Debug.Log("Il livello corrente è null nel LevelManager");
-       
+
         SetUpLevel();
 
         state = LevelState.UNDER_CONSTRUCTION;
@@ -101,7 +103,7 @@ public class LevelManager : MonoBehaviour
     private void FixedUpdate()
     {
         if (state == LevelState.RUNNING)
-        currentTime += Time.deltaTime;
+            currentTime += Time.deltaTime;
         currentTimeText.text = currentTime.ToString();
     }
 
@@ -210,7 +212,7 @@ public class LevelManager : MonoBehaviour
         GameObject.Find("NumberOfAttemptsText").GetComponent<Text>().text = "NUMBER OF DEATHS: " + LevelManager.NumberOfDeaths;
 
         endLevelEvent();
-        //SaveStarsNumber();
+        SaveStarsNumber();
     }
 
     private static void SaveStarsNumber()
@@ -228,8 +230,31 @@ public class LevelManager : MonoBehaviour
     public static void PlayerDeath()
     {
         FindObjectOfType<AudioManager>().GetComponent<AudioManager>().PlayFailAudio();
+        FindObjectOfType<LevelManager>().GetComponent<LevelManager>().ShowDeathPanel();
+        playerDeathEvent();       
+    }
 
-        playerDeathEvent();
+
+    public void ShowDeathPanel()
+    {
+        blackScreen.SetActive(true);
+        deathPanel.SetActive(true);
+    }
+
+    //metodo invocato dal bottone del pannello death per reiniziare il building del livello
+    public void DeathPanelRestartLevel()
+    {
+        deathPanel.GetComponent<Animator>().SetTrigger("Up");
+        blackScreen.GetComponent<Animator>().SetTrigger("Fade");
+
+        Invoke("DeactivateDeathPanel", 1f);
+        ChangeLevelState();
+    }
+
+    private void DeactivateDeathPanel()
+    {
+        deathPanel.SetActive(false);
+        blackScreen.SetActive(false);
     }
 
     //metodo che serve ai bottoni per associare a ogni ostacolo la posizione in cui deve andare in modo da passare al 

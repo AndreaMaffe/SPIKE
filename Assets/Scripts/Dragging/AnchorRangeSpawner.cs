@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum Alignment { Horizontal, Vertical };
-public enum AnchorPointPosition { Top, Side, Platform };
+public enum AnchorPointPosition { Top, Side, Platform, Floor };
 
 public class AnchorRangeSpawner : MonoBehaviour {
 
@@ -31,11 +31,21 @@ public class AnchorRangeSpawner : MonoBehaviour {
 
     }
 
-    void UpdateAnchorRangeVisual(AnchorPointPosition pos) {
-        if (pos == position)
-            DrawAnchorRange();
-        else
+    void UpdateAnchorRangeVisual(AnchorPointPosition[] pos) {
+        bool drawn = false;
+
+        for (int i = 0; i < pos.Length; i++)
+        {
+            if (pos[i] == position)
+            {
+                DrawAnchorRange();
+                drawn = true;
+            }
+        }
+
+        if (!drawn)
             HideAnchorRange();
+
     }
 
     void HideAnchorRange() {

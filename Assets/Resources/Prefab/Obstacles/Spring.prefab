@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bc669bd9ee790142862aef1d5d978c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anchorPosition: 2
+  anchorPosition: 03000000
   allColliders:
   - {fileID: 61723628964676386}
   - {fileID: 61401731526754518}

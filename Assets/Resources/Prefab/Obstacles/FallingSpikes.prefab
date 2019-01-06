@@ -278,11 +278,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd48769a68f9c04ea470a41883e6a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anchorPosition: 0
+  anchorPosition: 00000000
   allColliders:
   - {fileID: 61038902932826476}
   - {fileID: 61532900100683698}
-  raycastOffset: 0.5
   timeOnGround: 1
   liftSpeed: 3
 --- !u!212 &212097073105831698

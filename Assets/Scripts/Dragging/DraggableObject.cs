@@ -20,7 +20,7 @@ public class DraggableObject : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 
 
     //Eventi che vengono lanciati per aggiornare o l'illuminazione degli anchor points o lo show o hide dei bottoni
-    public delegate void UpdateAnchorPoint(AnchorPointPosition position);
+    public delegate void UpdateAnchorPoint(AnchorPointPosition[] position);
     public static event UpdateAnchorPoint onUpdateAnchorPoint;
 
     public delegate void DraggingObstacle();

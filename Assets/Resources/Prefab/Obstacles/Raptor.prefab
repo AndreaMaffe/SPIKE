@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafc0c5e013d39848a07f7e39b904701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anchorPosition: 2
+  anchorPosition: 0200000003000000
   allColliders:
   - {fileID: 58058022464208296}
   speed: 13

@@ -75,9 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6129a1e564cfba64a8dbecf1e6b30dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anchorPosition: 1
-  rigidbodies: []
-  allNonDraggableColliders: []
+  anchorPosition: 01000000
+  allColliders: []
   flameParticles: {fileID: 198211916914756626}
   flameCloseRange: 9
   flameFarRange: 12

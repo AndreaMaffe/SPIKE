@@ -92,9 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca4e8d470c7f554d877b52bd6bbc8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anchorPosition: 1
-  rigidbodies: []
-  allNonDraggableColliders: []
+  anchorPosition: 01000000
+  allColliders: []
   bullet: {fileID: 1318106213304226, guid: a67531d9f8a947148a80a7ea31003933, type: 2}
   rateOfFire: 2
   particleExplosion: {fileID: 1442350124751086, guid: 88009bdc3b2dbd34dbeff1756892fa7a,

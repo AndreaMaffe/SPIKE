@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7071a436e58380249b735f9a16916cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anchorPosition: 2
+  anchorPosition: 0200000003000000
   allColliders:
   - {fileID: 58000749948952714}
   disabledBomb: {fileID: 21300020, guid: d23bf3b83eb888645899bf488fa3b5fe, type: 3}

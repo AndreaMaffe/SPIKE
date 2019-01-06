@@ -49,18 +49,21 @@ public class DraggableObjectPositionUpdater : MonoBehaviour
         if (hit.collider != null)
         {
             //prendo la posizione in cui l'ostacolo puo' andare
-            AnchorPointPosition anchorPosition = GetComponent<Obstacle>().anchorPosition;
+            AnchorPointPosition[] anchorPosition = GetComponent<Obstacle>().anchorPosition;
 
-            if (anchorPosition == hit.collider.GetComponent<AnchorRangeSpawner>().GetPosition() )
+            for (int i = 0; i < anchorPosition.Length; i++)
             {
-                snapped = true;
-                //cambia l'opacita' della sprite
-                ChangeSpriteOpacity();
-                //snappa alla posizione del agmeobject colpito
-                if (hit.collider.GetComponent<AnchorRangeSpawner>().GetAlignment() == Alignment.Horizontal)
-                    transform.position = new Vector3(newPosition.x, hit.collider.gameObject.transform.position.y, 0);
-                else
-                    transform.position = new Vector3(hit.collider.gameObject.transform.position.x, newPosition.y, 0);
+                if (anchorPosition[i] == hit.collider.GetComponent<AnchorRangeSpawner>().GetPosition())
+                {
+                    snapped = true;
+                    //cambia l'opacita' della sprite
+                    ChangeSpriteOpacity();
+                    //snappa alla posizione del agmeobject colpito
+                    if (hit.collider.GetComponent<AnchorRangeSpawner>().GetAlignment() == Alignment.Horizontal)
+                        transform.position = new Vector3(newPosition.x, hit.collider.gameObject.transform.position.y, 0);
+                    else
+                        transform.position = new Vector3(hit.collider.gameObject.transform.position.x, newPosition.y, 0);
+                }
             }
         }
 
