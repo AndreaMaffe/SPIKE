@@ -58,6 +58,7 @@ public class LevelSelectionManager : MonoBehaviour {
             {
                 newButton.transform.GetChild(1).gameObject.SetActive(false);
                 newButton.GetComponent<Button>().onClick.AddListener(ChooseLevel);
+                newButton.GetComponent<LevelButton>().AssignStars(SaveManager.SaveManagerInstance.stars[i]);
             }
 
             newButton.transform.SetParent(panel.transform, false);

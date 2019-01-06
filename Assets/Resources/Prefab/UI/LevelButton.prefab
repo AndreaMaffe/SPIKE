@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 222695445658388286}
   - component: {fileID: 114991831385621340}
   - component: {fileID: 114705721723828768}
+  - component: {fileID: 114817799647344336}
   m_Layer: 5
   m_Name: LevelButton
   m_TagString: Untagged
@@ -280,6 +281,27 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114817799647344336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1150546870008044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca83dc77be45454fa69b89cd8232912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stars:
+  - {fileID: 114705314760488970}
+  - {fileID: 114686734208305896}
+  - {fileID: 114819918131385068}
+  starAssigned:
+    serializedVersion: 2
+    rgba: 4291097087
+  starNotAssigned:
+    serializedVersion: 2
+    rgba: 4285430439
 --- !u!114 &114819918131385068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -391,7 +413,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 80}
+  m_AnchoredPosition: {x: 0, y: 82.99999}
   m_SizeDelta: {x: 28.97, y: 27.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224444694398643292
@@ -409,7 +431,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 35, y: 80}
+  m_AnchoredPosition: {x: 35, y: 82.99999}
   m_SizeDelta: {x: 28.97, y: 27.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224472080023279436
@@ -427,7 +449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -8.3}
+  m_AnchoredPosition: {x: 0, y: -8.300003}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224477495709002638
@@ -463,7 +485,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -35, y: 80}
+  m_AnchoredPosition: {x: -35, y: 83}
   m_SizeDelta: {x: 28.97, y: 27.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224873847024158904
