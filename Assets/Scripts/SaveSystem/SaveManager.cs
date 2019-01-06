@@ -9,7 +9,7 @@ public class SaveManager
     //Variabile relativa al totale dei livelli inseriti
     public int totalLevels;
     //Variabile relativa al volume della musica
-    public float musicVolume;
+    public bool musicVolume;
     //Variabile relativa alle stelle per livello;
     public int[] stars;
 
@@ -19,7 +19,7 @@ public class SaveManager
     {
         maxUnlockedLevel = 1;
         totalLevels = 100;
-        musicVolume = 1;
+        musicVolume = true;
         stars = new int[totalLevels];
     }
 

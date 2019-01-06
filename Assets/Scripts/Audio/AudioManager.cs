@@ -64,7 +64,8 @@ public class AudioManager : MonoBehaviour {
         saveManager = SaveUtility.LoadObject(saveManager, "saveFile");
         //Debug.Log("Volume musica iniziale: " + saveManager.musicVolume);
         FindSoundSlider();
-        //musicSlider.value = saveManager.musicVolume;
+        if (musicToggle)
+            musicToggle.isOn = saveManager.musicVolume;
     }
 
     //Trova gli slider giusti in scena
@@ -86,19 +87,16 @@ public class AudioManager : MonoBehaviour {
         if (musicToggle.isOn)
         {
             AudioListener.volume = 1f;
+            saveManager.musicVolume = true;
+            SaveUtility.SaveObject(saveManager, "saveFile");
         }
         else
         {
             AudioListener.volume = 0;
+            saveManager.musicVolume = false;
+            SaveUtility.SaveObject(saveManager, "saveFile");
         }
     } 
-
-    public void SaveAudioSettings()
-    {
-        saveManager.musicVolume = AudioListener.volume;
-        //Debug.Log("Volume Musica salvato a: " + saveManager.musicVolume);
-        SaveUtility.SaveObject(saveManager, "saveFile");
-    }
 
     // Invoked when the value of the slider changes.
     public void ValueChangeCheck()
