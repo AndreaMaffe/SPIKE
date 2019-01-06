@@ -91,7 +91,7 @@ public class PlayerSimulator : MonoBehaviour {
                 break;
         }
 
-        if (transform.position.x > 7)
+        if (transform.position.x > 9)
             playerSimulatorFlagReached();
     }
 

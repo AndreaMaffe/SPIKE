@@ -24,7 +24,7 @@ MonoBehaviour:
     points: 1
   movementDatas:
   - movement: 1
-    startTime: 3.2
+    startTime: 3.5
   pointsForOneStar: 1
   pointsForTwoStars: 3
   pointsForThreeStars: 5

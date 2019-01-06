@@ -183,7 +183,7 @@ public class LevelManager : MonoBehaviour
     public static void EndLevel()
     {
         FindObjectOfType<AudioManager>().GetComponent<AudioManager>().PlayWinAudio();
-        GameObject.Find("NumberOfAttemptsText").GetComponent<Text>().text = "NUMBER OF ATTEMPTS: " + LevelManager.NumberOfDeaths;
+        GameObject.Find("NumberOfAttemptsText").GetComponent<Text>().text = "NUMBER OF DEATHS: " + LevelManager.NumberOfDeaths;
 
         endLevelEvent();
         //SaveStarsNumber();
