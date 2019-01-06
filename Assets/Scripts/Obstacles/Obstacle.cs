@@ -28,6 +28,8 @@ public abstract class Obstacle : MonoBehaviour
     public AnchorPointPosition anchorPosition;
     public Collider2D[] allColliders;
 
+    private bool dropped;
+
     // Usata per inizializzare il drag dell'ostacolo ma  non per la sua attivazione effettiva
     protected virtual void Start ()
     {
@@ -53,10 +55,10 @@ public abstract class Obstacle : MonoBehaviour
         originalPosition = this.transform.position;
         originalRotation = this.transform.rotation;
 
+        if (!dropped)
+            FindObjectOfType<AudioManager>().ObstacleDraggedIn();
 
-        //fai partire l'audio di "montaggio ostacolo"
-        Debug.Log("snappato");
-        FindObjectOfType<AudioManager>().ObstacleDraggedIn();
+        dropped = true;
     }
 
     // Update is called once per frame

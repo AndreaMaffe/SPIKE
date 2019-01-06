@@ -133,7 +133,8 @@ public class LevelManager : MonoBehaviour
         NumberOfDeaths = 0;
     }
 
-    void ActivateChangeLevelStateButton() {
+    void ActivateChangeLevelStateButton()
+    {
         playPauseButton.gameObject.SetActive(true);
     }
 
@@ -185,13 +186,14 @@ public class LevelManager : MonoBehaviour
         GameObject.Find("NumberOfAttemptsText").GetComponent<Text>().text = "NUMBER OF ATTEMPTS: " + LevelManager.NumberOfDeaths;
 
         endLevelEvent();
-        SaveStarsNumber();
+        //SaveStarsNumber();
     }
 
     private static void SaveStarsNumber()
     {
         SaveManager saveManager = SaveManager.SaveManagerInstance;
         saveManager = SaveUtility.LoadObject<SaveManager>(saveManager, "saveFile");
+
         if (saveManager.stars[CurrentLevelIndex] < GetNumberOfStars())
         {
             saveManager.stars[CurrentLevelIndex] = GetNumberOfStars();

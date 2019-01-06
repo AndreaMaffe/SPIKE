@@ -18,7 +18,7 @@ public class SaveManager
     private SaveManager()
     {
         maxUnlockedLevel = 1;
-        totalLevels = 15;
+        totalLevels = 100;
         musicVolume = 1;
         stars = new int[totalLevels];
     }

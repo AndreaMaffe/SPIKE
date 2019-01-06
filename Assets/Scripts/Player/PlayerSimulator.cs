@@ -17,8 +17,6 @@ public class PlayerSimulator : MonoBehaviour {
     private Vector3 originalPosition;
     [SerializeField]
     private bool onGround;
-    private bool invincible;
-
     private TimerManager timerManager;
 
     //Lista che contiene tutti i timer per i movimenti del giocatore
@@ -92,6 +90,9 @@ public class PlayerSimulator : MonoBehaviour {
                 rb.velocity = Vector2.zero;
                 break;
         }
+
+        if (transform.position.x > 7)
+            playerSimulatorFlagReached();
     }
 
     //chiamato al RunLevel()
@@ -103,9 +104,6 @@ public class PlayerSimulator : MonoBehaviour {
         SetTimers();
 
         StartMovementTimers();
-
-        invincible = false;
-
     }
 
     //chiamato al RetryLevel()
@@ -202,16 +200,17 @@ public class PlayerSimulator : MonoBehaviour {
     {
         LevelManager.retryLevelEvent -= Sleep;
         LevelManager.runLevelEvent -= StopMovement;
-
     }
 
-    public void StopMovement() {
+    public void StopMovement()
+    {
         Stop();
         rb.velocity = Vector2.zero;
         playerSimulatorFlagReached();
     }
 
-    void SetInvisible() {
+    void SetInvisible()
+    {
         this.gameObject.SetActive(false);
     }
 
