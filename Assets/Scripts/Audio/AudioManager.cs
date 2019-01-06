@@ -64,7 +64,7 @@ public class AudioManager : MonoBehaviour {
         saveManager = SaveUtility.LoadObject(saveManager, "saveFile");
         //Debug.Log("Volume musica iniziale: " + saveManager.musicVolume);
         FindSoundSlider();
-        musicSlider.value = saveManager.musicVolume;
+        //musicSlider.value = saveManager.musicVolume;
     }
 
     //Trova gli slider giusti in scena
