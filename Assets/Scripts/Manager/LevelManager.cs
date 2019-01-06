@@ -42,6 +42,11 @@ public class LevelManager : MonoBehaviour
     public Text currentTimeText;
     private float currentTime;
 
+    public GameObject playerTutorial;
+    public GameObject tutorialPanel;
+    public GameObject blackScreen;
+    public bool tutorialActive;
+
     private GameObject playerSimulatorObject;
 
 
@@ -118,13 +123,32 @@ public class LevelManager : MonoBehaviour
         //crea il PlayerSimulator
         playerSimulatorObject = Instantiate(Resources.Load<GameObject>("Prefab/PlayerSimulator"), CurrentLevel.startingPoint, Quaternion.identity);
 
-        //crea i tutorial, se esistono
-        try
+        if (tutorialActive)
         {
-            Instantiate(Resources.Load<GameObject>("Prefab/Tutorial/TutorialLevel" + (CurrentLevelIndex+1)), Vector3.zero, Quaternion.identity);
-        } catch (Exception e) { }
+            playerTutorial.SetActive(true);
+            tutorialPanel.SetActive(true);
+            blackScreen.SetActive(true);
+        }
 
         currentTime = 0.0f;
+    }
+
+    //invoca le animazioni per cui il pannello sale e il player scende
+    public void HideTutorial()
+    {
+        playerTutorial.GetComponent<Animator>().SetTrigger("Down");
+        tutorialPanel.GetComponent<Animator>().SetTrigger("Up");
+        blackScreen.GetComponent<Animator>().SetTrigger("Fade");
+
+        Invoke("DeactivateTutorialElements", 2f);
+    }
+
+    //disattiva il player tutorial e il pannello
+    private void DeactivateTutorialElements()
+    {
+        blackScreen.SetActive(false);
+        playerTutorial.SetActive(false);
+        tutorialPanel.SetActive(false);
     }
 
     public void GoToMainMenu()

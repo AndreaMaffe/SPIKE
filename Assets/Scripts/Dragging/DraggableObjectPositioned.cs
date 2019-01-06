@@ -11,7 +11,7 @@ public class DraggableObjectPositioned : DraggableObject
 
     protected override void Start()
     {
-        draggableObstacleOffsetFromFinger = new Vector3(0, 0.5f, 0);
+        draggableObstacleOffsetFromFinger = new Vector3(0, 1.5f, 0);
     }
 
 

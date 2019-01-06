@@ -30,7 +30,7 @@ public class DraggableObject : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 
     protected virtual void Start()
     {
-        draggableObstacleOffsetFromFinger = new Vector3(0, 1, 0);
+        draggableObstacleOffsetFromFinger = new Vector3(0, 1.5f, 0);
     }
 
     public void HideObstacleButtons()
@@ -55,6 +55,7 @@ public class DraggableObject : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     {
         if (obstacleDragged != null)
         {
+            draggableObstacleOffsetFromFinger = new Vector3(0, 1.5f, 0);
             Vector3 updatedPosition = new Vector3(Camera.main.ScreenToWorldPoint(eventData.position).x, Camera.main.ScreenToWorldPoint(eventData.position).y, 0) + draggableObstacleOffsetFromFinger;                  
             obstacleDragged.UpdatePosition(updatedPosition);
         }

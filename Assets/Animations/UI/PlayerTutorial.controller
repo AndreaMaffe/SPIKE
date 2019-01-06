@@ -8,7 +8,7 @@ AnimatorController:
   m_Name: PlayerTutorial
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: TutorialDown
+  - m_Name: Down
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -35,7 +35,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: TutorialDown
+    m_ConditionEvent: Down
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102460716101227226}
