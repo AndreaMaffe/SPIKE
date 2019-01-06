@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class LevelSelectionManager : MonoBehaviour {
 
+
+    public Text numberIfDeathsText;
     [Header("Inserire il prefab del levelButton")]
     public GameObject levelButton;
     [Header("Inserire il parent del levelButton")]
@@ -25,7 +27,7 @@ public class LevelSelectionManager : MonoBehaviour {
 
     public void Start()
     {
-
+        numberIfDeathsText.text = LevelManager.TotalNumberOfDeaths.ToString();
         allButtons = new GameObject[levelAmountTest];
         //Carichiamo l'oggetto SaveManager per ottenere i dati salvati del gioco
         saveManager = SaveManager.SaveManagerInstance;

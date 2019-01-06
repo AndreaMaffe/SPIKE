@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
     public static Level CurrentLevel { get; set; }
     public static Dictionary<ObstacleType, int> NumberOfObstacles { get; set; }
     public static int NumberOfDeaths { get; set; }
+    public static int TotalNumberOfDeaths { get; set; }
 
     private List<Level> levels;
     private LevelState state;
@@ -239,6 +240,7 @@ public class LevelManager : MonoBehaviour
     {
         blackScreen.SetActive(true);
         deathPanel.SetActive(true);
+        deathPanel.transform.Find("NumberOfDeaths").GetComponent<Text>().text = "NUMBER OF DEATHS: " +  (NumberOfDeaths + 1);
     }
 
     //metodo invocato dal bottone del pannello death per reiniziare il building del livello

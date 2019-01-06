@@ -27,6 +27,8 @@ public abstract class PlayerDeathEvent
         player.SetActiveRagdoll(true);
         SpawnBloodParticles();
         LevelManager.NumberOfDeaths += 1;
+        LevelManager.TotalNumberOfDeaths += 1;
+
         GameObject.Find("NumberOfAttemptsText").GetComponent<Text>().text = "NUMBER OF DEATHS: " + LevelManager.NumberOfDeaths;
     }
 

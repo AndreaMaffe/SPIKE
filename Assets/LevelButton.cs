@@ -11,7 +11,6 @@ public class LevelButton : MonoBehaviour {
 
     public void AssignStars(int amount)
     {
-        Debug.Log(amount);
         for (int i = 0; i < stars.Length; i++)
         {
             if ((i + 1) <= amount)

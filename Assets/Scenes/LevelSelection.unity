@@ -1502,6 +1502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d24692a12771f4292a21d58a059d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberIfDeathsText: {fileID: 1270519678}
   levelButton: {fileID: 1150546870008044, guid: 535fe64852147b64790a4451d726e67d,
     type: 2}
   panel: {fileID: 628754582}
