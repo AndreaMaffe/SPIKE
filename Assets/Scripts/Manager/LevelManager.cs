@@ -248,8 +248,7 @@ public class LevelManager : MonoBehaviour
     {
         blackScreen.SetActive(true);
         deathPanel.SetActive(true);
-        deathPanel.transform.Find("NumberOfDeaths").GetComponent<Text>().text = "NUMBER OF DEATHS: " +  (NumberOfDeaths + 1);
-        deathPanel.transform.Find("Hint").GetComponent<Text>().text = "Hint: " + hints[new System.Random().Next(0, hints.Length - 1)];
+        deathPanel.transform.Find("Hint").GetComponent<Text>().text = "HINT:  " + hints[new System.Random().Next(0, hints.Length - 1)];
     }
 
     //metodo invocato dal bottone del pannello death per reiniziare il building del livello

@@ -11,16 +11,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level27
   m_EditorClassIdentifier: 
-  description: modificabile
+  description: intro raptor
   startingPoint: {x: -8.5, y: -2.6, z: 0}
-  endingPoint: {x: 8.5, y: -2.5, z: 0}
-  platformDatas: []
-  obstacleDatas: []
-  movementDatas: []
+  endingPoint: {x: 6.5, y: -0.4, z: 0}
+  platformDatas:
+  - platformType: {fileID: 1369588825285826, guid: 7aa6330ffaad7364bb4006525fc928fd,
+      type: 2}
+    platformPos: {x: -1, y: -0.5, z: 0}
+  - platformType: {fileID: 1369588825285826, guid: 7aa6330ffaad7364bb4006525fc928fd,
+      type: 2}
+    platformPos: {x: 6.5, y: -0.5, z: 0}
+  obstacleDatas:
+  - type: 7
+    obstacleMaxAmount: 1
+    points: 3
+  movementDatas:
+  - movement: 1
+    startTime: 2
+  - movement: 1
+    startTime: 5.6
   pointsForOneStar: 1
   pointsForTwoStars: 2
   pointsForThreeStars: 3
-  isTutorial: 0
-  tutorialTitle: 
-  tutorialImage: {fileID: 0}
-  tutorialText: []
+  isTutorial: 1
+  tutorialTitle: the RAPTOR!
+  tutorialImage: {fileID: 21300000, guid: 4804e915053262d4ebe87f356ba65656, type: 3}
+  tutorialText:
+  - '- He wants to hunt you.'
+  - '- He wants to kill you.'
+  - '- He is actually also pretty interested in English poetry.'
