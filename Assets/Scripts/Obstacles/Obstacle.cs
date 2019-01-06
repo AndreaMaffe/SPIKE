@@ -59,6 +59,7 @@ public abstract class Obstacle : MonoBehaviour
             FindObjectOfType<AudioManager>().ObstacleDraggedIn();
 
         dropped = true;
+        GameObject.Find("LevelManager").GetComponent<LevelManager>().UpdateStars();
     }
 
     // Update is called once per frame

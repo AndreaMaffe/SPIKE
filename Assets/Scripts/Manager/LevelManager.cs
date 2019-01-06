@@ -48,8 +48,9 @@ public class LevelManager : MonoBehaviour
     public GameObject playerTutorial;
     public GameObject tutorialPanel;
     public GameObject blackScreen;
-
     public GameObject deathPanel;
+
+    public GameObject[] stars;
 
     private GameObject playerSimulatorObject;
 
@@ -277,6 +278,18 @@ public class LevelManager : MonoBehaviour
                 return obstacle.position;
         }
         return AnchorPointPosition.Platform;
+    }
+
+    public void UpdateStars()
+    {
+        int numberOfStars = GetNumberOfStars();
+
+        foreach (GameObject star in stars)
+        {
+            if (Array.IndexOf(stars, star) + 1 <= numberOfStars)
+                star.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            else star.gameObject.GetComponent<SpriteRenderer>().color = new Color(0.1981132f, 0.131764f, 0.131764f);
+        }
     }
 
     //TODO: questo metodo andra' messo nello UIManager
