@@ -126,11 +126,15 @@ public class LevelManager : MonoBehaviour
         //crea il PlayerSimulator
         playerSimulatorObject = Instantiate(Resources.Load<GameObject>("Prefab/PlayerSimulator"), CurrentLevel.startingPoint, Quaternion.identity);
 
-        if (tutorialActive)
+        if (CurrentLevel.isTutorial)
         {
             playerTutorial.SetActive(true);
             tutorialPanel.SetActive(true);
             blackScreen.SetActive(true);
+
+            tutorialPanel.transform.Find("Title").GetComponent<Text>().text = CurrentLevel.tutorialTitle;
+            tutorialPanel.transform.Find("Image").GetComponent<Image>().sprite = CurrentLevel.tutorialImage;
+            tutorialPanel.transform.Find("Text").GetComponent<Text>().text = CurrentLevel.tutorialText;
         }
 
         currentTime = 0.0f;

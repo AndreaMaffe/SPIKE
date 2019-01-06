@@ -26,6 +26,11 @@ public class Level : ScriptableObject
     public int pointsForOneStar;
     public int pointsForTwoStars;
     public int pointsForThreeStars;
+    [Header("Tutorial")]
+    public bool isTutorial;
+    public string tutorialTitle;
+    public Sprite tutorialImage;
+    public string tutorialText;
 
 }
 
