@@ -25,7 +25,7 @@ MonoBehaviour:
   pointsForThreeStars: 3
   isTutorial: 1
   tutorialTitle: the ELEVATOR!
-  tutorialImage: {fileID: 21300010, guid: d23bf3b83eb888645899bf488fa3b5fe, type: 3}
+  tutorialImage: {fileID: 21300000, guid: 541418e93f7a1194ea182729c480f444, type: 3}
   tutorialText:
   - '- Goes up & down'
   - '- Can be used to reach higher positions'
