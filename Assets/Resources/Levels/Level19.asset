@@ -9,34 +9,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
-  m_Name: Level80
+  m_Name: Level19
   m_EditorClassIdentifier: 
-  description: intro fallingspikes
+  description: blocca falling spikes con bullet
   startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
   platformDatas:
   - platformType: {fileID: 1369588825285826, guid: 7aa6330ffaad7364bb4006525fc928fd,
       type: 2}
     platformPos: {x: -3, y: -0.3, z: 0}
-  - platformType: {fileID: 1369588825285826, guid: 7aa6330ffaad7364bb4006525fc928fd,
-      type: 2}
-    platformPos: {x: 3, y: -0.3, z: 0}
   obstacleDatas:
   - type: 10
     obstacleMaxAmount: 2
     points: 1
   - type: 8
     obstacleMaxAmount: 1
-    points: 3
+    points: 2
   - type: 2
-    obstacleMaxAmount: 2
+    obstacleMaxAmount: 1
     points: 1
   movementDatas:
   - movement: 1
     startTime: 1.1
   pointsForOneStar: 1
   pointsForTwoStars: 4
-  pointsForThreeStars: 7
+  pointsForThreeStars: 5
   isTutorial: 0
   tutorialTitle: 
   tutorialImage: {fileID: 0}

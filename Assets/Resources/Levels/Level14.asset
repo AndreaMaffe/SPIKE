@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
-  m_Name: Level23
+  m_Name: Level14
   m_EditorClassIdentifier: 
   description: livello storico con laser
   startingPoint: {x: -8.5, y: -2.6, z: 0}
@@ -24,17 +24,21 @@ MonoBehaviour:
   obstacleDatas:
   - type: 0
     obstacleMaxAmount: 1
-    points: 0
+    points: 1
   - type: 5
     obstacleMaxAmount: 1
-    points: 0
+    points: 2
   - type: 3
     obstacleMaxAmount: 1
-    points: 0
+    points: 1
   - type: 4
     obstacleMaxAmount: 1
-    points: 0
+    points: 1
   movementDatas: []
-  pointsForOneStar: 0
-  pointsForTwoStars: 0
-  pointsForThreeStars: 0
+  pointsForOneStar: 1
+  pointsForTwoStars: 4
+  pointsForThreeStars: 5
+  isTutorial: 0
+  tutorialTitle: 
+  tutorialImage: {fileID: 0}
+  tutorialText: []

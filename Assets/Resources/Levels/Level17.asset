@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
-  m_Name: Level15
+  m_Name: Level17
   m_EditorClassIdentifier: 
   description: parkour
   startingPoint: {x: -6.9, y: 2, z: 0}
@@ -30,16 +30,20 @@ MonoBehaviour:
     points: 3
   - type: 0
     obstacleMaxAmount: 1
-    points: 0
+    points: 1
   - type: 6
     obstacleMaxAmount: 1
     points: 1
   - type: 2
     obstacleMaxAmount: 2
-    points: 0
+    points: 1
   movementDatas:
   - movement: 1
     startTime: 1.2
   pointsForOneStar: 1
-  pointsForTwoStars: 2
-  pointsForThreeStars: 10
+  pointsForTwoStars: 10
+  pointsForThreeStars: 13
+  isTutorial: 0
+  tutorialTitle: 
+  tutorialImage: {fileID: 0}
+  tutorialText: []

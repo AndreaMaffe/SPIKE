@@ -35,6 +35,10 @@ MonoBehaviour:
     obstacleMaxAmount: 1
     points: 1
   movementDatas: []
-  pointsForOneStar: 2
-  pointsForTwoStars: 4
+  pointsForOneStar: 1
+  pointsForTwoStars: 5
   pointsForThreeStars: 7
+  isTutorial: 0
+  tutorialTitle: 
+  tutorialImage: {fileID: 0}
+  tutorialText: []

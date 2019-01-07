@@ -9,18 +9,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
-  m_Name: Level26
+  m_Name: Level18
   m_EditorClassIdentifier: 
   description: intro falling spikes
   startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
-  platformDatas: []
-  obstacleDatas: []
+  platformDatas:
+  - platformType: {fileID: 1507616780894958, guid: a49ff86480db4924382a09c262eb8003,
+      type: 2}
+    platformPos: {x: -4, y: -0.3, z: 0}
+  - platformType: {fileID: 1507616780894958, guid: a49ff86480db4924382a09c262eb8003,
+      type: 2}
+    platformPos: {x: 0, y: -0.3, z: 0}
+  - platformType: {fileID: 1507616780894958, guid: a49ff86480db4924382a09c262eb8003,
+      type: 2}
+    platformPos: {x: 4, y: -0.3, z: 0}
+  obstacleDatas:
+  - type: 8
+    obstacleMaxAmount: 3
+    points: 1
   movementDatas: []
   pointsForOneStar: 1
   pointsForTwoStars: 2
   pointsForThreeStars: 3
-  isTutorial: 0
-  tutorialTitle: 
-  tutorialImage: {fileID: 0}
-  tutorialText: []
+  isTutorial: 1
+  tutorialTitle: the FALLING SPIKES!
+  tutorialImage: {fileID: 21300000, guid: b98c34229418aae4d8074b0e3c680dcd, type: 3}
+  tutorialText:
+  - '- Will fall on your head'
+  - '- Spikes are deadly (duh?)'
+  - '- Find a cover!'

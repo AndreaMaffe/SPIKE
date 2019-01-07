@@ -34,7 +34,7 @@ MonoBehaviour:
   pointsForThreeStars: 3
   isTutorial: 1
   tutorialTitle: the SPRING!
-  tutorialImage: {fileID: 21300044, guid: d23bf3b83eb888645899bf488fa3b5fe, type: 3}
+  tutorialImage: {fileID: 21300000, guid: 026c7f838d5bf49499a5fa0423873d81, type: 3}
   tutorialText:
   - '- Pushes you against the spikes'
   - '- Triggered by anything passing over it'

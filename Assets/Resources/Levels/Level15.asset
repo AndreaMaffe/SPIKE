@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
-  m_Name: Level14
+  m_Name: Level15
   m_EditorClassIdentifier: 
   description: intro elevator
   startingPoint: {x: -8.5, y: -2.6, z: 0}
@@ -25,7 +25,7 @@ MonoBehaviour:
   pointsForThreeStars: 3
   isTutorial: 1
   tutorialTitle: the ELEVATOR!
-  tutorialImage: {fileID: 21300000, guid: 541418e93f7a1194ea182729c480f444, type: 3}
+  tutorialImage: {fileID: 21300000, guid: 8604530693e8f6d4aa40492972176430, type: 3}
   tutorialText:
   - '- Goes up & down'
   - '- Can be used to reach higher positions'
