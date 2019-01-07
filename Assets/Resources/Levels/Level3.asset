@@ -26,7 +26,7 @@ MonoBehaviour:
   - movement: 1
     startTime: 2
   pointsForOneStar: 1
-  pointsForTwoStars: 2
+  pointsForTwoStars: 4
   pointsForThreeStars: 5
   isTutorial: 1
   tutorialTitle: the Bomb!
