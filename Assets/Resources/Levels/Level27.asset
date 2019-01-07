@@ -35,7 +35,7 @@ MonoBehaviour:
   pointsForThreeStars: 3
   isTutorial: 1
   tutorialTitle: the RAPTOR!
-  tutorialImage: {fileID: 21300000, guid: 4804e915053262d4ebe87f356ba65656, type: 3}
+  tutorialImage: {fileID: 21300000, guid: 2349c0c52aeb08a47816847f7b8255dc, type: 3}
   tutorialText:
   - '- He wants to hunt you.'
   - '- He wants to kill you.'
