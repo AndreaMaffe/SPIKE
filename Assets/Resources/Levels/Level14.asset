@@ -9,24 +9,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
-  m_Name: Level14
+  m_Name: Level23
   m_EditorClassIdentifier: 
-  description: intro elevator
+  description: livello storico con laser
   startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
-  platformDatas: []
+  platformDatas:
+  - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
+      type: 2}
+    platformPos: {x: -5, y: 2.05, z: 0}
+  - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
+      type: 2}
+    platformPos: {x: 6.2, y: 2.05, z: 0}
   obstacleDatas:
-  - type: 6
-    obstacleMaxAmount: 3
-    points: 1
+  - type: 0
+    obstacleMaxAmount: 1
+    points: 0
+  - type: 5
+    obstacleMaxAmount: 1
+    points: 0
+  - type: 3
+    obstacleMaxAmount: 1
+    points: 0
+  - type: 4
+    obstacleMaxAmount: 1
+    points: 0
   movementDatas: []
-  pointsForOneStar: 1
-  pointsForTwoStars: 2
-  pointsForThreeStars: 3
-  isTutorial: 1
-  tutorialTitle: the ELEVATOR!
-  tutorialImage: {fileID: 21300000, guid: 541418e93f7a1194ea182729c480f444, type: 3}
-  tutorialText:
-  - '- Goes up & down'
-  - '- Can be used to reach higher positions'
-  - '- Watch out for the chainsaw!'
+  pointsForOneStar: 0
+  pointsForTwoStars: 0
+  pointsForThreeStars: 0

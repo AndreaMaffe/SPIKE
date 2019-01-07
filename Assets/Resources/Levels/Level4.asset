@@ -20,14 +20,14 @@ MonoBehaviour:
     obstacleMaxAmount: 1
     points: 1
   - type: 10
-    obstacleMaxAmount: 4
+    obstacleMaxAmount: 3
     points: 1
   movementDatas:
   - movement: 1
     startTime: 2
   pointsForOneStar: 1
-  pointsForTwoStars: 4
-  pointsForThreeStars: 5
+  pointsForTwoStars: 3
+  pointsForThreeStars: 4
   isTutorial: 1
   tutorialTitle: the Bomb!
   tutorialImage: {fileID: 21300020, guid: d23bf3b83eb888645899bf488fa3b5fe, type: 3}

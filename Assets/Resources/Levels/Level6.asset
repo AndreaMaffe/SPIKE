@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
   m_Name: Level6
   m_EditorClassIdentifier: 
-  description: traslation
+  description: intro Spring
   startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 7, y: 0.15, z: 0}
   platformDatas:
@@ -27,10 +27,7 @@ MonoBehaviour:
     points: 1
   - type: 3
     obstacleMaxAmount: 1
-    points: 1
-  - type: 2
-    obstacleMaxAmount: 1
-    points: 1
+    points: 2
   movementDatas: []
   pointsForOneStar: 1
   pointsForTwoStars: 2
