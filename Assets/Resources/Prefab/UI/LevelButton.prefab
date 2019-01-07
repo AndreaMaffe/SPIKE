@@ -298,10 +298,10 @@ MonoBehaviour:
   - {fileID: 114819918131385068}
   starAssigned:
     serializedVersion: 2
-    rgba: 4291097087
+    rgba: 4282891775
   starNotAssigned:
     serializedVersion: 2
-    rgba: 4285430439
+    rgba: 4290758880
 --- !u!114 &114819918131385068
 MonoBehaviour:
   m_ObjectHideFlags: 1

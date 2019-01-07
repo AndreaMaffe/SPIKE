@@ -14,11 +14,14 @@ public class Spring : Obstacle
     [Tooltip("Vertical shift of the platform when triggered")]
     public float platformHeight;
 
+    private GameObject molla;
+
     //start apposito per gli ostacoli, usare questo anziché Start().
     protected override void StartObstacle()
     {
         triggered = false;
         spikes = transform.Find("Spikes");
+        molla = transform.Find("Molla").gameObject;
 
         coll = GetComponent<PolygonCollider2D>();
         coll.enabled = false;
@@ -46,6 +49,8 @@ public class Spring : Obstacle
     {
         if (!triggered && active)
         {
+            molla.SetActive(true);
+            molla.transform.localPosition = new Vector3(0, -platformHeight);
             //alza la piattaforma e applica una forza verticale di intensità pari a "push" all'oggetto soprastante
             collision.gameObject.transform.position += new Vector3(0, platformHeight, 0);
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, push, 0));
@@ -73,6 +78,7 @@ public class Spring : Obstacle
     //chiamato al RetryLevel()
     protected override void Sleep()
     {
+        molla.SetActive(false);
         //risetta la posizione iniziale
         ResetPosition();
 
