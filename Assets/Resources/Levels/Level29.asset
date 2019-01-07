@@ -9,31 +9,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
-  m_Name: Level3
+  m_Name: Level29
   m_EditorClassIdentifier: 
-  description: intro cannon
+  description: modificabile
   startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
   platformDatas: []
-  obstacleDatas:
-  - type: 10
-    obstacleMaxAmount: 2
-    points: 1
-  - type: 2
-    obstacleMaxAmount: 3
-    points: 1
-  movementDatas:
-  - movement: 1
-    startTime: 1.5
-  - movement: 1
-    startTime: 4
+  obstacleDatas: []
+  movementDatas: []
   pointsForOneStar: 1
-  pointsForTwoStars: 4
-  pointsForThreeStars: 5
+  pointsForTwoStars: 2
+  pointsForThreeStars: 3
   isTutorial: 0
   tutorialTitle: 
   tutorialImage: {fileID: 0}
-  tutorialText:
-  - 
-  - 
-  - 
+  tutorialText: []

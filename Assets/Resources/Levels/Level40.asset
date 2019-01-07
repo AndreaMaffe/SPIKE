@@ -9,32 +9,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
-  m_Name: Level24
+  m_Name: Level40
   m_EditorClassIdentifier: 
-  description: intro cannon
-  startingPoint: {x: -6.5, y: 2, z: 0}
+  description: intro laser
+  startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
   platformDatas:
   - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
       type: 2}
-    platformPos: {x: -6.5, y: 2, z: 0}
-  - platformType: {fileID: 1198458058388202, guid: 8bf99fe968ea35941b0ff343bb668a85,
+    platformPos: {x: -6, y: 1, z: 0}
+  - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
       type: 2}
-    platformPos: {x: -1, y: 0.5, z: 0}
+    platformPos: {x: 6, y: 1, z: 0}
   obstacleDatas:
-  - type: 2
-    obstacleMaxAmount: 3
+  - type: 5
+    obstacleMaxAmount: 1
+    points: 2
+  - type: 0
+    obstacleMaxAmount: 1
     points: 1
-  movementDatas:
-  - movement: 1
-    startTime: 0.9
+  movementDatas: []
   pointsForOneStar: 1
   pointsForTwoStars: 2
   pointsForThreeStars: 3
   isTutorial: 1
-  tutorialTitle: the CANNON!
-  tutorialImage: {fileID: 21300024, guid: d23bf3b83eb888645899bf488fa3b5fe, type: 3}
+  tutorialTitle: the LASER!
+  tutorialImage: {fileID: 21300030, guid: d23bf3b83eb888645899bf488fa3b5fe, type: 3}
   tutorialText:
-  - '- Must be positioned on the side'
-  - '- Shoots a bullet every 2 seconds'
-  - '- The head of the bullet kills you, but the body is harmless'
+  - '- Follows you from above and shoots deadly rays'
+  - '- Istantly kills you if you are not under a cover'
+  - '- Makes pretty cool Hi-Tech sounds when shooting!'
