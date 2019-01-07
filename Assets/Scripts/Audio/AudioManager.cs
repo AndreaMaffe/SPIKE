@@ -49,6 +49,9 @@ public class AudioManager : MonoBehaviour {
 
     public void Start()
     {
+        AudioListener.volume = 1f;
+        musicToggle.isOn = false;
+
         if (SceneManager.GetActiveScene().buildIndex == 0) //schermata home
         {
             Play("landing");
