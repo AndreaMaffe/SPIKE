@@ -36,6 +36,6 @@ MonoBehaviour:
   tutorialTitle: the LASER!
   tutorialImage: {fileID: 21300030, guid: d23bf3b83eb888645899bf488fa3b5fe, type: 3}
   tutorialText:
-  - '- Follows you from above!'
+  - '- Follows you from above and shoots deadly rays'
   - '- Istantly kills you if you are not under a cover'
-  - '- Cool Hi-Tech sounds when shooting!'
+  - '- Makes pretty cool Hi-Tech sounds when shooting!'

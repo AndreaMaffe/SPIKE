@@ -49,6 +49,10 @@ MonoBehaviour:
     startTime: 3
   - movement: 1
     startTime: 4.4
-  pointsForOneStar: 0
+  pointsForOneStar: 1
   pointsForTwoStars: 6
   pointsForThreeStars: 11
+  isTutorial: 0
+  tutorialTitle: 
+  tutorialImage: {fileID: 0}
+  tutorialText: []
