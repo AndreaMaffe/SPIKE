@@ -2379,7 +2379,7 @@ Prefab:
     - target: {fileID: 114709538410556658, guid: dfb359f18f61f114abf363d2c153866d,
         type: 2}
       propertyPath: hints.Array.data[0]
-      value: you can use bullets to stop Laser rays!
+      value: if you don't have a cover from Laser rays, try to create one!
       objectReference: {fileID: 0}
     - target: {fileID: 114709538410556658, guid: dfb359f18f61f114abf363d2c153866d,
         type: 2}
@@ -3423,7 +3423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.9794239, y: 0.52039206}
-  m_AnchoredPosition: {x: 84, y: 272}
+  m_AnchoredPosition: {x: 62, y: 272}
   m_SizeDelta: {x: -580.6, y: -321.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1036460115
@@ -3449,8 +3449,8 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 335d774dbdda392498bad772db1854e9, type: 3}
     m_FontSize: 120
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 1
+    m_BestFit: 1
+    m_MinSize: 60
     m_MaxSize: 120
     m_Alignment: 3
     m_AlignByGeometry: 0

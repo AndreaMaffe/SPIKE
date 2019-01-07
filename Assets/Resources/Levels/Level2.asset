@@ -12,19 +12,29 @@ MonoBehaviour:
   m_Name: Level2
   m_EditorClassIdentifier: 
   description: intro cannon
-  startingPoint: {x: -8.5, y: -2.6, z: 0}
+  startingPoint: {x: -6.5, y: 2, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
-  platformDatas: []
+  platformDatas:
+  - platformType: {fileID: 1757135256670840, guid: 375a3012b821f554691f509871033a22,
+      type: 2}
+    platformPos: {x: -6.5, y: 2, z: 0}
+  - platformType: {fileID: 1198458058388202, guid: 8bf99fe968ea35941b0ff343bb668a85,
+      type: 2}
+    platformPos: {x: -1, y: 0.5, z: 0}
   obstacleDatas:
-  - type: 10
-    obstacleMaxAmount: 1
-    points: 2
   - type: 2
     obstacleMaxAmount: 3
     points: 1
   movementDatas:
   - movement: 1
-    startTime: 3.5
+    startTime: 0.9
   pointsForOneStar: 1
-  pointsForTwoStars: 3
-  pointsForThreeStars: 5
+  pointsForTwoStars: 2
+  pointsForThreeStars: 3
+  isTutorial: 1
+  tutorialTitle: the CANNON!
+  tutorialImage: {fileID: 21300024, guid: d23bf3b83eb888645899bf488fa3b5fe, type: 3}
+  tutorialText:
+  - '- Must be positioned on the side'
+  - '- Shoots a bullet every 2 seconds'
+  - '- The head of the bullet kills you, but the body is harmless'
