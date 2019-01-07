@@ -1054,7 +1054,7 @@ GameObject:
   - component: {fileID: 1270519679}
   - component: {fileID: 1270519678}
   m_Layer: 5
-  m_Name: DeathAchievedNumber
+  m_Name: Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1110,7 +1110,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 60
+  m_Text: 0
 --- !u!222 &1270519679
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1252,7 +1252,7 @@ GameObject:
   - component: {fileID: 1780509842}
   - component: {fileID: 1780509841}
   m_Layer: 5
-  m_Name: DeathAchieved
+  m_Name: OverallDeaths
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1309,7 +1309,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'DEATH ACHIEVED:'
+  m_Text: 'OVERALL DEATHS:'
 --- !u!222 &1780509842
 CanvasRenderer:
   m_ObjectHideFlags: 0
