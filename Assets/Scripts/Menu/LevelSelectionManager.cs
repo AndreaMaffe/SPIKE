@@ -75,6 +75,7 @@ public class LevelSelectionManager : MonoBehaviour {
     {
         for (int i = 0; i < allButtons.Length; i++) {
             allButtons[i].GetComponentInChildren<Text>().text = (pageIndex * levelAmountTest + i + 1).ToString();
+            allButtons[i].GetComponent<LevelButton>().AssignStars(saveManager.stars[pageIndex * levelAmountTest + i]);
         }
     }
 
