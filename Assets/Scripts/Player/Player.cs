@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     private Vector3 originalPosition;
     [SerializeField]
     private bool onGround;
+    private bool outOfTheLevel;
     private bool invincible;
 
     [Header("Ragdoll")]
@@ -105,6 +106,13 @@ public class Player : MonoBehaviour
                 rb.velocity = Vector2.zero;
                 break;
         }
+
+        if (Mathf.Abs(transform.position.x) > 12 && !outOfTheLevel)
+        {
+            LevelManager.StartFailureEvent("OUT OF THE LEVEL!");
+            outOfTheLevel = true;
+        }
+
     }
 
     //chiamato al RunLevel()
@@ -142,6 +150,8 @@ public class Player : MonoBehaviour
 
         //rimuovi tutti i timer (verranno risettati al successivo WakeUp())
         ResetTimers();
+
+        outOfTheLevel = false;
     }
 
     //chiamato al EndLevel()

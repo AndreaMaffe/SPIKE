@@ -237,10 +237,12 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public static void PlayerDeath()
+    public static void StartFailureEvent(string message)
     {
+        
         FindObjectOfType<AudioManager>().GetComponent<AudioManager>().PlayFailAudio();
         FindObjectOfType<LevelManager>().GetComponent<LevelManager>().ShowDeathPanel();
+        FindObjectOfType<LevelManager>().GetComponent<LevelManager>().deathPanel.transform.Find("Title").GetComponent<Text>().text = message;
         playerDeathEvent();       
     }
 

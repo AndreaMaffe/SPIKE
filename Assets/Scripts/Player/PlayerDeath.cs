@@ -19,7 +19,7 @@ public abstract class PlayerDeathEvent
         this.position = position;
         this.obstacle = obstacle;
 
-        LevelManager.PlayerDeath();
+        LevelManager.StartFailureEvent("YOU DIED!");
     }
 
     public virtual void StartDeath()
