@@ -20,6 +20,7 @@ public class Bomb : ObstacleWithTimer {
     public float explosionThrust;
     public float explosionInnerRadius;
     public float explosionOuterRadius;
+    private float rotation;
 
     public Transform innerRadius;
     public Transform outerRadius;

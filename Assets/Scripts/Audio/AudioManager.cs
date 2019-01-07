@@ -84,7 +84,7 @@ public class AudioManager : MonoBehaviour {
 
     public void OnValueChanged()
     {
-        if (musicToggle.isOn)
+        if (!musicToggle.isOn)
         {
             AudioListener.volume = 1f;
             saveManager.musicVolume = true;

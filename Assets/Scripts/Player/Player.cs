@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
                 break;
         }
 
-        if (Mathf.Abs(transform.position.x) > 12 && !outOfTheLevel)
+        if (Mathf.Abs(transform.position.x) > 12 && !outOfTheLevel &&!invincible)
         {
             LevelManager.StartFailureEvent("OUT OF THE LEVEL!");
             outOfTheLevel = true;
