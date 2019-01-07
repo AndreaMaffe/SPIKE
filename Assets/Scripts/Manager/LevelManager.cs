@@ -163,7 +163,7 @@ public class LevelManager : MonoBehaviour
         tutorialPanel.SetActive(false);
     }
 
-    public void GoToMainMenu()
+    public void GoToLevelSelection()
     {
         SceneManager.LoadSceneAsync("LevelSelection");
         NumberOfDeaths = 0;

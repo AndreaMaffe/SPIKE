@@ -137,6 +137,7 @@ public abstract class Obstacle : MonoBehaviour
         LevelManager.retryLevelEvent -= EnableDraggingSystem;
 
         LevelManager.NumberOfObstacles[GetObstacleType()] -= 1;
+        GameObject.Find("LevelManager").GetComponent<LevelManager>().UpdateStars();
     }
 
     public PlayerDeathEvent CreatePlayerDeathEvent(Player player, Vector3 position)
