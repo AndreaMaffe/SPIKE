@@ -12,6 +12,7 @@ public abstract class PlayerDeathEvent
     //per l'effetto del sangue che tanto c'e' in ogni morte
     private GameObject bloodParticles;
 
+    private SaveManager saveManager;
 
     public PlayerDeathEvent (Player player, Obstacle obstacle, Vector3 position)
     {
@@ -28,7 +29,10 @@ public abstract class PlayerDeathEvent
         SpawnBloodParticles();
         LevelManager.NumberOfDeaths += 1;
         LevelManager.TotalNumberOfDeaths += 1;
-
+        saveManager = SaveManager.SaveManagerInstance;
+        saveManager = SaveUtility.LoadObject(saveManager, "saveFile");
+        saveManager.totalDeathsCounter = LevelManager.TotalNumberOfDeaths;
+        SaveUtility.SaveObject(saveManager, "saveFile");
         GameObject.Find("NumberOfAttemptsText").GetComponent<Text>().text = "NUMBER OF DEATHS: " + LevelManager.NumberOfDeaths;
     }
 

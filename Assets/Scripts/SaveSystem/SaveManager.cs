@@ -12,6 +12,8 @@ public class SaveManager
     public bool musicVolume;
     //Variabile relativa alle stelle per livello;
     public int[] stars;
+    //Variabile relativa al numero totali di morti;
+    public int totalDeathsCounter;
 
     private static SaveManager saveManagerInstance;
 
@@ -21,6 +23,7 @@ public class SaveManager
         totalLevels = 100;
         musicVolume = true;
         stars = new int[totalLevels];
+        totalDeathsCounter = 0;
     }
 
     public static SaveManager SaveManagerInstance

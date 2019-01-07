@@ -54,6 +54,7 @@ public class LevelManager : MonoBehaviour
 
     private GameObject playerSimulatorObject;
 
+    private SaveManager saveManager;
 
     //struct che associa ogni ostacolo alla posizione in cui puo' andare
     [System.Serializable]
@@ -101,6 +102,10 @@ public class LevelManager : MonoBehaviour
         state = LevelState.UNDER_CONSTRUCTION;
 
         currentTime = 0.0f;
+
+        saveManager = SaveManager.SaveManagerInstance;
+        saveManager = SaveUtility.LoadObject(saveManager, "saveFile");
+        TotalNumberOfDeaths = saveManager.totalDeathsCounter;
     }
 
     private void FixedUpdate()
