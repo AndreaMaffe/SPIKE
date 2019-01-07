@@ -9,31 +9,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e643c122e2e7ab4d9ed2a1eb4c7c72f, type: 3}
-  m_Name: Level21
+  m_Name: Level25
   m_EditorClassIdentifier: 
-  description: stop FS & spring using bullet
+  description: modificabile
   startingPoint: {x: -8.5, y: -2.6, z: 0}
   endingPoint: {x: 8.5, y: -2.5, z: 0}
   platformDatas: []
-  obstacleDatas:
-  - type: 8
-    obstacleMaxAmount: 1
-    points: 1
-  - type: 3
-    obstacleMaxAmount: 1
-    points: 1
-  - type: 2
-    obstacleMaxAmount: 2
-    points: 1
+  obstacleDatas: []
   movementDatas: []
   pointsForOneStar: 1
-<<<<<<< HEAD
-  pointsForTwoStars: 3
-  pointsForThreeStars: 4
-=======
   pointsForTwoStars: 2
   pointsForThreeStars: 3
->>>>>>> c60f49da76429d1543ff14e6d8dd9251eb2d4fff
   isTutorial: 0
   tutorialTitle: 
   tutorialImage: {fileID: 0}

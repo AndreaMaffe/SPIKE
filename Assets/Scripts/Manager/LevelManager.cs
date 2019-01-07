@@ -212,7 +212,7 @@ public class LevelManager : MonoBehaviour
         if (audiomanager.musicToggle.isOn == true)
         {
             SceneManager.LoadSceneAsync("SampleSceneRange");
-            audiomanager.musicToggle.isOn = false;
+            audiomanager.musicToggle.isOn = true;
             Debug.Log(audiomanager.musicToggle.isOn);
 
             AudioListener.volume = 0f;
@@ -220,7 +220,7 @@ public class LevelManager : MonoBehaviour
         else
         {
             SceneManager.LoadSceneAsync("SampleSceneRange");
-            audiomanager.musicToggle.isOn = true;
+            audiomanager.musicToggle.isOn = false;
             Debug.Log(audiomanager.musicToggle.isOn);
 
             AudioListener.volume = 1f;
