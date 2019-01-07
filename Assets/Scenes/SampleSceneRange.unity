@@ -2572,6 +2572,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootBone: {fileID: 1129378750}
   m_BoneTransforms:
   - {fileID: 0}
@@ -2589,6 +2590,8 @@ MonoBehaviour:
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
+=======
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
   m_RootBone: {fileID: 1235016896}
   m_BoneTransforms:
   - {fileID: 1235016896}
@@ -2600,6 +2603,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
 =======
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
@@ -2607,6 +2611,8 @@ MonoBehaviour:
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
 =======
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
+=======
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
@@ -2940,6 +2946,7 @@ RectTransform:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &824426510
 =======
 --- !u!1 &825041062
@@ -2959,12 +2966,16 @@ RectTransform:
 =======
 --- !u!1 &825041062
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
+=======
+--- !u!1 &825041062
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2986,6 +2997,8 @@ GameObject:
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
+=======
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
   - component: {fileID: 825041063}
   - component: {fileID: 825041064}
   m_Layer: 5
@@ -2995,6 +3008,7 @@ GameObject:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
 =======
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
@@ -3002,6 +3016,8 @@ GameObject:
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
 =======
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
+=======
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
@@ -3010,6 +3026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -3099,6 +3116,8 @@ RectTransform:
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
 =======
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
+=======
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
@@ -3616,6 +3635,7 @@ CanvasRenderer:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1053418610
 =======
 --- !u!1 &1121267732
@@ -3635,12 +3655,16 @@ CanvasRenderer:
 =======
 --- !u!1 &1121267732
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
+=======
+--- !u!1 &1121267732
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -3663,6 +3687,8 @@ GameObject:
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
+=======
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
   - component: {fileID: 1121267733}
   - component: {fileID: 1121267735}
   - component: {fileID: 1121267734}
@@ -3673,6 +3699,7 @@ GameObject:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
 =======
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
@@ -3680,6 +3707,8 @@ GameObject:
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
 =======
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
+=======
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
@@ -3689,6 +3718,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -3714,10 +3744,14 @@ GameObject:
 =======
 --- !u!224 &1121267733
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
+=======
+--- !u!224 &1121267733
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -3749,6 +3783,8 @@ RectTransform:
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
+=======
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
   m_GameObject: {fileID: 1121267732}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -3769,6 +3805,7 @@ RectTransform:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
 =======
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
@@ -3776,6 +3813,8 @@ RectTransform:
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
 =======
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
+=======
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
@@ -3784,6 +3823,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -3809,6 +3849,9 @@ MonoBehaviour:
 =======
   m_GameObject: {fileID: 1121267732}
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
+=======
+  m_GameObject: {fileID: 1121267732}
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -3822,6 +3865,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -3847,6 +3891,9 @@ MonoBehaviour:
 =======
   m_Sprite: {fileID: 21300000, guid: 069e86d7c29f6eb49be505bd3fc03471, type: 3}
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
+=======
+  m_Sprite: {fileID: 21300000, guid: 069e86d7c29f6eb49be505bd3fc03471, type: 3}
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3854,6 +3901,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -3879,10 +3927,14 @@ MonoBehaviour:
 =======
 --- !u!222 &1121267735
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
+=======
+--- !u!222 &1121267735
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -3965,6 +4017,10 @@ Transform:
   m_GameObject: {fileID: 1121267732}
   m_CullTransparentMesh: 0
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
+=======
+  m_GameObject: {fileID: 1121267732}
+  m_CullTransparentMesh: 0
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
   m_GameObject: {fileID: 1121267732}
   m_CullTransparentMesh: 0
@@ -5554,6 +5610,7 @@ Transform:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
 =======
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
@@ -5561,6 +5618,8 @@ Transform:
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
 =======
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
+=======
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
@@ -5887,6 +5946,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootBone: {fileID: 297447294}
   m_BoneTransforms:
   - {fileID: 0}
@@ -5903,6 +5963,8 @@ MonoBehaviour:
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
+=======
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
   m_RootBone: {fileID: 1226477422}
   m_BoneTransforms:
   - {fileID: 1226477422}
@@ -5913,6 +5975,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
 =======
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
@@ -5920,6 +5983,8 @@ MonoBehaviour:
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
 =======
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
+=======
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
@@ -6330,11 +6395,14 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
 =======
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
+=======
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
@@ -6426,6 +6494,7 @@ CanvasRenderer:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1587165896
 GameObject:
   m_ObjectHideFlags: 0
@@ -6507,6 +6576,8 @@ CanvasRenderer:
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
 =======
 >>>>>>> 224de80677e453e7f3dee1d167ebaddae7d80946
+=======
+>>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
 >>>>>>> 7dbd4c2bc232333749326b7da1b4f56047c14453
 =======
