@@ -208,9 +208,30 @@ public class LevelManager : MonoBehaviour
 
     public void ReloadLevel()
     {
+        AudioManager audiomanager = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
+        if (audiomanager.musicToggle.isOn == true)
+        {
+            SceneManager.LoadSceneAsync("SampleSceneRange");
+            audiomanager.musicToggle.isOn = false;
+            Debug.Log(audiomanager.musicToggle.isOn);
+
+            AudioListener.volume = 0f;
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync("SampleSceneRange");
+            audiomanager.musicToggle.isOn = true;
+            Debug.Log(audiomanager.musicToggle.isOn);
+
+            AudioListener.volume = 1f;
+        }
+
+
         //FindObjectOfType<TimerManager>().Clear();
-        SceneManager.LoadSceneAsync("SampleSceneRange");
+        //SceneManager.LoadSceneAsync("SampleSceneRange");
         //state = LevelState.UNDER_CONSTRUCTION;
+
+
     }
 
     public void LoadNextLevel()
