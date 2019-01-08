@@ -30,15 +30,9 @@ MonoBehaviour:
     startTime: 2.9
   - movement: 1
     startTime: 3.2
-<<<<<<< HEAD
   pointsForOneStar: 1
   pointsForTwoStars: 2
   pointsForThreeStars: 3
-=======
-  pointsForOneStar: 0
-  pointsForTwoStars: 0
-  pointsForThreeStars: 0
->>>>>>> c60f49da76429d1543ff14e6d8dd9251eb2d4fff
   isTutorial: 0
   tutorialTitle: 
   tutorialImage: {fileID: 0}

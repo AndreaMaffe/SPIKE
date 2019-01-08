@@ -27,13 +27,8 @@ MonoBehaviour:
     points: 1
   movementDatas: []
   pointsForOneStar: 1
-<<<<<<< HEAD
   pointsForTwoStars: 3
   pointsForThreeStars: 4
-=======
-  pointsForTwoStars: 2
-  pointsForThreeStars: 3
->>>>>>> c60f49da76429d1543ff14e6d8dd9251eb2d4fff
   isTutorial: 0
   tutorialTitle: 
   tutorialImage: {fileID: 0}
