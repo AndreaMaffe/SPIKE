@@ -49,8 +49,6 @@ public class AudioManager : MonoBehaviour {
 
     public void Start()
     {
-        AudioListener.volume = 1f;
-        musicToggle.isOn = false;
 
         if (SceneManager.GetActiveScene().buildIndex == 0) //schermata home
         {
@@ -68,7 +66,18 @@ public class AudioManager : MonoBehaviour {
         //Debug.Log("Volume musica iniziale: " + saveManager.musicVolume);
         FindSoundSlider();
         if (musicToggle)
-            musicToggle.isOn = saveManager.musicVolume;
+        {
+            if (saveManager.musicVolume)
+            {
+                musicToggle.isOn = false;
+                AudioListener.volume = 1f;
+            } else
+            {
+                musicToggle.isOn = true;
+                AudioListener.volume = 0;
+            }
+
+        }
     }
 
     //Trova gli slider giusti in scena
