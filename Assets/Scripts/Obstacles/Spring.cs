@@ -22,7 +22,6 @@ public class Spring : Obstacle
         triggered = false;
         spikes = transform.Find("Spikes");
         molla = transform.Find("Molla").gameObject;
-
         coll = GetComponent<PolygonCollider2D>();
         coll.enabled = false;
     }
